@@ -2,37 +2,35 @@ import { services } from "@/lib/data";
 
 export default function ServicesSection() {
   return (
-    <section id="directions" className="px-4 py-16 md:py-20 bg-gray-50 dark:bg-zinc-800">
+    <section id="services" className="px-4 py-16 md:py-20 bg-white">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-end justify-between mb-10">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-              All Directions
-            </h2>
-            <p className="text-gray-500 dark:text-gray-400 text-base">
-              Explore our comprehensive range of professional specializations
-            </p>
-          </div>
-          <a
-            href="#"
-            className="hidden sm:inline-block text-teal-600 dark:text-teal-400 font-semibold text-sm hover:underline"
-          >
-            View all →
-          </a>
+        <div className="mb-12">
+          <p className="text-teal-600 font-semibold text-sm uppercase tracking-widest mb-3">
+            What we offer
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
+            Our Services
+          </h2>
+          <p className="text-slate-500 text-base max-w-xl">
+            A full range of professional mediation and training services for
+            individuals, families, and organisations.
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
-            <a
+            <div
               key={service.name}
-              href="#"
-              className="group bg-white dark:bg-zinc-700 p-6 rounded-xl hover:shadow-md hover:border-teal-300 dark:hover:border-teal-600 border border-transparent transition-all text-center"
+              className="group bg-slate-50 hover:bg-white border border-transparent hover:border-slate-200 hover:shadow-md p-6 rounded-xl transition-all"
             >
-              <div className="text-4xl mb-3">{service.icon}</div>
-              <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors text-sm md:text-base">
+              <div className="text-4xl mb-4">{service.icon}</div>
+              <h3 className="font-bold text-slate-900 text-lg mb-2 group-hover:text-teal-700 transition-colors">
                 {service.name}
               </h3>
-            </a>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                {service.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>
