@@ -2,13 +2,15 @@ import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import PromoBanner from "@/components/PromoBanner";
 import HeroSection from "@/components/HeroSection";
-import CategoriesSection from "@/components/CategoriesSection";
 import ServicesSection from "@/components/ServicesSection";
-import AdvantagesSection from "@/components/AdvantagesSection";
+import NewsSection from "@/components/NewsSection";
 import ProgramTabs from "@/components/ProgramTabs";
-import MediationSection from "@/components/MediationSection";
-import ExpertsSection from "@/components/ExpertsSection";
+import AdvantagesSection from "@/components/AdvantagesSection";
+import SummerSchoolBanner from "@/components/SummerSchoolBanner";
 import CTASection from "@/components/CTASection";
+import ExpertsSection from "@/components/ExpertsSection";
+import MediationSection from "@/components/MediationSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -19,13 +21,15 @@ export default function Home() {
       <PromoBanner />
       <main>
         <HeroSection />
-        <CategoriesSection />
         <ServicesSection />
-        <AdvantagesSection />
+        <NewsSection />
         <ProgramTabs />
-        <MediationSection />
-        <ExpertsSection />
+        <AdvantagesSection />
+        <SummerSchoolBanner />
         <CTASection />
+        <ExpertsSection />
+        <MediationSection />
+        <TestimonialsSection />
       </main>
       <Footer />
     </div>

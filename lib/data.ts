@@ -1,115 +1,114 @@
 export const navLinks = [
-  { label: "About Institution", href: "#about" },
-  { label: "Training", href: "#programs" },
-  { label: "Services", href: "#services" },
-  { label: "Our Projects", href: "#" },
-  { label: "Contacts", href: "#footer" },
+  { label: "Об учреждении", href: "#about" },
+  { label: "Обучение", href: "#programs" },
+  { label: "Услуги", href: "#services" },
+  { label: "Наши проекты", href: "#" },
+  { label: "Контакты", href: "#footer" },
 ];
 
 export const promos = [
-  "Mediator Training starts June 1 — enroll now",
-  "Youth Summer School · July · Grodno",
-  "Distance & in-person formats available",
-  "State-standard certificates upon completion",
+  "с 1 июня — Семейная медиация как технология разрешения семейных кризисов",
+  "1 июня — Обучение медиации (дистанционный курс)",
+  "13 июня — Обучение медиации, очно, Минск",
+  "Школа юного медиатора «Территория взаимопонимания»",
 ];
 
 export const stats = [
-  { value: "7", label: "Expert practitioners" },
-  { value: "70%", label: "Practical training" },
-  { value: "6", label: "Service directions" },
-  { value: "500+", label: "Clients helped" },
+  { value: "7", label: "Экспертов-практиков" },
+  { value: "70%", label: "Практики в обучении" },
+  { value: "6", label: "Направлений услуг" },
+  { value: "500+", label: "Клиентов" },
 ];
 
 export const forWhom = [
-  {
-    icon: "🎓",
-    title: "Future Mediators",
-    description:
-      "Those wanting to become professional mediators and obtain a state-recognised certificate.",
-  },
-  {
-    icon: "📈",
-    title: "Specialists in Development",
-    description:
-      "Psychologists, lawyers, HR professionals seeking advanced training in conflict resolution, negotiations, and mediation.",
-  },
-  {
-    icon: "⚖️",
-    title: "Dispute Resolution",
-    description:
-      "Those resolving family, commercial, civil, or labour disputes through mediation instead of litigation.",
-  },
+  "Для тех, кто хочет стать медиатором",
+  "Для тех, кто хочет повысить квалификацию в области психологии, конфликтологии, переговоров, медиации",
+  "Для тех, кто хочет разрешить любой спор посредством медиации: разрешение семейных, коммерческих, гражданско-правовых, трудовых споров",
 ];
 
 export const services = [
   {
-    icon: "🎓",
-    name: "Mediator Training",
-    description: "Ministry of Justice approved professional training programme with a state-standard diploma.",
+    iconSrc: "/images/icons/service-training.png",
+    name: "Подготовка медиаторов",
+    description:
+      "Обучающая программа, утверждённая Министерством юстиции Республики Беларусь.",
   },
   {
-    icon: "📚",
-    name: "Advanced Training & Webinars",
-    description: "Continuing education programmes and webinars for practising specialists.",
+    iconSrc: "/images/icons/service-webinar.png",
+    name: "Программы повышения квалификации, вебинары",
+    description:
+      "Обучающие программы, вебинары в области медиации и конфликтологии.",
   },
   {
-    icon: "⚖️",
-    name: "Mediation Procedure",
-    description: "Conducting full mediation sessions for family, commercial, civil, and labour disputes.",
+    iconSrc: "/images/icons/service-mediation.png",
+    name: "Проведение процедуры медиации",
+    description:
+      "Решение конфликтов без суда. Сохраним ваши нервы, время и деньги.",
   },
   {
-    icon: "🧠",
-    name: "Psychological Counselling",
-    description: "Individual and group sessions with certified psychologists and gestalt-therapists.",
+    iconSrc: "/images/icons/service-counseling.png",
+    name: "Психологическое консультирование",
+    description: "Индивидуальное и для семейных пар, очно и онлайн.",
   },
   {
-    icon: "🏢",
-    name: "Corporate Training",
-    description: "Custom conflict resolution and communication training for organisations and teams.",
+    iconSrc: "/images/icons/service-corporate.png",
+    name: "Корпоративное обучение",
+    description:
+      "Система подготовки персонала, разработанная для сотрудников Вашей компании.",
   },
   {
-    icon: "💼",
-    name: "Divorce Services",
-    description: "Professional mediation support covering legal and psychological aspects of divorce.",
+    iconSrc: "/images/icons/service-divorce.png",
+    name: "Услуга «Развод супругов»",
+    description:
+      "Пакет услуг по работе с семьёй по сопровождению развода.",
+  },
+];
+
+export const news = [
+  {
+    text: "Медиаторы МедиаторОк приняли участие в программе «Окна города», где подробно и воодушевлённо рассказали о медиации и её практике в Беларуси и мире.",
+  },
+  {
+    text: "Оксана Шульга приняла участие в I Международном конгрессе «БЛАГОПОЛУЧИЕ СЕМЬИ — БЛАГОПОЛУЧИЕ СТРАНЫ: МЕДИАЦИЯ ОБЪЕДИНЯЕТ» 30 ноября — 1 декабря 2024 г. Организатором Конгресса выступила Национальная ассоциация семейных медиаторов, г. Москва. Цель Конгресса — создание пространства открытых дискуссий для обсуждения актуальных проблем в вопросах сохранения семей и защиты интересов детей, поддержания традиционных семейных ценностей в условиях современных реалий. Было подписано соглашение о сотрудничестве между Национальной ассоциацией семейных медиаторов и общественным объединением «Лига семейных медиаторов».",
   },
 ];
 
 export const advantages = [
   {
-    icon: "💡",
-    title: "Uniqueness",
+    iconSrc: "/images/icons/uniqueness.png",
+    title: "Уникальность",
     description:
-      "Interdisciplinary integration of psychology, philosophy, law, sociology, and economics in every programme.",
+      "Наши программы уникальны по содержанию и построены на интеграции нескольких наук: психологии, философии, юриспруденции, социологии, экономике.",
   },
   {
-    icon: "🔬",
-    title: "Relevance",
+    iconSrc: "/images/icons/relevance.png",
+    title: "Актуальность",
     description:
-      "Modern communication technologies: NLP, transactional analysis, process communication, SPIN, and LAST.",
+      "Обучаем современным технологиям коммуникации: НЛП, транзактный анализ, процессуальная коммуникация, СПИН, LAST и др.",
   },
   {
-    icon: "💪",
-    title: "Practice First",
+    iconSrc: "/images/icons/practice.png",
+    title: "Практика",
     description:
-      "70% practical training, 30% theoretical — you gain real skills you can apply from day one.",
+      "Наши программы включают 70% практики и 30% теории.",
   },
   {
-    icon: "📜",
-    title: "State Certificates",
+    iconSrc: "/images/icons/certificate.png",
+    title: "Справка государственного образца",
     description:
-      "State-standard certificates and diplomas awarded upon successful completion of programmes.",
+      "После успешного прохождения обучения слушателю вручается справка государственного образца.",
   },
   {
-    icon: "⭐",
-    title: "Quality Guaranteed",
+    iconSrc: "/images/icons/quality.png",
+    title: "Гарантированное качество",
     description:
-      "All programmes are delivered by experienced, actively practising specialists.",
+      "Наши тренеры — опытные практикующие специалисты, востребованные в своей сфере.",
   },
   {
-    icon: "🤝",
-    title: "Personal Support",
+    iconSrc: "/images/icons/support.png",
+    title: "Поддержка",
     description:
-      "Personal accompaniment during training and post-training assistance for every graduate.",
+      "Получите персональное сопровождение и помощь после обучения.",
   },
 ];
 
@@ -126,138 +125,204 @@ export type Program = {
 
 export const programs: Program[] = [
   {
-    title: "Family Mediation as Family Crisis Resolution Technology",
-    startDate: "June 1, 2026",
+    title: "Семейная медиация как технология разрешения семейных кризисов",
+    startDate: "с 1 июня",
     format: "online",
-    formatLabel: "Online",
-    duration: "Short course",
-    certificate: "Certificate of completion",
+    formatLabel: "Онлайн",
+    duration: "Авторская программа Оксаны Шульги",
+    certificate: "Свидетельство об окончании",
   },
   {
-    title: "Mediator Training — Distance Course",
-    startDate: "June 1, 2026",
+    title: "Обучение медиации — дистанционный курс",
+    startDate: "1 июня",
     format: "online",
-    formatLabel: "Online",
-    duration: "Professional retraining",
-    certificate: "State-standard diploma",
+    formatLabel: "Онлайн",
+    duration: "Профессиональная переподготовка",
+    certificate: "Справка государственного образца",
   },
   {
-    title: "Mediator Training — In-person, Minsk",
-    startDate: "June 13, 2026",
+    title: "Обучение медиации — очно, Минск",
+    startDate: "13 июня",
     format: "in-person",
-    formatLabel: "In-person",
-    duration: "Professional retraining",
-    certificate: "State-standard diploma",
+    formatLabel: "Очно",
+    duration: "Профессиональная переподготовка",
+    certificate: "Справка государственного образца",
   },
   {
-    title: "Young Mediator School — Territory of Mutual Understanding",
-    startDate: "July 2026",
+    title: "Школа юного медиатора «Территория взаимопонимания»",
+    startDate: "Июль 2026",
     format: "in-person",
-    formatLabel: "In-person · Intensive",
-    duration: "10 days · Ages 13–17",
-    certificate: "Participation certificate",
+    formatLabel: "Очно · Интенсив",
+    duration: "10 дней · Возраст 13–17 лет",
+    certificate: "Сертификат участника",
   },
   {
-    title: "Summer Intensive — Mediator as Personality and Professional",
-    startDate: "July 4–6, 2026",
+    title: "Летний интенсив — «Медиатор как личность и как профессионал»",
+    startDate: "4–6 июля, Гродно",
     format: "in-person",
-    formatLabel: "In-person · Grodno",
-    duration: "3 days · Residential",
-    certificate: "Certificate of completion",
+    formatLabel: "Очно · Выездной",
+    duration: "3 дня · Интенсивный курс",
+    certificate: "Свидетельство об окончании",
   },
   {
-    title: "Advanced Conflict Resolution & Negotiations",
-    startDate: "September 2026",
+    title: "Программа повышения квалификации по конфликтологии и переговорам",
+    startDate: "Сентябрь 2026",
     format: "both",
-    formatLabel: "Online & In-person",
-    duration: "Extended programme",
-    certificate: "State-standard diploma",
+    formatLabel: "Онлайн и очно",
+    duration: "Расширенная программа",
+    certificate: "Справка государственного образца",
   },
-];
-
-export const categories = [
-  "Mediator Training",
-  "Advanced Training",
-  "Webinars",
-  "Free Events",
 ];
 
 export const disputeTypes = [
-  { icon: "📊", label: "Commercial transaction disputes" },
-  { icon: "👨‍👩‍👧", label: "Child custody and alimony matters" },
-  { icon: "💔", label: "Divorce — legal & psychological aspects" },
-  { icon: "👷", label: "Labour disputes" },
-  { icon: "🏠", label: "Property division" },
-  { icon: "📋", label: "Inheritance disputes" },
+  {
+    iconSrc: "/images/icons/dispute-commercial.png",
+    label: "Споры по сделкам между гражданами и юридическими лицами",
+  },
+  {
+    iconSrc: "/images/icons/dispute-child.png",
+    label: "Порядок общения с ребёнком, выплата алиментов",
+  },
+  {
+    iconSrc: "/images/icons/dispute-divorce.png",
+    label: "Юридические и психологические аспекты развода",
+  },
+  {
+    iconSrc: "/images/icons/dispute-labor.png",
+    label: "Трудовые споры",
+  },
+  {
+    iconSrc: "/images/icons/dispute-property.png",
+    label: "Раздел совместно нажитого имущества",
+  },
+  {
+    iconSrc: "/images/icons/dispute-inheritance.png",
+    label: "Споры о наследстве",
+  },
 ];
 
 export const mediationPrinciples = [
-  { title: "Voluntariness", description: "All parties participate of their own free will." },
-  { title: "Equality", description: "Every participant has equal rights and voice in the process." },
-  { title: "Neutrality", description: "The mediator takes no side and imposes no solution." },
-  { title: "Confidentiality", description: "Everything said in mediation remains strictly private." },
+  {
+    title: "Добровольность",
+    description: "Все стороны участвуют по собственной воле.",
+  },
+  {
+    title: "Равноправие сторон",
+    description: "Каждый участник имеет равные права и голос в процессе.",
+  },
+  {
+    title: "Нейтральность медиатора",
+    description: "Медиатор не занимает ничью сторону и не навязывает решений.",
+  },
+  {
+    title: "Конфиденциальность",
+    description: "Всё сказанное на медиации остаётся строго приватным.",
+  },
 ];
 
 export const mediationAdvantages = [
-  "No solutions are imposed — parties decide together",
-  "Preserves and develops ongoing relationships",
-  "Considers the genuine interests of all parties",
-  "Faster and significantly cheaper than litigation",
-  "Addresses the emotional dimension of conflicts",
-  "Completely confidential — nothing leaves the room",
-  "Win-win outcomes that everyone can accept",
-  "Develops communication and negotiation skills",
-  "Future-oriented — focused on what comes next",
+  "НЕ предполагает навязанных кем-либо решений",
+  "Направлена не на разрыв, а на сохранение и развитие отношений",
+  "Помогает найти решение, учитывающее интересы и возможности всех участников спора и в рамках закона",
+  "Дешевле и быстрее, чем судебный процесс",
+  "Учитывает эмоциональные и личностные аспекты спора",
+  "Вся информация, относящаяся к медиации, конфиденциальна",
+  "Обеспечивает результат по принципу «выигрыш-выигрыш»",
+  "Способствует развитию коммуникативных навыков",
+  "Ориентирована на БУДУЩЕЕ",
 ];
 
 export const experts = [
   {
-    name: "Oksana Shulga",
-    role: "Director",
-    credentials: "Mediator · Family & Child Psychologist · Gestalt-therapist · Conflict Specialist",
-    initials: "OS",
+    name: "Оксана Шульга",
+    role: "Директор",
+    credentials:
+      "Директор УПУ «МедиаторОк Проф», медиатор, семейный психолог, детский психолог, гештальт-терапевт, конфликтолог",
+    initials: "ОШ",
+    photoSrc: "/images/experts/shulga.jpg",
   },
   {
-    name: "Alexey Usenko",
-    role: "Mediator & Lecturer",
-    credentials: "Conflict Lecturer · Psychologist-Consultant · Coach",
-    initials: "AU",
+    name: "Алексей Усенко",
+    role: "Медиатор · Преподаватель",
+    credentials:
+      "Медиатор, преподаватель конфликтологии, психолог-консультант, коуч",
+    initials: "АУ",
+    photoSrc: null,
   },
   {
-    name: "Marina Boyko",
-    role: "Trainer",
-    credentials: "PhD in Psychology · Mediator Trainer · Psychologist",
-    initials: "MB",
+    name: "Марина Бойко",
+    role: "Тренер",
+    credentials:
+      "Кандидат психологических наук, тренер медиаторов, психолог",
+    initials: "МБ",
+    photoSrc: null,
   },
   {
-    name: "Arsen Dzhanashia",
-    role: "Senior Lecturer",
-    credentials: "Senior Lecturer in Psychology · Mogilev State University",
-    initials: "AD",
+    name: "Арсен Джанашиа",
+    role: "Старший преподаватель",
+    credentials:
+      "Старший преподаватель кафедры психологии и коррекционной работы МГУ им. Кулешова, медиатор",
+    initials: "АД",
+    photoSrc: "/images/experts/dzhanashia.jpg",
   },
   {
-    name: "Alexandra Vartanova",
-    role: "Legal Expert",
-    credentials: "Senior Lecturer in Civil Law · Grodno State University · Lawyer · Mediator · Trainer",
-    initials: "AV",
+    name: "Александра Вартанова",
+    role: "Юрист · Медиатор",
+    credentials:
+      "Старший преподаватель кафедры гражданского права и процесса ГрГУ им. Янки Купалы, юрист, медиатор, тренер медиаторов",
+    initials: "АВ",
+    photoSrc: "/images/experts/vartanova.jpg",
   },
   {
-    name: "Larisa Dankova",
-    role: "Mediator & Lawyer",
-    credentials: "Lawyer · Civil Society Ombudsman · Mediator · Trainer",
-    initials: "LD",
+    name: "Лариса Данькова",
+    role: "Юрист · Медиатор",
+    credentials:
+      "Юрист, аспирантура НЦЗПИ, председатель Гродненской областной общественной наблюдательной комиссии, медиатор, тренер медиаторов",
+    initials: "ЛД",
+    photoSrc: "/images/experts/dankova.jpg",
   },
   {
-    name: "Alexander Endzheevsky",
-    role: "Psychologist & Trainer",
-    credentials: "Psychologist · Speaker · Actor · Family Mediator · Trainer",
-    initials: "AE",
+    name: "Александр Енджеевский",
+    role: "Психолог · Тренер",
+    credentials:
+      "Психолог, оратор, актёр, автор и ведущий тренингов, семейный медиатор, тренер медиаторов",
+    initials: "АЕ",
+    photoSrc: "/images/experts/endzheevsky.jpg",
   },
 ];
 
+export const testimonialImages = [
+  "/images/testimonials/review-1.jpg",
+  "/images/testimonials/review-2.jpg",
+  "/images/testimonials/review-3.png",
+  "/images/testimonials/review-4.png",
+  "/images/testimonials/review-5.jpg",
+  "/images/testimonials/review-6.png",
+];
+
 export const telegramBenefits = [
-  { icon: "📰", title: "Useful content", description: "Articles, discussions, techniques and real case studies" },
-  { icon: "🎟️", title: "Free events", description: "Conferences, open webinars and community meetings" },
-  { icon: "📖", title: "Literature", description: "Downloadable books and professional articles" },
-  { icon: "🔔", title: "Announcements", description: "Training announcements and exclusive special offers" },
+  {
+    icon: "📰",
+    title: "Полезная информация",
+    description:
+      "Статьи, обсуждения, техники и кейсы для медиаторов, психологов и юристов",
+  },
+  {
+    icon: "🎟️",
+    title: "Бесплатные мероприятия",
+    description:
+      "Приглашения на бесплатные мероприятия, конференции и вебинары практикующих специалистов",
+  },
+  {
+    icon: "📖",
+    title: "Литература",
+    description:
+      "Скачивайте актуальные и полезные книги и статьи для специалистов",
+  },
+  {
+    icon: "🔔",
+    title: "Анонсы обучения",
+    description:
+      "Узнавай первым о наших образовательных программах, курсах и мероприятиях. Получай выгодные предложения",
+  },
 ];
