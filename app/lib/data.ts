@@ -1,5 +1,5 @@
 export const navLinks = [
-  { label: "Об учреждении", href: "#about" },
+  { label: "О нас", href: "/aboutus" },
   { label: "Обучение", href: "#programs" },
   { label: "Услуги", href: "#services" },
   { label: "Медиация", href: "/mediation" },
