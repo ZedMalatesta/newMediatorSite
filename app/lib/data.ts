@@ -1,9 +1,41 @@
-export const navLinks = [
-  { label: "О нас", href: "/aboutus" },
+export type NavLink = {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+};
+
+export const navLinks: NavLink[] = [
+  {
+    label: "Об учреждении",
+    href: "/aboutus",
+    children: [
+      { label: "О нас", href: "/aboutus" },
+      { label: "Наши тренеры", href: "/trainers" },
+    ],
+  },
   { label: "Обучение", href: "#programs" },
-  { label: "Услуги", href: "#services" },
-  { label: "Медиация", href: "/mediation" },
-  { label: "Наши проекты", href: "#" },
+  {
+    label: "Услуги",
+    href: "#services",
+    children: [
+      { label: "Проведение медиации", href: "/mediation" },
+      { label: "Супружеская терапия", href: "/coupletherapy" },
+      { label: "Корпоративное обучение", href: "#" },
+      { label: "Психологическое консультирование", href: "#" },
+      { label: "Развод супругов", href: "#" },
+    ],
+  },
+  {
+    label: "Наши проекты",
+    href: "#",
+    children: [
+      { label: "Школа юного медиатора", href: "#" },
+      { label: "Летний интенсив 2026", href: "#" },
+      { label: "Летняя школа 2025", href: "#" },
+      { label: "Интервизорская группа Pro Mediation", href: "#" },
+    ],
+  },
+  { label: "Новости", href: "#" },
   { label: "Контакты", href: "#footer" },
 ];
 
