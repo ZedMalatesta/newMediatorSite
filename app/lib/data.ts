@@ -39,7 +39,10 @@ export const navLinks: NavLink[] = [
   {
     label: "Методическая помощь",
     href: "/literature",
-    children: [{ label: "Литература", href: "/literature" }],
+    children: [
+      { label: "Литература", href: "/literature" },
+      { label: "Правовые акты", href: "/pravo" },
+    ],
   },
   { label: "Новости", href: "/news" },
   { label: "Контакты", href: "/contacts" },
