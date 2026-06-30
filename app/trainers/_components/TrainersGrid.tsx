@@ -15,7 +15,7 @@ function Avatar({
   initials: string;
   size?: "sm" | "lg";
 }) {
-  const dim = size === "lg" ? "w-28 h-28 md:w-36 md:h-36 text-2xl" : "w-16 h-16 text-lg";
+  const dim = size === "lg" ? "w-28 h-28 md:w-36 md:h-36 text-2xl" : "w-24 h-24 text-xl";
   return (
     <div className={`relative rounded-2xl overflow-hidden border-2 border-amber-200 shadow flex-shrink-0 ${dim}`}>
       {photo ? (

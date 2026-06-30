@@ -30,7 +30,7 @@ export const navLinks: NavLink[] = [
     href: "#",
     children: [
       { label: "Школа юного медиатора", href: "#" },
-      { label: "Летний интенсив 2026", href: "#" },
+      { label: "Летний интенсив 2026", href: "/summerintensive2026" },
       { label: "Летняя школа 2025", href: "#" },
       { label: "Интервизорская группа Pro Mediation", href: "#" },
     ],
@@ -286,7 +286,7 @@ export const experts = [
     credentials:
       "Медиатор, преподаватель конфликтологии, психолог-консультант, коуч",
     initials: "АУ",
-    photoSrc: null,
+    photoSrc: "/images/experts/usenko.jpg",
   },
   {
     name: "Марина Бойко",
@@ -294,7 +294,7 @@ export const experts = [
     credentials:
       "Кандидат психологических наук, тренер медиаторов, психолог",
     initials: "МБ",
-    photoSrc: null,
+    photoSrc: "/images/experts/boyko.jpg",
   },
   {
     name: "Арсен Джанашиа",
@@ -305,12 +305,12 @@ export const experts = [
     photoSrc: "/images/experts/dzhanashia.jpg",
   },
   {
-    name: "Александра Вартанова",
+    name: "Александра Габриянчик",
     role: "Юрист · Медиатор",
     credentials:
       "Старший преподаватель кафедры гражданского права и процесса ГрГУ им. Янки Купалы, юрист, медиатор, тренер медиаторов",
-    initials: "АВ",
-    photoSrc: "/images/experts/vartanova.jpg",
+    initials: "АГ",
+    photoSrc: "/images/experts/gabryanchik.jpg",
   },
   {
     name: "Лариса Данькова",

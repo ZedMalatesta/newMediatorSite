@@ -74,14 +74,14 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Наши проекты</h4>
             <ul className="space-y-2 text-sm">
               {[
-                "Мы/медиаторы — за диалог!",
-                "Интервизорская группа «Pro Mediation»",
-                "Школа юного медиатора",
-                "Летний интенсив медиаторов 2026",
-                "Лига переговорщиков «Мастерская диалога»",
+                { label: "Мы/медиаторы — за диалог!", href: "#" },
+                { label: "Интервизорская группа «Pro Mediation»", href: "#" },
+                { label: "Школа юного медиатора", href: "#" },
+                { label: "Летний интенсив медиаторов 2026", href: "/summerintensive2026" },
+                { label: "Лига переговорщиков «Мастерская диалога»", href: "#" },
               ].map((item) => (
-                <li key={item}>
-                  <a href="#" className="hover:text-amber-400 transition-colors">{item}</a>
+                <li key={item.label}>
+                  <a href={item.href} className="hover:text-amber-400 transition-colors">{item.label}</a>
                 </li>
               ))}
             </ul>

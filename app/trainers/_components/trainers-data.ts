@@ -84,7 +84,7 @@ export const trainers: Trainer[] = [
     name: "Алексей Усенко",
     initials: "АУ",
     role: "Преподаватель конфликтологии · Медиатор · Коуч",
-    photo: "/images/experts/usenko.png",
+    photo: "/images/experts/usenko.jpg",
     tags: [
       "Преподаватель конфликтологии",
       "Медиатор",
@@ -122,7 +122,7 @@ export const trainers: Trainer[] = [
     name: "Марина Бойко",
     initials: "МБ",
     role: "Тренер медиаторов · Кандидат психологических наук",
-    photo: "/images/experts/boyko.png",
+    photo: "/images/experts/boyko.jpg",
     tags: [
       "Кандидат психологических наук",
       "Тренер медиаторов",
@@ -166,7 +166,7 @@ export const trainers: Trainer[] = [
     name: "Лариса Данькова",
     initials: "ЛД",
     role: "Юрист · Медиатор · Автор проекта восстановительной медиации",
-    photo: "/images/experts/dankova.jpg",
+    photo: "/images/experts/dankova.png",
     tags: [
       "Юрист",
       "Медиатор",
@@ -191,10 +191,10 @@ export const trainers: Trainer[] = [
     contacts: [],
   },
   {
-    name: "Александра Вартанова",
-    initials: "АВ",
+    name: "Александра Габриянчик",
+    initials: "АГ",
     role: "Старший преподаватель ГрГУ · Юрист · Тренер медиаторов",
-    photo: "/images/experts/vartanova.jpg",
+    photo: "/images/experts/gabryanchik.jpg",
     tags: [
       "Юрист",
       "Медиатор",
@@ -228,7 +228,7 @@ export const trainers: Trainer[] = [
     name: "Елена Рагулина",
     initials: "ЕР",
     role: "Бизнес-тренер · Медиатор · Коуч ICU / ICTA",
-    photo: null,
+    photo: "/images/experts/ragulina.jpg",
     tags: [
       "Бизнес-тренер",
       "Медиатор",
@@ -260,7 +260,7 @@ export const trainers: Trainer[] = [
     name: "Журавлёва Анна Анатольевна",
     initials: "ЖА",
     role: "Медиатор · Юрист · Психолог",
-    photo: null,
+    photo: "/images/experts/zhuravleva.jpg",
     tags: [
       "Медиатор",
       "Юрист",
@@ -277,7 +277,7 @@ export const trainers: Trainer[] = [
     name: "Екатерина Бутрим",
     initials: "ЕБ",
     role: "Медиатор · Юрист · Семейный психолог",
-    photo: null,
+    photo: "/images/experts/butrim.jpg",
     tags: [
       "Медиатор",
       "Юрист",
