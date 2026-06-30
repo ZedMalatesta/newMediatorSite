@@ -74,7 +74,7 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Наши проекты</h4>
             <ul className="space-y-2 text-sm">
               {[
-                { label: "Мы/медиаторы — за диалог!", href: "#" },
+                { label: "Мы/медиаторы — за диалог!", href: "/fordialogue" },
                 { label: "Интервизорская группа «Pro Mediation»", href: "/intervision" },
                 { label: "Школа юного медиатора", href: "/school" },
                 { label: "Летний интенсив медиаторов 2026", href: "/summerintensive2026" },
