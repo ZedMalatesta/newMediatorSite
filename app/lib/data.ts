@@ -11,6 +11,7 @@ export const navLinks: NavLink[] = [
     children: [
       { label: "О нас", href: "/aboutus" },
       { label: "Наши тренеры", href: "/trainers" },
+      { label: "Наши специалисты", href: "/team" },
     ],
   },
   { label: "Обучение", href: "#programs" },

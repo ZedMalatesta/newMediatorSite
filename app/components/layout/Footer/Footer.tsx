@@ -40,9 +40,13 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-4">Об учреждении</h4>
           <ul className="space-y-2 text-sm">
-            {["О нас", "Наши тренеры", "Наши специалисты"].map((item) => (
-              <li key={item}>
-                <a href="#" className="hover:text-amber-400 transition-colors">{item}</a>
+            {[
+              { label: "О нас", href: "/aboutus" },
+              { label: "Наши тренеры", href: "/trainers" },
+              { label: "Наши специалисты", href: "/team" },
+            ].map((item) => (
+              <li key={item.label}>
+                <a href={item.href} className="hover:text-amber-400 transition-colors">{item.label}</a>
               </li>
             ))}
           </ul>
