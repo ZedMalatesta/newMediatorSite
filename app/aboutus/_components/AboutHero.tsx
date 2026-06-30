@@ -1,20 +1,6 @@
-import Image from "next/image";
-
 export default function AboutHero() {
   return (
-    <section className="relative bg-slate-900 text-white overflow-hidden min-h-[420px] flex items-end">
-      <div className="absolute inset-0">
-        <Image
-          src="/images/about/team-photo.jpg"
-          alt="Команда МедиаторОк Проф"
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-slate-900/20" />
-      </div>
-
+    <section className="relative bg-gradient-to-br from-slate-900 to-slate-800 text-white overflow-hidden min-h-[420px] flex items-end">
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 w-full">
         <p className="text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
           Об учреждении

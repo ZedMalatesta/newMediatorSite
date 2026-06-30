@@ -1,20 +1,6 @@
-import Image from "next/image";
-
 export default function Summerschool2025Hero() {
   return (
     <section className="relative bg-slate-900 text-white overflow-hidden">
-      <div className="absolute inset-0">
-        <Image
-          src="/images/services/team.jpg"
-          alt="Летняя школа медиаторов 2025"
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-slate-900/75" />
-      </div>
-
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 md:py-28">
         <p className="text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
           Прошедшее мероприятие

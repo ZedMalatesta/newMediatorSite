@@ -1,22 +1,8 @@
-import Image from "next/image";
-
 export default function SummerSchoolBanner() {
   return (
     <section className="px-4 py-0 bg-white">
       <div className="max-w-6xl mx-auto">
-        <div className="relative rounded-2xl overflow-hidden">
-          {/* Background image */}
-          <div className="absolute inset-0">
-            <Image
-              src="/images/services/kids-school.jpg"
-              alt="Школа юного медиатора"
-              fill
-              className="object-cover object-center"
-              sizes="(max-width: 1200px) 100vw, 1152px"
-            />
-            <div className="absolute inset-0 bg-slate-900/65" />
-          </div>
-
+        <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800">
           {/* Content */}
           <div className="relative z-10 px-8 py-14 md:px-14 md:py-16 max-w-2xl">
             <p className="text-amber-400 font-bold text-sm uppercase tracking-widest mb-4">

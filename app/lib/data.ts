@@ -336,7 +336,7 @@ export const experts = [
     credentials:
       "Юрист, аспирантура НЦЗПИ, председатель Гродненской областной общественной наблюдательной комиссии, медиатор, тренер медиаторов",
     initials: "ЛД",
-    photoSrc: "/images/experts/dankova.jpg",
+    photoSrc: "/images/experts/dankova.png",
   },
   {
     name: "Александр Енджеевский",

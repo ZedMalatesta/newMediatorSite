@@ -277,7 +277,7 @@ export const trainers: Trainer[] = [
     name: "Екатерина Бутрим",
     initials: "ЕБ",
     role: "Медиатор · Юрист · Семейный психолог",
-    photo: "/images/experts/butrim.jpg",
+    photo: null,
     tags: [
       "Медиатор",
       "Юрист",
