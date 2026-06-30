@@ -20,7 +20,7 @@ export const navLinks: NavLink[] = [
     children: [
       { label: "Проведение медиации", href: "/mediation" },
       { label: "Супружеская терапия", href: "/coupletherapy" },
-      { label: "Корпоративное обучение", href: "#" },
+      { label: "Корпоративное обучение", href: "/corporatemediatorok" },
       { label: "Психологическое консультирование", href: "#" },
       { label: "Развод супругов", href: "#" },
     ],
