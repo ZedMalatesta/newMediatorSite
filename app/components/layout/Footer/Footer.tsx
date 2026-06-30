@@ -82,7 +82,7 @@ export default function Footer() {
                 { label: "Интервизорская группа «Pro Mediation»", href: "/intervision" },
                 { label: "Школа юного медиатора", href: "/school" },
                 { label: "Летний интенсив медиаторов 2026", href: "/summerintensive2026" },
-                { label: "Лига переговорщиков «Мастерская диалога»", href: "#" },
+                { label: "Лига переговорщиков «Мастерская диалога»", href: "/negotiationleague" },
               ].map((item) => (
                 <li key={item.label}>
                   <a href={item.href} className="hover:text-amber-400 transition-colors">{item.label}</a>
