@@ -21,13 +21,15 @@ export default function Footer() {
           </p>
           <div className="flex gap-3">
             {[
-              { label: "TG", href: "#" },
-              { label: "IG", href: "#" },
-              { label: "FB", href: "#" },
+              { label: "TG", href: "https://t.me/MediatorOK" },
+              { label: "IG", href: "https://www.instagram.com/mediatorok.by/" },
+              { label: "FB", href: "https://www.facebook.com/groups/MediatorOk/" },
             ].map((s) => (
               <a
                 key={s.label}
                 href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full bg-slate-700 hover:bg-amber-500 flex items-center justify-center text-xs font-bold text-white transition-colors"
               >
                 {s.label}

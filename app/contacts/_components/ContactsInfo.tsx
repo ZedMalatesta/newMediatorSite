@@ -1,8 +1,7 @@
 const socials = [
-  { label: "Instagram", handle: "@mediatorok.by", href: "#" },
-  { label: "Telegram", handle: "t.me/MediatorOK", href: "#" },
-  { label: "Facebook", handle: "MediatorOk.by", href: "#" },
-  { label: "YouTube", handle: "MediatorOk.by", href: "#" },
+  { label: "Instagram", handle: "@mediatorok.by", href: "https://www.instagram.com/mediatorok.by/" },
+  { label: "Telegram", handle: "t.me/MediatorOK", href: "https://t.me/MediatorOK" },
+  { label: "Facebook", handle: "MediatorOk.by", href: "https://www.facebook.com/groups/MediatorOk/" },
 ];
 
 export default function ContactsInfo() {
@@ -46,6 +45,8 @@ export default function ContactsInfo() {
               <li key={s.label}>
                 <a
                   href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center justify-between gap-3 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 hover:border-amber-300 transition-colors"
                 >
                   <span className="text-slate-700 text-sm font-semibold">{s.label}</span>
