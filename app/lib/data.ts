@@ -31,7 +31,7 @@ export const navLinks: NavLink[] = [
     children: [
       { label: "Школа юного медиатора", href: "/school" },
       { label: "Летний интенсив 2026", href: "/summerintensive2026" },
-      { label: "Летняя школа 2025", href: "#" },
+      { label: "Летняя школа 2025", href: "/summerschool2025" },
       { label: "Интервизорская группа Pro Mediation", href: "#" },
     ],
   },
