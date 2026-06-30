@@ -35,7 +35,7 @@ export const navLinks: NavLink[] = [
       { label: "Интервизорская группа Pro Mediation", href: "/intervision" },
     ],
   },
-  { label: "Новости", href: "#" },
+  { label: "Новости", href: "/news" },
   { label: "Контакты", href: "#footer" },
 ];
 
