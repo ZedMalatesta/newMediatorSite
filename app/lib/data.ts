@@ -22,7 +22,7 @@ export const navLinks: NavLink[] = [
       { label: "Супружеская терапия", href: "/coupletherapy" },
       { label: "Корпоративное обучение", href: "/corporatemediatorok" },
       { label: "Психологическое консультирование", href: "/psycologicalcounseling" },
-      { label: "Развод супругов", href: "#" },
+      { label: "Развод супругов", href: "/divorceservice" },
     ],
   },
   {
