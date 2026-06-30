@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FacebookIcon, InstagramIcon, TelegramIcon } from "@ui/SocialIcons";
 
 export default function Footer() {
   return (
@@ -21,18 +22,19 @@ export default function Footer() {
           </p>
           <div className="flex gap-3">
             {[
-              { label: "TG", href: "https://t.me/MediatorOK" },
-              { label: "IG", href: "https://www.instagram.com/mediatorok.by/" },
-              { label: "FB", href: "https://www.facebook.com/groups/MediatorOk/" },
+              { label: "Telegram", href: "https://t.me/MediatorOK", Icon: TelegramIcon },
+              { label: "Instagram", href: "https://www.instagram.com/mediatorok.by/", Icon: InstagramIcon },
+              { label: "Facebook", href: "https://www.facebook.com/groups/MediatorOk/", Icon: FacebookIcon },
             ].map((s) => (
               <a
                 key={s.label}
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-slate-700 hover:bg-amber-500 flex items-center justify-center text-xs font-bold text-white transition-colors"
+                aria-label={s.label}
+                className="w-8 h-8 rounded-full bg-slate-700 hover:bg-amber-500 flex items-center justify-center text-white transition-colors"
               >
-                {s.label}
+                <s.Icon className="w-4 h-4" />
               </a>
             ))}
           </div>
