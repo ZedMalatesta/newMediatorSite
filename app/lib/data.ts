@@ -14,7 +14,7 @@ export const navLinks: NavLink[] = [
       { label: "Наши специалисты", href: "/team" },
     ],
   },
-  { label: "Обучение", href: "#programs" },
+  { label: "Обучение", href: "/obuchenie" },
   {
     label: "Услуги",
     href: "#services",
