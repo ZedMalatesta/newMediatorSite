@@ -75,7 +75,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               {[
                 { label: "Мы/медиаторы — за диалог!", href: "#" },
-                { label: "Интервизорская группа «Pro Mediation»", href: "#" },
+                { label: "Интервизорская группа «Pro Mediation»", href: "/intervision" },
                 { label: "Школа юного медиатора", href: "/school" },
                 { label: "Летний интенсив медиаторов 2026", href: "/summerintensive2026" },
                 { label: "Лига переговорщиков «Мастерская диалога»", href: "#" },
