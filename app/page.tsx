@@ -1,17 +1,38 @@
-import HeroSection from "@/components/HeroSection";
-import CategoriesSection from "@/components/CategoriesSection";
-import ServicesSection from "@/components/ServicesSection";
-import ProgramsSection from "@/components/ProgramsSection";
-import CTASection from "@/components/CTASection";
+import TopBar from "@/app/components/layout/TopBar";
+import Navbar from "@/app/components/layout/Navbar";
+import PromoBanner from "@/app/components/layout/PromoBanner";
+import Footer from "@/app/components/layout/Footer";
+
+import HeroSection from "@/app/components/sections/HeroSection";
+import ServicesSection from "@/app/components/sections/ServicesSection";
+import NewsSection from "@/app/components/sections/NewsSection";
+import ProgramTabs from "@/app/components/sections/ProgramTabs";
+import AdvantagesSection from "@/app/components/sections/AdvantagesSection";
+import SummerSchoolBanner from "@/app/components/sections/SummerSchoolBanner";
+import CTASection from "@/app/components/sections/CTASection";
+import ExpertsSection from "@/app/components/sections/ExpertsSection";
+import MediationSection from "@/app/components/sections/MediationSection";
+import TestimonialsSection from "@/app/components/sections/TestimonialsSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white dark:bg-zinc-900">
-      <HeroSection />
-      <CategoriesSection />
-      <ServicesSection />
-      <ProgramsSection />
-      <CTASection />
-    </main>
+    <div className="min-h-screen bg-white">
+      <TopBar />
+      <Navbar />
+      <PromoBanner />
+      <main>
+        <HeroSection />
+        <ServicesSection />
+        <NewsSection />
+        <ProgramTabs />
+        <AdvantagesSection />
+        <SummerSchoolBanner />
+        <CTASection />
+        <ExpertsSection />
+        <MediationSection />
+        <TestimonialsSection />
+      </main>
+      <Footer />
+    </div>
   );
 }
