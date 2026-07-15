@@ -1,9 +1,20 @@
+import Image from "next/image";
 import { SectionHeader } from "@/app/components/ui/SectionHeader/SectionHeader";
 import { pillars } from "./intensive-data";
 
 export default function IntensiveAbout() {
   return (
-    <section className="px-4 py-16 md:py-20 bg-white">
+    <section className="relative px-4 py-16 md:py-20 bg-white overflow-hidden">
+      <div className="absolute inset-0 opacity-10">
+        <Image
+          src="/images/services/intensive-program.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+      </div>
+      <div className="relative z-10">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           label="О программе"
@@ -23,6 +34,7 @@ export default function IntensiveAbout() {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );
