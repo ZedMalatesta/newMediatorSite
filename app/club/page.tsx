@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Переговоры на шпильках | МедиаторОк Проф",
@@ -25,23 +25,7 @@ export default function ClubPage() {
           meta={["35 BYN в месяц"]}
           ctaLabel="Вступить в клуб"
         />
-        <EventDetails
-          description={[
-            "Сообщество для профессиональных женщин, развивающих переговорные навыки, деловую хватку и личностный рост в кругу единомышленниц.",
-          ]}
-          groups={[
-            {
-              heading: "Чем занимаемся",
-              items: ["Стратегии переговоров", "Женское лидерство", "Публичные выступления", "Деловой стиль и конфликт-менеджмент"],
-            },
-          ]}
-          speaker={{
-            name: "Оксана Шульга",
-            role: "Психолог, семейный медиатор, специалист по разрешению конфликтов",
-            photo: "/images/experts/shulga.jpg",
-            initials: "ОШ",
-          }}
-        />
+        <PageBlocks page="club" />
         <EventSignup title="Вступить в клуб" submitLabel="Вступить за 35 BYN" />
       </main>
       <Footer />

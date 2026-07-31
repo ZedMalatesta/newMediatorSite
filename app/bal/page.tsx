@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Первый бал медиаторов | МедиаторОк Проф",
@@ -25,17 +25,7 @@ export default function BalPage() {
           meta={["45–65 BYN индивидуально", "80–100 BYN пара"]}
           ctaLabel="Зарегистрироваться"
         />
-        <EventDetails
-          description={[
-            "«Мир, полный тайн, искусства и социальных игр» — маски стирают социальные иерархии, позволяя участникам быть собой и получать удовольствие от общения.",
-          ]}
-          groups={[
-            {
-              heading: "Контакты организаторов",
-              items: ["Оксана Шульга — +375 (29) 867-82-40", "Александр Ярош — +375 (33) 689-90-19"],
-            },
-          ]}
-        />
+        <PageBlocks page="bal" />
         <EventSignup title="Зарегистрироваться на бал" submitLabel="Зарегистрироваться" />
       </main>
       <Footer />

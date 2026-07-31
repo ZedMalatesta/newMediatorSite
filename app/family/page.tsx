@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Семья как команда мечты | МедиаторОк Проф",
@@ -24,21 +24,7 @@ export default function FamilyPage() {
           subtitle="14–16 февраля 2026 г."
           meta={["850 BYN за пару"]}
         />
-        <EventDetails
-          description={[
-            "Эксклюзивный интенсив для пар, работающих в одной или смежных профессиях (психологи, медиаторы, юристы, врачи, педагоги) — о партнёрстве, профессиональной конкуренции и укреплении семейных связей.",
-          ]}
-          groups={[
-            {
-              heading: "Что включено",
-              items: ["Лекции и групповая терапия", "Ролевые игры и соревнования", "Йога, танцы и кулинарные баттлы"],
-            },
-            {
-              heading: "Ведущие",
-              items: ["Оксана Шульга — психолог, медиатор", "Алексей Усенко — семейный психолог-конфликтолог"],
-            },
-          ]}
-        />
+        <PageBlocks page="family" />
         <EventSignup title="Зарегистрироваться на интенсив" />
       </main>
       <Footer />
