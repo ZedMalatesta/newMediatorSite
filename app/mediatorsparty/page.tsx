@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Рождественские встречи в МедиаторОк | МедиаторОк Проф",
@@ -25,11 +25,7 @@ export default function MediatorsPartyPage() {
           meta={["Гродно и Минск", "Свободный донат в пользу благотворительности"]}
           ctaLabel="Зарегистрироваться"
         />
-        <EventDetails
-          description={[
-            "Встреча с рефлексией итогов года и постановкой целей на будущий год — творческие мастерские, викторины и неформальное общение.",
-          ]}
-        />
+        <PageBlocks page="mediatorsparty" />
         <EventSignup title="Зарегистрироваться на встречу" submitLabel="Зарегистрироваться" />
       </main>
       <Footer />

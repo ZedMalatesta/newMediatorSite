@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Тренинг «Провокативная медиация» | МедиаторОк Проф",
@@ -23,24 +23,9 @@ export default function ProvocativeMediationPage() {
           title="Провокативная медиация"
           subtitle="Воскресенье, 11:00–18:00 (7 часов), онлайн."
           meta={["240 BYN"]}
+          imageSrc="/images/shared/asset-3.jpg"
         />
-        <EventDetails
-          description={[
-            "Метод разрешения конфликтов, сочетающий поддержку, юмор и парадокс: метафоры, юмор и прямая конфронтация в разборе кейсов.",
-          ]}
-          groups={[
-            {
-              heading: "Для кого",
-              items: ["Медиаторы, психологи, коучи, социальные работники, педагоги, врачи"],
-            },
-          ]}
-          speaker={{
-            name: "Оксана Шульга",
-            role: "Кандидат психологических наук, семейный системный терапевт, медиатор",
-            photo: "/images/experts/shulga.jpg",
-            initials: "ОШ",
-          }}
-        />
+        <PageBlocks page="provocativemediation" />
         <EventSignup />
       </main>
       <Footer />

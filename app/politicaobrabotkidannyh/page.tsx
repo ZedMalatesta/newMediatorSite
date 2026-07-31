@@ -3,6 +3,7 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { LegalDocument } from "@sections/LegalDocument/LegalDocument";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Политика обработки персональных данных | МедиаторОк Проф",
@@ -58,6 +59,7 @@ export default function PrivacyPolicyPage() {
             },
           ]}
         />
+        <PageBlocks page="politicaobrabotkidannyh" />
       </main>
       <Footer />
     </div>
