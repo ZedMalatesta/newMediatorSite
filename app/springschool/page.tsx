@@ -3,7 +3,7 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Весенняя школа медиаторов 2023 | МедиаторОк Проф",
@@ -23,22 +23,9 @@ export default function SpringSchoolPage() {
           subtitle="17–19 марта 2023 г., г.п. Сопоцкин, ул. Теолинская 39 — Епархиальный Дом милосердия «Каритас»."
           ctaLabel="Смотреть интенсив 2026"
           ctaHref="/summerintensive2026"
+          imageSrc="/images/pages/springschool/21-p5950267.jpg"
         />
-        <EventDetails
-          description={[
-            "Спикеры: Татьяна Билык (международный медиатор и тренер), Оксана Шульга, Станислав Ботвин (практикующий медиатор и юрист).",
-          ]}
-          groups={[
-            {
-              heading: "Темы школы",
-              items: ["Кризисная медиация", "Восстановительные практики", "Профессиональное развитие медиатора"],
-            },
-            {
-              heading: "Стоимость (для справки)",
-              items: ["Участие: 250–400 BYN", "С проживанием: 460 BYN", "Полный пакет: 580 BYN", "Онлайн: 250 BYN"],
-            },
-          ]}
-        />
+        <PageBlocks page="springschool" />
       </main>
       <Footer />
     </div>

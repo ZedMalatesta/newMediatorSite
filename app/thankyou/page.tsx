@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Спасибо за заявку | МедиаторОк Проф",
@@ -33,6 +34,7 @@ export default function ThankYouPage() {
             </a>
           </div>
         </section>
+        <PageBlocks page="thankyou" />
       </main>
       <Footer />
     </div>

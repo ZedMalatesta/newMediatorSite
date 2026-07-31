@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Речь как инструмент в работе с людьми | МедиаторОк Проф",
@@ -23,10 +23,9 @@ export default function SpeechAsInstrumentPage() {
           title="Речь как инструмент в работе с людьми"
           subtitle="ZOOM, 1,5 часа. Дата формируется по мере набора группы."
           meta={["70 BYN"]}
+          imageSrc="/images/pages/speechasinstrument/03-11663870-20944675.jpg"
         />
-        <EventDetails
-          description={["Вебинар для медиаторов, переговорщиков, психологов, педагогов, врачей, бизнесменов, юристов и родителей."]}
-        />
+        <PageBlocks page="speechasinstrument" />
         <EventSignup />
       </main>
       <Footer />

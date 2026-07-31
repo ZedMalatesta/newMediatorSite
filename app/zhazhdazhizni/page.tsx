@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Жажда жизни | МедиаторОк Проф",
@@ -23,18 +23,9 @@ export default function ZhazhdaZhizniPage() {
           title="Жажда жизни"
           subtitle="6 месяцев, два раза в месяц. Четверги, 19:30–22:00."
           meta={["90 BYN за встречу"]}
+          imageSrc="/images/shared/press-reporter-fallo.jpg"
         />
-        <EventDetails
-          description={[
-            "Группа на основе подхода Виктора Франкла помогает находить смысл, преодолевать кризисы и открывать новые ресурсы в неопределённые времена.",
-          ]}
-          speaker={{
-            name: "Оксана Шульга",
-            role: "Кандидат психологических наук, системный семейный психолог, гештальт-терапевт, медиатор",
-            photo: "/images/experts/shulga.jpg",
-            initials: "ОШ",
-          }}
-        />
+        <PageBlocks page="zhazhdazhizni" />
         <EventSignup title="Присоединиться к группе" />
       </main>
       <Footer />

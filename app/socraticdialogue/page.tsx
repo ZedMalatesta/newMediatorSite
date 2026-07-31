@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Сократический диалог в работе медиатора | МедиаторОк Проф",
@@ -23,16 +23,9 @@ export default function SocraticDialoguePage() {
           title="Сократический диалог в работе медиатора"
           subtitle="ZOOM, 19:00–21:00."
           meta={["55 BYN", "40 BYN для выпускников"]}
+          imageSrc="/images/pages/socraticdialogue/03-lawyer-talking-clien.jpg"
         />
-        <EventDetails
-          description={["Вебинар для медиаторов, переговорщиков, психологов, педагогов, врачей, бизнесменов, юристов и родителей."]}
-          speaker={{
-            name: "Оксана Шульга",
-            role: "Кандидат психологических наук, семейный психолог, медиатор, конфликтолог",
-            photo: "/images/experts/shulga.jpg",
-            initials: "ОШ",
-          }}
-        />
+        <PageBlocks page="socraticdialogue" />
         <EventSignup />
       </main>
       <Footer />

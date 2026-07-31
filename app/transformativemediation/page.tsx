@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Тренинг «Трансформативная медиация» | МедиаторОк Проф",
@@ -23,22 +23,9 @@ export default function TransformativeMediationPage() {
           title="Трансформативная медиация"
           subtitle="Очно в Минске или онлайн по Zoom, 11:00–18:00 (7 часов)."
           meta={["240 BYN"]}
+          imageSrc="/images/shared/asset-3.jpg"
         />
-        <EventDetails
-          description={["Теория и практика трансформативного подхода к разрешению конфликтов."]}
-          groups={[
-            {
-              heading: "Для кого",
-              items: ["Медиаторы, психологи, коучи, социальные работники, педагоги, врачи"],
-            },
-          ]}
-          speaker={{
-            name: "Оксана Шульга",
-            role: "Психолог, медиатор, специалист по семейным системам",
-            photo: "/images/experts/shulga.jpg",
-            initials: "ОШ",
-          }}
-        />
+        <PageBlocks page="transformativemediation" />
         <EventSignup />
       </main>
       <Footer />
