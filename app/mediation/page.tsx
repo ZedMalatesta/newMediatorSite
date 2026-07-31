@@ -8,6 +8,7 @@ import MediationServices from "./_components/MediationServices";
 import FamilyServices from "./_components/FamilyServices";
 import PricingSection from "./_components/PricingSection";
 import MediationContactForm from "./_components/MediationContactForm";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Проведение процедуры медиации | МедиаторОк Проф",
@@ -26,6 +27,7 @@ export default function MediationPage() {
         <FamilyServices />
         <PricingSection />
         <MediationContactForm />
+        <PageBlocks page="mediation" />
       </main>
       <Footer />
     </div>

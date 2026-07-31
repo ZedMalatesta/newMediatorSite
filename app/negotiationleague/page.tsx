@@ -6,6 +6,7 @@ import Footer from "@layout/Footer";
 import NegotiationHero from "./_components/NegotiationHero";
 import NegotiationFormats from "./_components/NegotiationFormats";
 import NegotiationSignup from "./_components/NegotiationSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Лига переговорщиков «Мастерская диалога» | МедиаторОк Проф",
@@ -22,6 +23,7 @@ export default function NegotiationLeaguePage() {
         <NegotiationHero />
         <NegotiationFormats />
         <NegotiationSignup />
+        <PageBlocks page="negotiationleague" />
       </main>
       <Footer />
     </div>

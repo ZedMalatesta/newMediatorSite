@@ -7,6 +7,7 @@ import CounselingHero from "./_components/CounselingHero";
 import CounselingFormats from "./_components/CounselingFormats";
 import CounselingSpecialists from "./_components/CounselingSpecialists";
 import CounselingSignup from "./_components/CounselingSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Психологическое консультирование | МедиаторОк Проф",
@@ -24,6 +25,7 @@ export default function PsycologicalCounselingPage() {
         <CounselingFormats />
         <CounselingSpecialists />
         <CounselingSignup />
+        <PageBlocks page="psycologicalcounseling" />
       </main>
       <Footer />
     </div>

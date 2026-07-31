@@ -5,6 +5,7 @@ import Footer from "@layout/Footer";
 import ProgramTabs from "@sections/ProgramTabs/ProgramTabs";
 
 import ExtraCourses from "./_components/ExtraCourses";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Обучение | МедиаторОк Проф",
@@ -35,6 +36,7 @@ export default function ObucheniePage() {
 
         <ProgramTabs />
         <ExtraCourses />
+        <PageBlocks page="obuchenie" />
       </main>
       <Footer />
     </div>

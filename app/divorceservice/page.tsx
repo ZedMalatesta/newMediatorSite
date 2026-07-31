@@ -7,6 +7,7 @@ import DivorceHero from "./_components/DivorceHero";
 import DivorceStages from "./_components/DivorceStages";
 import DivorcePricing from "./_components/DivorcePricing";
 import DivorceSignup from "./_components/DivorceSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Услуга «Развод супругов» | МедиаторОк Проф",
@@ -24,6 +25,7 @@ export default function DivorceServicePage() {
         <DivorceStages />
         <DivorcePricing />
         <DivorceSignup />
+        <PageBlocks page="divorceservice" />
       </main>
       <Footer />
     </div>

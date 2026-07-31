@@ -4,6 +4,7 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 
 import PravoList from "./_components/PravoList";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Правовые акты | МедиаторОк Проф",
@@ -26,6 +27,7 @@ export default function PravoPage() {
           </div>
         </section>
         <PravoList />
+        <PageBlocks page="pravo" />
       </main>
       <Footer />
     </div>

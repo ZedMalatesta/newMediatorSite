@@ -3,6 +3,7 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import TeamGrid from "./_components/TeamGrid";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Наши специалисты | МедиаторОк Проф",
@@ -46,6 +47,7 @@ export default function TeamPage() {
             <TeamGrid />
           </div>
         </section>
+        <PageBlocks page="team" />
       </main>
       <Footer />
     </div>

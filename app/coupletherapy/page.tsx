@@ -9,6 +9,7 @@ import CourseCurriculum from "./_components/CourseCurriculum";
 import CourseOutcomes from "./_components/CourseOutcomes";
 import CourseInstructor from "./_components/CourseInstructor";
 import CourseSignup from "./_components/CourseSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Супружеская и парная терапия | МедиаторОк Проф",
@@ -28,6 +29,7 @@ export default function CoupleTherapyPage() {
         <CourseOutcomes />
         <CourseInstructor />
         <CourseSignup />
+        <PageBlocks page="coupletherapy" />
       </main>
       <Footer />
     </div>

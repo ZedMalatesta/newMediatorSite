@@ -4,6 +4,7 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 
 import LiteratureList from "./_components/LiteratureList";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Литература | МедиаторОк Проф",
@@ -26,6 +27,7 @@ export default function LiteraturePage() {
           </div>
         </section>
         <LiteratureList />
+        <PageBlocks page="literature" />
       </main>
       <Footer />
     </div>

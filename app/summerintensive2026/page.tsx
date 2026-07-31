@@ -12,6 +12,7 @@ import IntensiveSchedule from "./_components/IntensiveSchedule";
 import IntensiveVenue from "./_components/IntensiveVenue";
 import IntensivePricing from "./_components/IntensivePricing";
 import IntensiveSignup from "./_components/IntensiveSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Летний интенсив медиаторов 2026 | МедиаторОк Проф",
@@ -34,6 +35,7 @@ export default function SummerIntensive2026Page() {
         <IntensiveVenue />
         <IntensivePricing />
         <IntensiveSignup />
+        <PageBlocks page="summerintensive2026" />
       </main>
       <Footer />
     </div>

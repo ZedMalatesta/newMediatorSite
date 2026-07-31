@@ -4,6 +4,7 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 
 import NewsList from "./_components/NewsList";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Новости | МедиаторОк Проф",
@@ -26,6 +27,7 @@ export default function NewsPage() {
           </div>
         </section>
         <NewsList />
+        <PageBlocks page="news" />
       </main>
       <Footer />
     </div>

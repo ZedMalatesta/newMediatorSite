@@ -6,6 +6,7 @@ import Footer from "@layout/Footer";
 import IntervisionHero from "./_components/IntervisionHero";
 import IntervisionContent from "./_components/IntervisionContent";
 import IntervisionSignup from "./_components/IntervisionSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Интервизорская группа «Pro Mediation» | МедиаторОк Проф",
@@ -22,6 +23,7 @@ export default function IntervisionPage() {
         <IntervisionHero />
         <IntervisionContent />
         <IntervisionSignup />
+        <PageBlocks page="intervision" />
       </main>
       <Footer />
     </div>

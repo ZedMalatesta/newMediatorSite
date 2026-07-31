@@ -8,6 +8,7 @@ import CorporateReasons from "./_components/CorporateReasons";
 import CorporatePrograms from "./_components/CorporatePrograms";
 import CorporateTrainers from "./_components/CorporateTrainers";
 import CorporateSignup from "./_components/CorporateSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Корпоративное обучение | МедиаторОк Проф",
@@ -26,6 +27,7 @@ export default function CorporateMediatorokPage() {
         <CorporatePrograms />
         <CorporateTrainers />
         <CorporateSignup />
+        <PageBlocks page="corporatemediatorok" />
       </main>
       <Footer />
     </div>
