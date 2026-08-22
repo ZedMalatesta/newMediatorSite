@@ -7,6 +7,7 @@ import Summerschool2025Hero from "./_components/Summerschool2025Hero";
 import Summerschool2025Speakers from "./_components/Summerschool2025Speakers";
 import Summerschool2025Program from "./_components/Summerschool2025Program";
 import Summerschool2025Cta from "./_components/Summerschool2025Cta";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Летняя школа медиаторов 2025 | МедиаторОк Проф",
@@ -24,6 +25,7 @@ export default function Summerschool2025Page() {
         <Summerschool2025Speakers />
         <Summerschool2025Program />
         <Summerschool2025Cta />
+        <PageBlocks page="summerschool2025" />
       </main>
       <Footer />
     </div>

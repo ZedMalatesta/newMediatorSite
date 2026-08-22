@@ -5,6 +5,7 @@ import Footer from "@layout/Footer";
 
 import ContactsInfo from "./_components/ContactsInfo";
 import ContactsForm from "./_components/ContactsForm";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Контакты | МедиаторОк Проф",
@@ -28,6 +29,7 @@ export default function ContactsPage() {
         </section>
         <ContactsInfo />
         <ContactsForm />
+        <PageBlocks page="contacts" />
       </main>
       <Footer />
     </div>

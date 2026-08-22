@@ -34,7 +34,7 @@ export const specialists: Specialist[] = [
     name: "Екатерина Бутрим",
     initials: "ЕБ",
     role: "Медиатор, юрист, кризисный и семейный психолог",
-    photo: null,
+    photo: "/images/experts/butrim.jpg",
     tags: ["Медиатор", "Юрист", "Семейный психолог"],
     bio: [
       "Более 15 лет практики на стыке права, психологии и социальной работы.",

@@ -3,6 +3,7 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { LegalDocument } from "@sections/LegalDocument/LegalDocument";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Договор оферты | МедиаторОк Проф",
@@ -65,6 +66,7 @@ export default function PublicOfferPage() {
             },
           ]}
         />
+        <PageBlocks page="dogovoroferty" />
       </main>
       <Footer />
     </div>

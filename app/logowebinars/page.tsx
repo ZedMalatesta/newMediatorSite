@@ -4,6 +4,7 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { SectionHeader } from "@ui/SectionHeader/SectionHeader";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Вебинары Центра логотерапии | МедиаторОк Проф",
@@ -35,6 +36,7 @@ export default function LogoWebinarsPage() {
           title="Вебинары Центра логотерапии"
           subtitle="Стремление к смыслу — главная мотивационная сила человека (Виктор Франкл)."
           ctaLabel=""
+          imageSrc="/images/shared/asset-6.jpg"
         />
         <section className="px-4 py-16 md:py-20 bg-white">
           <div className="max-w-4xl mx-auto">
@@ -54,6 +56,7 @@ export default function LogoWebinarsPage() {
             </div>
           </div>
         </section>
+        <PageBlocks page="logowebinars" />
       </main>
       <Footer />
     </div>

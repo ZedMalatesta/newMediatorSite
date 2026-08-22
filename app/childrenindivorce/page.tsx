@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Дети при разводе родителей | МедиаторОк Проф",
@@ -24,17 +24,7 @@ export default function ChildrenInDivorcePage() {
           subtitle="4 встречи по Zoom, по 3 часа. Расписание формируется по мере набора группы."
           meta={["200 BYN"]}
         />
-        <EventDetails
-          description={[
-            "Программа для специалистов, работающих с семьями в разводе: психологов, медиаторов, социальных работников.",
-          ]}
-          groups={[
-            {
-              heading: "Что включено",
-              items: ["Возрастные реакции детей на развод", "Манипуляции и синдром отчуждения родителя", "10 техник работы и разбор кейсов", "Сертификат государственного образца"],
-            },
-          ]}
-        />
+        <PageBlocks page="childrenindivorce" />
         <EventSignup />
       </main>
       <Footer />

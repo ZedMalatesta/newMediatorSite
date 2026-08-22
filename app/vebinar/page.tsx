@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Бесплатный вебинар: медиация для психологов и юристов | МедиаторОк Проф",
@@ -23,24 +23,9 @@ export default function VebinarPage() {
           title="Медиация для психологов и юристов"
           subtitle="Среда, 20:00 по минскому времени, 1,5 часа."
           meta={["Бесплатно"]}
+          imageSrc="/images/shared/asset-6.jpg"
         />
-        <EventDetails
-          description={[
-            "Вебинар для юристов, желающих разрешать конфликты без стресса судебных разбирательств, и психологов, желающих расширить навыки анализа.",
-          ]}
-          groups={[
-            {
-              heading: "Подарок участникам",
-              items: ["Чек-лист «Методы разрешения конфликтов»"],
-            },
-          ]}
-          speaker={{
-            name: "Оксана Шульга",
-            role: "Кандидат психологических наук, семейный терапевт, медиатор, директор УПУ «МедиаторОк Проф»",
-            photo: "/images/experts/shulga.jpg",
-            initials: "ОШ",
-          }}
-        />
+        <PageBlocks page="vebinar" />
         <EventSignup title="Зарегистрироваться на вебинар" submitLabel="Зарегистрироваться бесплатно" />
       </main>
       <Footer />

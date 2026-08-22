@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Медиация в образовательной среде | МедиаторОк Проф",
@@ -23,18 +23,9 @@ export default function MediationInSchoolPage() {
           title="Медиация в образовательной среде"
           subtitle="ZOOM, около 90 минут."
           meta={["Бесплатно"]}
+          imageSrc="/images/pages/mediationinschool/03-hands-holding-cubes.jpg"
         />
-        <EventDetails
-          description={[
-            "Вебинар для сотрудников школ, психологов, педагогов, социальных работников, медиаторов и родителей.",
-          ]}
-          groups={[
-            {
-              heading: "О чём расскажем",
-              items: ["Применение медиации в образовательной среде", "Какие школьные конфликты решаемы через медиацию", "Стратегии внедрения службы медиации"],
-            },
-          ]}
-        />
+        <PageBlocks page="mediationinschool" />
         <EventSignup title="Записаться на вебинар" submitLabel="Записаться бесплатно" />
       </main>
       <Footer />

@@ -4,6 +4,7 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { SectionHeader } from "@ui/SectionHeader/SectionHeader";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Тренинги на каникулах | МедиаторОк Проф",
@@ -28,6 +29,7 @@ export default function Trening2024Page() {
           title="Тренинги на каникулах"
           subtitle="Серия очных и онлайн тренингов: 150 BYN за один день, 250 BYN за два дня."
           ctaLabel=""
+          imageSrc="/images/pages/trening2024/11-image.jpg"
         />
         <section className="px-4 py-16 md:py-20 bg-white">
           <div className="max-w-4xl mx-auto">
@@ -51,6 +53,7 @@ export default function Trening2024Page() {
             </p>
           </div>
         </section>
+        <PageBlocks page="trening2024" />
       </main>
       <Footer />
     </div>

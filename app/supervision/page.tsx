@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Супервизия для медиаторов | МедиаторОк Проф",
@@ -22,24 +22,9 @@ export default function SupervisionPage() {
           eyebrow="Для практикующих медиаторов"
           title="Супервизия для медиаторов"
           subtitle="Разбор кейсов и профессиональная рефлексия — обязательный компонент полноценного образования в медиации."
+          imageSrc="/images/pages/supervision/20-image.jpg"
         />
-        <EventDetails
-          description={[
-            "Супервизия помогает медиаторам анализировать сложные случаи из практики, получать обратную связь от коллег и опытного супервизора, а также предотвращать профессиональное выгорание.",
-          ]}
-          groups={[
-            {
-              heading: "Что входит",
-              items: ["Разбор реальных кейсов из практики", "Техники супервизии", "Профессиональная рефлексия"],
-            },
-          ]}
-          speaker={{
-            name: "Оксана Шульга",
-            role: "Кандидат психологических наук, медиатор, тренер медиаторов",
-            photo: "/images/experts/shulga.jpg",
-            initials: "ОШ",
-          }}
-        />
+        <PageBlocks page="supervision" />
         <EventSignup title="Записаться на супервизию" />
       </main>
       <Footer />

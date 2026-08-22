@@ -8,6 +8,7 @@ import SchoolDetails from "./_components/SchoolDetails";
 import SchoolProgram from "./_components/SchoolProgram";
 import SchoolTrainer from "./_components/SchoolTrainer";
 import SchoolSignup from "./_components/SchoolSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Школа юного медиатора «Территория взаимопонимания» | МедиаторОк Проф",
@@ -26,6 +27,7 @@ export default function SchoolPage() {
         <SchoolProgram />
         <SchoolTrainer />
         <SchoolSignup />
+        <PageBlocks page="school" />
       </main>
       <Footer />
     </div>

@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Психологическое консультирование и психокоррекция | МедиаторОк Проф",
@@ -23,19 +23,9 @@ export default function ConsultationCoursePage() {
           title="Психологическое консультирование и психокоррекция людей разного возраста"
           subtitle="264 часа, 6 месяцев. Пятницы, 19:00–21:00 по Zoom."
           meta={["2 100 BYN или 180 BYN за модуль"]}
+          imageSrc="/images/shared/coach-speaking-befor.jpg"
         />
-        <EventDetails
-          description={[
-            "12 записанных лекций и разбор практических кейсов. 60% программы — практика: демонстрации и супервизия.",
-            "Курс охватывает методы оценки, планирования вмешательства и возрастные особенности консультирования — от пренатального до пожилого возраста.",
-          ]}
-          groups={[
-            {
-              heading: "Что входит",
-              items: ["Двуязычные сертификаты", "Доступ к учебным материалам"],
-            },
-          ]}
-        />
+        <PageBlocks page="consultation" />
         <EventSignup />
       </main>
       <Footer />

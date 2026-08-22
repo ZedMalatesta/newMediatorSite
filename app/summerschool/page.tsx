@@ -3,7 +3,7 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Летняя школа медиаторов 2023 | МедиаторОк Проф",
@@ -23,31 +23,9 @@ export default function SummerSchool2023Page() {
           subtitle="4–7 августа 2023 г., г.п. Сопоцкин, Гродненская область — Епархиальный Дом милосердия «Каритас»."
           ctaLabel="Смотреть интенсив 2026"
           ctaHref="/summerintensive2026"
+          imageSrc="/images/shared/asset-10.jpg"
         />
-        <EventDetails
-          description={[
-            "Спикеры: Рустем Максудов (25 лет практики в медиации), Надежда Федина (ненасильственное общение), Оксана Шульга, Елена Рагулина, Велина Рожко.",
-          ]}
-          groups={[
-            {
-              heading: "Темы школы",
-              items: [
-                "Работа с эмоциями в медиации",
-                "Ненасильственное общение",
-                "Модели семейной коммуникации",
-                "Личный бренд медиатора",
-              ],
-            },
-            {
-              heading: "Стоимость (для справки)",
-              items: [
-                "Участие: 400–450 BYN / 15 000 RUB",
-                "Полный пакет с проживанием: 615 BYN",
-                "Онлайн-участие: 300 BYN",
-              ],
-            },
-          ]}
-        />
+        <PageBlocks page="summerschool" />
       </main>
       <Footer />
     </div>

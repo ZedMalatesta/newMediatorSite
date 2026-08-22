@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Конфликт-менеджмент | МедиаторОк Проф",
@@ -23,19 +23,9 @@ export default function ConfictManagmentPage() {
           title="Конфликт-менеджмент"
           subtitle="Мы проводим обучение конфликт-менеджменту в разных сферах — для взрослых и детей."
           ctaLabel="Оставить заявку"
+          imageSrc="/images/pages/confictmanagment/02-image.png"
         />
-        <EventDetails
-          groups={[
-            {
-              heading: "Направления обучения",
-              items: [
-                "Обучение супругов навыкам коммуникации и бесконфликтного общения и взаимодействия",
-                "Обучение родителей навыкам коммуникации и бесконфликтного общения и взаимодействия",
-                "Обучение детей навыкам коммуникации и бесконфликтного общения и взаимодействия — в т.ч. программа на время каникул на базе «Школы юного медиатора»",
-              ],
-            },
-          ]}
-        />
+        <PageBlocks page="confictmanagment" />
         <EventSignup
           title="Оставьте свои данные для связи"
           subtitle="Подберём программу под вашу ситуацию."

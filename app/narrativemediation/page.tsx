@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Тренинг «Нарративная медиация» | МедиаторОк Проф",
@@ -23,24 +23,9 @@ export default function NarrativeMediationPage() {
           title="Нарративная медиация"
           subtitle="Воскресенье, 11:00–18:00, 12 академических часов, онлайн по Zoom."
           meta={["240 BYN"]}
+          imageSrc="/images/shared/asset-3.jpg"
         />
-        <EventDetails
-          description={[
-            "Метод разрешения конфликтов, основанный на том, как люди выстраивают и описывают противоречия в своей ситуации.",
-          ]}
-          groups={[
-            {
-              heading: "Темы тренинга",
-              items: ["Структура конфликта", "Нарративные техники", "Практическое применение и стратегии расширения возможностей"],
-            },
-          ]}
-          speaker={{
-            name: "Оксана Шульга",
-            role: "Кандидат психологических наук, семейный системный психолог, медиатор",
-            photo: "/images/experts/shulga.jpg",
-            initials: "ОШ",
-          }}
-        />
+        <PageBlocks page="narrativemediation" />
         <EventSignup />
       </main>
       <Footer />

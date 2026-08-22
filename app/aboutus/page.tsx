@@ -10,6 +10,7 @@ import AboutProjects from "./_components/AboutProjects";
 import AboutStats from "./_components/AboutStats";
 import AboutTeam from "./_components/AboutTeam";
 import AboutRequisites from "./_components/AboutRequisites";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "О нас | МедиаторОк Проф",
@@ -30,6 +31,7 @@ export default function AboutUsPage() {
         <AboutStats />
         <AboutTeam />
         <AboutRequisites />
+        <PageBlocks page="aboutus" />
       </main>
       <Footer />
     </div>

@@ -6,6 +6,7 @@ import Footer from "@layout/Footer";
 import FordialogueHero from "./_components/FordialogueHero";
 import FordialogueDirections from "./_components/FordialogueDirections";
 import FordialogueCta from "./_components/FordialogueCta";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Мы/медиаторы — за диалог! | МедиаторОк Проф",
@@ -22,6 +23,7 @@ export default function FordialoguePage() {
         <FordialogueHero />
         <FordialogueDirections />
         <FordialogueCta />
+        <PageBlocks page="fordialogue" />
       </main>
       <Footer />
     </div>

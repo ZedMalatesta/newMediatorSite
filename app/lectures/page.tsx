@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Лекции-дискуссии | МедиаторОк Проф",
@@ -24,23 +24,7 @@ export default function LecturesPage() {
           subtitle="Дважды в месяц по пятницам, 19:00. Онлайн (Zoom) или очно в Минске."
           meta={["20 BYN за лекцию"]}
         />
-        <EventDetails
-          description={[
-            "Форум о современной психологии, конфликтологии и антропологии, помогающий участникам лучше понимать себя и мир вокруг.",
-          ]}
-          groups={[
-            {
-              heading: "Темы лекций",
-              items: ["Парасоциальные отношения", "Прощение", "Долгосрочные партнёрства", "Психология цвета и архетипы"],
-            },
-          ]}
-          speaker={{
-            name: "Оксана Шульга",
-            role: "Кандидат психологических наук, семейный терапевт, медиатор",
-            photo: "/images/experts/shulga.jpg",
-            initials: "ОШ",
-          }}
-        />
+        <PageBlocks page="lectures" />
         <EventSignup />
       </main>
       <Footer />

@@ -3,6 +3,7 @@ import TopBar from "@/app/components/layout/TopBar";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer";
 import TrainersGrid from "./_components/TrainersGrid";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Наши тренеры | МедиаторОк Проф",
@@ -50,6 +51,7 @@ export default function TrainersPage() {
             <TrainersGrid />
           </div>
         </section>
+        <PageBlocks page="trainers" />
       </main>
       <Footer />
     </div>

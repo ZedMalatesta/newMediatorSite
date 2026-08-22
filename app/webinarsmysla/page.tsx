@@ -3,8 +3,8 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
-import { EventDetails } from "@sections/EventDetails/EventDetails";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
+import PageBlocks from "@ui/PageBlocks";
 
 export const metadata: Metadata = {
   title: "Смыслоцентрированная терапия супружеских пар | МедиаторОк Проф",
@@ -23,24 +23,9 @@ export default function WebinarsMyslaPage() {
           title="Смыслоцентрированная терапия супружеских пар"
           subtitle="2 дня по 4 часа, 11:00–15:00, онлайн по Zoom."
           meta={["260 BYN"]}
+          imageSrc="/images/pages/webinarsmysla/03-happy-parents-with-d.jpg"
         />
-        <EventDetails
-          description={[
-            "Техники логотерапии, помогающие парам находить смысл, развивать доверие и осознавать свою ответственность за качество отношений.",
-          ]}
-          groups={[
-            {
-              heading: "Для кого",
-              items: ["Семейные терапевты, медиаторы, консультанты по отношениям"],
-            },
-          ]}
-          speaker={{
-            name: "Оксана Шульга",
-            role: "Кандидат психологических наук, семейный системный психолог, медиатор",
-            photo: "/images/experts/shulga.jpg",
-            initials: "ОШ",
-          }}
-        />
+        <PageBlocks page="webinarsmysla" />
         <EventSignup />
       </main>
       <Footer />
