@@ -1,6 +1,6 @@
+# sharp is only needed for next/image optimisation at runtime; this site is a
+# static export with a custom loader, so its build script is not required.
+# unrs-resolver (eslint) ships prebuilt binaries.
 allowBuilds:
-  sharp: set this to true or false
-  unrs-resolver: set this to true or false
-ignoredBuiltDependencies:
-  - sharp
-  - unrs-resolver
+  sharp: false
+  unrs-resolver: false
