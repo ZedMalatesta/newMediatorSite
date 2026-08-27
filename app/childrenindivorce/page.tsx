@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Дети при разводе родителей | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/childrenindivorce") },
+  openGraph: { url: absoluteUrl("/childrenindivorce") },
+  title: "Дети при разводе родителей",
   description:
     "Программа о психологической поддержке детей при разводе родителей: возрастные реакции, манипуляции, синдром отчуждения, стратегии вмешательства.",
 };

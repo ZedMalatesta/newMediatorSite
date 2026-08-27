@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Английский для медиации и переговоров | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/englishformediation") },
+  openGraph: { url: absoluteUrl("/englishformediation") },
+  title: "Английский для медиации и переговоров",
   description:
     "Онлайн-курс разговорного английского с профессиональным уклоном в медиацию и переговоры. 96 часов за 24 недели, по средам.",
 };

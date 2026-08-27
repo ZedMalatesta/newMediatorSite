@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Точка роста | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/tochkarosta") },
+  openGraph: { url: absoluteUrl("/tochkarosta") },
+  title: "Точка роста",
   description:
     "Финансовый курс для медиаторов, психологов, коучей и предпринимателей: управление личными финансами, психология денег, выход из долгов, инвестиции.",
 };

@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Тренинг «Трансформативная медиация» | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/transformativemediation") },
+  openGraph: { url: absoluteUrl("/transformativemediation") },
+  title: "Тренинг «Трансформативная медиация»",
   description:
     "Теория и практика трансформативного подхода к разрешению конфликтов. Очно в Минске или онлайн по Zoom, 11:00–18:00.",
 };

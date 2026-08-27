@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Практическая конфликтология: навыки для жизни, работы и любви | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/practicalconflictology") },
+  openGraph: { url: absoluteUrl("/practicalconflictology") },
+  title: "Практическая конфликтология: навыки для жизни, работы и любви",
   description:
     "Записанный курс конструктивного разрешения конфликтов в личных и рабочих отношениях: управление эмоциями, навыки коммуникации, современные технологии разрешения споров.",
 };

@@ -9,9 +9,12 @@ import FamilyServices from "./_components/FamilyServices";
 import PricingSection from "./_components/PricingSection";
 import MediationContactForm from "./_components/MediationContactForm";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Проведение процедуры медиации | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/mediation") },
+  openGraph: { url: absoluteUrl("/mediation") },
+  title: "Проведение процедуры медиации",
   description:
     "Профессиональная медиация в Минске, Гродно и Лиде. Семейные конфликты, развод, наследственные споры. Брачный договор, консультации психолога, адвоката, нотариуса.",
 };

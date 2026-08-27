@@ -4,9 +4,12 @@ import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer";
 import TrainersGrid from "./_components/TrainersGrid";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Наши тренеры | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/trainers") },
+  openGraph: { url: absoluteUrl("/trainers") },
+  title: "Наши тренеры",
   description:
     "В нашей команде — первоклассные медиаторы, юристы, конфликтологи, психологи и тренеры. Каждый прошёл отбор и имеет подтверждённую квалификацию.",
 };

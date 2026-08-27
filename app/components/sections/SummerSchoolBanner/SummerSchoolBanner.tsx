@@ -21,7 +21,7 @@ export default function SummerSchoolBanner() {
               </span>
             </p>
             <a
-              href="#"
+              href="/summerschool"
               className="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
             >
               Узнать подробнее

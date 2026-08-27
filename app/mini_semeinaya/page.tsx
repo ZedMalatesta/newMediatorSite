@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Семейная медиация как технология разрешения семейных кризисов | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/mini_semeinaya") },
+  openGraph: { url: absoluteUrl("/mini_semeinaya") },
+  title: "Семейная медиация как технология разрешения семейных кризисов",
   description:
     "Вводное знакомство с курсом семейной медиации: алгоритмы и техники эффективного консультирования. Набор группы открыт.",
 };

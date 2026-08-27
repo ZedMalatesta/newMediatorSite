@@ -8,9 +8,12 @@ import DivorceStages from "./_components/DivorceStages";
 import DivorcePricing from "./_components/DivorcePricing";
 import DivorceSignup from "./_components/DivorceSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Услуга «Развод супругов» | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/divorceservice") },
+  openGraph: { url: absoluteUrl("/divorceservice") },
+  title: "Услуга «Развод супругов»",
   description:
     "Пакет услуг по сопровождению семьи на всех этапах развода: консультации психолога, медиатора, юриста, проведение медиации с составлением соглашения. Минск, Гродно, Лида.",
 };

@@ -9,9 +9,12 @@ import SchoolProgram from "./_components/SchoolProgram";
 import SchoolTrainer from "./_components/SchoolTrainer";
 import SchoolSignup from "./_components/SchoolSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Школа юного медиатора «Территория взаимопонимания» | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/school") },
+  openGraph: { url: absoluteUrl("/school") },
+  title: "Школа юного медиатора «Территория взаимопонимания»",
   description:
     "Летний интенсив для детей и подростков 10–16 лет: общение, эмоциональный интеллект, переговоры и основы медиации. Офлайн в Минске, три потока.",
 };

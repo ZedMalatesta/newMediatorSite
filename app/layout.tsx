@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
+import { site, siteUrl, absoluteUrl } from "@lib/site";
+import JsonLd from "@/app/components/seo/JsonLd";
+import { organizationJsonLd } from "@lib/structuredData";
 
 // Body text. Cyrillic is required - the site is entirely in Russian.
 const inter = Inter({
@@ -17,9 +20,33 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Mediator — Professional Mediation & Conflict Resolution",
-  description:
-    "Comprehensive training programs in mediation, conflict resolution, and professional development.",
+  // Spec §12: the site's content is entirely Russian; its metadata was English.
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${site.legalName} — обучение медиаторов и разрешение конфликтов`,
+    template: `%s | ${site.name}`,
+  },
+  description: site.description,
+  alternates: {
+    canonical: absoluteUrl("/"),
+  },
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    locale: site.locale,
+    url: absoluteUrl("/"),
+    title: `${site.legalName} — обучение медиаторов и разрешение конфликтов`,
+    description: site.description,
+    images: [{ url: absoluteUrl("/images/logos/logo.png"), width: 578, height: 91, alt: site.name }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.legalName,
+    description: site.description,
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -32,7 +59,10 @@ export default function RootLayout({
       lang="ru"
       className={`${inter.variable} ${manrope.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <JsonLd data={organizationJsonLd()} />
+        {children}
+      </body>
     </html>
   );
 }

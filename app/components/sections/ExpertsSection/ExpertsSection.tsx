@@ -63,7 +63,7 @@ export default function ExpertsSection() {
         </div>
 
         <div className="mt-10 text-center">
-          <a href="#" className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm">
+          <a href="/trainers" className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm">
             Подробнее об экспертах →
           </a>
         </div>

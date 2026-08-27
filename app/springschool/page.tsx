@@ -4,9 +4,12 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Весенняя школа медиаторов 2023 | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/springschool") },
+  openGraph: { url: absoluteUrl("/springschool") },
+  title: "Весенняя школа медиаторов 2023",
   description:
     "Архив Весенней школы медиаторов 2023: 17–19 марта, г.п. Сопоцкин. Кризисная медиация, восстановительные практики, профессиональное развитие.",
 };

@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Музыкальная терапия в кризисной интервенции | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/musictherapy") },
+  openGraph: { url: absoluteUrl("/musictherapy") },
+  title: "Музыкальная терапия в кризисной интервенции",
   description:
     "Онлайн-семинар о методах музыкальной терапии для кризисной поддержки и профилактики ПТСР: связь мозга и музыки, подбор музыки для интервенции.",
 };

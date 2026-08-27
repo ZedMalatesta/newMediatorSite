@@ -4,9 +4,12 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { LegalDocument } from "@sections/LegalDocument/LegalDocument";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Политика обработки персональных данных | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/politicaobrabotkidannyh") },
+  openGraph: { url: absoluteUrl("/politicaobrabotkidannyh") },
+  title: "Политика обработки персональных данных",
   description: "Политика обработки персональных данных УПУ «МедиаторОк Проф».",
 };
 

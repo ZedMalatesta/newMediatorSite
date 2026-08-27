@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Клинические аспекты функционирования личности | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/clinicalaspects") },
+  openGraph: { url: absoluteUrl("/clinicalaspects") },
+  title: "Клинические аспекты функционирования личности",
   description:
     "Онлайн-лекторий об уровнях функционирования личности: пограничный, нарциссический, мазохистический, параноидно-депрессивный, шизоидный, диссоциативный, истерический типы.",
 };

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getPageBlocks, type PageBlock } from "@lib/pageBlocks";
+import { cleanCopy, isTildaArtefact } from "@lib/copyFilters";
 import ImageSlider from "./ImageSlider";
 import ZoomableGrid from "./ZoomableGrid";
 
@@ -10,7 +11,7 @@ import ZoomableGrid from "./ZoomableGrid";
  */
 
 function BlockHeading({ text }: { text: string }) {
-  if (!text) return null;
+  if (!text || isTildaArtefact(text)) return null;
   return (
     <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
       {text}
@@ -19,7 +20,10 @@ function BlockHeading({ text }: { text: string }) {
 }
 
 function BlockText({ block }: { block: PageBlock }) {
-  const { paragraphs, listItems, subheadings } = block;
+  // §15.1 — strip Tilda commerce scaffolding before it reaches the page.
+  const paragraphs = cleanCopy(block.paragraphs);
+  const listItems = cleanCopy(block.listItems);
+  const subheadings = cleanCopy(block.subheadings);
   if (
     paragraphs.length === 0 &&
     listItems.length === 0 &&

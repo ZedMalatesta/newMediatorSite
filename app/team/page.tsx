@@ -4,9 +4,12 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import TeamGrid from "./_components/TeamGrid";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Наши специалисты | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/team") },
+  openGraph: { url: absoluteUrl("/team") },
+  title: "Наши специалисты",
   description:
     "В нашу команду входят первоклассные психологи с профильным образованием в сфере практической и семейной психологии, огромным опытом и множеством рекомендаций.",
 };

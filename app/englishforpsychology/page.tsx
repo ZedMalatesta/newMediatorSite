@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Английский для психологов | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/englishforpsychology") },
+  openGraph: { url: absoluteUrl("/englishforpsychology") },
+  title: "Английский для психологов",
   description:
     "Специализированный курс английского для психологов: разговорные навыки и терминология консультирования. 96 часов, по вторникам.",
 };

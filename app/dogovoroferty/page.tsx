@@ -4,9 +4,12 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { LegalDocument } from "@sections/LegalDocument/LegalDocument";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Договор оферты | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/dogovoroferty") },
+  openGraph: { url: absoluteUrl("/dogovoroferty") },
+  title: "Договор оферты",
   description: "Публичный договор оферты на оказание образовательных услуг УПУ «МедиаторОк Проф».",
 };
 
