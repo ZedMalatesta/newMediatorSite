@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { site, siteUrl, absoluteUrl } from "@lib/site";
+import JsonLd from "@/app/components/seo/JsonLd";
+import { organizationJsonLd } from "@lib/structuredData";
 
 // Body text. Cyrillic is required - the site is entirely in Russian.
 const inter = Inter({
@@ -57,7 +59,10 @@ export default function RootLayout({
       lang="ru"
       className={`${inter.variable} ${manrope.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <JsonLd data={organizationJsonLd()} />
+        {children}
+      </body>
     </html>
   );
 }
