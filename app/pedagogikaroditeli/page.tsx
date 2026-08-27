@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/pedagogikaroditeli") },
+  openGraph: { url: absoluteUrl("/pedagogikaroditeli") },
   title: "Педагогика для родителей",
   description:
     "Онлайн терапевтическая и обучающая группа для родителей: эффективная коммуникация, работа со сложным поведением ребёнка, СДВГ, экранная зависимость.",

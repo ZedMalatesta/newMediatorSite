@@ -12,6 +12,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/psycologicalcounseling") },
+  openGraph: { url: absoluteUrl("/psycologicalcounseling") },
   title: "Психологическое консультирование",
   description:
     "Индивидуальные, парные и семейные консультации психолога очно и онлайн. Тревога, стресс, выгорание, отношения, жизненные кризисы.",

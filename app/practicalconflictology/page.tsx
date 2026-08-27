@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/practicalconflictology") },
+  openGraph: { url: absoluteUrl("/practicalconflictology") },
   title: "Практическая конфликтология: навыки для жизни, работы и любви",
   description:
     "Записанный курс конструктивного разрешения конфликтов в личных и рабочих отношениях: управление эмоциями, навыки коммуникации, современные технологии разрешения споров.",

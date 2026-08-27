@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/speechasinstrument") },
+  openGraph: { url: absoluteUrl("/speechasinstrument") },
   title: "Речь как инструмент в работе с людьми",
   description:
     "Онлайн-вебинар о технике речи, влияющей на слушателя: психолингвистика влияния, типичные речевые ошибки, работа со словесной агрессией.",

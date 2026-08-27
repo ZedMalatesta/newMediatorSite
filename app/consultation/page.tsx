@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/consultation") },
+  openGraph: { url: absoluteUrl("/consultation") },
   title: "Психологическое консультирование и психокоррекция",
   description:
     "Базовый онлайн-курс психологического консультирования и психокоррекции людей разного возраста — от пренатального до пожилого. 264 часа, 6 месяцев.",

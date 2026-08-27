@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/bal") },
+  openGraph: { url: absoluteUrl("/bal") },
   title: "Первый бал медиаторов",
   description:
     "Первый маскарадный бал для медиаторов в Минске: танцы, вокальные номера, конкурс костюмов и нетворкинг.",

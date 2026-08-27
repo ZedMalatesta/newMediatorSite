@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/familyconsulting") },
+  openGraph: { url: absoluteUrl("/familyconsulting") },
   title: "Семейное консультирование детей и родителей",
   description:
     "Онлайн-программа практических техник семейного консультирования: этапы консультации, анализ поведенческих целей, психотехнические методы, разбор кейсов.",

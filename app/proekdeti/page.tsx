@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/proekdeti") },
+  openGraph: { url: absoluteUrl("/proekdeti") },
   title: "Проект «Взрослым отвечают дети»",
   description:
     "Диалоговая площадка для обмена опытом между детьми и взрослыми: дети как источник гибкого и глубокого понимания мира.",

@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/obucheniemediator") },
+  openGraph: { url: absoluteUrl("/obucheniemediator") },
   title: "Обучение медиации — программа подготовки медиаторов",
   description:
     "Программа подготовки медиаторов, утверждённая Министерством юстиции Республики Беларусь. 12 дней, 170 часов. Очно в Минске или дистанционно.",

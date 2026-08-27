@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/clinicalaspects") },
+  openGraph: { url: absoluteUrl("/clinicalaspects") },
   title: "Клинические аспекты функционирования личности",
   description:
     "Онлайн-лекторий об уровнях функционирования личности: пограничный, нарциссический, мазохистический, параноидно-депрессивный, шизоидный, диссоциативный, истерический типы.",

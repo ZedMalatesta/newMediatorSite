@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/mediationinschool") },
+  openGraph: { url: absoluteUrl("/mediationinschool") },
   title: "Медиация в образовательной среде",
   description:
     "Бесплатный вебинар о роли медиации в школах: какие конфликты решаемы и как внедрить службу медиации в образовательном учреждении.",

@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/tochkarosta") },
+  openGraph: { url: absoluteUrl("/tochkarosta") },
   title: "Точка роста",
   description:
     "Финансовый курс для медиаторов, психологов, коучей и предпринимателей: управление личными финансами, психология денег, выход из долгов, инвестиции.",

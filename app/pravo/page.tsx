@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/pravo") },
+  openGraph: { url: absoluteUrl("/pravo") },
   title: "Правовые акты",
   description:
     "Нормативно-правовые акты, регулирующие медиацию в Республике Беларусь: закон о медиации, правила проведения медиации, правила этики медиатора.",

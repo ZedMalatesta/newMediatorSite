@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/englishformediation") },
+  openGraph: { url: absoluteUrl("/englishformediation") },
   title: "Английский для медиации и переговоров",
   description:
     "Онлайн-курс разговорного английского с профессиональным уклоном в медиацию и переговоры. 96 часов за 24 недели, по средам.",

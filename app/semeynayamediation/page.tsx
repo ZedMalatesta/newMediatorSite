@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/semeynayamediation") },
+  openGraph: { url: absoluteUrl("/semeynayamediation") },
   title: "Семейная медиация как технология разрешения семейных кризисов",
   description:
     "Полный курс: этапы развода, техники психологической поддержки и стратегии совместного родительства. 48–64 часа, по вторникам, старт 1 июня.",

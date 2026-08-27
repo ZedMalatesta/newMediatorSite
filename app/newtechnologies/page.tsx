@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/newtechnologies") },
+  openGraph: { url: absoluteUrl("/newtechnologies") },
   title: "Новые технологии современной медиации",
   description:
     "Программа повышения квалификации для медиаторов и конфликтологов: трансформативная, нарративная, провокативная, когнитивно-ориентированная, интервенционная и восстановительная медиация.",

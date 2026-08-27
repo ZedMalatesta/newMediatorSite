@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/lectures") },
+  openGraph: { url: absoluteUrl("/lectures") },
   title: "Лекции-дискуссии",
   description:
     "Открытый форум о современной психологии, конфликтологии и антропологии — помогаем участникам лучше понимать себя и мир вокруг.",

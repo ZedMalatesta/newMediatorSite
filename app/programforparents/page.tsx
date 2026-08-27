@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/programforparents") },
+  openGraph: { url: absoluteUrl("/programforparents") },
   title: "Воспитание как взаимное развитие",
   description:
     "Онлайн-марафон для родителей: 12 встреч о дисциплине, агрессии, похвале, детских страхах и навыках коммуникации.",

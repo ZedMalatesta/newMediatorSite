@@ -8,6 +8,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/trainers") },
+  openGraph: { url: absoluteUrl("/trainers") },
   title: "Наши тренеры",
   description:
     "В нашей команде — первоклассные медиаторы, юристы, конфликтологи, психологи и тренеры. Каждый прошёл отбор и имеет подтверждённую квалификацию.",

@@ -7,6 +7,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/thankyou") },
+  openGraph: { url: absoluteUrl("/thankyou") },
   title: "Спасибо за заявку",
   description: "Заявка успешно отправлена.",
 };

@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/mediatorsparty") },
+  openGraph: { url: absoluteUrl("/mediatorsparty") },
   title: "Рождественские встречи в МедиаторОк",
   description:
     "Новогодняя встреча для выпускников и специалистов медиации: итоги года, цели на будущее, творческие мастерские, нетворкинг.",

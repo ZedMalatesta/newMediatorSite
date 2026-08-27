@@ -15,6 +15,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/aboutus") },
+  openGraph: { url: absoluteUrl("/aboutus") },
   title: "О нас",
   description:
     "Международная онлайн академия психологии, медиации и коучинга «МедиаторОк Проф». Наша история, команда, достижения и программы обучения.",

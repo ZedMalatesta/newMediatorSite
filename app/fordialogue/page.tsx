@@ -11,6 +11,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/fordialogue") },
+  openGraph: { url: absoluteUrl("/fordialogue") },
   title: "Мы/медиаторы — за диалог!",
   description:
     "Общественная инициатива и сообщество медиаторов, фасилитаторов и переговорщиков разных стран мира — бесплатная помощь сторонам конфликта в подготовке и проведении переговоров.",

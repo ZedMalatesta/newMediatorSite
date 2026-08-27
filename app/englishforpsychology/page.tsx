@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/englishforpsychology") },
+  openGraph: { url: absoluteUrl("/englishforpsychology") },
   title: "Английский для психологов",
   description:
     "Специализированный курс английского для психологов: разговорные навыки и терминология консультирования. 96 часов, по вторникам.",

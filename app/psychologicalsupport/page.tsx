@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/psychologicalsupport") },
+  openGraph: { url: absoluteUrl("/psychologicalsupport") },
   title: "Психологическая поддержка супругов и детей при разводе",
   description:
     "Авторская программа Оксаны Шульги для специалистов, сопровождающих разводящиеся семьи: эмоциональный, экономический, юридический и психологический этапы развода.",

@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/trening2024") },
+  openGraph: { url: absoluteUrl("/trening2024") },
   title: "Тренинги на каникулах",
   description:
     "Серия очных и онлайн тренингов в январе: «Провокативная медиация», «Нарративная медиация», «Трансформативная медиация» и практические сессии медиации.",

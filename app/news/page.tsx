@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/news") },
+  openGraph: { url: absoluteUrl("/news") },
   title: "Новости",
   description:
     "Новости и достижения УПУ «МедиаторОк Проф», а также ближайшие программы и события.",

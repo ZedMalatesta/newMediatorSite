@@ -7,6 +7,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/mediationdocuments") },
+  openGraph: { url: absoluteUrl("/mediationdocuments") },
   title: "Документы для проведения медиации",
   description:
     "Какие документы оформляются на разных этапах процедуры медиации в Республике Беларусь: соглашение о применении медиации, медиативное соглашение и другие.",

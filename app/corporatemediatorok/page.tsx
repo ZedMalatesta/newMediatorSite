@@ -13,6 +13,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/corporatemediatorok") },
+  openGraph: { url: absoluteUrl("/corporatemediatorok") },
   title: "Корпоративное обучение",
   description:
     "Корпоративное обучение для сотрудников вашей компании: конфликт-консалтинг, личная эффективность руководителя, управление вовлечённостью и переговоры. Гибкий график, программа под задачи бизнеса.",

@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/workshopuncertainty") },
+  openGraph: { url: absoluteUrl("/workshopuncertainty") },
   title: "Семинар «Конфликты в эпоху неопределённости»",
   description:
     "Интерактивный 6-часовой семинар об управлении конфликтами в нестабильных условиях: модели VUCA/BANI и техники переговоров.",

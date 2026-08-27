@@ -11,6 +11,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/negotiationleague") },
+  openGraph: { url: absoluteUrl("/negotiationleague") },
   title: "Лига переговорщиков «Мастерская диалога»",
   description:
     "Серия тренингов по переговорам на основе диалогической модели: профессиональный переговорщик, переговоры для жизни и работы, сократический диалог, переговорные поединки.",

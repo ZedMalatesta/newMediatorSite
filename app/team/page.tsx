@@ -8,6 +8,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/team") },
+  openGraph: { url: absoluteUrl("/team") },
   title: "Наши специалисты",
   description:
     "В нашу команду входят первоклассные психологи с профильным образованием в сфере практической и семейной психологии, огромным опытом и множеством рекомендаций.",

@@ -12,6 +12,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/summerschool2025") },
+  openGraph: { url: absoluteUrl("/summerschool2025") },
   title: "Летняя школа медиаторов 2025",
   description:
     "Архив Летней школы медиаторов 2025: 4–7 июля, г.п. Сопоцкин, Гродненская область. Спикеры, программа, итоги. Следующий выезд — Летний интенсив 2026.",

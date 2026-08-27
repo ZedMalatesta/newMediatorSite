@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/premaritalcounseling") },
+  openGraph: { url: absoluteUrl("/premaritalcounseling") },
   title: "Добрачное консультирование",
   description:
     "Индивидуальное и семейное добрачное консультирование молодожёнов: цели и функции брака, бесконфликтное общение, семейный бюджет, семейные мифы.",

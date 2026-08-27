@@ -11,6 +11,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/intervision") },
+  openGraph: { url: absoluteUrl("/intervision") },
   title: "Интервизорская группа «Pro Mediation»",
   description:
     "Бесплатная онлайн-группа для практикующих медиаторов: обмен опытом, разбор кейсов, профилактика выгорания. Встречи 2 раза в месяц по пятницам.",

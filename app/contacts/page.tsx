@@ -10,6 +10,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/contacts") },
+  openGraph: { url: absoluteUrl("/contacts") },
   title: "Контакты",
   description:
     "Контакты УПУ «МедиаторОк Проф»: г. Минск, ул. Короля 9, кабинет 126. Телефон, email и соцсети.",

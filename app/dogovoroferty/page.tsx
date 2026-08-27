@@ -8,6 +8,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/dogovoroferty") },
+  openGraph: { url: absoluteUrl("/dogovoroferty") },
   title: "Договор оферты",
   description: "Публичный договор оферты на оказание образовательных услуг УПУ «МедиаторОк Проф».",
 };

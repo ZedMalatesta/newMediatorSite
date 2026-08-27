@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/club") },
+  openGraph: { url: absoluteUrl("/club") },
   title: "Переговоры на шпильках",
   description:
     "Женский профессиональный клуб переговоров: стратегии переговоров, лидерство, публичные выступления, деловой стиль и нетворкинг.",

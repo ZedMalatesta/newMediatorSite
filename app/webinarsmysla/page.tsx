@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/webinarsmysla") },
+  openGraph: { url: absoluteUrl("/webinarsmysla") },
   title: "Смыслоцентрированная терапия супружеских пар",
   description:
     "Впервые в Беларуси: техники логотерапии для пар — поиск смысла, развитие доверия и осознание ответственности за качество отношений.",

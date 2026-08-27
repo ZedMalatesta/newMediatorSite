@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/seminarmaksudov") },
+  openGraph: { url: absoluteUrl("/seminarmaksudov") },
   title: "Семинар Рустема Максудова «Богатство ролей медиатора»",
   description:
     "3-дневный семинар о том, как медиаторы совмещают юриста, психолога и активиста в себе. Очно в Минске или онлайн.",

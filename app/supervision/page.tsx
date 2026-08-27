@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/supervision") },
+  openGraph: { url: absoluteUrl("/supervision") },
   title: "Супервизия для медиаторов",
   description:
     "Обязательный компонент полноценного образования в медиации: разбор кейсов, техники супервизии и профессиональная рефлексия для практикующих медиаторов.",

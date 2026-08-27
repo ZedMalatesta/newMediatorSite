@@ -8,6 +8,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/institute") },
+  openGraph: { url: absoluteUrl("/institute") },
   title: "Институт медиации и психологии сотрудничества",
   description:
     "Образовательное и научно-практическое подразделение УПУ «МедиаторОк Проф»: подготовка квалифицированных специалистов в области медиации, конфликтологии и психологии сотрудничества.",

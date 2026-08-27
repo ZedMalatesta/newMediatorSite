@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/socraticdialogue") },
+  openGraph: { url: absoluteUrl("/socraticdialogue") },
   title: "Сократический диалог в работе медиатора",
   description:
     "Онлайн-вебинар об искусстве вопросов как ключевом инструменте медиатора для разрешения конфликтов и достижения договорённостей.",

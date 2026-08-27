@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/logowebinars") },
+  openGraph: { url: absoluteUrl("/logowebinars") },
   title: "Вебинары Центра логотерапии",
   description:
     "Бесплатные образовательные вебинары на основе подхода Виктора Франкла: стремление к смыслу — главная мотивационная сила человека.",

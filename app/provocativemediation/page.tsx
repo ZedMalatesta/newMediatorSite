@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/provocativemediation") },
+  openGraph: { url: absoluteUrl("/provocativemediation") },
   title: "Тренинг «Провокативная медиация»",
   description:
     "Метод разрешения конфликтов, сочетающий поддержку, юмор и парадокс. Воскресенье, 11:00–18:00, онлайн.",

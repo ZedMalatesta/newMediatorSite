@@ -10,6 +10,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/obuchenie") },
+  openGraph: { url: absoluteUrl("/obuchenie") },
   title: "Обучение",
   description:
     "Обучающие программы УПУ «МедиаторОк Проф»: подготовка медиаторов, семейная медиация, практическая конфликтология, школа юного медиатора, вебинары и курсы повышения квалификации.",

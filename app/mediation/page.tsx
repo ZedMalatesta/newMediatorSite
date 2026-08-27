@@ -13,6 +13,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/mediation") },
+  openGraph: { url: absoluteUrl("/mediation") },
   title: "Проведение процедуры медиации",
   description:
     "Профессиональная медиация в Минске, Гродно и Лиде. Семейные конфликты, развод, наследственные споры. Брачный договор, консультации психолога, адвоката, нотариуса.",

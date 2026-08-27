@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/vebinar") },
+  openGraph: { url: absoluteUrl("/vebinar") },
   title: "Бесплатный вебинар: медиация для психологов и юристов",
   description:
     "Вводный вебинар о разрешении конфликтов и медиации, который поможет специалистам зарабатывать на новых навыках. Подарок участникам — чек-лист «Методы разрешения конфликтов».",

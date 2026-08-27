@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/musictherapy") },
+  openGraph: { url: absoluteUrl("/musictherapy") },
   title: "Музыкальная терапия в кризисной интервенции",
   description:
     "Онлайн-семинар о методах музыкальной терапии для кризисной поддержки и профилактики ПТСР: связь мозга и музыки, подбор музыки для интервенции.",

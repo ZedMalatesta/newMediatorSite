@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/narrativemediation") },
+  openGraph: { url: absoluteUrl("/narrativemediation") },
   title: "Тренинг «Нарративная медиация»",
   description:
     "Метод разрешения конфликтов, основанный на том, как люди выстраивают и описывают противоречия в своей ситуации. Воскресенье, 11:00–18:00, онлайн.",

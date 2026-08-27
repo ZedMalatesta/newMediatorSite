@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/family") },
+  openGraph: { url: absoluteUrl("/family") },
   title: "Семья как команда мечты",
   description:
     "Эксклюзивный интенсив для пар, работающих в одной или смежных профессиях: партнёрство, профессиональная конкуренция, укрепление семейных связей.",

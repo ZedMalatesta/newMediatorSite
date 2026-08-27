@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/confictmanagment") },
+  openGraph: { url: absoluteUrl("/confictmanagment") },
   title: "Конфликт-менеджмент",
   description:
     "Обучение конфликт-менеджменту для супругов, родителей и детей: навыки коммуникации и бесконфликтного общения и взаимодействия.",

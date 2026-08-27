@@ -8,6 +8,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/politicaobrabotkidannyh") },
+  openGraph: { url: absoluteUrl("/politicaobrabotkidannyh") },
   title: "Политика обработки персональных данных",
   description: "Политика обработки персональных данных УПУ «МедиаторОк Проф».",
 };

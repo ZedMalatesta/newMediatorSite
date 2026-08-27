@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/childrenindivorce") },
+  openGraph: { url: absoluteUrl("/childrenindivorce") },
   title: "Дети при разводе родителей",
   description:
     "Программа о психологической поддержке детей при разводе родителей: возрастные реакции, манипуляции, синдром отчуждения, стратегии вмешательства.",

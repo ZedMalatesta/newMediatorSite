@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/schoolofyoungmediator") },
+  openGraph: { url: absoluteUrl("/schoolofyoungmediator") },
   title: "Зимний интенсив «Территория взаимопонимания»",
   description:
     "Зимняя версия Школы юного медиатора для детей и подростков 10–16 лет: 5 занятий, 2–6 января. Очно в Минске.",

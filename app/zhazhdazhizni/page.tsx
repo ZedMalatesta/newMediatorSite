@@ -9,6 +9,7 @@ import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/zhazhdazhizni") },
+  openGraph: { url: absoluteUrl("/zhazhdazhizni") },
   title: "Жажда жизни",
   description:
     "Онлайн терапевтическая группа на основе логотерапии и экзистенциального анализа: поиск смысла, преодоление кризисов, новые ресурсы в неопределённые времена.",
