@@ -6,7 +6,7 @@ export default function HeroSection() {
       <div className="max-w-6xl mx-auto">
         {/* Mission */}
         <div className="max-w-3xl mb-12">
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-4">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-4">
             Учебно-практическое учреждение «МедиаторОк Проф»
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-8">
@@ -18,7 +18,7 @@ export default function HeroSection() {
           <ul className="space-y-3 mb-10">
             {forWhom.map((item, i) => (
               <li key={i} className="flex items-start gap-3 text-slate-600">
-                <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0 mt-2" />
+                <span className="w-2 h-2 rounded-full bg-accent-400 flex-shrink-0 mt-2" />
                 <span className="text-base leading-relaxed">{item}</span>
               </li>
             ))}
@@ -33,7 +33,7 @@ export default function HeroSection() {
             </a>
             <a
               href="#services"
-              className="inline-block border-2 border-amber-400 text-amber-700 px-8 py-3 rounded-lg font-semibold hover:bg-amber-50 transition-colors"
+              className="inline-block border-2 border-accent-400 text-accent-700 px-8 py-3 rounded-lg font-semibold hover:bg-accent-50 transition-colors"
             >
               Наши услуги
             </a>
@@ -43,7 +43,7 @@ export default function HeroSection() {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((stat) => (
-            <div key={stat.label} className="border-t-2 border-amber-400 pt-4 pb-8">
+            <div key={stat.label} className="border-t-2 border-accent-400 pt-4 pb-8">
               <div className="text-3xl font-bold text-slate-900 mb-1">{stat.value}</div>
               <div className="text-sm text-slate-500">{stat.label}</div>
             </div>

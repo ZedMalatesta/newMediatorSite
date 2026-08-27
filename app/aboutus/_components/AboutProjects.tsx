@@ -24,7 +24,7 @@ export default function AboutProjects() {
     <section className="px-4 py-16 md:py-20 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
             Наша деятельность
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
@@ -36,9 +36,9 @@ export default function AboutProjects() {
           {projects.map((p) => (
             <div
               key={p.num}
-              className="group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-amber-200 hover:shadow-md transition-all"
+              className="group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-accent-200 hover:shadow-md transition-all"
             >
-              <div className="text-5xl font-bold text-amber-200 group-hover:text-amber-300 transition-colors mb-6 leading-none">
+              <div className="text-5xl font-bold text-accent-200 group-hover:text-accent-300 transition-colors mb-6 leading-none">
                 {p.num}
               </div>
               <h3 className="font-bold text-slate-900 text-xl mb-3">{p.title}</h3>

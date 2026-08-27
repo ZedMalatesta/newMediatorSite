@@ -109,7 +109,7 @@ export default function AboutTeam() {
     <section className="px-4 py-16 md:py-20 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
             Люди
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
@@ -125,7 +125,7 @@ export default function AboutTeam() {
             >
               {/* Photo */}
               <div className="flex-shrink-0">
-                <div className="w-36 h-36 rounded-2xl overflow-hidden border-2 border-amber-200 shadow relative">
+                <div className="w-36 h-36 rounded-2xl overflow-hidden border-2 border-accent-200 shadow relative">
                   {m.photo ? (
                     <Image
                       src={m.photo}
@@ -145,14 +145,14 @@ export default function AboutTeam() {
               {/* Content */}
               <div className="flex-1 min-w-0">
                 <h3 className="text-2xl font-bold text-slate-900 mb-0.5">{m.name}</h3>
-                <p className="text-amber-600 font-semibold text-sm mb-4">{m.role}</p>
+                <p className="text-accent-600 font-semibold text-sm mb-4">{m.role}</p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-1.5 mb-5">
                   {m.tags.map((t) => (
                     <span
                       key={t}
-                      className="bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold px-3 py-1 rounded-full"
+                      className="bg-accent-50 border border-accent-200 text-accent-800 text-xs font-semibold px-3 py-1 rounded-full"
                     >
                       {t}
                     </span>
@@ -165,7 +165,7 @@ export default function AboutTeam() {
                     <ul className="space-y-2 mb-4">
                       {m.bio.map((b, i) => (
                         <li key={i} className="flex items-start gap-2 text-slate-600 text-sm leading-relaxed">
-                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 mt-1.5" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent-400 flex-shrink-0 mt-1.5" />
                           {b}
                         </li>
                       ))}
@@ -208,7 +208,7 @@ export default function AboutTeam() {
                         <li key={c.label} className="text-sm text-slate-600">
                           <span className="text-slate-400 text-xs">{c.label}: </span>
                           {c.href ? (
-                            <a href={c.href} className="hover:text-amber-600 transition-colors">
+                            <a href={c.href} className="hover:text-accent-600 transition-colors">
                               {c.value}
                             </a>
                           ) : (

@@ -7,7 +7,7 @@ export default function AdvantagesSection() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-12">
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
             Почему обучаться у нас
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
@@ -40,7 +40,7 @@ export default function AdvantagesSection() {
             {advantages.map((adv, i) => (
               <div
                 key={adv.title}
-                className="bg-white rounded-xl p-5 border border-slate-100 hover:border-amber-200 hover:shadow-md transition-all flex gap-4 items-start"
+                className="bg-white rounded-xl p-5 border border-slate-100 hover:border-accent-200 hover:shadow-md transition-all flex gap-4 items-start"
               >
                 {/* Icon */}
                 <div className="flex-shrink-0">
@@ -61,7 +61,7 @@ export default function AdvantagesSection() {
                     <h3 className="font-bold text-slate-900 text-sm leading-snug">
                       {adv.title}
                     </h3>
-                    <span className="text-xs font-bold text-amber-400 flex-shrink-0">
+                    <span className="text-xs font-bold text-accent-400 flex-shrink-0">
                       0{i + 1}
                     </span>
                   </div>

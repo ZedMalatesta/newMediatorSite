@@ -30,7 +30,7 @@ export default function AboutStats() {
     <section className="px-4 py-16 md:py-20 bg-slate-900 text-white">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <p className="text-amber-400 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-400 font-semibold text-sm uppercase tracking-widest mb-3">
             Наши достижения
           </p>
           <h2 className="text-3xl md:text-4xl font-bold">
@@ -40,8 +40,8 @@ export default function AboutStats() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {results.map((r) => (
-            <div key={r.label} className="border-t-2 border-amber-400 pt-6">
-              <div className="text-4xl font-bold text-amber-400 mb-2">{r.value}</div>
+            <div key={r.label} className="border-t-2 border-accent-400 pt-6">
+              <div className="text-4xl font-bold text-accent-400 mb-2">{r.value}</div>
               <div className="font-semibold text-white mb-3">{r.label}</div>
               <p className="text-slate-400 text-sm leading-relaxed">{r.description}</p>
             </div>

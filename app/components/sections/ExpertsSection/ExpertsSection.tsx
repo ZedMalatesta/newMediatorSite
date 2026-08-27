@@ -16,7 +16,7 @@ export default function ExpertsSection() {
     <section className="px-4 py-16 md:py-20 bg-slate-50">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
             Наша команда
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
@@ -32,10 +32,10 @@ export default function ExpertsSection() {
           {experts.map((expert, i) => (
             <div
               key={expert.name}
-              className="bg-white rounded-xl p-6 border border-slate-100 hover:border-amber-200 hover:shadow-md transition-all"
+              className="bg-white rounded-xl p-6 border border-slate-100 hover:border-accent-200 hover:shadow-md transition-all"
             >
               {/* Avatar */}
-              <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-amber-200 flex-shrink-0">
+              <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-accent-200 flex-shrink-0">
                 {expert.photoSrc ? (
                   <div className="relative w-20 h-20">
                     <Image
@@ -56,14 +56,14 @@ export default function ExpertsSection() {
               </div>
 
               <h3 className="font-bold text-slate-900 text-base mb-0.5">{expert.name}</h3>
-              <div className="text-amber-600 text-xs font-semibold mb-3">{expert.role}</div>
+              <div className="text-accent-600 text-xs font-semibold mb-3">{expert.role}</div>
               <p className="text-slate-400 text-xs leading-relaxed">{expert.credentials}</p>
             </div>
           ))}
         </div>
 
         <div className="mt-10 text-center">
-          <a href="#" className="text-zinc-500 font-semibold hover:text-amber-600 transition-colors text-sm">
+          <a href="#" className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm">
             Подробнее об экспертах →
           </a>
         </div>

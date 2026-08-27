@@ -38,7 +38,7 @@ export default function CourseOutcomes() {
     <section className="px-4 py-16 md:py-20 bg-slate-50">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
             Результат обучения
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
@@ -50,7 +50,7 @@ export default function CourseOutcomes() {
           {outcomes.map((o, i) => (
             <div
               key={i}
-              className="bg-white rounded-xl p-6 border border-slate-100 hover:border-amber-200 hover:shadow-md transition-all"
+              className="bg-white rounded-xl p-6 border border-slate-100 hover:border-accent-200 hover:shadow-md transition-all"
             >
               <span className="text-3xl mb-4 block">{o.icon}</span>
               <p className="text-slate-700 text-sm leading-relaxed">{o.text}</p>

@@ -98,7 +98,7 @@ export default function ImageSlider({
               aria-current={i === current}
               className={`h-2.5 rounded-full transition-all ${
                 i === current
-                  ? "w-6 bg-amber-500"
+                  ? "w-6 bg-accent-500"
                   : "w-2.5 bg-slate-300 hover:bg-slate-400"
               }`}
             />

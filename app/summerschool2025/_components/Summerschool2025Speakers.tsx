@@ -18,7 +18,7 @@ export default function Summerschool2025Speakers() {
               key={s.name}
               className="bg-slate-50 rounded-2xl border border-slate-100 p-5 flex items-center gap-4"
             >
-              <div className="relative w-16 h-16 rounded-2xl overflow-hidden border-2 border-amber-200 shadow flex-shrink-0">
+              <div className="relative w-16 h-16 rounded-2xl overflow-hidden border-2 border-accent-200 shadow flex-shrink-0">
                 {s.photo ? (
                   <Image src={s.photo} alt={s.name} fill className="object-cover object-top" sizes="64px" />
                 ) : (

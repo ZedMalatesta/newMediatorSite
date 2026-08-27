@@ -33,11 +33,11 @@ export default function IntensivePricing() {
           </table>
         </div>
 
-        <div className="mt-5 flex items-center justify-between gap-4 bg-amber-50 border border-amber-200 rounded-xl px-6 py-4">
-          <p className="text-amber-800 text-sm font-medium">
+        <div className="mt-5 flex items-center justify-between gap-4 bg-accent-50 border border-accent-200 rounded-xl px-6 py-4">
+          <p className="text-accent-800 text-sm font-medium">
             Трансфер из Минска до места проведения (туда и обратно)
           </p>
-          <p className="text-amber-900 font-bold whitespace-nowrap">
+          <p className="text-accent-900 font-bold whitespace-nowrap">
             {transferPrice.byn} / {transferPrice.rub}
           </p>
         </div>

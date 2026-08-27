@@ -33,7 +33,7 @@ export default function ConflictDiagnosticsPage() {
       <main>
         <section className="bg-slate-900 text-white px-4 py-16 md:py-20">
           <div className="max-w-6xl mx-auto">
-            <p className="text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
+            <p className="text-accent-400 font-semibold text-sm uppercase tracking-widest mb-4">
               Методическая помощь
             </p>
             <h1 className="text-3xl md:text-5xl font-bold leading-tight">Диагностика конфликтов</h1>
@@ -50,7 +50,7 @@ export default function ConflictDiagnosticsPage() {
             <div className="space-y-3 mb-14">
               {stages.map((s, i) => (
                 <div key={s.title} className="flex items-start gap-4 bg-slate-50 rounded-2xl border border-slate-100 p-5">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-amber-100 text-amber-700 font-bold text-sm flex items-center justify-center">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-accent-100 text-accent-700 font-bold text-sm flex items-center justify-center">
                     {i + 1}
                   </span>
                   <div>
@@ -69,7 +69,7 @@ export default function ConflictDiagnosticsPage() {
             <ul className="space-y-2.5">
               {criteria.map((c) => (
                 <li key={c} className="flex items-start gap-2.5 text-slate-600 text-sm leading-relaxed">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 mt-2" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-400 flex-shrink-0 mt-2" />
                   {c}
                 </li>
               ))}

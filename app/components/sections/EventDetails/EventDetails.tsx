@@ -22,7 +22,7 @@ export function EventDetails({ description, groups, speaker }: EventDetailsProps
             <ul className="space-y-2.5">
               {g.items.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-slate-600 text-sm leading-relaxed">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 mt-2" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-400 flex-shrink-0 mt-2" />
                   {item}
                 </li>
               ))}
@@ -33,7 +33,7 @@ export function EventDetails({ description, groups, speaker }: EventDetailsProps
         {speaker && (
           <div className="bg-slate-50 rounded-2xl border border-slate-100 p-8 flex flex-col md:flex-row gap-8 items-start">
             <div className="flex-shrink-0">
-              <div className="w-28 h-28 rounded-2xl overflow-hidden border-2 border-amber-200 shadow-md relative">
+              <div className="w-28 h-28 rounded-2xl overflow-hidden border-2 border-accent-200 shadow-md relative">
                 {speaker.photo ? (
                   <Image src={speaker.photo} alt={speaker.name} fill className="object-cover object-top" sizes="112px" />
                 ) : (
@@ -45,7 +45,7 @@ export function EventDetails({ description, groups, speaker }: EventDetailsProps
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="text-xl font-bold text-slate-900 mb-1">{speaker.name}</h3>
-              <p className="text-amber-600 font-semibold text-sm">{speaker.role}</p>
+              <p className="text-accent-600 font-semibold text-sm">{speaker.role}</p>
             </div>
           </div>
         )}

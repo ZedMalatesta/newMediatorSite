@@ -26,7 +26,7 @@ export default function CounselingFormats() {
               } ${i % 2 === 0 ? "bg-white" : "bg-slate-50"}`}
             >
               <p className="font-semibold text-slate-900 text-sm">{row.service}</p>
-              <span className="inline-block bg-amber-50 border border-amber-200 text-amber-800 font-bold text-sm px-4 py-1.5 rounded-lg whitespace-nowrap">
+              <span className="inline-block bg-accent-50 border border-accent-200 text-accent-800 font-bold text-sm px-4 py-1.5 rounded-lg whitespace-nowrap">
                 {row.price}
               </span>
             </div>

@@ -32,7 +32,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="w-8 h-8 rounded-full bg-slate-700 hover:bg-amber-500 flex items-center justify-center text-white transition-colors"
+                className="w-8 h-8 rounded-full bg-slate-700 hover:bg-accent-500 flex items-center justify-center text-white transition-colors"
               >
                 <s.Icon className="w-4 h-4" />
               </a>
@@ -50,7 +50,7 @@ export default function Footer() {
               { label: "Наши специалисты", href: "/team" },
             ].map((item) => (
               <li key={item.label}>
-                <a href={item.href} className="hover:text-amber-400 transition-colors">{item.label}</a>
+                <a href={item.href} className="hover:text-accent-400 transition-colors">{item.label}</a>
               </li>
             ))}
           </ul>
@@ -70,7 +70,7 @@ export default function Footer() {
               "«Развод супругов»",
             ].map((item) => (
               <li key={item}>
-                <a href="#" className="hover:text-amber-400 transition-colors">{item}</a>
+                <a href="#" className="hover:text-accent-400 transition-colors">{item}</a>
               </li>
             ))}
           </ul>
@@ -89,7 +89,7 @@ export default function Footer() {
                 { label: "Лига переговорщиков «Мастерская диалога»", href: "/negotiationleague" },
               ].map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className="hover:text-amber-400 transition-colors">{item.label}</a>
+                  <a href={item.href} className="hover:text-accent-400 transition-colors">{item.label}</a>
                 </li>
               ))}
             </ul>
@@ -99,17 +99,17 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>г. Минск, ул. Короля 9, каб. 126</li>
               <li>
-                <a href="tel:+375298678240" className="hover:text-amber-400 transition-colors">
+                <a href="tel:+375298678240" className="hover:text-accent-400 transition-colors">
                   +375 (29) 867‑82‑40
                 </a>
               </li>
               <li>
-                <a href="tel:+375336899019" className="hover:text-amber-400 transition-colors">
+                <a href="tel:+375336899019" className="hover:text-accent-400 transition-colors">
                   +375 (33) 689‑90‑19
                 </a>
               </li>
               <li>
-                <a href="mailto:mediatorok.by@gmail.com" className="hover:text-amber-400 transition-colors break-all">
+                <a href="mailto:mediatorok.by@gmail.com" className="hover:text-accent-400 transition-colors break-all">
                   mediatorok.by@gmail.com
                 </a>
               </li>

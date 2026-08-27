@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+/* Brand accent — magenta. Single source of truth for the site's accent colour;
+   use the accent-* utilities rather than hardcoding a Tailwind palette. */
+@theme {
+  --color-accent-50: #fdf2f9;
+  --color-accent-100: #fce7f4;
+  --color-accent-200: #f9cfe8;
+  --color-accent-300: #f2a6d3;
+  --color-accent-400: #e56fb6;
+  --color-accent-500: #d4419a;
+  --color-accent-600: #c2318c;
+  --color-accent-700: #a12874;
+  --color-accent-800: #7e2059;
+  --color-accent-900: #5c1741;
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

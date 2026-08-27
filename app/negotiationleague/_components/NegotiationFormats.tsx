@@ -25,7 +25,7 @@ export default function NegotiationFormats() {
           {formats.map((f) => (
             <span
               key={f}
-              className="bg-amber-50 border border-amber-200 text-amber-800 text-sm font-semibold px-4 py-2 rounded-full"
+              className="bg-accent-50 border border-accent-200 text-accent-800 text-sm font-semibold px-4 py-2 rounded-full"
             >
               {f}
             </span>
@@ -34,7 +34,7 @@ export default function NegotiationFormats() {
 
         <div className="bg-slate-50 rounded-2xl border border-slate-100 p-8 flex flex-col md:flex-row gap-8 items-start">
           <div className="flex-shrink-0">
-            <div className="w-32 h-32 rounded-2xl overflow-hidden border-2 border-amber-200 shadow-md relative">
+            <div className="w-32 h-32 rounded-2xl overflow-hidden border-2 border-accent-200 shadow-md relative">
               <Image
                 src="/images/experts/shulga.jpg"
                 alt="Оксана Шульга"
@@ -46,7 +46,7 @@ export default function NegotiationFormats() {
           </div>
           <div className="flex-1 min-w-0">
             <h3 className="text-2xl font-bold text-slate-900 mb-1">Оксана Шульга</h3>
-            <p className="text-amber-600 font-semibold text-sm mb-4">Руководитель проекта</p>
+            <p className="text-accent-600 font-semibold text-sm mb-4">Руководитель проекта</p>
             <p className="text-slate-600 text-sm leading-relaxed">
               Кандидат психологических наук, системный семейный психолог, медиатор,
               гештальт-терапевт, конфликтолог, директор УПУ «МедиаторОк Проф».

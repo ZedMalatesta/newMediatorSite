@@ -1,10 +1,10 @@
 import { ButtonProps, ButtonVariant, ButtonSize } from "./types";
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  primary: "bg-amber-500 text-white hover:bg-amber-400",
+  primary: "bg-accent-500 text-white hover:bg-accent-400",
   secondary: "bg-slate-800 text-white hover:bg-slate-700",
   silver: "bg-zinc-200 text-slate-800 hover:bg-zinc-300 border border-zinc-300",
-  ghost: "text-slate-700 hover:text-amber-600 hover:bg-slate-50",
+  ghost: "text-slate-700 hover:text-accent-600 hover:bg-slate-50",
 };
 
 const SIZE_CLASSES: Record<ButtonSize, string> = {

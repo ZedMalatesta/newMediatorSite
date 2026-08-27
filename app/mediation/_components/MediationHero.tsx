@@ -2,7 +2,7 @@ export default function MediationHero() {
   return (
     <section className="bg-slate-900 text-white px-4 pt-16 pb-14">
       <div className="max-w-6xl mx-auto">
-        <p className="text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
+        <p className="text-accent-400 font-semibold text-sm uppercase tracking-widest mb-4">
           Услуги
         </p>
         <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 max-w-3xl">

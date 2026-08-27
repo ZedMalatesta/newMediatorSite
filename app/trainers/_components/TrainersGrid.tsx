@@ -17,7 +17,7 @@ function Avatar({
 }) {
   const dim = size === "lg" ? "w-28 h-28 md:w-36 md:h-36 text-2xl" : "w-24 h-24 text-xl";
   return (
-    <div className={`relative rounded-2xl overflow-hidden border-2 border-amber-200 shadow flex-shrink-0 ${dim}`}>
+    <div className={`relative rounded-2xl overflow-hidden border-2 border-accent-200 shadow flex-shrink-0 ${dim}`}>
       {photo ? (
         <Image src={photo} alt={name} fill className="object-cover object-top" sizes={size === "lg" ? "144px" : "64px"} />
       ) : (
@@ -67,10 +67,10 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
             <Avatar photo={trainer.photo} name={trainer.name} initials={trainer.initials} size="lg" />
             <div className="min-w-0">
               <h2 className="text-xl md:text-2xl font-bold text-slate-900 leading-tight">{trainer.name}</h2>
-              <p className="text-amber-600 font-semibold text-sm mt-1 leading-snug">{trainer.role}</p>
+              <p className="text-accent-600 font-semibold text-sm mt-1 leading-snug">{trainer.role}</p>
               <div className="flex flex-wrap gap-1.5 mt-3">
                 {trainer.tags.map((t) => (
-                  <span key={t} className="bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-full">
+                  <span key={t} className="bg-accent-50 border border-accent-200 text-accent-800 text-xs font-semibold px-2.5 py-1 rounded-full">
                     {t}
                   </span>
                 ))}
@@ -84,7 +84,7 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
             <ul className="space-y-2">
               {trainer.bio.map((b, i) => (
                 <li key={i} className="flex items-start gap-2 text-slate-600 text-sm leading-relaxed">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 mt-1.5" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-400 flex-shrink-0 mt-1.5" />
                   {b}
                 </li>
               ))}
@@ -129,7 +129,7 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
                     <ul className="space-y-1">
                       {trainer.mediationSpec.map((s) => (
                         <li key={s} className="text-sm text-slate-600 flex items-start gap-2">
-                          <span className="w-1 h-1 rounded-full bg-amber-300 flex-shrink-0 mt-2" />
+                          <span className="w-1 h-1 rounded-full bg-accent-300 flex-shrink-0 mt-2" />
                           {s}
                         </li>
                       ))}
@@ -146,7 +146,7 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
               <h3 className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-3">Образование и повышение квалификации</h3>
               <ul className="space-y-1.5">
                 {trainer.education.map((e, i) => (
-                  <li key={i} className="text-slate-500 text-sm leading-relaxed pl-3 border-l-2 border-amber-200">
+                  <li key={i} className="text-slate-500 text-sm leading-relaxed pl-3 border-l-2 border-accent-200">
                     {e}
                   </li>
                 ))}
@@ -163,7 +163,7 @@ function TrainerModal({ trainer, onClose }: { trainer: Trainer; onClose: () => v
                   <div key={c.label} className="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-xl px-4 py-2.5">
                     <span className="text-slate-400 text-xs">{c.label}:</span>
                     {c.href ? (
-                      <a href={c.href} className="text-sm font-medium text-slate-800 hover:text-amber-600 transition-colors">
+                      <a href={c.href} className="text-sm font-medium text-slate-800 hover:text-accent-600 transition-colors">
                         {c.value}
                       </a>
                     ) : (
@@ -190,18 +190,18 @@ export default function TrainersGrid() {
           <button
             key={t.name}
             onClick={() => setSelected(t)}
-            className="group bg-white rounded-2xl border border-slate-100 hover:border-amber-200 hover:shadow-md transition-all p-5 text-left flex flex-col items-center gap-4 cursor-pointer"
+            className="group bg-white rounded-2xl border border-slate-100 hover:border-accent-200 hover:shadow-md transition-all p-5 text-left flex flex-col items-center gap-4 cursor-pointer"
           >
             <Avatar photo={t.photo} name={t.name} initials={t.initials} />
             <div className="text-center min-w-0">
-              <p className="font-bold text-slate-900 text-sm leading-snug group-hover:text-amber-700 transition-colors">
+              <p className="font-bold text-slate-900 text-sm leading-snug group-hover:text-accent-700 transition-colors">
                 {t.name}
               </p>
               <p className="text-slate-500 text-xs mt-1 leading-snug line-clamp-2">{t.role}</p>
             </div>
             <div className="flex flex-wrap gap-1 justify-center">
               {t.tags.slice(0, 2).map((tag) => (
-                <span key={tag} className="bg-amber-50 text-amber-700 text-xs px-2 py-0.5 rounded-full border border-amber-100 font-medium">
+                <span key={tag} className="bg-accent-50 text-accent-700 text-xs px-2 py-0.5 rounded-full border border-accent-100 font-medium">
                   {tag}
                 </span>
               ))}
@@ -211,7 +211,7 @@ export default function TrainersGrid() {
                 </span>
               )}
             </div>
-            <span className="mt-auto text-xs text-amber-600 font-semibold group-hover:underline">
+            <span className="mt-auto text-xs text-accent-600 font-semibold group-hover:underline">
               Подробнее →
             </span>
           </button>

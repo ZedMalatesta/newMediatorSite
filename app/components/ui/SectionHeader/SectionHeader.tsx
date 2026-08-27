@@ -6,7 +6,7 @@ export function SectionHeader({ label, title, subtitle, align = "left", classNam
   return (
     <div className={`mb-10 ${alignClass} ${className}`}>
       {label && (
-        <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+        <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
           {label}
         </p>
       )}
