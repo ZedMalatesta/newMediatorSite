@@ -6,7 +6,7 @@ export default function ServicesSection() {
     <section id="services" className="px-4 py-16 md:py-20 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
             Что мы предлагаем
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
@@ -22,7 +22,7 @@ export default function ServicesSection() {
           {services.map((service) => (
             <div
               key={service.name}
-              className="group bg-slate-50 hover:bg-white border border-transparent hover:border-amber-200 hover:shadow-md p-6 rounded-xl transition-all"
+              className="group bg-slate-50 hover:bg-white border border-transparent hover:border-accent-200 hover:shadow-md p-6 rounded-xl transition-all"
             >
               <div className="mb-4">
                 <Image
@@ -41,7 +41,7 @@ export default function ServicesSection() {
               </p>
               <a
                 href={service.href}
-                className="text-zinc-500 text-sm font-semibold hover:text-amber-600 transition-colors"
+                className="text-zinc-500 text-sm font-semibold hover:text-accent-600 transition-colors"
               >
                 Подробнее →
               </a>

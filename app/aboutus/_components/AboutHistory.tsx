@@ -19,7 +19,7 @@ export default function AboutHistory() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
         {/* History */}
         <div>
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
             С чего всё началось
           </p>
           <h2 className="text-3xl font-bold text-slate-900 mb-6">Наша история</h2>
@@ -38,7 +38,7 @@ export default function AboutHistory() {
 
         {/* Research directions */}
         <div>
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
             Научная работа
           </p>
           <h2 className="text-3xl font-bold text-slate-900 mb-6">

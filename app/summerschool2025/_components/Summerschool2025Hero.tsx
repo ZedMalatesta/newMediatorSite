@@ -2,7 +2,7 @@ export default function Summerschool2025Hero() {
   return (
     <section className="relative bg-slate-900 text-white overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 md:py-28">
-        <p className="text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
+        <p className="text-accent-400 font-semibold text-sm uppercase tracking-widest mb-4">
           Прошедшее мероприятие
         </p>
         <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4 max-w-3xl">
@@ -18,7 +18,7 @@ export default function Summerschool2025Hero() {
 
         <a
           href="/summerintensive2026"
-          className="inline-block bg-amber-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-400 transition-colors"
+          className="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
         >
           Смотреть интенсив 2026
         </a>

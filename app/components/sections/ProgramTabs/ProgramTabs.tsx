@@ -26,7 +26,7 @@ export default function ProgramTabs() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
-            <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+            <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
               Записаться сейчас
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">
@@ -58,10 +58,10 @@ export default function ProgramTabs() {
           {filtered.map((program, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-xl p-6 border border-slate-200 hover:border-amber-300 hover:shadow-md transition-all flex flex-col"
+              className="bg-white rounded-xl p-6 border border-slate-200 hover:border-accent-300 hover:shadow-md transition-all flex flex-col"
             >
               <div className="flex items-start justify-between mb-4">
-                <span className="inline-block bg-amber-50 text-amber-700 border border-amber-200 px-3 py-1 rounded-full text-xs font-semibold">
+                <span className="inline-block bg-accent-50 text-accent-700 border border-accent-200 px-3 py-1 rounded-full text-xs font-semibold">
                   Запись открыта
                 </span>
                 <span className="text-xs text-slate-400 font-medium text-right">
@@ -79,18 +79,18 @@ export default function ProgramTabs() {
 
               <ul className="space-y-2 text-sm text-slate-500 mb-6">
                 <li className="flex items-center gap-2">
-                  <span className="text-amber-500">📅</span>
+                  <span className="text-accent-500">📅</span>
                   <span>
                     <span className="text-slate-400">Начало: </span>
                     {program.startDate}
                   </span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-amber-500">⏱</span>
+                  <span className="text-accent-500">⏱</span>
                   <span>{program.duration}</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-amber-500">📜</span>
+                  <span className="text-accent-500">📜</span>
                   <span>{program.certificate}</span>
                 </li>
               </ul>
@@ -109,7 +109,7 @@ export default function ProgramTabs() {
         )}
 
         <div className="mt-10 text-center">
-          <a href="#" className="text-zinc-500 font-semibold hover:text-amber-600 transition-colors text-sm">
+          <a href="#" className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm">
             Ещё больше наших программ здесь →
           </a>
         </div>

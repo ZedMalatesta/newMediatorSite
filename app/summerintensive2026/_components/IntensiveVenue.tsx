@@ -27,7 +27,7 @@ export default function IntensiveVenue() {
           <ul className="space-y-2.5">
             {onlineFormat.points.map((p) => (
               <li key={p} className="flex items-start gap-2.5 text-slate-300 text-sm leading-relaxed">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 mt-2" />
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-400 flex-shrink-0 mt-2" />
                 {p}
               </li>
             ))}

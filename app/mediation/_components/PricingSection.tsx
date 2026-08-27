@@ -87,7 +87,7 @@ export default function PricingSection() {
     <section className="px-4 py-16 md:py-20 bg-white">
       <div className="max-w-4xl mx-auto">
         <div className="mb-10">
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
             Стоимость услуг
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">
@@ -129,7 +129,7 @@ export default function PricingSection() {
                 <p className="text-slate-400 text-xs leading-relaxed">{row.detail}</p>
               </div>
               <div className="flex-shrink-0">
-                <span className="inline-block bg-amber-50 border border-amber-200 text-amber-800 font-bold text-sm px-4 py-1.5 rounded-lg whitespace-nowrap">
+                <span className="inline-block bg-accent-50 border border-accent-200 text-accent-800 font-bold text-sm px-4 py-1.5 rounded-lg whitespace-nowrap">
                   {row.price}
                 </span>
               </div>

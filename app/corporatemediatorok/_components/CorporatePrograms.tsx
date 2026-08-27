@@ -24,7 +24,7 @@ export default function CorporatePrograms() {
                 className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-slate-50 transition-colors"
               >
                 <div className="flex items-center gap-4 min-w-0">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-amber-100 text-amber-700 font-bold text-sm flex items-center justify-center">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-accent-100 text-accent-700 font-bold text-sm flex items-center justify-center">
                     {i + 1}
                   </span>
                   <p className="font-semibold text-slate-900 text-sm leading-snug">{p.title}</p>

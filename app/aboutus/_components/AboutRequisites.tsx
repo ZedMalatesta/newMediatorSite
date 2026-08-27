@@ -22,7 +22,7 @@ export default function AboutRequisites() {
     <section className="px-4 py-16 md:py-20 bg-slate-50">
       <div className="max-w-4xl mx-auto">
         <div className="mb-10">
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
             Юридическая информация
           </p>
           <h2 className="text-3xl font-bold text-slate-900">Наши реквизиты</h2>

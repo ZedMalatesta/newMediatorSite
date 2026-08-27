@@ -2,7 +2,7 @@ export default function FordialogueHero() {
   return (
     <section className="bg-slate-900 text-white px-4 py-16 md:py-20">
       <div className="max-w-6xl mx-auto">
-        <p className="text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
+        <p className="text-accent-400 font-semibold text-sm uppercase tracking-widest mb-4">
           Наш проект
         </p>
         <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-5 max-w-3xl">

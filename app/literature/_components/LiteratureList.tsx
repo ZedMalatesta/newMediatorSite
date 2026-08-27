@@ -24,7 +24,7 @@ export default function LiteratureList() {
         <ul className="space-y-3">
           {additionalMaterials.map((m) => (
             <li key={m} className="flex items-start gap-3 border border-slate-200 rounded-xl px-5 py-4 text-slate-700 text-sm leading-relaxed">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 mt-2" />
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-400 flex-shrink-0 mt-2" />
               {m}
             </li>
           ))}

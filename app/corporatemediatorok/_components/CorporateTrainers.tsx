@@ -11,7 +11,7 @@ export default function CorporateTrainers() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {trainers.map((t) => (
             <div key={t.name} className="bg-slate-50 rounded-2xl border border-slate-100 p-6 text-center">
-              <div className="relative w-20 h-20 mx-auto rounded-2xl overflow-hidden border-2 border-amber-200 shadow mb-4">
+              <div className="relative w-20 h-20 mx-auto rounded-2xl overflow-hidden border-2 border-accent-200 shadow mb-4">
                 <Image src={t.photo} alt={t.name} fill className="object-cover object-top" sizes="80px" />
               </div>
               <p className="font-bold text-slate-900 text-sm">{t.name}</p>

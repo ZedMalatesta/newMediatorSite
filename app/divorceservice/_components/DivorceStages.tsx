@@ -14,7 +14,7 @@ export default function DivorceStages() {
         <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 mb-14">
           {stages.map((s, i) => (
             <div key={s} className="bg-slate-50 rounded-2xl border border-slate-100 p-4 text-center">
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-amber-100 text-amber-700 font-bold text-sm mx-auto mb-3">
+              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-accent-100 text-accent-700 font-bold text-sm mx-auto mb-3">
                 {i + 1}
               </span>
               <p className="text-slate-700 text-sm font-medium leading-snug">{s}</p>
@@ -26,7 +26,7 @@ export default function DivorceStages() {
         <ul className="space-y-3">
           {packageItems.map((p) => (
             <li key={p} className="flex items-start gap-3 bg-slate-50 rounded-xl border border-slate-100 px-5 py-4 text-slate-700 text-sm leading-relaxed">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 mt-2" />
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-400 flex-shrink-0 mt-2" />
               {p}
             </li>
           ))}

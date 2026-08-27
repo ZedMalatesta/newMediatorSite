@@ -11,17 +11,17 @@ export const NAVY = {
   900: "#0f172a",
 } as const;
 
-export const AMBER = {
-  50: "#fffbeb",
-  100: "#fef3c7",
-  200: "#fde68a",
-  300: "#fcd34d",
-  400: "#fbbf24",
-  500: "#f59e0b",
-  600: "#d97706",
-  700: "#b45309",
-  800: "#92400e",
-  900: "#78350f",
+export const ACCENT = {
+  50: "#fdf2f9",
+  100: "#fce7f4",
+  200: "#f9cfe8",
+  300: "#f2a6d3",
+  400: "#e56fb6",
+  500: "#d4419a",
+  600: "#c2318c",
+  700: "#a12874",
+  800: "#7e2059",
+  900: "#5c1741",
 } as const;
 
 export const SLATE = {

@@ -39,10 +39,10 @@ export default function Trening2024Page() {
                 <a
                   key={t.title}
                   href={t.href}
-                  className="bg-slate-50 rounded-2xl border border-slate-100 p-6 hover:border-amber-300 hover:shadow-md transition-all"
+                  className="bg-slate-50 rounded-2xl border border-slate-100 p-6 hover:border-accent-300 hover:shadow-md transition-all"
                 >
                   <p className="font-bold text-slate-900 text-sm mb-2">{t.title}</p>
-                  <span className="text-amber-600 text-xs font-semibold">Подробнее →</span>
+                  <span className="text-accent-600 text-xs font-semibold">Подробнее →</span>
                 </a>
               ))}
             </div>

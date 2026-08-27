@@ -9,7 +9,7 @@ export default function TeamGrid() {
           key={s.name}
           className="bg-white rounded-2xl border border-slate-100 p-6 flex flex-col items-center text-center gap-4"
         >
-          <div className="relative w-28 h-28 rounded-2xl overflow-hidden border-2 border-amber-200 shadow flex-shrink-0">
+          <div className="relative w-28 h-28 rounded-2xl overflow-hidden border-2 border-accent-200 shadow flex-shrink-0">
             {s.photo ? (
               <Image src={s.photo} alt={s.name} fill className="object-cover object-top" sizes="112px" />
             ) : (
@@ -20,11 +20,11 @@ export default function TeamGrid() {
           </div>
           <div>
             <p className="font-bold text-slate-900 text-base">{s.name}</p>
-            <p className="text-amber-600 text-xs font-semibold mt-1 leading-snug">{s.role}</p>
+            <p className="text-accent-600 text-xs font-semibold mt-1 leading-snug">{s.role}</p>
           </div>
           <div className="flex flex-wrap gap-1.5 justify-center">
             {s.tags.map((t) => (
-              <span key={t} className="bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-full">
+              <span key={t} className="bg-accent-50 border border-accent-200 text-accent-800 text-xs font-semibold px-2.5 py-1 rounded-full">
                 {t}
               </span>
             ))}

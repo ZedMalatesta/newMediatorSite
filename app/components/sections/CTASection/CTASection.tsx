@@ -8,7 +8,7 @@ export default function CTASection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Telegram */}
           <div>
-            <p className="text-amber-400 font-semibold text-sm uppercase tracking-widest mb-4">
+            <p className="text-accent-400 font-semibold text-sm uppercase tracking-widest mb-4">
               Оставайтесь на связи
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
@@ -31,14 +31,14 @@ export default function CTASection() {
             </div>
             <a
               href="#"
-              className="inline-block bg-amber-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-400 transition-colors"
+              className="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
             >
               Подписаться в телеграм →
             </a>
           </div>
 
           {/* Contact form */}
-          <div className="bg-slate-800 rounded-2xl p-8 border border-amber-500/20">
+          <div className="bg-slate-800 rounded-2xl p-8 border border-accent-500/20">
             <h3 className="text-xl font-bold mb-1">Готовы начать?</h3>
             <p className="text-slate-400 text-sm mb-6">
               Оставьте свои данные для связи — мы ответим в течение одного

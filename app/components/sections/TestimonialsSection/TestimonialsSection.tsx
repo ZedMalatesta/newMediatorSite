@@ -34,7 +34,7 @@ export default function TestimonialsSection() {
     <section className="px-4 py-16 md:py-20 bg-slate-50">
       <div className="max-w-6xl mx-auto">
         <div className="mb-10">
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
             Отзывы
           </p>
           <h2 className="text-3xl font-bold text-slate-900 mb-2">
@@ -48,7 +48,7 @@ export default function TestimonialsSection() {
             <button
               key={i}
               onClick={() => setOpen(i)}
-              className="flex-shrink-0 snap-start w-64 md:w-72 rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg hover:border-amber-300 transition-all bg-white cursor-zoom-in group relative"
+              className="flex-shrink-0 snap-start w-64 md:w-72 rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg hover:border-accent-300 transition-all bg-white cursor-zoom-in group relative"
               aria-label={`Открыть отзыв ${i + 1}`}
             >
               <div className="relative w-full aspect-[3/4]">
@@ -73,7 +73,7 @@ export default function TestimonialsSection() {
         <div className="mt-8 text-center">
           <a
             href="#"
-            className="text-zinc-500 font-semibold hover:text-amber-600 transition-colors text-sm"
+            className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm"
           >
             Ещё больше отзывов здесь →
           </a>
@@ -114,7 +114,7 @@ export default function TestimonialsSection() {
             {/* Prev */}
             <button
               onClick={prev}
-              className="absolute left-0 -translate-x-14 top-1/2 -translate-y-1/2 w-10 h-10 bg-white text-slate-700 rounded-full shadow-lg flex items-center justify-center hover:bg-amber-50 hover:text-amber-600 transition-colors"
+              className="absolute left-0 -translate-x-14 top-1/2 -translate-y-1/2 w-10 h-10 bg-white text-slate-700 rounded-full shadow-lg flex items-center justify-center hover:bg-accent-50 hover:text-accent-600 transition-colors"
               aria-label="Предыдущий"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -125,7 +125,7 @@ export default function TestimonialsSection() {
             {/* Next */}
             <button
               onClick={next}
-              className="absolute right-0 translate-x-14 top-1/2 -translate-y-1/2 w-10 h-10 bg-white text-slate-700 rounded-full shadow-lg flex items-center justify-center hover:bg-amber-50 hover:text-amber-600 transition-colors"
+              className="absolute right-0 translate-x-14 top-1/2 -translate-y-1/2 w-10 h-10 bg-white text-slate-700 rounded-full shadow-lg flex items-center justify-center hover:bg-accent-50 hover:text-accent-600 transition-colors"
               aria-label="Следующий"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

@@ -7,7 +7,7 @@ export default function MediationSection() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-14">
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
             Узнать больше
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8">
@@ -42,9 +42,9 @@ export default function MediationSection() {
                 {mediationPrinciples.map((p) => (
                   <div
                     key={p.title}
-                    className="bg-amber-50 border border-amber-100 rounded-xl p-4"
+                    className="bg-accent-50 border border-accent-100 rounded-xl p-4"
                   >
-                    <div className="font-bold text-amber-700 text-sm mb-1">{p.title}</div>
+                    <div className="font-bold text-accent-700 text-sm mb-1">{p.title}</div>
                     <div className="text-slate-500 text-xs leading-relaxed">{p.description}</div>
                   </div>
                 ))}
@@ -62,7 +62,7 @@ export default function MediationSection() {
             {disputeTypes.map((d) => (
               <div
                 key={d.label}
-                className="flex items-center gap-4 bg-slate-50 rounded-xl px-5 py-4 border border-slate-100 hover:border-amber-200 transition-colors"
+                className="flex items-center gap-4 bg-slate-50 rounded-xl px-5 py-4 border border-slate-100 hover:border-accent-200 transition-colors"
               >
                 <Image
                   src={d.iconSrc}
@@ -88,7 +88,7 @@ export default function MediationSection() {
                 key={i}
                 className="flex items-start gap-3 py-3 px-4 rounded-lg hover:bg-slate-50 transition-colors"
               >
-                <span className="w-5 h-5 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                <span className="w-5 h-5 rounded-full bg-accent-100 text-accent-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
                   ✓
                 </span>
                 <span className="text-slate-600 text-sm">{adv}</span>

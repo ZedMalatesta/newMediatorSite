@@ -84,7 +84,7 @@ export default function CourseCurriculum() {
     <section className="px-4 py-16 md:py-20 bg-white">
       <div className="max-w-4xl mx-auto">
         <div className="mb-10">
-          <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
             Содержание курса
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
@@ -108,11 +108,11 @@ export default function CourseCurriculum() {
                 className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-slate-50 transition-colors"
               >
                 <div className="flex items-center gap-4 min-w-0">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-amber-100 text-amber-700 font-bold text-sm flex items-center justify-center">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-accent-100 text-accent-700 font-bold text-sm flex items-center justify-center">
                     {i + 1}
                   </span>
                   <div className="min-w-0">
-                    <p className="text-xs text-amber-600 font-semibold uppercase tracking-wider mb-0.5">
+                    <p className="text-xs text-accent-600 font-semibold uppercase tracking-wider mb-0.5">
                       {s.date}
                     </p>
                     <p className="font-semibold text-slate-900 text-sm leading-snug">
@@ -133,7 +133,7 @@ export default function CourseCurriculum() {
                   <ul className="pt-4 space-y-2.5">
                     {s.topics.map((t, j) => (
                       <li key={j} className="flex items-start gap-2.5 text-slate-600 text-sm leading-relaxed">
-                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 mt-2" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent-400 flex-shrink-0 mt-2" />
                         {t}
                       </li>
                     ))}

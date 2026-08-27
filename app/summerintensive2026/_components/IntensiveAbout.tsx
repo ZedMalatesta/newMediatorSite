@@ -29,7 +29,7 @@ export default function IntensiveAbout() {
               key={p.title}
               className="bg-slate-50 rounded-2xl border border-slate-100 p-6 text-center"
             >
-              <h3 className="text-lg font-bold text-amber-600 mb-2">{p.title}</h3>
+              <h3 className="text-lg font-bold text-accent-600 mb-2">{p.title}</h3>
               <p className="text-slate-600 text-sm leading-relaxed">{p.description}</p>
             </div>
           ))}

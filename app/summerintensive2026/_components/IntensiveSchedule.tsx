@@ -20,8 +20,8 @@ export default function IntensiveSchedule() {
               onClick={() => setActiveDay(i)}
               className={`px-5 py-2.5 rounded-lg font-semibold text-sm transition-colors ${
                 activeDay === i
-                  ? "bg-amber-500 text-white"
-                  : "bg-white text-slate-600 border border-slate-200 hover:border-amber-300"
+                  ? "bg-accent-500 text-white"
+                  : "bg-white text-slate-600 border border-slate-200 hover:border-accent-300"
               }`}
             >
               {d.date} · {d.label}
@@ -32,7 +32,7 @@ export default function IntensiveSchedule() {
         <div className="bg-white rounded-2xl border border-slate-100 divide-y divide-slate-100 overflow-hidden">
           {day.sessions.map((s, i) => (
             <div key={i} className="flex items-start gap-4 px-6 py-4">
-              <span className="flex-shrink-0 w-24 text-amber-600 font-semibold text-sm pt-0.5">
+              <span className="flex-shrink-0 w-24 text-accent-600 font-semibold text-sm pt-0.5">
                 {s.time}
               </span>
               <div className="min-w-0">

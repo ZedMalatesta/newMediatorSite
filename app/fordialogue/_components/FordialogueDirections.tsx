@@ -22,7 +22,7 @@ export default function FordialogueDirections() {
         <ul className="space-y-3">
           {directions.map((d) => (
             <li key={d} className="flex items-start gap-3 bg-slate-50 rounded-xl border border-slate-100 px-5 py-4 text-slate-700 text-sm leading-relaxed">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 mt-2" />
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-400 flex-shrink-0 mt-2" />
               {d}
             </li>
           ))}

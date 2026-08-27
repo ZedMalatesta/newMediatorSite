@@ -41,7 +41,7 @@ function BlockText({ block }: { block: PageBlock }) {
           {subheadings.map((s) => (
             <span
               key={s}
-              className="bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold px-3 py-1.5 rounded-full"
+              className="bg-accent-50 border border-accent-200 text-accent-800 text-xs font-semibold px-3 py-1.5 rounded-full"
             >
               {s}
             </span>
@@ -56,7 +56,7 @@ function BlockText({ block }: { block: PageBlock }) {
               key={i}
               className="flex items-start gap-2.5 text-slate-600 text-sm leading-relaxed"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 mt-2" />
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-400 flex-shrink-0 mt-2" />
               {item}
             </li>
           ))}
