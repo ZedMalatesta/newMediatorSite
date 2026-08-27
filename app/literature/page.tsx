@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 
 import LiteratureList from "./_components/LiteratureList";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Литература | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/literature") },
+  title: "Литература",
   description:
     "Рекомендуемая литература по медиации, конфликтологии и переговорам от экспертов УПУ «МедиаторОк Проф».",
 };

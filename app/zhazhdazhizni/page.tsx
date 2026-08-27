@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Жажда жизни | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/zhazhdazhizni") },
+  title: "Жажда жизни",
   description:
     "Онлайн терапевтическая группа на основе логотерапии и экзистенциального анализа: поиск смысла, преодоление кризисов, новые ресурсы в неопределённые времена.",
 };

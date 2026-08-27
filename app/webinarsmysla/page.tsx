@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Смыслоцентрированная терапия супружеских пар | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/webinarsmysla") },
+  title: "Смыслоцентрированная терапия супружеских пар",
   description:
     "Впервые в Беларуси: техники логотерапии для пар — поиск смысла, развитие доверия и осознание ответственности за качество отношений.",
 };

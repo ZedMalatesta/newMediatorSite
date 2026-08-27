@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 
 import NewsList from "./_components/NewsList";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Новости | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/news") },
+  title: "Новости",
   description:
     "Новости и достижения УПУ «МедиаторОк Проф», а также ближайшие программы и события.",
 };

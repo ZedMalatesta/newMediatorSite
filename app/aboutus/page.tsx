@@ -11,9 +11,11 @@ import AboutStats from "./_components/AboutStats";
 import AboutTeam from "./_components/AboutTeam";
 import AboutRequisites from "./_components/AboutRequisites";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "О нас | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/aboutus") },
+  title: "О нас",
   description:
     "Международная онлайн академия психологии, медиации и коучинга «МедиаторОк Проф». Наша история, команда, достижения и программы обучения.",
 };

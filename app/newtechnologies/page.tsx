@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Новые технологии современной медиации | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/newtechnologies") },
+  title: "Новые технологии современной медиации",
   description:
     "Программа повышения квалификации для медиаторов и конфликтологов: трансформативная, нарративная, провокативная, когнитивно-ориентированная, интервенционная и восстановительная медиация.",
 };

@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Тренинг «Нарративная медиация» | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/narrativemediation") },
+  title: "Тренинг «Нарративная медиация»",
   description:
     "Метод разрешения конфликтов, основанный на том, как люди выстраивают и описывают противоречия в своей ситуации. Воскресенье, 11:00–18:00, онлайн.",
 };

@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 
 import PravoList from "./_components/PravoList";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Правовые акты | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/pravo") },
+  title: "Правовые акты",
   description:
     "Нормативно-правовые акты, регулирующие медиацию в Республике Беларусь: закон о медиации, правила проведения медиации, правила этики медиатора.",
 };

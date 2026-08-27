@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Медиация в образовательной среде | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/mediationinschool") },
+  title: "Медиация в образовательной среде",
   description:
     "Бесплатный вебинар о роли медиации в школах: какие конфликты решаемы и как внедрить службу медиации в образовательном учреждении.",
 };

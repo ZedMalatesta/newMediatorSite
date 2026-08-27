@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Добрачное консультирование | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/premaritalcounseling") },
+  title: "Добрачное консультирование",
   description:
     "Индивидуальное и семейное добрачное консультирование молодожёнов: цели и функции брака, бесконфликтное общение, семейный бюджет, семейные мифы.",
 };

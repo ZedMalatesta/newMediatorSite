@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Рождественские встречи в МедиаторОк | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/mediatorsparty") },
+  title: "Рождественские встречи в МедиаторОк",
   description:
     "Новогодняя встреча для выпускников и специалистов медиации: итоги года, цели на будущее, творческие мастерские, нетворкинг.",
 };

@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Конфликт-менеджмент | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/confictmanagment") },
+  title: "Конфликт-менеджмент",
   description:
     "Обучение конфликт-менеджменту для супругов, родителей и детей: навыки коммуникации и бесконфликтного общения и взаимодействия.",
 };

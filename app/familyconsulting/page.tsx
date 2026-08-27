@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Семейное консультирование детей и родителей | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/familyconsulting") },
+  title: "Семейное консультирование детей и родителей",
   description:
     "Онлайн-программа практических техник семейного консультирования: этапы консультации, анализ поведенческих целей, психотехнические методы, разбор кейсов.",
 };

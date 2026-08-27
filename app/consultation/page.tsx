@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Психологическое консультирование и психокоррекция | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/consultation") },
+  title: "Психологическое консультирование и психокоррекция",
   description:
     "Базовый онлайн-курс психологического консультирования и психокоррекции людей разного возраста — от пренатального до пожилого. 264 часа, 6 месяцев.",
 };

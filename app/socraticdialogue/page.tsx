@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Сократический диалог в работе медиатора | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/socraticdialogue") },
+  title: "Сократический диалог в работе медиатора",
   description:
     "Онлайн-вебинар об искусстве вопросов как ключевом инструменте медиатора для разрешения конфликтов и достижения договорённостей.",
 };

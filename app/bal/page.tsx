@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Первый бал медиаторов | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/bal") },
+  title: "Первый бал медиаторов",
   description:
     "Первый маскарадный бал для медиаторов в Минске: танцы, вокальные номера, конкурс костюмов и нетворкинг.",
 };

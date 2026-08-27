@@ -8,9 +8,11 @@ import CounselingFormats from "./_components/CounselingFormats";
 import CounselingSpecialists from "./_components/CounselingSpecialists";
 import CounselingSignup from "./_components/CounselingSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Психологическое консультирование | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/psycologicalcounseling") },
+  title: "Психологическое консультирование",
   description:
     "Индивидуальные, парные и семейные консультации психолога очно и онлайн. Тревога, стресс, выгорание, отношения, жизненные кризисы.",
 };

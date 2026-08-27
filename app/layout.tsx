@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
+import { site, siteUrl, absoluteUrl } from "@lib/site";
 
 // Body text. Cyrillic is required - the site is entirely in Russian.
 const inter = Inter({
@@ -17,9 +18,16 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Mediator — Professional Mediation & Conflict Resolution",
-  description:
-    "Comprehensive training programs in mediation, conflict resolution, and professional development.",
+  // Spec §12: the site's content is entirely Russian; its metadata was English.
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${site.legalName} — обучение медиаторов и разрешение конфликтов`,
+    template: `%s | ${site.name}`,
+  },
+  description: site.description,
+  alternates: {
+    canonical: absoluteUrl("/"),
+  },
 };
 
 export default function RootLayout({

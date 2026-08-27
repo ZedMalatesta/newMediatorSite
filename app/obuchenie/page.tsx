@@ -6,9 +6,11 @@ import ProgramTabs from "@sections/ProgramTabs/ProgramTabs";
 
 import ExtraCourses from "./_components/ExtraCourses";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Обучение | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/obuchenie") },
+  title: "Обучение",
   description:
     "Обучающие программы УПУ «МедиаторОк Проф»: подготовка медиаторов, семейная медиация, практическая конфликтология, школа юного медиатора, вебинары и курсы повышения квалификации.",
 };

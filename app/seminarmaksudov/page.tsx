@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Семинар Рустема Максудова «Богатство ролей медиатора» | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/seminarmaksudov") },
+  title: "Семинар Рустема Максудова «Богатство ролей медиатора»",
   description:
     "3-дневный семинар о том, как медиаторы совмещают юриста, психолога и активиста в себе. Очно в Минске или онлайн.",
 };

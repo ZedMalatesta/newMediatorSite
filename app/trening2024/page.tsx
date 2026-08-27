@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { SectionHeader } from "@ui/SectionHeader/SectionHeader";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Тренинги на каникулах | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/trening2024") },
+  title: "Тренинги на каникулах",
   description:
     "Серия очных и онлайн тренингов в январе: «Провокативная медиация», «Нарративная медиация», «Трансформативная медиация» и практические сессии медиации.",
 };

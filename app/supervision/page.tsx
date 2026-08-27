@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Супервизия для медиаторов | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/supervision") },
+  title: "Супервизия для медиаторов",
   description:
     "Обязательный компонент полноценного образования в медиации: разбор кейсов, техники супервизии и профессиональная рефлексия для практикующих медиаторов.",
 };

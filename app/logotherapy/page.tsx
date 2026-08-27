@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Логотерапия и экзистенциальный подход в психологическом консультировании | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/logotherapy") },
+  title: "Логотерапия и экзистенциальный подход в психологическом консультировании",
   description:
     "Программа развития практических навыков логотерапии и экзистенциального анализа в индивидуальном и групповом консультировании. 128 часов, 3 месяца.",
 };

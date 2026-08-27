@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Бесплатный вебинар: медиация для психологов и юристов | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/vebinar") },
+  title: "Бесплатный вебинар: медиация для психологов и юристов",
   description:
     "Вводный вебинар о разрешении конфликтов и медиации, который поможет специалистам зарабатывать на новых навыках. Подарок участникам — чек-лист «Методы разрешения конфликтов».",
 };

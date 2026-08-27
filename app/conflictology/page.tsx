@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Конфликтология: навыки для жизни | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/conflictology") },
+  title: "Конфликтология: навыки для жизни",
   description:
     "Короткий онлайн-вебинар о медиации как технологии разрешения конфликтов: смена угла зрения на конфликт и практические техники.",
 };

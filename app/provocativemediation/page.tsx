@@ -5,9 +5,11 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Тренинг «Провокативная медиация» | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/provocativemediation") },
+  title: "Тренинг «Провокативная медиация»",
   description:
     "Метод разрешения конфликтов, сочетающий поддержку, юмор и парадокс. Воскресенье, 11:00–18:00, онлайн.",
 };
