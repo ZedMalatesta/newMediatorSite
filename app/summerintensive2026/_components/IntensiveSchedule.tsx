@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { SectionHeader } from "@/app/components/ui/SectionHeader/SectionHeader";
 import { schedule } from "./intensive-data";
+import { useTabKeyboard } from "@/app/hooks/useTabKeyboard";
 
 export default function IntensiveSchedule() {
   const [activeDay, setActiveDay] = useState(0);
+  const { setRef, onKeyDown } = useTabKeyboard(schedule.length, setActiveDay);
   const day = schedule[activeDay];
 
   return (
@@ -13,10 +15,21 @@ export default function IntensiveSchedule() {
       <div className="max-w-4xl mx-auto">
         <SectionHeader label="Программа" title="Расписание интенсива" align="center" />
 
-        <div className="flex justify-center gap-3 mb-8 flex-wrap">
+        <div
+          role="tablist"
+          aria-label="Дни интенсива"
+          className="flex justify-center gap-3 mb-8 flex-wrap"
+        >
           {schedule.map((d, i) => (
             <button
               key={d.date}
+              ref={setRef(i)}
+              role="tab"
+              id={`schedule-tab-${i}`}
+              aria-selected={activeDay === i}
+              aria-controls="schedule-panel"
+              tabIndex={activeDay === i ? 0 : -1}
+              onKeyDown={onKeyDown(i)}
               onClick={() => setActiveDay(i)}
               className={`px-5 py-2.5 rounded-lg font-semibold text-sm transition-colors ${
                 activeDay === i
@@ -29,7 +42,12 @@ export default function IntensiveSchedule() {
           ))}
         </div>
 
-        <div className="bg-white rounded-2xl border border-slate-100 divide-y divide-slate-100 overflow-hidden">
+        <div
+          id="schedule-panel"
+          role="tabpanel"
+          aria-labelledby={`schedule-tab-${activeDay}`}
+          className="bg-white rounded-2xl border border-slate-100 divide-y divide-slate-100 overflow-hidden"
+        >
           {day.sessions.map((s, i) => (
             <div key={i} className="flex items-start gap-4 px-6 py-4">
               <span className="flex-shrink-0 w-24 text-accent-600 font-semibold text-sm pt-0.5">
