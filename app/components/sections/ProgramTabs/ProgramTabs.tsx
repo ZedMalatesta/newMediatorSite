@@ -109,7 +109,7 @@ export default function ProgramTabs() {
         )}
 
         <div className="mt-10 text-center">
-          <a href="#" className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm">
+          <a href="/obuchenie" className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm">
             Ещё больше наших программ здесь →
           </a>
         </div>
