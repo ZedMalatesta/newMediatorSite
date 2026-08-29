@@ -16,6 +16,19 @@ export const navLinks: NavLink[] = [
   },
   { label: "Обучение", href: "/obuchenie" },
   {
+    // Audience-first entry point (change request point 6). Kept in sync with
+    // app/lib/audiences.ts by hand is a drift risk, so the labels are short and
+    // the audience pages remain the source of truth for their contents.
+    label: "Направления",
+    href: "/audience/buduschim-mediatoram",
+    children: [
+      { label: "Будущим медиаторам", href: "/audience/buduschim-mediatoram" },
+      { label: "Психологам и специалистам", href: "/audience/specialistam" },
+      { label: "Родителям и семьям", href: "/audience/roditelyam-i-semyam" },
+      { label: "Организациям и бизнесу", href: "/audience/organizaciyam" },
+    ],
+  },
+  {
     label: "Услуги",
     href: "#services",
     children: [
