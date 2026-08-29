@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { search } from "@lib/search";
 
 /**
@@ -15,8 +15,35 @@ export default function SearchBox({ className = "" }: { className?: string }) {
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(-1);
+  const listId = "site-search-results";
+  const boxRef = useRef<HTMLDivElement>(null);
 
   const results = useMemo(() => (query.trim() ? search(query, 6) : []), [query]);
+
+  // A new query invalidates the previous highlight.
+  useEffect(() => setActive(-1), [query]);
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Escape") {
+      setOpen(false);
+      setActive(-1);
+      return;
+    }
+    if (results.length === 0) return;
+
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      setOpen(true);
+      const delta = e.key === "ArrowDown" ? 1 : -1;
+      setActive((i) => (i + delta + results.length) % results.length);
+    }
+    if (e.key === "Enter" && active >= 0) {
+      e.preventDefault();
+      setOpen(false);
+      router.push(`/${results[active].slug}`);
+    }
+  };
 
   const go = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +53,7 @@ export default function SearchBox({ className = "" }: { className?: string }) {
   };
 
   return (
-    <div className={`relative ${className}`}>
+    <div ref={boxRef} className={`relative ${className}`}>
       <form onSubmit={go} role="search">
         <label htmlFor="site-search" className="sr-only">
           Поиск по сайту
@@ -41,8 +68,16 @@ export default function SearchBox({ className = "" }: { className?: string }) {
           }}
           onFocus={() => setOpen(true)}
           onBlur={() => window.setTimeout(() => setOpen(false), 120)}
+          onKeyDown={onKeyDown}
           placeholder="Я ищу"
           autoComplete="off"
+          role="combobox"
+          aria-expanded={open && Boolean(query.trim())}
+          aria-controls={listId}
+          aria-autocomplete="list"
+          aria-activedescendant={
+            active >= 0 ? `site-search-option-${active}` : undefined
+          }
           className="w-full bg-slate-100 border border-slate-200 rounded-full pl-9 pr-3 py-2 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent-400 focus:bg-white transition-colors"
         />
         <svg
@@ -64,12 +99,15 @@ export default function SearchBox({ className = "" }: { className?: string }) {
               Ничего не найдено по запросу «{query.trim()}»
             </p>
           ) : (
-            <ul>
-              {results.map((r) => (
-                <li key={r.slug}>
+            <ul id={listId} role="listbox" aria-label="Результаты поиска">
+              {results.map((r, i) => (
+                <li key={r.slug} role="option" aria-selected={i === active} id={`site-search-option-${i}`}>
                   <Link
                     href={`/${r.slug}`}
-                    className="block px-4 py-2.5 hover:bg-accent-50 transition-colors"
+                    onMouseEnter={() => setActive(i)}
+                    className={`block px-4 py-2.5 transition-colors ${
+                      i === active ? "bg-accent-50" : "hover:bg-accent-50"
+                    }`}
                   >
                     <span className="block text-sm font-semibold text-slate-800">
                       {r.title}
