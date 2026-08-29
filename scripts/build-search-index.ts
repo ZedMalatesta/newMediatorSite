@@ -25,9 +25,22 @@ function routeMeta(slug: string): { title: string; description: string } {
   return { title, description };
 }
 
-const entries = Object.entries(pageBlocks)
-  .filter(([slug]) => slug !== "home")
-  .map(([slug, blocks]) => {
+/**
+ * Enumerate routes from the app directory, not from pageBlocks: pages with no
+ * counterpart on the original site have no blocks, and driving the index off
+ * blocks alone left them unfindable by search.
+ */
+const routes = fs
+  .readdirSync(APP, { withFileTypes: true })
+  .filter((e) => e.isDirectory() && !e.name.startsWith("_"))
+  .filter((e) => fs.existsSync(path.join(APP, e.name, "page.tsx")))
+  .map((e) => e.name)
+  .filter((slug) => slug !== "search")
+  .sort();
+
+const entries = routes
+  .map((slug) => {
+    const blocks = pageBlocks[slug] ?? [];
     const { title, description } = routeMeta(slug);
     const words = blocks.flatMap((b) => [
       b.heading,
