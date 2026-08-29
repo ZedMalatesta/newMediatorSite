@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { navLinks } from "@/app/lib/data";
+import SearchBox from "@layout/SearchBox/SearchBox";
 import { FacebookIcon, InstagramIcon } from "@ui/SocialIcons";
 
 export default function Navbar() {
@@ -20,6 +21,8 @@ export default function Navbar() {
         </Link>
 
         {/* Nav links */}
+        <SearchBox className="hidden md:block w-56 xl:w-64 flex-shrink-0 order-last xl:order-none" />
+
         <nav className="hidden lg:flex items-center gap-0.5">
           {navLinks.map((link) =>
             link.children ? (
