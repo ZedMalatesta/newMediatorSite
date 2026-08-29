@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import fs from "node:fs";
 import path from "node:path";
 import { absoluteUrl } from "@lib/site";
+import { audiences } from "@lib/audiences";
 
 /**
  * Spec §12: the site had no sitemap. Routes are read from the app directory so
@@ -14,7 +15,10 @@ function routes(): string[] {
     .filter((e) => e.isDirectory() && !e.name.startsWith("_"))
     .filter((e) => fs.existsSync(path.join(appDir, e.name, "page.tsx")))
     .map((e) => `/${e.name}`);
-  return ["/", ...found.sort()];
+  // Audience pages are a nested dynamic route, so they are not found by the
+  // directory scan above and must be added from their source of truth.
+  const audienceRoutes = audiences.map((a) => `/audience/${a.slug}`);
+  return ["/", ...found.sort(), ...audienceRoutes];
 }
 
 export const dynamic = "force-static";
