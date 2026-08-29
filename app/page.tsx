@@ -5,6 +5,7 @@ import Footer from "@/app/components/layout/Footer";
 
 import HeroSection from "@/app/components/sections/HeroSection";
 import ServicesSection from "@/app/components/sections/ServicesSection";
+import AudienceGrid from "@/app/components/sections/AudienceGrid/AudienceGrid";
 import NewsSection from "@/app/components/sections/NewsSection";
 import ProgramTabs from "@/app/components/sections/ProgramTabs";
 import AdvantagesSection from "@/app/components/sections/AdvantagesSection";
@@ -22,6 +23,7 @@ export default function Home() {
       <PromoBanner />
       <main>
         <HeroSection />
+        <AudienceGrid />
         <ServicesSection />
         <NewsSection />
         <ProgramTabs />
