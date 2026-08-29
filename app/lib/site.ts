@@ -14,6 +14,15 @@ export function absoluteUrl(path = "/"): string {
   return `${siteUrl}${basePath}${clean === "/" ? "" : clean}` || siteUrl;
 }
 
+export type OpeningHours = {
+  /** e.g. "Пн–Чт" */
+  days: string;
+  /** e.g. "9:30 – 17:30" */
+  hours: string;
+  /** Optional break, e.g. "обед 12:30 – 13:00" */
+  note?: string;
+};
+
 export const site = {
   name: "МедиаторОк Проф",
   legalName: "Учебно-практическое учреждение «МедиаторОк Проф»",
@@ -23,6 +32,15 @@ export const site = {
     "медиация, психологическое консультирование и разрешение конфликтов. " +
     "Помогаем людям менять себя и мир вокруг, создавать новые ценности и " +
     "поддерживать культуру ненасилия.",
+  address: "г. Минск, ул. Короля 9, каб. 126",
+  email: "mediatorok.by@gmail.com",
+  phones: ["+375 (29) 867‑82‑40", "+375 (33) 689‑90‑19"],
+  /**
+   * Opening hours are not published anywhere on mediatorok.by, so none are
+   * asserted here. Add entries and the header renders them automatically -
+   * showing invented hours would send someone to a closed office.
+   */
+  openingHours: [] as OpeningHours[],
   telegram: "https://t.me/MediatorOK",
   instagram: "https://www.instagram.com/mediatorok.by/",
 } as const;
