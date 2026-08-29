@@ -103,21 +103,21 @@ export const services = [
     iconSrc: "/images/icons/service-counseling.png",
     name: "Психологическое консультирование",
     description: "Индивидуальное и для семейных пар, очно и онлайн.",
-    href: "#",
+    href: "/psycologicalcounseling",
   },
   {
     iconSrc: "/images/icons/service-corporate.png",
     name: "Корпоративное обучение",
     description:
       "Система подготовки персонала, разработанная для сотрудников Вашей компании.",
-    href: "#",
+    href: "/corporatemediatorok",
   },
   {
     iconSrc: "/images/icons/service-divorce.png",
     name: "Услуга «Развод супругов»",
     description:
       "Пакет услуг по работе с семьёй по сопровождению развода.",
-    href: "#",
+    href: "/divorceservice",
   },
 ];
 
