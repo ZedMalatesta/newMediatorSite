@@ -6,6 +6,8 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { audiences, getAudience, audienceItems } from "@lib/audiences";
 import { absoluteUrl } from "@lib/site";
+import FavouriteButton from "@ui/FavouriteButton/FavouriteButton";
+import AddToCartButton from "@ui/AddToCartButton/AddToCartButton";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -57,20 +59,26 @@ export default async function AudiencePage({ params }: Props) {
             </h2>
             <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {items.map((item) => (
-                <li key={item.slug}>
-                  <Link
-                    href={`/${item.slug}`}
-                    className="group block h-full rounded-xl border border-slate-200 p-5 hover:border-accent-300 hover:shadow-md transition-all"
-                  >
-                    <h3 className="font-semibold text-slate-900 group-hover:text-accent-600 transition-colors mb-2">
-                      {item.title}
-                    </h3>
-                    {item.description && (
-                      <p className="text-slate-500 text-sm leading-relaxed line-clamp-3">
-                        {item.description}
-                      </p>
-                    )}
-                  </Link>
+                <li
+                  key={item.slug}
+                  className="flex h-full flex-col rounded-xl border border-slate-200 p-5 hover:border-accent-300 hover:shadow-md transition-all"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <Link href={`/${item.slug}`} className="group flex-1 min-w-0">
+                      <h3 className="font-semibold text-slate-900 group-hover:text-accent-600 transition-colors mb-2">
+                        {item.title}
+                      </h3>
+                    </Link>
+                    <FavouriteButton slug={item.slug} title={item.title} className="-mr-2 -mt-2 flex-shrink-0" />
+                  </div>
+                  {item.description && (
+                    <p className="text-slate-500 text-sm leading-relaxed line-clamp-3">
+                      {item.description}
+                    </p>
+                  )}
+                  <div className="mt-4 pt-4 border-t border-slate-100">
+                    <AddToCartButton slug={item.slug} title={item.title} />
+                  </div>
                 </li>
               ))}
             </ul>
