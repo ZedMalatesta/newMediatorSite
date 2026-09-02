@@ -24,7 +24,7 @@ export default function ObuchenieMediatorPage() {
         <EventHero
           eyebrow="Программа подготовки медиаторов"
           title="Обучение медиации"
-          subtitle="12 дней, 170 часов (140 часов для юристов). Дистанционно с 1 июня, очно в Минске с 13 июня."
+          subtitle="12 дней, 170 часов (140 часов для юристов). Дистанционно с 31 августа, очно в Минске с 22 августа."
           ctaLabel="Подать заявку"
         />
         <PageBlocks page="obucheniemediator" />
