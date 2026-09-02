@@ -4,7 +4,9 @@ import Link from "next/link";
 import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
+import Image from "next/image";
 import { audiences, getAudience, audienceItems } from "@lib/audiences";
+import { cardImage } from "@lib/pageImage";
 import { absoluteUrl } from "@lib/site";
 import FavouriteButton from "@ui/FavouriteButton/FavouriteButton";
 import AddToCartButton from "@ui/AddToCartButton/AddToCartButton";
@@ -58,11 +60,25 @@ export default async function AudiencePage({ params }: Props) {
               {items.length} направлени{items.length === 1 ? "е" : "й"}
             </h2>
             <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {items.map((item) => (
+              {items.map((item) => {
+                const img = cardImage(item.slug);
+                return (
                 <li
                   key={item.slug}
-                  className="flex h-full flex-col rounded-xl border border-slate-200 p-5 hover:border-accent-300 hover:shadow-md transition-all"
+                  className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 hover:border-accent-300 hover:shadow-md transition-all"
                 >
+                  {img && (
+                    <Link href={`/${item.slug}`} className="relative block aspect-16/9 bg-slate-200">
+                      <Image
+                        src={img.src}
+                        alt={img.alt || item.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 380px"
+                      />
+                    </Link>
+                  )}
+                  <div className="flex flex-1 flex-col p-5">
                   <div className="flex items-start justify-between gap-2">
                     <Link href={`/${item.slug}`} className="group flex-1 min-w-0">
                       <h3 className="font-semibold text-slate-900 group-hover:text-accent-600 transition-colors mb-2">
@@ -79,8 +95,10 @@ export default async function AudiencePage({ params }: Props) {
                   <div className="mt-4 pt-4 border-t border-slate-100">
                     <AddToCartButton slug={item.slug} title={item.title} />
                   </div>
+                  </div>
                 </li>
-              ))}
+                );
+              })}
             </ul>
           </div>
         </section>

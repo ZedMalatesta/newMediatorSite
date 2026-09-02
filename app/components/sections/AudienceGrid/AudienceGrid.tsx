@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { audiences, audienceItems } from "@lib/audiences";
+import { cardImage } from "@lib/pageImage";
 
 /**
  * Catalogue entry points grouped by audience (change request point 5).
@@ -35,6 +37,8 @@ export default function AudienceGrid() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {audiences.map((audience, i) => {
             const items = audienceItems(audience);
+            // Represent the audience with the first of its pages that has one.
+            const banner = items.map((it) => cardImage(it.slug)).find(Boolean) ?? null;
             const preview = items.slice(0, PREVIEW);
             const rest = items.length - preview.length;
 
@@ -45,11 +49,27 @@ export default function AudienceGrid() {
               >
                 <Link
                   href={`/audience/${audience.slug}`}
-                  className={`block bg-gradient-to-br ${BANDS[i % BANDS.length]} px-5 py-7 text-white`}
+                  className="relative block overflow-hidden"
                 >
-                  <h3 className="font-display text-xl font-bold leading-snug">
-                    {audience.title}
-                  </h3>
+                  {banner && (
+                    <Image
+                      src={banner.src}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 320px"
+                    />
+                  )}
+                  {/* Tint keeps the title legible over any photo. */}
+                  <div
+                    className={`relative bg-gradient-to-br ${BANDS[i % BANDS.length]} ${
+                      banner ? "opacity-90" : ""
+                    } px-5 py-7 text-white`}
+                  >
+                    <h3 className="font-display text-xl font-bold leading-snug">
+                      {audience.title}
+                    </h3>
+                  </div>
                 </Link>
 
                 <div className="flex flex-col flex-1 p-5">
