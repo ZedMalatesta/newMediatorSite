@@ -37,40 +37,60 @@ export default function AdvantagesSection() {
 
           {/* 2×3 cards grid */}
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {advantages.map((adv, i) => (
-              <div
-                key={adv.title}
-                className="bg-white rounded-xl p-5 border border-slate-100 hover:border-accent-200 hover:shadow-md transition-all flex gap-4 items-start"
-              >
-                {/* Icon */}
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 relative">
-                    <Image
-                      src={adv.iconSrc}
-                      alt={adv.title}
-                      fill
-                      className="object-contain"
-                      sizes="48px"
-                    />
-                  </div>
-                </div>
+            {advantages.map((adv, i) => {
+              // The one card that names an official, state-issued credential -
+              // gold reads as "certified", which the others don't claim.
+              const isCredential = adv.title
+                .toLowerCase()
+                .includes("государственного образца");
 
-                {/* Text */}
-                <div className="min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-bold text-slate-900 text-sm leading-snug">
-                      {adv.title}
-                    </h3>
-                    <span className="text-xs font-bold text-accent-400 flex-shrink-0">
-                      0{i + 1}
-                    </span>
+              return (
+                <div
+                  key={adv.title}
+                  className={`bg-white rounded-xl p-5 border hover:shadow-md transition-all flex gap-4 items-start ${
+                    isCredential
+                      ? "border-gold-200 hover:border-gold-300"
+                      : "border-slate-100 hover:border-accent-200"
+                  }`}
+                >
+                  {/* Icon */}
+                  <div className="flex-shrink-0">
+                    <div
+                      className={`w-12 h-12 relative rounded-lg ${
+                        isCredential ? "bg-gold-50 p-1.5" : ""
+                      }`}
+                    >
+                      <Image
+                        src={adv.iconSrc}
+                        alt={adv.title}
+                        fill
+                        className={isCredential ? "object-contain p-1.5" : "object-contain"}
+                        sizes="48px"
+                      />
+                    </div>
                   </div>
-                  <p className="text-slate-500 text-xs leading-relaxed">
-                    {adv.description}
-                  </p>
+
+                  {/* Text */}
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="font-bold text-slate-900 text-sm leading-snug">
+                        {adv.title}
+                      </h3>
+                      <span
+                        className={`text-xs font-bold flex-shrink-0 ${
+                          isCredential ? "text-gold-600" : "text-accent-400"
+                        }`}
+                      >
+                        0{i + 1}
+                      </span>
+                    </div>
+                    <p className="text-slate-500 text-xs leading-relaxed">
+                      {adv.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
