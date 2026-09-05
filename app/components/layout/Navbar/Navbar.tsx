@@ -4,6 +4,7 @@ import { navLinks } from "@/app/lib/data";
 import SearchBox from "@layout/SearchBox/SearchBox";
 import AccountMenu from "@layout/AccountMenu/AccountMenu";
 import HeaderActions from "@layout/HeaderActions/HeaderActions";
+import MobileMenu from "@layout/MobileMenu/MobileMenu";
 import { FacebookIcon, InstagramIcon } from "@ui/SocialIcons";
 
 export default function Navbar() {
@@ -22,12 +23,8 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Nav links */}
-        <SearchBox className="hidden md:block w-56 xl:w-64 flex-shrink-0 order-last xl:order-none" />
-
-        <HeaderActions className="flex-shrink-0" />
-        <AccountMenu className="flex-shrink-0" />
-
+        {/* Nav links — full menu, desktop only. Below lg, MobileMenu covers
+            the same links via its own off-canvas panel. */}
         <nav className="hidden lg:flex items-center gap-0.5">
           {navLinks.map((link) =>
             link.children ? (
@@ -71,6 +68,9 @@ export default function Navbar() {
 
         {/* Right side */}
         <div className="flex items-center gap-3 flex-shrink-0">
+          <HeaderActions />
+          <AccountMenu />
+
           <div className="hidden md:flex items-center gap-2 text-slate-400 text-sm">
             <a
               href="https://www.instagram.com/mediatorok.by/"
@@ -97,7 +97,17 @@ export default function Navbar() {
           >
             Обучение →
           </a>
+
+          {/* Below lg, this is the only way to reach the links in <nav>
+              above — it's hidden at that width. */}
+          <MobileMenu />
         </div>
+      </div>
+
+      {/* Search sits in its own row rather than squeezed into the header
+          row alongside the logo, nav, account and cart controls. */}
+      <div className="border-t border-slate-100 px-4 py-2.5">
+        <SearchBox className="max-w-md w-full mx-auto" />
       </div>
     </header>
   );
