@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { EventHeroProps } from "./types";
 import SignupCta from "@ui/SignupCta";
-import { pageCover } from "@lib/pageBlocks";
+import { getPageBlocks, pageCover } from "@lib/pageBlocks";
 
 export function EventHero({
   eyebrow,
@@ -15,7 +15,10 @@ export function EventHero({
 }: EventHeroProps) {
   // The live page's own cover picture, where it has one - the same picture the
   // body no longer repeats.
-  const imageSrc = (page && pageCover[page]) || fallbackImage;
+  // A fallback that the body already shows would be the same picture twice.
+  const shownBelow = (src: string) =>
+    getPageBlocks(page ?? "").some((b) => b.images.some((i) => i.src === src) || b.cards.some((c) => c.image?.src === src));
+  const imageSrc = (page && pageCover[page]) || (fallbackImage && !shownBelow(fallbackImage) ? fallbackImage : undefined);
   return (
     <section className="relative bg-slate-900 text-white overflow-hidden">
       {imageSrc && (

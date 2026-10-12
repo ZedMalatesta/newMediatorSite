@@ -211,9 +211,12 @@ function tokens(frag: string): Token[] {
   }
   for (const m of frag.matchAll(/<[^>]*\s(?:bg)?imgfield="([^"]+)"[^>]*>/g)) {
     const at = place(m[1]);
+    // Some blocks put the field on a wrapper and the picture inside it.
+    const inside = frag.slice(m.index! + m[0].length, m.index! + m[0].length + 700).split(/imgfield=/)[0];
     const url =
       /data-original="([^"]+)"/.exec(m[0])?.[1] ?? /\ssrc="([^"]+)"/.exec(m[0])?.[1] ??
-      /content="([^"]+)"/.exec(m[0])?.[1] ?? /url\(['"]?([^'")]+)/.exec(m[0])?.[1];
+      /content="([^"]+)"/.exec(m[0])?.[1] ?? /url\(['"]?([^'")]+)/.exec(m[0])?.[1] ??
+      /data-original="([^"]+)"/.exec(inside)?.[1];
     if (at && url) out.push({ kind: "image", card: at.card, url, pos: m.index! });
   }
   return out.sort((a, b) => a.pos - b.pos);
@@ -609,12 +612,10 @@ async function main() {
       if (hasContent) out.push(block);
     }
 
-    // The page's lead image is rendered by its hero, so it leaves the body.
-    let cover = out.find((b) => b.coverSrc)?.coverSrc;
-    for (const role of cover ? [] : ["cover", "band-image", "feature-image"]) {
-      cover = out.find((b) => b.role === role && b.images[0]?.width >= 600)?.images[0].src;
-      if (cover) break;
-    }
+    // A page's cover is the background of the cover block it opens with. Only
+    // that: taking the first illustration instead moved it out of the section
+    // it illustrates, and off the page wherever the hero did not show it.
+    const cover = out.slice(0, 2).find((b) => b.coverSrc)?.coverSrc;
     if (cover) {
       covers[slug] = cover;
       for (const b of out) b.images = b.images.filter((i) => i.src !== cover);

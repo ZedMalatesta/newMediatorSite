@@ -1,7 +1,6 @@
 import Image from "next/image";
 import SignupCta from "@ui/SignupCta";
-import { blockByHeading, listInOrder } from "@lib/blockQuery";
-import { pageCover } from "@lib/pageBlocks";
+import { blockByHeading } from "@lib/blockQuery";
 import { prices } from "./counseling-data";
 
 const PAGE = "psycologicalcounseling";
@@ -9,10 +8,8 @@ const PAGE = "psycologicalcounseling";
 export default function CounselingFormats() {
   const formats = blockByHeading(PAGE, "Форматы работы");
   const pricing = blockByHeading(PAGE, "Стоимость услуг");
-  const labels = listInOrder(formats);
-  // The live block illustrates each format in turn; its first picture is the
-  // one the sync lifts out as the page's lead image.
-  const pictures = [pageCover[PAGE], ...(formats?.images.map((i) => i.src) ?? [])].filter(Boolean);
+  // Each format with the illustration the live page gives it.
+  const cards = formats?.cards ?? [];
 
   return (
     <section className="px-4 py-16 md:py-20 bg-white">
@@ -25,15 +22,15 @@ export default function CounselingFormats() {
         </h2>
 
         <div className="grid gap-6 sm:grid-cols-3 mb-16">
-          {labels.map((label, i) => (
+          {cards.map((card) => (
             <div
-              key={label}
+              key={card.title}
               className="rounded-2xl border border-slate-100 bg-white overflow-hidden text-center"
             >
-              {pictures[i] && (
+              {card.image && (
                 <div className="relative aspect-4/3">
                   <Image
-                    src={pictures[i]}
+                    src={card.image.src}
                     alt=""
                     fill
                     className="object-contain p-4"
@@ -42,7 +39,7 @@ export default function CounselingFormats() {
                 </div>
               )}
               <p className="font-bold text-slate-900 text-sm px-5 pb-6 pt-2 first-letter:uppercase">
-                {label}
+                {card.title}
               </p>
             </div>
           ))}
