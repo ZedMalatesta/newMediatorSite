@@ -33,6 +33,8 @@ export const site = {
     "Помогаем людям менять себя и мир вокруг, создавать новые ценности и " +
     "поддерживать культуру ненасилия.",
   address: "г. Минск, ул. Короля 9, каб. 126",
+  /** The address as a map search, without the office number a geocoder trips on. */
+  mapQuery: "Минск, улица Короля, 9",
   email: "mediatorok.by@gmail.com",
   phones: ["+375 (29) 867‑82‑40", "+375 (33) 689‑90‑19"],
   /**

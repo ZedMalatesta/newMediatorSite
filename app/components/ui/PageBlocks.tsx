@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { getPageBlocks, type PageBlock } from "@lib/pageBlocks";
-import { cleanCopy, isTildaArtefact } from "@lib/copyFilters";
+import { cleanCopy, fixTypos, isTildaArtefact } from "@lib/copyFilters";
 import ImageSlider from "./ImageSlider";
 import ZoomableGrid from "./ZoomableGrid";
 import VideoEmbed from "./VideoEmbed";
+import MapEmbed from "./MapEmbed";
 
 /**
  * Renders a page's content in the same order — and the same role — the original
@@ -15,7 +16,7 @@ function BlockHeading({ text }: { text: string }) {
   if (!text || isTildaArtefact(text)) return null;
   return (
     <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
-      {text}
+      {fixTypos(text)}
     </h2>
   );
 }
@@ -130,24 +131,64 @@ function Media({
   );
 }
 
-/** What a block does beyond text and pictures, whatever its role. */
-function BlockExtras({ block }: { block: PageBlock }) {
-  if (block.videos.length === 0) return null;
-
+/**
+ * Collapsible items, as the live accordion blocks behave. Native <details>
+ * gives keyboard operation and the expanded state to assistive technology
+ * without any script, and the answers stay in the HTML for search engines.
+ */
+function Accordion({ block }: { block: PageBlock }) {
   return (
-    <div
-      className={`grid gap-5 mt-2 ${
-        block.videos.length > 1 ? "md:grid-cols-2" : "max-w-3xl"
-      }`}
-    >
-      {block.videos.map((video) => (
-        <VideoEmbed
-          key={`${video.provider}:${video.id}`}
-          video={video}
-          title={block.heading || "Видео МедиаторОк"}
-        />
+    <div className="max-w-3xl divide-y divide-slate-200 border-y border-slate-200">
+      {block.accordion.map((item) => (
+        <details key={item.title} className="group">
+          <summary className="flex items-start justify-between gap-4 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+            <span className="font-semibold text-slate-900 leading-snug group-hover:text-accent-700 transition-colors">
+              {item.title}
+            </span>
+            <span
+              aria-hidden="true"
+              className="flex-shrink-0 mt-0.5 flex h-6 w-6 items-center justify-center rounded-full border border-slate-300 text-slate-500 transition-transform group-open:rotate-45"
+            >
+              +
+            </span>
+          </summary>
+          <div className="pb-5 space-y-2">
+            {cleanCopy(item.body).map((line, i) => (
+              <p key={i} className="text-slate-600 text-sm leading-relaxed">
+                {line}
+              </p>
+            ))}
+          </div>
+        </details>
       ))}
     </div>
+  );
+}
+
+/** What a block does beyond text and pictures, whatever its role. */
+function BlockExtras({ block }: { block: PageBlock }) {
+  return (
+    <>
+      {block.accordion.length > 0 && <Accordion block={block} />}
+
+      {block.videos.length > 0 && (
+        <div
+          className={`grid gap-5 mt-2 ${
+            block.videos.length > 1 ? "md:grid-cols-2" : "max-w-3xl"
+          }`}
+        >
+          {block.videos.map((video) => (
+            <VideoEmbed
+              key={`${video.provider}:${video.id}`}
+              video={video}
+              title={block.heading || "Видео МедиаторОк"}
+            />
+          ))}
+        </div>
+      )}
+
+      {block.map && <MapEmbed />}
+    </>
   );
 }
 
