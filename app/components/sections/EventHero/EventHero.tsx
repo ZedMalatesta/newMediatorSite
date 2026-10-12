@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { EventHeroProps } from "./types";
+import SignupCta from "@ui/SignupCta";
 
 export function EventHero({
   eyebrow,
@@ -26,12 +27,11 @@ export function EventHero({
 
         <div className="flex flex-col sm:flex-row gap-4 items-start">
           {ctaLabel && (
-            <a
+            <SignupCta
               href={ctaHref}
+              label={ctaLabel}
               className="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
-            >
-              {ctaLabel}
-            </a>
+            />
           )}
           {meta && meta.length > 0 && (
             <div className="flex flex-wrap gap-3">

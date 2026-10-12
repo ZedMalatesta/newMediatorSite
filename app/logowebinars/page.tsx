@@ -38,7 +38,6 @@ export default function LogoWebinarsPage() {
           eyebrow="Центр логотерапии «МедиаторОк Проф»"
           title="Вебинары Центра логотерапии"
           subtitle="Стремление к смыслу — главная мотивационная сила человека (Виктор Франкл)."
-          ctaLabel=""
           imageSrc="/images/shared/asset-6.jpg"
         />
         <section className="px-4 py-16 md:py-20 bg-white">

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SignupCta from "@ui/SignupCta";
 
 export default function DivorceHero() {
   return (
@@ -27,12 +28,10 @@ export default function DivorceHero() {
           от первого решения до подписания соглашения.
         </p>
 
-        <a
-          href="#signup"
+        <SignupCta
+          label="Получить бесплатную консультацию"
           className="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
-        >
-          Получить бесплатную консультацию
-        </a>
+        />
       </div>
     </section>
   );

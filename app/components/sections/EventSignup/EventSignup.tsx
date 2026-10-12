@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { EventSignupProps } from "./types";
 import SiteForm from "@ui/SiteForm";
-import { contactFields } from "@lib/formFields";
+import { contactFields, liveFields } from "@lib/formFields";
 import { pageForms } from "@lib/pageForms";
 
 export function EventSignup({
@@ -27,7 +27,7 @@ export function EventSignup({
 
         <div className="bg-slate-800 rounded-2xl p-8 border border-accent-500/20">
           <SiteForm
-            fields={live?.fields ?? contactFields}
+            fields={liveFields(page) ?? contactFields}
             submitLabel={submitLabel}
             context={live?.title ?? title}
           />

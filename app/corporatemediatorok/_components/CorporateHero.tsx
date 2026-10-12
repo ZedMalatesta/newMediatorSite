@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SignupCta from "@ui/SignupCta";
 
 export default function CorporateHero() {
   return (
@@ -27,12 +28,10 @@ export default function CorporateHero() {
           разработанная под задачи вашей компании.
         </p>
 
-        <a
-          href="#signup"
+        <SignupCta
+          label="Оставить заявку"
           className="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
-        >
-          Оставить заявку
-        </a>
+        />
       </div>
     </section>
   );

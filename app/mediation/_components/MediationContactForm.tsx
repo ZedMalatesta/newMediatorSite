@@ -3,15 +3,6 @@
 import SiteForm from "@ui/SiteForm";
 import { field, liveFields } from "@lib/formFields";
 
-const SERVICE_OPTIONS = [
-  "Услуги семейного медиатора",
-  "Консультация психолога для пары",
-  "Консультация психолога индивидуальная",
-  "Консультация адвоката",
-  "Консультация нотариуса",
-  "Нотариус — оформление брачного договора",
-];
-
 export default function MediationContactForm() {
   return (
     <section className="px-4 py-16 md:py-20 bg-slate-900 text-white">
@@ -28,7 +19,7 @@ export default function MediationContactForm() {
 
         <div className="bg-slate-800 rounded-2xl p-8 border border-accent-500/20">
           <SiteForm
-            fields={liveFields("mediation", { usluga: SERVICE_OPTIONS }) ?? [field.name(), field.email(), field.phone(), field.multi("usluga", "Какие услуги Вас интересуют?", SERVICE_OPTIONS)]}
+            fields={liveFields("mediation") ?? [field.name(), field.email(), field.phone()]}
             kind="lead"
             submitLabel="Отправить"
             context="Проведение процедуры медиации"

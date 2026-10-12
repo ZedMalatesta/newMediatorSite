@@ -18,13 +18,31 @@ export const field = {
 export const contactFields: LiveFormField[] = [field.name(), field.email(), field.phone(), field.comment()];
 
 /**
- * The fields the live site's own form on a page asks for, if it has one.
- *
- * `fill` supplies answers for choices whose options the live site only loads at
- * runtime, so they are absent from its markup.
+ * Answers the live site loads at runtime for some choices, so they are absent
+ * from its markup and the sync cannot see them. Kept per page: the same field
+ * key ("usluga") means a different list on a different page, and a page with
+ * no entry here gets a free-text answer rather than a borrowed list.
  */
-export function liveFields(page: string, fill: Record<string, string[]> = {}): LiveFormField[] | undefined {
+const RUNTIME_OPTIONS: Record<string, Record<string, string[]>> = {
+  mediation: {
+    usluga: [
+      "Услуги семейного медиатора",
+      "Консультация психолога для пары",
+      "Консультация психолога индивидуальная",
+      "Консультация адвоката",
+      "Консультация нотариуса",
+      "Нотариус — оформление брачного договора",
+    ],
+  },
+  summerintensive2026: {
+    "Как с Вами можно связаться?": ["По телефону", "По электронной почте", "В вайбере", "В телеграмме"],
+  },
+};
+
+/** The fields the live site's own form on a page asks for, if it has one. */
+export function liveFields(page: string): LiveFormField[] | undefined {
   const form = pageForms[page]?.[0];
   if (!form) return undefined;
+  const fill = RUNTIME_OPTIONS[page] ?? {};
   return form.fields.map((f) => (!f.options && fill[f.key] ? { ...f, options: fill[f.key] } : f));
 }

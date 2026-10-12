@@ -2,7 +2,7 @@
 
 import SiteForm from "@ui/SiteForm";
 import { field, liveFields } from "@lib/formFields";
-import { contactMethods, officeAddress, organizers } from "./intensive-data";
+import { officeAddress, organizers } from "./intensive-data";
 
 export default function IntensiveSignup() {
   return (
@@ -20,7 +20,7 @@ export default function IntensiveSignup() {
 
         <div className="bg-slate-800 rounded-2xl p-8 border border-accent-500/20">
           <SiteForm
-            fields={liveFields("summerintensive2026", { "Как с Вами можно связаться?": contactMethods }) ?? [field.name(), field.email(), field.phone()]}
+            fields={liveFields("summerintensive2026") ?? [field.name(), field.email(), field.phone()]}
             kind="registration"
             submitLabel="Зарегистрироваться"
             context="Летний интенсив медиаторов 2026"
