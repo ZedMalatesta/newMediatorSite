@@ -89,8 +89,10 @@ function Prose({ nodes, small = false }: { nodes: TextNode[]; small?: boolean })
           <p
             key={i}
             className={
-              // A short line ending in a colon introduces what follows it.
-              g.text.length < 70 && g.text.endsWith(":")
+              // A short line ending in a colon introduces what follows it, and
+              // so does one set in capitals - the clause titles of a contract.
+              (g.text.length < 70 && g.text.endsWith(":")) ||
+              (g.text.length < 90 && /[А-ЯЁA-Z]{4}/.test(g.text) && !/[а-яёa-z]/.test(g.text))
                 ? `font-semibold text-slate-900 ${size} pt-1`
                 : `text-slate-600 ${size} leading-relaxed`
             }

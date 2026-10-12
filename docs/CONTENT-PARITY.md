@@ -9,7 +9,11 @@ that works, what is derived from it, and where the rebuild deliberately differs.
 npm run sync:live              # fetch the live site and regenerate
 npm run sync:live -- --offline # regenerate from the cached fetch
 npm run build:search           # rebuild the search index afterwards
+npm run audit:pages            # after a build: every page against its live page
 ```
+
+How a page is built from the synced content, the rules it has to keep and what
+the audit checks are in [specifications/page-specification.md](../specifications/page-specification.md).
 
 The live site is a Tilda build, so every page is a sequence of typed records.
 `scripts/sync-live.ts` reads them and writes:

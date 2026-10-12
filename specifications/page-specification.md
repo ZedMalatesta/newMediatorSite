@@ -138,7 +138,7 @@ The same three parts, with a hero and a form designed for the page:
 | `/contacts` | `ContactsInfo` → `PageBlocks` (the map) → `ContactsForm` |
 | `/pravo` | `PageBlocks` → `PravoList` |
 | `/literature`, `/news` | own list → `PageBlocks` |
-| `/dogovoroferty`, `/politicaobrabotkidannyh` | `LegalDocument` → `PageBlocks` |
+| `/dogovoroferty`, `/politicaobrabotkidannyh` | title band → `PageBlocks`: the legal text as published, with nothing summarising it |
 
 A hand-built section in the body of one of these pages is allowed only when it
 does something the import cannot - a form, a dialog, a catalogue with
@@ -152,7 +152,9 @@ is named in `omit` so it is not shown twice (R2):
 ```
 
 A section that only rewords a live block is not allowed. That is the pattern
-this revision removed, page by page.
+this revision removed, page by page. It matters most on the legal pages: the
+summary that used to sit above the public offer named a different contracting
+party than the offer itself.
 
 ### 3.3 Fully hand-built page
 
@@ -200,6 +202,7 @@ everything the live page puts under it.
 | A line the block repeats as the opening of one of its cards | Said once. |
 | Loose icons not attached to a card | Nothing - they are template decoration. |
 | A whole line that is a link | A link. |
+| A short line ending in a colon, or set in capitals | A sub-heading - the clause titles of the offer and the privacy policy. |
 | A button to a sign-up form (`#popup:…`, Google Forms) | Nothing - the page ends in its own form. |
 | Any other button (Telegram, a download, another page, the paid order page) | A button. |
 | Accordion | Native `<details>` items. |
