@@ -12,7 +12,8 @@ function routes(): string[] {
   const appDir = path.join(process.cwd(), "app");
   const found = fs
     .readdirSync(appDir, { withFileTypes: true })
-    .filter((e) => e.isDirectory() && !e.name.startsWith("_"))
+    // "[alias]" holds forwarding pages, which point elsewhere and are not content.
+    .filter((e) => e.isDirectory() && !/^[_[(]/.test(e.name))
     .filter((e) => fs.existsSync(path.join(appDir, e.name, "page.tsx")))
     .map((e) => `/${e.name}`);
   // Audience pages are a nested dynamic route, so they are not found by the

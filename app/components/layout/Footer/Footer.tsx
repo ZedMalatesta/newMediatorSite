@@ -87,7 +87,7 @@ export default function Footer() {
               {[
                 { label: "Мы/медиаторы — за диалог!", href: "/fordialogue" },
                 { label: "Интервизорская группа «Pro Mediation»", href: "/intervision" },
-                { label: "Школа юного медиатора", href: "/school" },
+                { label: "Школа юного медиатора", href: "/teenschool" },
                 { label: "Летний интенсив медиаторов 2026", href: "/summerintensive2026" },
                 { label: "Лига переговорщиков «Мастерская диалога»", href: "/negotiationleague" },
               ].map((item) => (

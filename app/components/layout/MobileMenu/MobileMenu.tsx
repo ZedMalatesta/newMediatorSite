@@ -116,7 +116,7 @@ export default function MobileMenu() {
                 ) : (
                   <Link
                     key={link.label}
-                    href={link.href}
+                    href={link.href ?? "/"}
                     onClick={() => setOpen(false)}
                     className="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-zinc-50 transition-colors border-b border-slate-100"
                   >

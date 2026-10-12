@@ -32,7 +32,7 @@ function routeMeta(slug: string): { title: string; description: string } {
  */
 const routes = fs
   .readdirSync(APP, { withFileTypes: true })
-  .filter((e) => e.isDirectory() && !e.name.startsWith("_"))
+  .filter((e) => e.isDirectory() && !/^[_[(]/.test(e.name))
   .filter((e) => fs.existsSync(path.join(APP, e.name, "page.tsx")))
   .map((e) => e.name)
   .filter((slug) => slug !== "search")

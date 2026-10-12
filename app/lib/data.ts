@@ -1,74 +1,67 @@
+import { liveNav } from "./liveNav";
+
 export type NavLink = {
   label: string;
-  href: string;
+  /** Absent when the item only opens its submenu and links nowhere itself. */
+  href?: string;
   children?: { label: string; href: string }[];
 };
 
-export const navLinks: NavLink[] = [
-  {
-    label: "Об учреждении",
-    href: "/aboutus",
-    children: [
-      { label: "О нас", href: "/aboutus" },
-      { label: "Наши тренеры", href: "/trainers" },
-      { label: "Наши специалисты", href: "/team" },
-    ],
-  },
-  { label: "Обучение", href: "/obuchenie" },
-  {
-    // Audience-first entry point (change request point 6). Kept in sync with
-    // app/lib/audiences.ts by hand is a drift risk, so the labels are short and
-    // the audience pages remain the source of truth for their contents.
-    label: "Направления",
-    href: "/audience/buduschim-mediatoram",
-    children: [
-      { label: "Будущим медиаторам", href: "/audience/buduschim-mediatoram" },
-      { label: "Психологам и специалистам", href: "/audience/specialistam" },
-      { label: "Родителям и семьям", href: "/audience/roditelyam-i-semyam" },
-      { label: "Организациям и бизнесу", href: "/audience/organizaciyam" },
-    ],
-  },
-  {
-    label: "Услуги",
-    href: "#services",
-    children: [
-      { label: "Проведение медиации", href: "/mediation" },
-      { label: "Супружеская терапия", href: "/coupletherapy" },
-      { label: "Корпоративное обучение", href: "/corporatemediatorok" },
-      { label: "Добрачное консультирование", href: "/premaritalcounseling" },
-      { label: "Психологическое консультирование", href: "/psycologicalcounseling" },
-      { label: "Конфликт-менеджмент", href: "/confictmanagment" },
-      { label: "Развод супругов", href: "/divorceservice" },
-    ],
-  },
-  {
-    label: "Наши проекты",
-    href: "#",
-    children: [
-      { label: "Мы/медиаторы — за диалог!", href: "/fordialogue" },
-      { label: "Интервизорская группа Pro Mediation", href: "/intervision" },
-      { label: "Школа юного медиатора", href: "/school" },
-      { label: "Летний интенсив 2026", href: "/summerintensive2026" },
-      { label: "Летняя школа 2025", href: "/summerschool2025" },
-      { label: "Летняя школа 2023", href: "/summerschool" },
-      { label: "Весенняя школа 2022", href: "/springschool" },
-      { label: "Семинар «Конфликты в эпоху неопределённости»", href: "/workshopuncertainty" },
-    ],
-  },
-  { label: "Лига переговорщиков", href: "/negotiationleague" },
-  {
-    label: "Методическая помощь",
-    href: "/literature",
-    children: [
-      { label: "Литература", href: "/literature" },
-      { label: "Правовые акты", href: "/pravo" },
-      { label: "Документы для проведения медиации", href: "/mediationdocuments" },
-      { label: "Диагностика конфликтов", href: "/conflictdiagnostics" },
-    ],
-  },
-  { label: "Новости", href: "/news" },
-  { label: "Контакты", href: "/contacts" },
-];
+/** The live menu's labels use straight quotes and hyphens for dashes. */
+const polish = (label: string) =>
+  label
+    .replace(/"([^"]*)"/g, "«$1»")
+    .replace(/\s+-\s+/g, " — ")
+    .replace(/\/\s+/g, "/")
+    .replace(/[:.]+»$/, "»")
+    .trim();
+
+/**
+ * Two live menu entries point at Tilda's /error page because the live site has
+ * no content for them. This site does have pages there, so they keep working
+ * links instead of inheriting the dead ones.
+ */
+const LOCAL_PAGES: Record<string, string> = {
+  "Документы для проведения медиации": "/mediationdocuments",
+  "Диагностика конфликтов": "/conflictdiagnostics",
+};
+
+/**
+ * Audience-first entry point (change request point 6) - not on the live menu.
+ * The audience pages remain the source of truth for what each one contains.
+ */
+const AUDIENCES: NavLink = {
+  label: "Направления",
+  children: [
+    { label: "Будущим медиаторам", href: "/audience/buduschim-mediatoram" },
+    { label: "Психологам и специалистам", href: "/audience/specialistam" },
+    { label: "Родителям и семьям", href: "/audience/roditelyam-i-semyam" },
+    { label: "Организациям и бизнесу", href: "/audience/organizaciyam" },
+  ],
+};
+
+/**
+ * The site menu: the live site's own menu (synced into liveNav.ts), with the
+ * audience entry added after «Обучение». Deriving it means a page added to or
+ * renamed on the live menu shows up here on the next sync instead of drifting.
+ *
+ * Items that only open a submenu on the live site have no href here either.
+ */
+export const navLinks: NavLink[] = liveNav.flatMap((item) => {
+  const link: NavLink = {
+    label: polish(item.label),
+    ...(item.href ? { href: item.href } : {}),
+    ...(item.children
+      ? {
+          children: item.children.map((c) => ({
+            label: polish(c.label),
+            href: c.href === "/error" ? (LOCAL_PAGES[c.label] ?? c.href) : c.href,
+          })),
+        }
+      : {}),
+  };
+  return item.href === "/obuchenie" ? [link, AUDIENCES] : [link];
+});
 
 export const promos = [
   "с 1 сентября — Семейная медиация как технология разрешения семейных кризисов",
