@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
-import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
@@ -37,7 +36,6 @@ export default function ThankYouPage() {
             </a>
           </div>
         </section>
-        <PageBlocks page="thankyou" />
       </main>
       <Footer />
     </div>

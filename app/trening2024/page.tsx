@@ -58,7 +58,8 @@ export default function Trening2024Page() {
             </p>
           </div>
         </section>
-        <PageBlocks page="trening2024" />
+        {/* The live page's three "more about the training" links are the cards above. */}
+        <PageBlocks page="trening2024" omit={["Подробнее про Тренинг"]} />
       </main>
       <Footer />
     </div>

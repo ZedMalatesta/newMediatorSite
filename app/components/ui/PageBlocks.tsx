@@ -36,17 +36,37 @@ const ICON_MAX = 260;
 /** A "heading" longer than this is a sentence someone styled large. */
 const HEADING_MAX = 110;
 
-const isIcon = (i: BlockImage) => Math.max(i.width, i.height) <= ICON_MAX;
+/**
+ * Small pictures are icons - and so are the square 512px PNG pictograms the
+ * live site uses in places, which are icons saved large.
+ */
+const isIcon = (i: BlockImage) =>
+  Math.max(i.width, i.height) <= ICON_MAX ||
+  (/\.(?:png|svg)$/i.test(i.src) && i.width === i.height && i.width <= 512);
 
 function clean(nodes: TextNode[]): TextNode[] {
   return nodes
-    .map((n) => ({ kind: n.kind, text: fixTypos(n.text.replace(/\s*р\.\s*р\.\s*/g, " ").trim()) }))
+    .map((n) => ({ ...n, text: fixTypos(n.text.replace(/\s*р\.\s*р\.\s*/g, " ").trim()) }))
     .filter((n) => n.text && !isTildaArtefact(n.text));
 }
 
 // ---------------------------------------------------------------------------
 // text
 // ---------------------------------------------------------------------------
+
+/** A line's words - as a link, where the whole line is one on the live page. */
+function Line({ node }: { node: TextNode }) {
+  if (!node.href) return <>{node.text}</>;
+  return (
+    <SmartLink
+      href={node.href}
+      {...(node.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className="text-accent-700 font-medium hover:underline"
+    >
+      {node.text}
+    </SmartLink>
+  );
+}
 
 function Prose({ nodes, small = false }: { nodes: TextNode[]; small?: boolean }) {
   if (nodes.length === 0) return null;
@@ -68,7 +88,9 @@ function Prose({ nodes, small = false }: { nodes: TextNode[]; small?: boolean })
             {g.map((item, k) => (
               <li key={k} className={`flex items-start gap-2.5 text-slate-600 ${size} leading-relaxed`}>
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-400 flex-shrink-0 mt-2.5" />
-                <span>{item.text}</span>
+                <span>
+                  <Line node={item} />
+                </span>
               </li>
             ))}
           </ul>
@@ -82,7 +104,7 @@ function Prose({ nodes, small = false }: { nodes: TextNode[]; small?: boolean })
                 : `text-slate-600 ${size} leading-relaxed`
             }
           >
-            {g.text}
+            <Line node={g} />
           </p>
         ),
       )}
@@ -127,7 +149,8 @@ function Photos({ block, images }: { block: PageBlock; images: BlockImage[] }) {
   if (images.length === 0) return null;
   if (images.length === 1) {
     return (
-      <div className="max-w-3xl mx-auto">
+      // Never drawn larger than the file is: a small picture stays small.
+      <div className="mx-auto" style={{ maxWidth: Math.min(768, images[0].width || 768) }}>
         <Figure image={images[0]} alt={block.heading || "МедиаторОк"} />
       </div>
     );
@@ -388,7 +411,9 @@ function Buttons({ links }: { links: BlockLink[] }) {
 // ---------------------------------------------------------------------------
 
 function Block({ block }: { block: PageBlock }) {
-  const body = clean(block.body);
+  // A line the block repeats as the opening of one of its cards is said once.
+  const opening = new Set(block.cards.flatMap((c) => [c.title, c.body[0]?.text]));
+  const body = clean(block.body).filter((n) => !opening.has(n.text));
   const imageOnly = block.cards.filter((c) => !c.title && c.body.length === 0 && c.image);
   const textCards = block.cards.filter((c) => c.title || c.body.length > 0);
 
@@ -420,7 +445,10 @@ function Block({ block }: { block: PageBlock }) {
       {split ? (
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="space-y-6">{text}</div>
-          <Figure image={photos[0]} alt={block.heading || "МедиаторОк"} />
+          {/* An upright picture at full column width would tower over its text. */}
+          <div className={photos[0].height > photos[0].width ? "max-w-sm mx-auto w-full" : ""}>
+            <Figure image={photos[0]} alt={block.heading || "МедиаторОк"} />
+          </div>
         </div>
       ) : (
         <>
@@ -467,7 +495,11 @@ function hasContent(b: PageBlock): boolean {
   );
 }
 
-type Section = { heading: string; blocks: PageBlock[] };
+type Section = { heading: string; kicker?: string; blocks: PageBlock[] };
+
+/** What a block says, for telling a repeat from something new. */
+const signature = (b: PageBlock) =>
+  [b.heading, ...b.body.map((n) => n.text), ...b.cards.flatMap((c) => [c.title, ...c.body.map((n) => n.text)])].join("|");
 
 function toSections(blocks: PageBlock[]): Section[] {
   const out: Section[] = [];
@@ -481,10 +513,22 @@ function toSections(blocks: PageBlock[]): Section[] {
     if (heading || out.length === 0) out.push({ heading, blocks: [block] });
     else out.at(-1)!.blocks.push(block);
   }
-  // A heading with nothing under it - left over once its only button went.
-  return out
-    .map((s) => ({ ...s, blocks: s.blocks.filter(hasContent) }))
-    .filter((s) => s.blocks.length > 0);
+
+  const shown: Section[] = [];
+  let kicker: string | undefined;
+  for (const s of out) {
+    const blocks = s.blocks.filter(hasContent);
+    if (blocks.length === 0) {
+      // A heading with nothing under it introduces the section that follows.
+      // (At the very end it introduced something this page shows elsewhere.)
+      kicker = s.heading || kicker;
+      continue;
+    }
+    shown.push({ heading: s.heading, kicker: s.heading ? kicker : undefined, blocks });
+    if (!s.heading && kicker) shown.at(-1)!.heading = kicker;
+    kicker = undefined;
+  }
+  return shown;
 }
 
 const startsWith = (b: PageBlock, keys: string[]) =>
@@ -526,6 +570,9 @@ export default function PageBlocks({
     if (omit && startsWith(b, omit)) return false;
     // The opening block is the page title and tagline, which the hero carries.
     if (i === 0 && !lead && b.heading && (b.role === "cover" || b.cards.length === 0)) return false;
+    // Tilda keeps a desktop and a phone variant of some blocks; one is enough.
+    const said = signature(b);
+    if (said.length > 20 && all.slice(0, i).some((earlier) => signature(earlier) === said)) return false;
     return true;
   });
   const sections = toSections(blocks);
@@ -536,6 +583,9 @@ export default function PageBlocks({
       {sections.map((section, i) => (
         <section key={i} className={`px-4 py-12 md:py-16 ${i % 2 === 1 ? "bg-slate-50" : "bg-white"}`}>
           <div className="max-w-6xl mx-auto">
+            {section.kicker && (
+              <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">{section.kicker}</p>
+            )}
             {section.heading && (
               <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 max-w-3xl">{section.heading}</h2>
             )}

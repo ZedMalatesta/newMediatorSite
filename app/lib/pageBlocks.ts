@@ -33,6 +33,8 @@ export type AccordionItem = {
 export type TextNode = {
   kind: "p" | "li";
   text: string;
+  /** Set when the whole line is a link: a path here, or another site's URL. */
+  href?: string;
 };
 
 /** One repeated item of a block: its title, text and picture, kept together. */
@@ -2193,9 +2195,9 @@ export const pageBlocks: Record<string, PageBlock[]> = {
       cards: [
         {"title":"По телефону","body":[{"kind":"p","text":"+375 (29) 867 82 40"}],"image":{"src":"/images/pages/contacts/02-icons8-100.png","width":100,"height":100,"alt":""}},
         {"title":"По почте","body":[{"kind":"p","text":"mediatorok.by@gmail.com"}],"image":{"src":"/images/pages/contacts/03-icons8-100.png","width":100,"height":100,"alt":""}},
-        {"title":"В инстаграме","body":[{"kind":"p","text":"@mediatorok.by"}],"image":{"src":"/images/pages/contacts/04-icons8-instagram-100.png","width":100,"height":100,"alt":""}},
-        {"title":"В телеграме","body":[{"kind":"p","text":"t.me/MediatorOK"}],"image":{"src":"/images/pages/contacts/05-icons8-app-100.png","width":100,"height":100,"alt":""}},
-        {"title":"Facebook","body":[{"kind":"p","text":"MediatorOk.by"}],"image":{"src":"/images/pages/contacts/06-icons8-facebook-f-10.png","width":100,"height":100,"alt":""}},
+        {"title":"В инстаграме","body":[{"kind":"p","text":"@mediatorok.by","href":"https://www.instagram.com/mediatorok.by/"}],"image":{"src":"/images/pages/contacts/04-icons8-instagram-100.png","width":100,"height":100,"alt":""}},
+        {"title":"В телеграме","body":[{"kind":"p","text":"t.me/MediatorOK","href":"https://t.me/MediatorOK"}],"image":{"src":"/images/pages/contacts/05-icons8-app-100.png","width":100,"height":100,"alt":""}},
+        {"title":"Facebook","body":[{"kind":"p","text":"MediatorOk.by","href":"https://www.facebook.com/groups/MediatorOk/?mibextid=6NoCDW"}],"image":{"src":"/images/pages/contacts/06-icons8-facebook-f-10.png","width":100,"height":100,"alt":""}},
         {"title":"YouTube","body":[{"kind":"p","text":"MediatorOk.by"}],"image":{"src":"/images/pages/contacts/07-icons8-youtube-play.png","width":100,"height":100,"alt":""}},
       ],
       links: [],
@@ -4133,7 +4135,7 @@ export const pageBlocks: Record<string, PageBlock[]> = {
       heading: "Наши партнеры:",
       body: [],
       cards: [
-        {"title":"Сеть гражданского образования в Восточной Европе (EENCE)","body":[{"kind":"p","text":"Миссией Сети является внесение вклада в устойчивое развитие гражданского общества в регионе Восточного партнерства и России через расширение сферы гражданского образования и укрепление потенциала организаций и экспертов, работающих в этой сфере."},{"kind":"p","text":"www.eence.eu"}],"image":null},
+        {"title":"Сеть гражданского образования в Восточной Европе (EENCE)","body":[{"kind":"p","text":"Миссией Сети является внесение вклада в устойчивое развитие гражданского общества в регионе Восточного партнерства и России через расширение сферы гражданского образования и укрепление потенциала организаций и экспертов, работающих в этой сфере."},{"kind":"p","text":"www.eence.eu","href":"http://www.eence.eu/"}],"image":null},
         {"title":"ООО “МедиаторОК” (Беларусь)","body":[],"image":null},
         {"title":"Общественное объединение по Европейским исследованиям (Беларусь).","body":[],"image":null},
       ],
@@ -7995,7 +7997,7 @@ export const pageBlocks: Record<string, PageBlock[]> = {
     {
       role: "feature-image",
       heading: "Медиация в Республике Беларусь",
-      body: [{"kind":"p","text":"Медиация в Республике Беларусь регулируется:"},{"kind":"li","text":"Законом Республики Беларусь «О медиации» № 58-З от 12 июля 2013 года"},{"kind":"li","text":"Постановлением Совета Министров Республики Беларусь «Об утверждении Правил проведения медиации» № 1150 от 28 декабря 2013 г."},{"kind":"li","text":"Постановлением Министерства юстиции Республики Беларусь «О подготовке в сфере медиации» № 12 от 17 января 2014 г."},{"kind":"li","text":"Постановление Министерства юстиции Республики Беларусь «Об утверждении Правил этики медиатора» № 15 от 17 января 2014 г. и другими актами"}],
+      body: [{"kind":"p","text":"Медиация в Республике Беларусь регулируется:"},{"kind":"li","text":"Законом Республики Беларусь «О медиации» № 58-З от 12 июля 2013 года","href":"https://pravo.by/document/?guid=3871&p0=H11300058"},{"kind":"li","text":"Постановлением Совета Министров Республики Беларусь «Об утверждении Правил проведения медиации» № 1150 от 28 декабря 2013 г.","href":"https://pravo.by/document/?guid=3871&p0=C21301150"},{"kind":"li","text":"Постановлением Министерства юстиции Республики Беларусь «О подготовке в сфере медиации» № 12 от 17 января 2014 г.","href":"https://etalonline.by/document/?regnum=W21428278"},{"kind":"li","text":"Постановление Министерства юстиции Республики Беларусь «Об утверждении Правил этики медиатора» № 15 от 17 января 2014 г. и другими актами","href":"https://pravo.by/document/?guid=12551&p0=W21428273&p1=1"}],
       cards: [
       ],
       links: [],
@@ -11265,7 +11267,7 @@ export const pageBlocks: Record<string, PageBlock[]> = {
     {
       role: "gallery",
       heading: "Место проведения",
-      body: [{"kind":"p","text":"Учебный центр Национального банка, Минский р-н, дер. Раубичи, п/о Острошицкий городок."}],
+      body: [{"kind":"p","text":"Учебный центр Национального банка, Минский р-н, дер. Раубичи, п/о Острошицкий городок.","href":"https://34travel.me/gotobelarus/post/marshrut-na-zapad"}],
       cards: [
       ],
       links: [],
@@ -15094,7 +15096,7 @@ export const pageBlocks: Record<string, PageBlock[]> = {
     {
       role: "card-grid",
       heading: "Наши контакты",
-      body: [{"kind":"p","text":"Мы находимся по адресу: г. Минск, ул. Короля 9, кабинет 126"},{"kind":"p","text":"Договор оферты"},{"kind":"p","text":"Политика обработки персональных данных"}],
+      body: [{"kind":"p","text":"Мы находимся по адресу: г. Минск, ул. Короля 9, кабинет 126"},{"kind":"p","text":"Договор оферты","href":"/dogovoroferty"},{"kind":"p","text":"Политика обработки персональных данных","href":"/politicaobrabotkidannyh"}],
       cards: [
       ],
       links: [],

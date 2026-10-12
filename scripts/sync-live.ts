@@ -134,27 +134,37 @@ const DESCR = "(?:t\\d+__descr|t\\d+__text|t-descr|t-text|t\\d+__bt-descr|t\\d+_
 // structure: heading, intro and cards
 // ---------------------------------------------------------------------------
 
-type TextNode = { kind: "p" | "li"; text: string };
+type TextNode = { kind: "p" | "li"; text: string; href?: string };
 
 /** Lines Tilda authors typed as a list without marking it up as one. */
 const BULLET = /^(?:[-–—•·●▪■✔✓✅➤►→]|\*)\s+(.+)$/;
 
-/** Rich text as paragraphs and list items, in the order it is written. */
+/**
+ * Rich text as paragraphs and list items, in the order it is written. A line
+ * that is a link from end to end keeps where it leads; a link inside a
+ * sentence is read as the sentence.
+ */
 function nodes(html: string): TextNode[] {
   const s = html
     .replace(/<br\s*\/?>/gi, "\n")
     .replace(/<li\b[^>]*>/gi, "\n\u0001")
     .replace(/<\/(?:li|p|div|h\d|ul|ol)>/gi, "\n")
+    .replace(/<a\b[^>]*?href="([^"]*)"[^>]*>/gi, "\u0002$1\u0003")
+    .replace(/<\/a>/gi, "\u0004")
     .replace(INLINE, "")
     .replace(/<[^>]+>/g, " ");
   const out: TextNode[] = [];
   for (const raw of decode(s).split("\n")) {
-    const line = raw.replace(/\s+/g, " ").trim();
+    let line = raw.replace(/\s+/g, " ").trim();
     if (!line) continue;
     const marked = line.startsWith("\u0001");
-    const bullet = BULLET.exec(marked ? line.slice(1).trim() : line);
-    const value = (bullet?.[1] ?? (marked ? line.slice(1) : line)).trim();
-    if (value.length > 1) out.push({ kind: marked || bullet ? "li" : "p", text: value });
+    if (marked) line = line.slice(1).trim();
+    const whole = /^\u0002([^\u0003]*)\u0003([^\u0002\u0004]*)\u0004$/.exec(line);
+    const href = whole ? localHref(whole[1]) : undefined;
+    line = line.replace(/\u0002[^\u0003]*\u0003|\u0004/g, "").replace(/\s+/g, " ").trim();
+    const bullet = BULLET.exec(line);
+    const value = (bullet?.[1] ?? line).trim();
+    if (value.length > 1) out.push({ kind: marked || bullet ? "li" : "p", text: value, ...(href ? { href } : {}) });
   }
   return out;
 }
@@ -710,6 +720,8 @@ function writeBlocks(blocks: Record<string, Block[]>, covers: Record<string, str
     "export type TextNode = {",
     '  kind: "p" | "li";',
     "  text: string;",
+    "  /** Set when the whole line is a link: a path here, or another site's URL. */",
+    "  href?: string;",
     "};",
     "",
     "/** One repeated item of a block: its title, text and picture, kept together. */",
