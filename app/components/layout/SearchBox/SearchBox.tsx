@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useMemo, useRef, useState } from "react";
+import { useId, useMemo, useRef, useState } from "react";
 import { search } from "@lib/search";
 
 /**
@@ -16,7 +16,10 @@ export default function SearchBox({ className = "" }: { className?: string }) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
-  const listId = "site-search-results";
+  // The header mounts this twice - once per layout - so ids must be per instance.
+  const uid = useId();
+  const inputId = `${uid}-search`;
+  const listId = `${uid}-results`;
   const boxRef = useRef<HTMLDivElement>(null);
 
   const results = useMemo(() => (query.trim() ? search(query, 6) : []), [query]);
@@ -52,11 +55,11 @@ export default function SearchBox({ className = "" }: { className?: string }) {
   return (
     <div ref={boxRef} className={`relative ${className}`}>
       <form onSubmit={go} role="search">
-        <label htmlFor="site-search" className="sr-only">
+        <label htmlFor={inputId} className="sr-only">
           Поиск по сайту
         </label>
         <input
-          id="site-search"
+          id={inputId}
           type="search"
           value={query}
           onChange={(e) => {
@@ -74,7 +77,7 @@ export default function SearchBox({ className = "" }: { className?: string }) {
           aria-controls={listId}
           aria-autocomplete="list"
           aria-activedescendant={
-            active >= 0 ? `site-search-option-${active}` : undefined
+            active >= 0 ? `${uid}-option-${active}` : undefined
           }
           className="w-full bg-slate-100 border border-slate-200 rounded-full pl-9 pr-3 py-2 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent-400 focus:bg-white transition-colors"
         />
@@ -99,7 +102,7 @@ export default function SearchBox({ className = "" }: { className?: string }) {
           ) : (
             <ul id={listId} role="listbox" aria-label="Результаты поиска">
               {results.map((r, i) => (
-                <li key={r.slug} role="option" aria-selected={i === active} id={`site-search-option-${i}`}>
+                <li key={r.slug} role="option" aria-selected={i === active} id={`${uid}-option-${i}`}>
                   <Link
                     href={`/${r.slug}`}
                     onMouseEnter={() => setActive(i)}
