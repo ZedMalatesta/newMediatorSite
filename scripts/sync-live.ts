@@ -131,6 +131,95 @@ const TITLE = "(?:t\\d+__title|t\\d+__heading|t-title|t-heading|t\\d+__bt-title)
 const DESCR = "(?:t\\d+__descr|t\\d+__text|t-descr|t-text|t\\d+__bt-descr|t\\d+__uptitle)";
 
 // ---------------------------------------------------------------------------
+// structure: heading, intro and cards
+// ---------------------------------------------------------------------------
+
+type TextNode = { kind: "p" | "li"; text: string };
+
+/** Lines Tilda authors typed as a list without marking it up as one. */
+const BULLET = /^(?:[-–—•·●▪■✔✓✅➤►→]|\*)\s+(.+)$/;
+
+/** Rich text as paragraphs and list items, in the order it is written. */
+function nodes(html: string): TextNode[] {
+  const s = html
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<li\b[^>]*>/gi, "\n\u0001")
+    .replace(/<\/(?:li|p|div|h\d|ul|ol)>/gi, "\n")
+    .replace(INLINE, "")
+    .replace(/<[^>]+>/g, " ");
+  const out: TextNode[] = [];
+  for (const raw of decode(s).split("\n")) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    const marked = line.startsWith("\u0001");
+    const bullet = BULLET.exec(marked ? line.slice(1).trim() : line);
+    const value = (bullet?.[1] ?? (marked ? line.slice(1) : line)).trim();
+    if (value.length > 1) out.push({ kind: marked || bullet ? "li" : "p", text: value });
+  }
+  return out;
+}
+
+/** Where the element opened at `start` closes, nested tags of its kind included. */
+function closeOf(html: string, start: number, tag: string): number {
+  const re = new RegExp(`<(/?)${tag}\\b[^>]*>`, "g");
+  re.lastIndex = start;
+  let depth = 0;
+  for (let m = re.exec(html); m; m = re.exec(html)) {
+    depth += m[1] ? -1 : 1;
+    if (depth === 0) return m.index;
+  }
+  return html.length;
+}
+
+type Token =
+  | { kind: "title" | "text"; card: string; html: string; pos: number }
+  | { kind: "image"; card: string; url: string; pos: number };
+
+/** Fields that are controls or bookkeeping rather than something to read. */
+const SKIP_FIELD = /button|price_old|menu/;
+const TITLE_FIELD = /^(?:title|persname|name|heading)$/;
+
+/**
+ * Every Tilda element an editor can type into carries a `field` attribute, and
+ * a repeated item's fields share an id (`li_title__1567`, `li_descr__1567`,
+ * `li_img__1567`) or a number (`title2`, `descr2`, `img2`). That id is what
+ * says which title, text and picture belong together - reading the block by
+ * CSS class, as before, got the words but lost which card they came from.
+ */
+function tokens(frag: string): Token[] {
+  const out: Token[] = [];
+  const numbered = /\s(?:bg)?(?:img)?field="(?:title|descr|text|img)[2-9]"/.test(frag);
+
+  const place = (field: string): { name: string; card: string } | null => {
+    if (SKIP_FIELD.test(field)) return null;
+    const li = /^(?:li|gi)_([a-z_]+?)(\d*)__(\d+)/.exec(field);
+    // A second or third title inside one item is a column of it, not a new item.
+    if (li) return { name: li[2] ? "text" : li[1], card: `li:${li[3]}` };
+    if (field === "btitle") return { name: "title", card: "section" };
+    if (field === "bdescr") return { name: "text", card: "section" };
+    const plain = /^([a-z_]+?)(\d*)$/.exec(field);
+    if (!plain) return null;
+    return { name: plain[1], card: plain[2] ? `n:${plain[2]}` : numbered ? "n:1" : "" };
+  };
+
+  for (const m of frag.matchAll(/<(\w+)\b[^>]*\sfield="([^"]+)"[^>]*>/g)) {
+    const at = place(m[2]);
+    if (!at || m[1] === "label" || m[1] === "input") continue;
+    const from = m.index! + m[0].length;
+    const html = frag.slice(from, closeOf(frag, m.index!, m[1]));
+    out.push({ kind: TITLE_FIELD.test(at.name) ? "title" : "text", card: at.card, html, pos: m.index! });
+  }
+  for (const m of frag.matchAll(/<[^>]*\s(?:bg)?imgfield="([^"]+)"[^>]*>/g)) {
+    const at = place(m[1]);
+    const url =
+      /data-original="([^"]+)"/.exec(m[0])?.[1] ?? /\ssrc="([^"]+)"/.exec(m[0])?.[1] ??
+      /content="([^"]+)"/.exec(m[0])?.[1] ?? /url\(['"]?([^'")]+)/.exec(m[0])?.[1];
+    if (at && url) out.push({ kind: "image", card: at.card, url, pos: m.index! });
+  }
+  return out.sort((a, b) => a.pos - b.pos);
+}
+
+// ---------------------------------------------------------------------------
 // fetching
 // ---------------------------------------------------------------------------
 
@@ -366,8 +455,25 @@ function menu(html: string): NavItem[] {
 // ---------------------------------------------------------------------------
 
 type Image = { src: string; width: number; height: number; alt: string };
+type Card = { title: string; body: TextNode[]; image: Image | null };
+type BlockLink = { label: string; href: string };
+
+/** A block's buttons. Links into the live site become paths on this one. */
+function buttons(frag: string): BlockLink[] {
+  const out: BlockLink[] = [];
+  for (const m of frag.matchAll(/<a\b[^>]*class="[^"]*\bt-btn\b[^"]*"[^>]*>([\s\S]*?)<\/a>/g)) {
+    const label = text(m[1].replace(/<svg[\s\S]*?<\/svg>/g, ""));
+    const raw = decode(/href="([^"]*)"/.exec(m[0])?.[1] ?? "");
+    const href = raw.replace(/^https?:\/\/(?:www\.)?mediatorok\.by(?=\/|$)/, "") || "/";
+    if (label && raw && !out.some((l) => l.label === label && l.href === href)) out.push({ label, href });
+  }
+  return out;
+}
 type Block = {
-  role: string; heading: string; subheadings: string[]; paragraphs: string[]; listItems: string[];
+  /** Background of a full-width cover block - the page's lead picture. */
+  coverSrc?: string;
+  role: string; heading: string; body: TextNode[]; cards: Card[]; links: BlockLink[];
+  subheadings: string[]; paragraphs: string[]; listItems: string[];
   slider: boolean; cycle: boolean; arrows: boolean; dots: boolean; zoomable: boolean;
   images: Image[]; videos: Video[]; accordion: AccordionItem[]; map: boolean; popupCards: boolean;
 };
@@ -432,11 +538,57 @@ async function main() {
         images.push({ src, ...assets.size(src), alt: alts.get(url) ?? "" });
       }
 
+      // The same block read as a reader meets it: a heading, what is said
+      // under it, then its items - each with its own title, text and picture.
+      let heading = "";
+      const body: TextNode[] = [];
+      const cardsById = new Map<string, Card>();
+      for (const t of isAccordion ? [] : tokens(visible)) {
+        const own = t.card !== "" && t.card !== "section";
+        if (own && !cardsById.has(t.card)) cardsById.set(t.card, { title: "", body: [], image: null });
+        const card = own ? cardsById.get(t.card)! : null;
+        if (t.kind === "image") {
+          if (!card || card.image) continue;
+          const src = await assets.resolve(t.url);
+          if (src) card.image = { src, ...assets.size(src), alt: alts.get(t.url) ?? "" };
+        } else if (t.kind === "title") {
+          const value = text(t.html);
+          if (!value) continue;
+          if (card) {
+            if (card.title) card.body.push({ kind: "p", text: value });
+            else card.title = value;
+          } else if (!heading) heading = value;
+          else body.push({ kind: "p", text: value });
+        } else {
+          (card ? card.body : body).push(...nodes(t.html));
+        }
+      }
+      const cards = [...cardsById.values()].filter((c) => c.title || c.body.length || c.image);
+      // A block with no editable fields (rare, hand-coded ones) still has the
+      // text the class-based read found.
+      if (!isAccordion && !/\sfield="/.test(visible)) {
+        heading = titles[0] ?? "";
+        body.push(
+          ...titles.slice(1).map((t) => ({ kind: "p" as const, text: t })),
+          ...descrs.map((d) => ({ kind: "p" as const, text: d })),
+          ...items.map((i) => ({ kind: "li" as const, text: i })),
+        );
+      }
+
+      // Tilda marks a cover by its wrapper, whatever the block type: 1065 is
+      // a cover on fifty course pages though its number says nothing of it.
+      const coverBg = /class="t-cover"/.test(rec.raw) ? /data-content-cover-bg="([^"]+)"/.exec(rec.raw)?.[1] : undefined;
+      const coverSrc = (coverBg && (await assets.resolve(coverBg))) || undefined;
+
       const block: Block = {
-        role: ROLE[rec.type] ?? FALLBACK_ROLE,
+        coverSrc,
+        role: coverBg !== undefined ? "cover" : ROLE[rec.type] ?? FALLBACK_ROLE,
         heading: isAccordion
           ? text(/class="[^"]*t-section__title[^"]*"[^>]*>([\s\S]*?)<\/div>/.exec(rec.frag)?.[1] ?? "")
-          : (titles[0] ?? "").slice(0, 160),
+          : heading,
+        body,
+        cards,
+        links: buttons(visible),
         subheadings: isAccordion ? [] : titles.slice(1, 8),
         paragraphs: isAccordion ? [] : descrs.filter((d) => d.length > 40).slice(0, 80),
         listItems: isAccordion ? [] : [...descrs.filter((d) => d.length <= 40).slice(0, 40), ...items.slice(0, 60)],
@@ -452,14 +604,14 @@ async function main() {
         popupCards,
       };
       const hasContent =
-        block.heading || block.paragraphs.length || block.listItems.length || images.length ||
+        block.heading || block.body.length || block.cards.length || block.links.length || images.length ||
         block.videos.length || acc.length || block.map;
       if (hasContent) out.push(block);
     }
 
     // The page's lead image is rendered by its hero, so it leaves the body.
-    let cover: string | undefined;
-    for (const role of ["cover", "band-image", "feature-image"]) {
+    let cover = out.find((b) => b.coverSrc)?.coverSrc;
+    for (const role of cover ? [] : ["cover", "band-image", "feature-image"]) {
       cover = out.find((b) => b.role === role && b.images[0]?.width >= 600)?.images[0].src;
       if (cover) break;
     }
@@ -468,7 +620,7 @@ async function main() {
       for (const b of out) b.images = b.images.filter((i) => i.src !== cover);
     }
     blocks[slug] = out.filter(
-      (b) => b.heading || b.paragraphs.length || b.listItems.length || b.images.length || b.videos.length || b.accordion.length || b.map,
+      (b) => b.heading || b.body.length || b.cards.length || b.links.length || b.images.length || b.videos.length || b.accordion.length || b.map,
     );
 
     // Label each popup with the text of the button that opens it.
@@ -527,13 +679,39 @@ function writeBlocks(blocks: Record<string, Block[]>, covers: Record<string, str
     "  body: string[];",
     "};",
     "",
+    "/** A line of running text, or one item of a list. */",
+    "export type TextNode = {",
+    '  kind: "p" | "li";',
+    "  text: string;",
+    "};",
+    "",
+    "/** One repeated item of a block: its title, text and picture, kept together. */",
+    "export type BlockCard = {",
+    "  title: string;",
+    "  body: TextNode[];",
+    "  image: BlockImage | null;",
+    "};",
+    "",
+    "export type BlockLink = {",
+    "  label: string;",
+    "  href: string;",
+    "};",
+    "",
     "export type PageBlock = {",
     "  role: BlockRole;",
     "  /** Heading the live page shows above this block, if any. */",
     "  heading: string;",
+    "  /** What the block says under its heading, in the order it is written. */",
+    "  body: TextNode[];",
+    "  /** The block's repeated items, in order. Empty when it has none. */",
+    "  cards: BlockCard[];",
+    "  /** The block's buttons. `#popup:` and `#rec` hrefs open a form on the live page. */",
+    "  links: BlockLink[];",
+    "  /** Every title after the first, flat. Prefer `cards`. */",
     "  subheadings: string[];",
+    "  /** Every longer line of the block, flat. Prefer `body` and `cards`. */",
     "  paragraphs: string[];",
-    "  /** Bullet/list copy the block lists. */",
+    "  /** Every short line and list item of the block, flat. Prefer `body` and `cards`. */",
     "  listItems: string[];",
     "  /** The live block is a slider/carousel rather than a static grid. */",
     "  slider: boolean;",
@@ -562,6 +740,11 @@ function writeBlocks(blocks: Record<string, Block[]>, covers: Record<string, str
       L.push("    {");
       L.push(`      role: ${j(b.role)},`);
       L.push(`      heading: ${j(b.heading)},`);
+      L.push(`      body: ${j(b.body)},`);
+      L.push("      cards: [");
+      for (const c of b.cards) L.push(`        ${j(c)},`);
+      L.push("      ],");
+      L.push(`      links: ${j(b.links)},`);
       for (const k of ["subheadings", "paragraphs", "listItems"] as const) L.push(`      ${k}: ${j(b[k])},`);
       for (const k of ["slider", "cycle", "arrows", "dots", "zoomable"] as const) L.push(`      ${k}: ${b[k]},`);
       L.push("      images: [");
