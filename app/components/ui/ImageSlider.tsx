@@ -45,12 +45,14 @@ export default function ImageSlider({
 
   return (
     <div className="relative">
-      <div className="relative w-full aspect-16/9 rounded-2xl overflow-hidden bg-slate-200 shadow-sm">
+      <div className="relative w-full aspect-16/9 rounded-2xl overflow-hidden bg-slate-900 shadow-sm">
         <Image
           src={img.src}
           alt={img.alt || "Фотография МедиаторОк"}
           fill
-          className={`object-cover ${zoomable ? "cursor-zoom-in" : ""}`}
+          // A landscape slide fills the frame; an upright or square one would
+          // lose most of itself to the crop, so it is shown whole instead.
+          className={`${img.width > img.height * 1.2 ? "object-cover" : "object-contain"} ${zoomable ? "cursor-zoom-in" : ""}`}
           sizes="(max-width: 1200px) 100vw, 1100px"
           priority={current === 0}
         />

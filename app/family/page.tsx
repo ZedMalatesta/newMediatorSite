@@ -22,6 +22,7 @@ export default function FamilyPage() {
       <Navbar />
       <main>
         <EventHero
+          page="family"
           eyebrow="Интенсив для пар"
           title="Семья как команда мечты"
           subtitle="14–16 февраля 2026 г."

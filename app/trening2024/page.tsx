@@ -29,6 +29,7 @@ export default function Trening2024Page() {
       <Navbar />
       <main>
         <EventHero
+          page="trening2024"
           eyebrow="Январь, Минск и Гродно"
           title="Тренинги на каникулах"
           subtitle="Серия очных и онлайн тренингов: 150 BYN за один день, 250 BYN за два дня."

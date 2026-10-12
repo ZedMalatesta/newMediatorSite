@@ -22,6 +22,7 @@ export default function LecturesPage() {
       <Navbar />
       <main>
         <EventHero
+          page="lectures"
           eyebrow="Открытый форум"
           title="Лекции-дискуссии"
           subtitle="Дважды в месяц по пятницам, 19:00. Онлайн (Zoom) или очно в Минске."

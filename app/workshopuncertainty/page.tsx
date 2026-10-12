@@ -22,6 +22,7 @@ export default function WorkshopUncertaintyPage() {
       <Navbar />
       <main>
         <EventHero
+          page="workshopuncertainty"
           eyebrow="Семинар"
           title="Конфликты в эпоху неопределённости"
           subtitle="ул. Мельникайте 8а, офис 3/2, Минск, 11:00."

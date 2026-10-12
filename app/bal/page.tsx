@@ -22,6 +22,7 @@ export default function BalPage() {
       <Navbar />
       <main>
         <EventHero
+          page="bal"
           eyebrow="Наше событие"
           title="Первый бал медиаторов"
           subtitle="Зал «Фрески», ул. Киселёва 38, Минск, 16:00–21:00."

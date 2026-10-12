@@ -22,6 +22,7 @@ export default function ProgramForParentsPage() {
       <Navbar />
       <main>
         <EventHero
+          page="programforparents"
           eyebrow="Марафон для родителей"
           title="Воспитание как взаимное развитие"
           subtitle="12 встреч онлайн. Расписание формируется по мере набора группы."

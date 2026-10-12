@@ -22,6 +22,7 @@ export default function ProekDetiPage() {
       <Navbar />
       <main>
         <EventHero
+          page="proekdeti"
           eyebrow="Наш проект"
           title="Взрослым отвечают дети"
           subtitle="Дети — источник гибкого и глубокого понимания мира, в котором эмоции важнее фактов."

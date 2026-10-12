@@ -23,6 +23,7 @@ export default function TeenSchoolPage() {
       <Navbar />
       <main>
         <EventHero
+          page="teenschool"
           eyebrow="Для детей и подростков"
           title="Школа юного медиатора"
           subtitle="Приглашаем детей и подростков в увлекательное приключение!"

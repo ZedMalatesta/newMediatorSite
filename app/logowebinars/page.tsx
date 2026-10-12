@@ -36,6 +36,7 @@ export default function LogoWebinarsPage() {
       <Navbar />
       <main>
         <EventHero
+          page="logowebinars"
           eyebrow="Центр логотерапии «МедиаторОк Проф»"
           title="Вебинары Центра логотерапии"
           subtitle="Стремление к смыслу — главная мотивационная сила человека (Виктор Франкл)."

@@ -22,6 +22,7 @@ export default function UrokPage() {
       <Navbar />
       <main>
         <EventHero
+          page="urok"
           eyebrow="Бесплатный вебинар"
           title="Медиация для психологов и юристов: разрешение споров, профилактика выгорания, рост дохода"
           subtitle="Вторник, 19:30 по минскому времени."

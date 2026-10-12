@@ -22,6 +22,7 @@ export default function ConfictManagmentPage() {
       <Navbar />
       <main>
         <EventHero
+          page="confictmanagment"
           eyebrow="Услуга"
           title="Конфликт-менеджмент"
           subtitle="Мы проводим обучение конфликт-менеджменту в разных сферах — для взрослых и детей."

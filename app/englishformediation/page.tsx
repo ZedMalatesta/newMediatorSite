@@ -22,6 +22,7 @@ export default function EnglishForMediationPage() {
       <Navbar />
       <main>
         <EventHero
+          page="englishformediation"
           eyebrow="Онлайн-курс"
           title="Английский для медиации и переговоров"
           subtitle="96 часов за 24 недели. Среды, 19:00–20:30."

@@ -22,6 +22,7 @@ export default function ConflictologyPage() {
       <Navbar />
       <main>
         <EventHero
+          page="conflictology"
           eyebrow="Вебинар"
           title="Конфликтология: навыки для жизни"
           subtitle="ZOOM, 1–2 часа. Дата формируется по мере набора группы."

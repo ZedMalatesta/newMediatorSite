@@ -22,6 +22,7 @@ export default function SupervisionPage() {
       <Navbar />
       <main>
         <EventHero
+          page="supervision"
           eyebrow="Для практикующих медиаторов"
           title="Супервизия для медиаторов"
           subtitle="Разбор кейсов и профессиональная рефлексия — обязательный компонент полноценного образования в медиации."

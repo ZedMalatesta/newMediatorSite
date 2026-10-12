@@ -23,6 +23,7 @@ export default function ObuchenieMediatorPage() {
       <Navbar />
       <main>
         <EventHero
+          page="obucheniemediator"
           eyebrow="Программа подготовки медиаторов"
           title="Обучение медиации"
           subtitle={`12 дней, 170 часов (140 часов для юристов). Дистанционно ${liveDate("obucheniemediator", /дистанц/i) ?? "— дата уточняется"}, очно в Минске — ${liveDate("obucheniemediator", /Минск/i) ?? "дата уточняется"}.`}

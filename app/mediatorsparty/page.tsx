@@ -22,6 +22,7 @@ export default function MediatorsPartyPage() {
       <Navbar />
       <main>
         <EventHero
+          page="mediatorsparty"
           eyebrow="Наше событие"
           title="Рождественские встречи в МедиаторОк"
           subtitle="Тёплая встреча для выпускников программ и специалистов медиации."

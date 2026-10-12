@@ -22,6 +22,7 @@ export default function VebinarPage() {
       <Navbar />
       <main>
         <EventHero
+          page="vebinar"
           eyebrow="Бесплатный вебинар"
           title="Медиация для психологов и юристов"
           subtitle="Среда, 20:00 по минскому времени, 1,5 часа."

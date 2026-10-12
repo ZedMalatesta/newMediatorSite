@@ -22,6 +22,7 @@ export default function ChildrenInDivorcePage() {
       <Navbar />
       <main>
         <EventHero
+          page="childrenindivorce"
           eyebrow="Программа"
           title="Дети при разводе родителей"
           subtitle="4 встречи по Zoom, по 3 часа. Расписание формируется по мере набора группы."

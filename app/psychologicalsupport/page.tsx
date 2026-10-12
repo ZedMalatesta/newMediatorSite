@@ -22,6 +22,7 @@ export default function PsychologicalSupportPage() {
       <Navbar />
       <main>
         <EventHero
+          page="psychologicalsupport"
           eyebrow="Программа повышения квалификации"
           title="Психологическая поддержка супругов и детей при разводе"
           subtitle="6 модулей, 128 часов. Еженедельно по Zoom, 18:30–21:30."

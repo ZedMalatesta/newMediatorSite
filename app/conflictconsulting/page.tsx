@@ -23,6 +23,7 @@ export default function ConflictConsultingPage() {
       <Navbar />
       <main>
         <EventHero
+          page="conflictconsulting"
           eyebrow="Обучающая онлайн-программа"
           title="Конфликтологический консалтинг"
           subtitle="Альтернативный способ деятельности медиатора: совместный с клиентом анализ конфликта и поиск вариантов его разрешения."

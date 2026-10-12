@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { EventHeroProps } from "./types";
 import SignupCta from "@ui/SignupCta";
+import { pageCover } from "@lib/pageBlocks";
 
 export function EventHero({
   eyebrow,
@@ -9,8 +10,12 @@ export function EventHero({
   meta,
   ctaLabel = "Заполнить заявку",
   ctaHref = "#signup",
-  imageSrc,
+  imageSrc: fallbackImage,
+  page,
 }: EventHeroProps) {
+  // The live page's own cover picture, where it has one - the same picture the
+  // body no longer repeats.
+  const imageSrc = (page && pageCover[page]) || fallbackImage;
   return (
     <section className="relative bg-slate-900 text-white overflow-hidden">
       {imageSrc && (

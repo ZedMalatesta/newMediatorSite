@@ -22,6 +22,7 @@ export default function PracticalConflictologyPage() {
       <Navbar />
       <main>
         <EventHero
+          page="practicalconflictology"
           eyebrow="Курс"
           title="Практическая конфликтология: навыки для жизни, работы и любви"
           subtitle="6 видеолекций + 2 онлайн-встречи. Будни, 19:00–21:00."

@@ -23,6 +23,7 @@ export default function SemeynayaMediationPage() {
       <Navbar />
       <main>
         <EventHero
+          page="semeynayamediation"
           eyebrow="Курс"
           title="Семейная медиация как технология разрешения семейных кризисов"
           subtitle={`48–64 академических часа. Вторники, 19:00–21:30, ${liveDate("semeynayamediation") ?? "дата старта уточняется"}.`}
