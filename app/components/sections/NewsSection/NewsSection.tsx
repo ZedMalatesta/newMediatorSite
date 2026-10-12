@@ -1,6 +1,11 @@
 import { news } from "@/app/lib/data";
+import { homeVideos } from "@lib/homeVideos";
+import VideoEmbed from "@ui/VideoEmbed";
 
 export default function NewsSection() {
+  // The live site pairs each news item with its video, in the same order.
+  const videos = homeVideos().news;
+
   return (
     <section className="px-4 py-14 bg-slate-50 border-y border-slate-100">
       <div className="max-w-6xl mx-auto">
@@ -11,7 +16,12 @@ export default function NewsSection() {
           {news.map((item, i) => (
             <div key={i} className="flex gap-4">
               <div className="flex-shrink-0 w-1 rounded-full bg-accent-400 self-stretch" />
-              <p className="text-slate-600 text-base leading-relaxed">{item.text}</p>
+              <div className="flex-1 min-w-0 space-y-4">
+                {videos[i] && (
+                  <VideoEmbed video={videos[i]} title="Новости МедиаторОк" />
+                )}
+                <p className="text-slate-600 text-base leading-relaxed">{item.text}</p>
+              </div>
             </div>
           ))}
         </div>

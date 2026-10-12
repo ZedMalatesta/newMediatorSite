@@ -3,6 +3,7 @@ import { getPageBlocks, type PageBlock } from "@lib/pageBlocks";
 import { cleanCopy, isTildaArtefact } from "@lib/copyFilters";
 import ImageSlider from "./ImageSlider";
 import ZoomableGrid from "./ZoomableGrid";
+import VideoEmbed from "./VideoEmbed";
 
 /**
  * Renders a page's content in the same order — and the same role — the original
@@ -129,10 +130,40 @@ function Media({
   );
 }
 
-function Shell({ children }: { children: React.ReactNode }) {
+/** What a block does beyond text and pictures, whatever its role. */
+function BlockExtras({ block }: { block: PageBlock }) {
+  if (block.videos.length === 0) return null;
+
+  return (
+    <div
+      className={`grid gap-5 mt-2 ${
+        block.videos.length > 1 ? "md:grid-cols-2" : "max-w-3xl"
+      }`}
+    >
+      {block.videos.map((video) => (
+        <VideoEmbed
+          key={`${video.provider}:${video.id}`}
+          video={video}
+          title={block.heading || "Видео МедиаторОк"}
+        />
+      ))}
+    </div>
+  );
+}
+
+function Shell({
+  block,
+  children,
+}: {
+  block: PageBlock;
+  children: React.ReactNode;
+}) {
   return (
     <section className="px-4 py-12 md:py-16">
-      <div className="max-w-6xl mx-auto">{children}</div>
+      <div className="max-w-6xl mx-auto">
+        {children}
+        <BlockExtras block={block} />
+      </div>
     </section>
   );
 }
@@ -140,7 +171,7 @@ function Shell({ children }: { children: React.ReactNode }) {
 function BandImage({ block }: { block: PageBlock }) {
   const img = block.images[0];
   return (
-    <Shell>
+    <Shell block={block}>
       <BlockHeading text={block.heading} />
       <BlockText block={block} />
       {img && (
@@ -162,7 +193,7 @@ function FeatureImage({ block }: { block: PageBlock }) {
   const [img, ...rest] = block.images;
   if (!img) {
     return (
-      <Shell>
+      <Shell block={block}>
         <BlockHeading text={block.heading} />
         <BlockText block={block} />
       </Shell>
@@ -170,7 +201,7 @@ function FeatureImage({ block }: { block: PageBlock }) {
   }
 
   return (
-    <Shell>
+    <Shell block={block}>
       <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
         <div className="w-full md:w-1/2">
           <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden bg-slate-200 shadow-sm">
@@ -214,7 +245,7 @@ function CardGrid({ block }: { block: PageBlock }) {
   const icons = block.images.filter((i) => Math.max(i.width, i.height) <= 260);
 
   return (
-    <Shell>
+    <Shell block={block}>
       <BlockHeading text={block.heading} />
       <BlockText block={block} />
       {photos.length > 0 && (
@@ -250,7 +281,7 @@ function IconStrip({ images }: { images: PageBlock["images"] }) {
 
 function IconRow({ block }: { block: PageBlock }) {
   return (
-    <Shell>
+    <Shell block={block}>
       <BlockHeading text={block.heading} />
       <BlockText block={block} />
       <IconStrip images={block.images} />
@@ -260,7 +291,7 @@ function IconRow({ block }: { block: PageBlock }) {
 
 function People({ block }: { block: PageBlock }) {
   return (
-    <Shell>
+    <Shell block={block}>
       <BlockHeading text={block.heading} />
       <BlockText block={block} />
       <Media
@@ -276,7 +307,7 @@ function People({ block }: { block: PageBlock }) {
 
 function Gallery({ block }: { block: PageBlock }) {
   return (
-    <Shell>
+    <Shell block={block}>
       <BlockHeading text={block.heading} />
       <BlockText block={block} />
       <Media block={block} images={block.images} />
