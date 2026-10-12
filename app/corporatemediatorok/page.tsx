@@ -4,8 +4,6 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 
 import CorporateHero from "./_components/CorporateHero";
-import CorporateReasons from "./_components/CorporateReasons";
-import CorporatePrograms from "./_components/CorporatePrograms";
 import CorporateTrainers from "./_components/CorporateTrainers";
 import CorporateSignup from "./_components/CorporateSignup";
 import PageBlocks from "@ui/PageBlocks";
@@ -26,11 +24,9 @@ export default function CorporateMediatorokPage() {
       <Navbar />
       <main>
         <CorporateHero />
-        <CorporateReasons />
-        <CorporatePrograms />
+        <PageBlocks page="corporatemediatorok" people={false} />
         <CorporateTrainers />
         <CorporateSignup />
-        <PageBlocks page="corporatemediatorok" people={false} />
       </main>
       <Footer />
     </div>

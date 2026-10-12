@@ -567,6 +567,12 @@ async function main() {
         }
       }
       const cards = [...cardsById.values()].filter((c) => c.title || c.body.length || c.image);
+      const links = buttons(visible);
+      // A price table (612) names its packages in the header and puts each
+      // total on the button under its column - the price is the button label.
+      if (rec.type === "612" && links.length <= cards.length && links.every((l) => /\d/.test(l.label))) {
+        links.forEach((l, i) => cards[i].body.push({ kind: "p", text: l.label }));
+      }
       // A block with no editable fields (rare, hand-coded ones) still has the
       // text the class-based read found.
       if (!isAccordion && !/\sfield="/.test(visible)) {
@@ -591,7 +597,7 @@ async function main() {
           : heading,
         body,
         cards,
-        links: buttons(visible),
+        links,
         subheadings: isAccordion ? [] : titles.slice(1, 8),
         paragraphs: isAccordion ? [] : descrs.filter((d) => d.length > 40).slice(0, 80),
         listItems: isAccordion ? [] : [...descrs.filter((d) => d.length <= 40).slice(0, 40), ...items.slice(0, 60)],

@@ -4,8 +4,6 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 
 import Summerschool2025Hero from "./_components/Summerschool2025Hero";
-import Summerschool2025Speakers from "./_components/Summerschool2025Speakers";
-import Summerschool2025Program from "./_components/Summerschool2025Program";
 import Summerschool2025Cta from "./_components/Summerschool2025Cta";
 import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
@@ -25,10 +23,8 @@ export default function Summerschool2025Page() {
       <Navbar />
       <main>
         <Summerschool2025Hero />
-        <Summerschool2025Speakers />
-        <Summerschool2025Program />
-        <Summerschool2025Cta />
         <PageBlocks page="summerschool2025" />
+        <Summerschool2025Cta />
       </main>
       <Footer />
     </div>
