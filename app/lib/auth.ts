@@ -11,6 +11,8 @@
  * under the visitor's control. Nothing behind a real permission may ever be
  * gated on it; that requires a server.
  */
+import { readStore, writeStore } from "./clientStore";
+
 export type AuthMode = "login" | "register";
 
 export type StoredProfile = {
@@ -18,7 +20,7 @@ export type StoredProfile = {
   email: string;
 };
 
-const KEY = "mediatorok.profile";
+const KEY = "mediatorok.profile" as const;
 
 export class AuthNotConfiguredError extends Error {
   constructor() {
@@ -34,23 +36,12 @@ export const authConfigured = (): boolean => Boolean(authEndpoint());
 
 /** Reads the remembered profile. Safe in private mode and during SSR. */
 export function readProfile(): StoredProfile | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const raw = window.localStorage.getItem(KEY);
-    return raw ? (JSON.parse(raw) as StoredProfile) : null;
-  } catch {
-    return null;
-  }
+  return readStore<StoredProfile | null>(KEY, null);
 }
 
+/** Stores or clears the profile; every mounted account control updates at once. */
 export function writeProfile(profile: StoredProfile | null): void {
-  if (typeof window === "undefined") return;
-  try {
-    if (profile) window.localStorage.setItem(KEY, JSON.stringify(profile));
-    else window.localStorage.removeItem(KEY);
-  } catch {
-    /* storage unavailable (private mode, blocked cookies) - display only */
-  }
+  writeStore(KEY, profile);
 }
 
 export async function submitAuth(

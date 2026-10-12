@@ -6,6 +6,7 @@ import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
+import { liveDate } from "@lib/liveDates";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/obucheniemediator") },
@@ -24,7 +25,7 @@ export default function ObuchenieMediatorPage() {
         <EventHero
           eyebrow="Программа подготовки медиаторов"
           title="Обучение медиации"
-          subtitle="12 дней, 170 часов (140 часов для юристов). Дистанционно с 31 августа, очно в Минске с 22 августа."
+          subtitle={`12 дней, 170 часов (140 часов для юристов). Дистанционно ${liveDate("obucheniemediator", /дистанц/i) ?? "— дата уточняется"}, очно в Минске — ${liveDate("obucheniemediator", /Минск/i) ?? "дата уточняется"}.`}
           ctaLabel="Подать заявку"
         />
         <PageBlocks page="obucheniemediator" />

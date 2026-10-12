@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FacebookIcon, InstagramIcon, TelegramIcon } from "@ui/SocialIcons";
 import FooterForms from "./FooterForms";
+import SmartLink from "@ui/SmartLink";
 
 export default function Footer() {
   return (
@@ -53,7 +54,7 @@ export default function Footer() {
               { label: "Наши специалисты", href: "/team" },
             ].map((item) => (
               <li key={item.label}>
-                <a href={item.href} className="hover:text-accent-400 transition-colors">{item.label}</a>
+                <SmartLink href={item.href} className="hover:text-accent-400 transition-colors">{item.label}</SmartLink>
               </li>
             ))}
           </ul>
@@ -94,7 +95,7 @@ export default function Footer() {
                 { label: "Лига переговорщиков «Мастерская диалога»", href: "/negotiationleague" },
               ].map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className="hover:text-accent-400 transition-colors">{item.label}</a>
+                  <SmartLink href={item.href} className="hover:text-accent-400 transition-colors">{item.label}</SmartLink>
                 </li>
               ))}
             </ul>

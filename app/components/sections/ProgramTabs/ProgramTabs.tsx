@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { programs } from "@/app/lib/data";
 import { useTabKeyboard } from "@/app/hooks/useTabKeyboard";
@@ -127,9 +128,9 @@ export default function ProgramTabs() {
         )}
 
         <div className="mt-10 text-center">
-          <a href="/obuchenie" className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm">
+          <Link href="/obuchenie" className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm">
             Ещё больше наших программ здесь →
-          </a>
+          </Link>
         </div>
       </div>
     </section>

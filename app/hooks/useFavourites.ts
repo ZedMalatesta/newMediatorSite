@@ -1,29 +1,21 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { readStore, writeStore, subscribe } from "@lib/clientStore";
+import { useCallback } from "react";
+import { readStore, writeStore, useStore, useHydrated } from "@lib/clientStore";
 
 const KEY = "mediatorok.favourites" as const;
+const EMPTY: string[] = [];
 
 /** Saved course/service slugs (change request: Избранное). */
 export function useFavourites() {
-  const [slugs, setSlugs] = useState<string[]>([]);
-  const [ready, setReady] = useState(false);
-
-  // Read after mount: localStorage does not exist during prerender.
-  useEffect(() => {
-    const sync = () => setSlugs(readStore<string[]>(KEY, []));
-    sync();
-    setReady(true);
-    return subscribe(KEY, sync);
-  }, []);
+  const slugs = useStore<string[]>(KEY, EMPTY);
+  // Nothing is known about the visitor's saved items until the browser's
+  // storage is readable; callers use this to avoid claiming "nothing saved".
+  const ready = useHydrated();
 
   const toggle = useCallback((slug: string) => {
-    const next = readStore<string[]>(KEY, []);
-    const i = next.indexOf(slug);
-    if (i >= 0) next.splice(i, 1);
-    else next.push(slug);
-    writeStore(KEY, next);
+    const current = readStore<string[]>(KEY, EMPTY);
+    writeStore(KEY, current.includes(slug) ? current.filter((s) => s !== slug) : [...current, slug]);
   }, []);
 
   const has = useCallback((slug: string) => slugs.includes(slug), [slugs]);

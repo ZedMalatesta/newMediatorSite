@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { readStore, writeStore, subscribe } from "@lib/clientStore";
+import { useCallback } from "react";
+import { readStore, writeStore, useStore, useHydrated } from "@lib/clientStore";
 
 const KEY = "mediatorok.cart" as const;
 
@@ -17,34 +17,32 @@ export type CartLine = {
   qty: number;
 };
 
-export function useCart() {
-  const [lines, setLines] = useState<CartLine[]>([]);
-  const [ready, setReady] = useState(false);
+const EMPTY: CartLine[] = [];
 
-  useEffect(() => {
-    const sync = () => setLines(readStore<CartLine[]>(KEY, []));
-    sync();
-    setReady(true);
-    return subscribe(KEY, sync);
-  }, []);
+export function useCart() {
+  const lines = useStore<CartLine[]>(KEY, EMPTY);
+  const ready = useHydrated();
 
   const add = useCallback((line: Omit<CartLine, "qty">, qty = 1) => {
-    const next = readStore<CartLine[]>(KEY, []);
-    const found = next.find((l) => l.slug === line.slug);
-    if (found) found.qty += qty;
-    else next.push({ ...line, qty });
-    writeStore(KEY, next);
+    const current = readStore<CartLine[]>(KEY, EMPTY);
+    const exists = current.some((l) => l.slug === line.slug);
+    writeStore(
+      KEY,
+      exists
+        ? current.map((l) => (l.slug === line.slug ? { ...l, qty: l.qty + qty } : l))
+        : [...current, { ...line, qty }],
+    );
   }, []);
 
   const setQty = useCallback((slug: string, qty: number) => {
-    const next = readStore<CartLine[]>(KEY, [])
+    const next = readStore<CartLine[]>(KEY, EMPTY)
       .map((l) => (l.slug === slug ? { ...l, qty } : l))
       .filter((l) => l.qty > 0);
     writeStore(KEY, next);
   }, []);
 
   const remove = useCallback((slug: string) => {
-    writeStore(KEY, readStore<CartLine[]>(KEY, []).filter((l) => l.slug !== slug));
+    writeStore(KEY, readStore<CartLine[]>(KEY, EMPTY).filter((l) => l.slug !== slug));
   }, []);
 
   const clear = useCallback(() => writeStore(KEY, [] as CartLine[]), []);

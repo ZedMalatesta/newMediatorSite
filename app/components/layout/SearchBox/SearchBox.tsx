@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { search } from "@lib/search";
 
 /**
@@ -20,9 +20,6 @@ export default function SearchBox({ className = "" }: { className?: string }) {
   const boxRef = useRef<HTMLDivElement>(null);
 
   const results = useMemo(() => (query.trim() ? search(query, 6) : []), [query]);
-
-  // A new query invalidates the previous highlight.
-  useEffect(() => setActive(-1), [query]);
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Escape") {
@@ -65,6 +62,7 @@ export default function SearchBox({ className = "" }: { className?: string }) {
           onChange={(e) => {
             setQuery(e.target.value);
             setOpen(true);
+            setActive(-1); // a new query invalidates the previous highlight
           }}
           onFocus={() => setOpen(true)}
           onBlur={() => window.setTimeout(() => setOpen(false), 120)}

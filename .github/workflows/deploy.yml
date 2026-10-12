@@ -29,11 +29,17 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - run: pnpm run lint
+
       # Pages serves this project under /newMediatorSite/, so the export needs a
       # matching base path. Local builds leave BASE_PATH unset and stay at root.
       - run: pnpm run build
         env:
           BASE_PATH: /newMediatorSite
+
+      # A link without the base path, or to a page that was not exported, 404s
+      # only once deployed - neither the build nor lint can see it. Fail here.
+      - run: python3 scripts/check-links.py /newMediatorSite
 
       - uses: actions/upload-pages-artifact@v3
         with:

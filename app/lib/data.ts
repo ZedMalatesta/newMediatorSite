@@ -1,3 +1,4 @@
+import { liveDate } from "./liveDates";
 import { liveNav } from "./liveNav";
 
 export type NavLink = {
@@ -63,10 +64,22 @@ export const navLinks: NavLink[] = liveNav.flatMap((item) => {
   return item.href === "/obuchenie" ? [link, AUDIENCES] : [link];
 });
 
+/**
+ * Start dates are quoted from the live programme pages (synced into
+ * liveDates.ts), not typed here. They were hand-copied twice and were stale
+ * within weeks both times, because the live site keeps moving its courses.
+ */
+const TBA = "Дата уточняется";
+const starts = {
+  familyMediation: liveDate("semeynayamediation") ?? TBA,
+  mediatorRemote: liveDate("obucheniemediator", /дистанц/i) ?? TBA,
+  mediatorMinsk: liveDate("obucheniemediator", /Минск/i) ?? TBA,
+};
+
 export const promos = [
-  "с 1 сентября — Семейная медиация как технология разрешения семейных кризисов",
-  "31 августа — Обучение медиации (дистанционный курс)",
-  "22 августа — Обучение медиации, очно, Минск",
+  `${starts.familyMediation} — Семейная медиация как технология разрешения семейных кризисов`,
+  `${starts.mediatorRemote} — Обучение медиации (дистанционный курс)`,
+  `${starts.mediatorMinsk} — Обучение медиации, очно, Минск`,
   "Школа юного медиатора «Территория взаимопонимания»",
 ];
 
@@ -189,7 +202,7 @@ export type Program = {
 export const programs: Program[] = [
   {
     title: "Семейная медиация как технология разрешения семейных кризисов",
-    startDate: "с 1 сентября",
+    startDate: starts.familyMediation,
     format: "online",
     formatLabel: "Онлайн",
     duration: "Авторская программа Оксаны Шульги",
@@ -197,7 +210,7 @@ export const programs: Program[] = [
   },
   {
     title: "Обучение медиации — дистанционный курс",
-    startDate: "31 августа",
+    startDate: starts.mediatorRemote,
     format: "online",
     formatLabel: "Онлайн",
     duration: "Профессиональная переподготовка",
@@ -205,7 +218,7 @@ export const programs: Program[] = [
   },
   {
     title: "Обучение медиации — очно, Минск",
-    startDate: "22 августа",
+    startDate: starts.mediatorMinsk,
     format: "in-person",
     formatLabel: "Очно",
     duration: "Профессиональная переподготовка",

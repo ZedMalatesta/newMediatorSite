@@ -11,7 +11,7 @@ build step's `env:`.
 
 | Variable | Enables | Until it is set |
 |---|---|---|
-| `NEXT_PUBLIC_FORM_ENDPOINT` | All enquiry forms and the cart's order request | Forms say they are not connected and point to Telegram/email |
+| `NEXT_PUBLIC_FORM_ENDPOINT` | Every form: registrations, popups, the footer lead form, the newsletter sign-up and the cart's order request | Forms say they are not connected and point to Telegram/email |
 | `NEXT_PUBLIC_AUTH_ENDPOINT` | Login and registration | `/account` shows a notice and the submit button is disabled |
 | `NEXT_PUBLIC_PAYMENT_ENDPOINT` | Hand-off to a payment provider | Checkout collects an order request instead; the office invoices |
 
@@ -21,9 +21,17 @@ build step's `env:`.
 
 ```json
 { "kind": "registration" | "lead" | "newsletter",
-  "data": { "name": "…", "email": "…", "phone": "…", "order": "…" },
+  "data": { "name": "…", "email": "…", "phone": "…", "comment": "…",
+            "consent": "yes", "form": "what the form was for",
+            "page": "/path/it/was/sent/from", "order": "…" },
   "submittedAt": "ISO-8601" }
 ```
+
+`data` carries whatever the form asked. Besides the keys above, a page's own
+form adds its extra questions under their label («Город», «Выберите ваш
+город», «Какой формат участия Вам подходит?»); several answers to one question
+arrive comma-separated. `kind` tells the three flows apart: route `newsletter`
+to the mailing list, the rest to the inbox.
 
 Any endpoint that accepts a JSON POST works — a serverless function, a form
 service, or an automation webhook.

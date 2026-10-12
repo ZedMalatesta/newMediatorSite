@@ -1,54 +1,77 @@
-# Content parity with mediatorok.by
+# Parity with mediatorok.by
 
-Checked against the live site on the date of the last commit touching this file.
-The rebuild was seeded from an export taken months earlier, and the live Tilda
-site kept moving, so parity has to be re-checked rather than assumed.
+The rebuild follows the live site through a sync, not by hand. This records how
+that works, what is derived from it, and where the rebuild deliberately differs.
 
-## Page inventory
+## Keeping in step
 
-Live sitemap: 76 URLs. Rebuild: 69 content routes (plus the functional pages
-below, which have no Tilda counterpart by design).
+```bash
+npm run sync:live              # fetch the live site and regenerate
+npm run sync:live -- --offline # regenerate from the cached fetch
+npm run build:search           # rebuild the search index afterwards
+```
 
-### On the live site, no route here
+The live site is a Tilda build, so every page is a sequence of typed records.
+`scripts/sync-live.ts` reads them and writes:
 
-| Slug | Assessment |
+| File | What it holds |
 |---|---|
-| `conflictconsulting` | Real content — no route here. Needs building. |
-| `summerschool2026` | Real content — no route here. Needs building. |
-| `teenschool` | Overlaps `school` / `schoolofyoungmediator`. Which slug is canonical is an open question. |
-| `new_technologies` | Duplicate slug of `newtechnologies`, which exists here. Redirect. |
-| `jajdajizni` | Duplicate slug of `zhazhdazhizni`, which exists here. Redirect. |
-| `error`, `page1463…html` ×2 | Tilda system pages. Ignore. |
+| `app/lib/pageBlocks.ts` | Per page, in live order: each block's text, images, videos, accordion items, slider/zoom behaviour |
+| `app/lib/pageForms.ts` | The form each page offers - fields, popup or inline, button label - plus the footer lead form |
+| `app/lib/liveNav.ts` | The site menu |
+| `app/lib/liveDates.ts` | Start dates as each programme page announces them |
 
-### Here, not on the live site
+`scripts/live-assets.json` maps each live image URL to the committed file, so a
+re-run never renames or duplicates images; a URL it has not seen is downloaded
+to `public/images/live/`.
 
-`conflictdiagnostics` and `mediationdocuments` — declared in the navigation but
-with no Tilda counterpart, so there was nothing to migrate. Content needed.
+Run it when the live site changes. Dates in particular: the live site moves its
+course dates every few weeks, and they were stale here twice while they were
+typed by hand. They are now quoted from `liveDates.ts`.
 
-Added by this rebuild, deliberately without a counterpart: `/search`,
-`/account`, `/cart`, `/favourites`, `/audience/*`.
+## What follows the live site
 
-## Date drift
+- **Content** of every migrated page, block for block.
+- **Menu** - `navLinks` is derived from `liveNav`. Items that only open a
+  submenu on the live site («Об учреждении», «Услуги», «Наши проекты»,
+  «Методическая помощь») are buttons here too, not links.
+- **Videos** - 8 across 5 pages, in the block the live page has them.
+- **Accordions** - 7 pages.
+- **Forms** - the fields each live form asks for; popup where the live page
+  opens a popup (18 pages), inline otherwise; the lead form at the foot of pages
+  with no form of their own.
+- **Pages** - all 71 content pages. `/new_technologies`, `/jajdajizni` and
+  `/summerschool2026` forward to the pages they duplicate (`app/lib/aliases.ts`).
 
-Fixed in the hand-written pages, verified against the live listings:
+## Where the rebuild deliberately differs
 
-| Programme | Was | Now |
+| Live site | Here | Why |
 |---|---|---|
-| Семейная медиация | 1 июня | с 1 сентября |
-| Обучение медиации (дистанционно) | 1 июня | 31 августа |
-| Обучение медиации (очно, Минск) | 13 июня | 22 августа |
+| Map shows New York | Map of the published Minsk address | The live map block was never configured - its coordinates are Tilda's default |
+| Newsletter popup opens itself 10s after load, up to 3 times | Sign-up in the footer | Same offer, without interrupting |
+| «Документы для медиации», «Диагностика конфликтов» link to `/error` | Link to real pages | The live site has no content there; this one does |
+| Typos («местоположениев», «Заполнить заяку») | Corrected | `app/lib/copyFilters.ts` |
+| Tilda commerce artefacts in trainer cards | Removed | Same file |
+| Players load with the page | Load on play | No third-party requests until someone watches |
+| - | Search, audiences, favourites, cart, account | Added by the change request; not on the live site |
+| «Супружеская терапия» absent from the menu | Also absent; page still reachable | Follows the live menu |
 
-**Практическая конфликтология** has no start date shown. Ours was stale, and the
-live page's replacement is the stray «С 1-го апреля» fragment previously
-identified as a copy error. It needs a date from the client.
+## Not from the live site
 
-## Known remaining drift
+These cannot be synced and still need the client:
 
-`app/lib/pageBlocks.ts` is generated from the original scrape, so body copy on
-migrated pages can still quote old dates and prices. The hand-written pages are
-current; the manifest needs a re-scrape to match. Until then, treat page body
-copy as of-its-time and the page metadata and cards as current.
+- **Opening hours** - published nowhere on the live site (`site.openingHours`).
+- **Form delivery** - forms validate and submit, but go nowhere until
+  `NEXT_PUBLIC_FORM_ENDPOINT` is set. See `docs/INTEGRATION.md`.
+- **Programme cards on the homepage** other than the three dated ones still
+  carry typed dates («Июль 2026», «4–6 июля, Гродно»), mirroring a homepage
+  block that is itself out of date on the live site.
+- **Answer lists the live forms load at runtime** are not in its markup. Two are
+  ported by hand in `app/lib/formFields.ts`; the rest fall back to free text.
 
-This is the structural reason to move dates and prices into the content model
-(`app/types/content.ts`) rather than leaving them in prose: prose cannot be
-checked for staleness automatically.
+## Checks
+
+`python3 scripts/check-links.py /newMediatorSite` runs in the deploy workflow
+after the build. It fails on a link to a page that was not exported, on a link
+or image missing the base path, and on `href="#"`. The last two are invisible to
+the build and to lint - they only 404 once deployed.

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function SummerSchoolBanner() {
   return (
     <section className="px-4 py-0 bg-white">
@@ -20,12 +22,12 @@ export default function SummerSchoolBanner() {
                 «Медиатор как личность и как профессионал»
               </span>
             </p>
-            <a
+            <Link
               href="/summerschool"
               className="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
             >
               Узнать подробнее
-            </a>
+            </Link>
           </div>
         </div>
       </div>

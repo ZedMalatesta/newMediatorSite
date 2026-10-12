@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { experts } from "@/app/lib/data";
 
@@ -63,9 +64,9 @@ export default function ExpertsSection() {
         </div>
 
         <div className="mt-10 text-center">
-          <a href="/trainers" className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm">
+          <Link href="/trainers" className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm">
             Подробнее об экспертах →
-          </a>
+          </Link>
         </div>
       </div>
     </section>

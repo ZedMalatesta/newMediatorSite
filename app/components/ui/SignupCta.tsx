@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useCallback, useState } from "react";
 import Modal from "./Modal";
+import SmartLink from "./SmartLink";
 import SiteForm from "./SiteForm";
 import { fixTypos } from "@lib/copyFilters";
 import { liveFields } from "@lib/formFields";
@@ -33,9 +34,9 @@ export default function SignupCta({
 
   if (!popup) {
     return (
-      <a href={href} className={className}>
+      <SmartLink href={href} className={className}>
         {label}
-      </a>
+      </SmartLink>
     );
   }
 

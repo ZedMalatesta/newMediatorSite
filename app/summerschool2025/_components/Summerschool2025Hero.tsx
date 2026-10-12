@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Summerschool2025Hero() {
   return (
     <section className="relative bg-slate-900 text-white overflow-hidden">
@@ -16,12 +18,12 @@ export default function Summerschool2025Hero() {
           милосердия «Каритас»
         </p>
 
-        <a
+        <Link
           href="/summerintensive2026"
           className="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
         >
           Смотреть интенсив 2026
-        </a>
+        </Link>
       </div>
     </section>
   );

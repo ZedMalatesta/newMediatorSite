@@ -1,20 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { readProfile, writeProfile, type StoredProfile } from "@lib/auth";
+import { writeProfile, type StoredProfile } from "@lib/auth";
+import { useStore } from "@lib/clientStore";
 
 /**
  * Header account control (change request point 2).
  *
- * The remembered profile is read after mount, never during render: it lives in
- * localStorage, which does not exist while the static export is prerendered, so
- * reading it during render would mismatch on hydration.
+ * The remembered profile lives in localStorage, which does not exist while the
+ * static export is prerendered. It is read through the shared store, which
+ * renders "signed out" for the prerender and hydration pass and the real value
+ * straight after - so the markup matches and no effect is needed.
  */
 export default function AccountMenu({ className = "" }: { className?: string }) {
-  const [profile, setProfile] = useState<StoredProfile | null>(null);
-
-  useEffect(() => setProfile(readProfile()), []);
+  const profile = useStore<StoredProfile | null>("mediatorok.profile", null);
 
   if (!profile) {
     return (
@@ -48,7 +47,6 @@ export default function AccountMenu({ className = "" }: { className?: string }) 
         type="button"
         onClick={() => {
           writeProfile(null);
-          setProfile(null);
         }}
         className="text-xs text-slate-400 hover:text-slate-600 transition-colors"
       >
