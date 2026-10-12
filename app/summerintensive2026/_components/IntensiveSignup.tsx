@@ -1,9 +1,8 @@
 "use client";
 
-import { contactMethods, officeAddress, organizers, participationFormats } from "./intensive-data";
-
-const inputClass =
-  "w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 text-sm focus:outline-none focus:border-accent-400 transition-colors";
+import SiteForm from "@ui/SiteForm";
+import { field, liveFields } from "@lib/formFields";
+import { contactMethods, officeAddress, organizers } from "./intensive-data";
 
 export default function IntensiveSignup() {
   return (
@@ -20,84 +19,12 @@ export default function IntensiveSignup() {
         </div>
 
         <div className="bg-slate-800 rounded-2xl p-8 border border-accent-500/20">
-          <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input type="email" required placeholder="Электронная почта*" className={inputClass} />
-              <input
-                type="tel"
-                required
-                placeholder="Телефон с кодом страны, например +375 29*"
-                className={inputClass}
-              />
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input type="text" required placeholder="ФИО*" className={inputClass} />
-              <input type="text" required placeholder="Город*" className={inputClass} />
-            </div>
-
-            <div>
-              <label className="block text-slate-300 text-sm mb-2">
-                Какой формат участия Вам подходит?*
-              </label>
-              <select required defaultValue="" className={inputClass}>
-                <option value="" disabled>
-                  Выберите формат
-                </option>
-                {participationFormats.map((f) => (
-                  <option key={f} value={f}>
-                    {f}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-slate-300 text-sm mb-2">Как с Вами можно связаться?</label>
-              <div className="flex flex-wrap gap-4">
-                {contactMethods.map((m) => (
-                  <label key={m} className="flex items-center gap-2 text-slate-300 text-sm">
-                    <input type="checkbox" className="accent-accent-500 w-4 h-4" />
-                    {m}
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-slate-300 text-sm mb-2">
-                Вам необходим трансфер из Минска до места проведения?*
-              </label>
-              <div className="flex gap-6">
-                {["Да", "Нет"].map((opt) => (
-                  <label key={opt} className="flex items-center gap-2 text-slate-300 text-sm">
-                    <input type="radio" name="transfer" required className="accent-accent-500 w-4 h-4" />
-                    {opt}
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            <textarea
-              placeholder="Ваши комментарии и вопросы"
-              rows={3}
-              className={`${inputClass} resize-none`}
-            />
-
-            <label className="flex items-start gap-2.5 text-slate-400 text-xs">
-              <input type="checkbox" required className="accent-accent-500 w-4 h-4 mt-0.5" />
-              Согласен с условиями{" "}
-              <a href="/politicaobrabotkidannyh" className="text-accent-400 hover:underline">
-                политики обработки персональных данных
-              </a>
-            </label>
-
-            <button
-              type="submit"
-              className="w-full bg-accent-500 text-white py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
-            >
-              Зарегистрироваться
-            </button>
-          </form>
+          <SiteForm
+            fields={liveFields("summerintensive2026", { "Как с Вами можно связаться?": contactMethods }) ?? [field.name(), field.email(), field.phone()]}
+            kind="registration"
+            submitLabel="Зарегистрироваться"
+            context="Летний интенсив медиаторов 2026"
+          />
         </div>
 
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">

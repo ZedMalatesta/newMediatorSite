@@ -288,7 +288,7 @@ function accordion(frag: string, type: string): AccordionItem[] {
 
 type FormField = {
   key: string;
-  kind: "name" | "email" | "phone" | "text" | "textarea" | "choice";
+  kind: "name" | "email" | "phone" | "text" | "textarea" | "choice" | "multi";
   label: string;
   required: boolean;
   options?: string[];
@@ -300,7 +300,7 @@ const DEFAULT_LABEL: Record<string, string> = { name: "Ваше имя", email: 
 /** Mask and field-name placeholders Tilda inserts; not labels anyone wrote. */
 const JUNK_LABEL = /^(?:\+1\(000\)000-0000|Phone|Email|Name)$/i;
 
-function form(rec: Rec, page: string): LiveForm | null {
+function form(rec: Rec): LiveForm | null {
   const body = /<form\b[\s\S]*?<\/form>/.exec(rec.frag)?.[0];
   if (!body) return null;
 
@@ -308,7 +308,8 @@ function form(rec: Rec, page: string): LiveForm | null {
   const groups = body.split(/(?=<div[^>]*class="[^"]*t-input-group)/).slice(1);
   for (const g of groups) {
     const type = /data-field-type="([^"]+)"/.exec(g)?.[1] ?? "";
-    const kind = KIND[type];
+    // Tilda marks a radio group that allows several answers with radcb="cb".
+    const kind = type === "rd" && /data-field-radcb="cb"/.test(g) ? "multi" : KIND[type];
     const name = /<(?:input|textarea|select)[^>]*name="([^"]+)"/.exec(g)?.[1];
     if (!kind || !name) continue; // checkboxes (consent) are rendered by the form itself
     const title = text(/class="[^"]*t-input-title[^"]*"[^>]*>([\s\S]*?)<\/(?:div|label)>/.exec(g)?.[1] ?? "");
@@ -329,7 +330,7 @@ function form(rec: Rec, page: string): LiveForm | null {
   return {
     hook,
     trigger: "",
-    title: first("t\\d+__title") || "Оставьте заявку",
+    title: first("t\\d+__title") || first("t-section__title") || "Оставьте заявку",
     text: first("t\\d+__descr"),
     submit: text(/<button[^>]*class="[^"]*t-submit[^"]*"[^>]*>([\s\S]*?)<\/button>/.exec(rec.frag)?.[1] ?? "") || "Отправить",
     fields,
@@ -394,7 +395,7 @@ async function main() {
       const hasForm = /<form\b/.test(rec.frag);
       if (hasForm) {
         if (/sform\[email\]/.test(rec.frag)) { newsletter.push(slug); continue; }
-        const f = form(rec, slug);
+        const f = form(rec);
         if (chrome.has(rec.id)) { footerForm ??= f; continue; }
         if (f && !pageForms.some((p) => p.hook === f.hook && p.hook)) pageForms.push(f);
         continue; // a form is offered through pageForms, not rendered as copy
@@ -595,9 +596,10 @@ function writeForms(forms: Record<string, LiveForm[]>, footer: LiveForm | null, 
     "export type LiveFormField = {",
     "  /** Key the value is submitted under. */",
     "  key: string;",
-    '  kind: "name" | "email" | "phone" | "text" | "textarea" | "choice";',
+    '  kind: "name" | "email" | "phone" | "text" | "textarea" | "choice" | "multi";',
     "  label: string;",
     "  required: boolean;",
+    "  /** Answers to pick from. A choice the live site loads at runtime has none. */",
     "  options?: string[];",
     "};",
     "",
