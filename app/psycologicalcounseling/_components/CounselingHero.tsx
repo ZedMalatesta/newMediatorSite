@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { concerns } from "./counseling-data";
 import SignupCta from "@ui/SignupCta";
 
 export default function CounselingHero() {
@@ -27,17 +26,6 @@ export default function CounselingHero() {
         <p className="text-slate-300 text-xl mb-8 max-w-xl">
           Психологическое благополучие — основа гармоничной и осознанной жизни.
         </p>
-
-        <div className="flex flex-wrap gap-3 mb-8 max-w-2xl">
-          {concerns.map((c) => (
-            <span
-              key={c}
-              className="bg-white/10 border border-white/20 text-slate-200 text-sm px-4 py-2 rounded-lg"
-            >
-              {c}
-            </span>
-          ))}
-        </div>
 
         <SignupCta
           label="Оставить заявку"
