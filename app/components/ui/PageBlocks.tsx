@@ -154,7 +154,7 @@ function Photos({ block, images }: { block: PageBlock; images: BlockImage[] }) {
 // cards
 // ---------------------------------------------------------------------------
 
-type Item = { title: string; body: TextNode[]; image: BlockImage | null };
+type Item = { title: string; body: TextNode[]; image: BlockImage | null; href?: string };
 
 function toItem(card: BlockCard, keepImage: boolean): Item {
   let title = fixTypos(card.title);
@@ -164,7 +164,7 @@ function toItem(card: BlockCard, keepImage: boolean): Item {
     title = body[0].text;
     body = body.slice(1);
   }
-  return { title, body, image: keepImage ? card.image : null };
+  return { title, body, image: keepImage ? card.image : null, href: card.href };
 }
 
 const cols = (n: number, wide = false) =>
@@ -217,7 +217,11 @@ function Card({ item, icons }: { item: Item; icons: boolean }) {
   const photo = !icons && item.image && !isIcon(item.image) && item.image.width > 0 ? item.image : null;
   const icon = item.image && !photo ? item.image : null;
   return (
-    <li className="bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+    <li
+      className={`relative bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col ${
+        item.href ? "transition-shadow hover:shadow-md hover:border-accent-200" : ""
+      }`}
+    >
       {photo && (
         // One frame per row so the cards line up; the picture is fitted inside
         // it, never cut to it.
@@ -237,7 +241,22 @@ function Card({ item, icons }: { item: Item; icons: boolean }) {
             <Icon image={icon} />
           </div>
         )}
-        {item.title && <h3 className="font-semibold text-slate-900 leading-snug mb-2">{item.title}</h3>}
+        {item.title && (
+          <h3 className="font-semibold text-slate-900 leading-snug mb-2">
+            {item.href ? (
+              // The link's hit area is stretched over the whole card.
+              <SmartLink
+                href={item.href}
+                {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="hover:text-accent-700 transition-colors after:absolute after:inset-0"
+              >
+                {item.title}
+              </SmartLink>
+            ) : (
+              item.title
+            )}
+          </h3>
+        )}
         <Prose nodes={item.body} small />
       </div>
     </li>

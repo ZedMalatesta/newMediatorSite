@@ -1,7 +1,7 @@
 import Image from "next/image";
 import SignupCta from "@ui/SignupCta";
 import { blockByHeading } from "@lib/blockQuery";
-import { prices } from "./counseling-data";
+import { fixTypos } from "@lib/copyFilters";
 
 const PAGE = "psycologicalcounseling";
 
@@ -53,15 +53,16 @@ export default function CounselingFormats() {
         </h2>
 
         <div className="grid gap-6 sm:grid-cols-3">
-          {prices.map((row) => (
+          {/* The services and prices as the live page publishes them today. */}
+          {(pricing?.cards ?? []).map((row) => (
             <div
-              key={row.service}
+              key={row.title}
               className="flex flex-col rounded-2xl border border-slate-200 p-6"
             >
               <p className="font-semibold text-slate-900 text-sm leading-snug mb-4 flex-1">
-                {row.service}
+                {fixTypos(row.title)}
               </p>
-              <p className="text-2xl font-bold text-accent-700 mb-5">{row.price}</p>
+              <p className="text-2xl font-bold text-accent-700 mb-5">{row.body[0]?.text}</p>
               <SignupCta
                 label="Оставить заявку"
                 className="inline-block text-center border-2 border-accent-400 text-accent-700 px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-accent-50 transition-colors"
@@ -70,9 +71,7 @@ export default function CounselingFormats() {
           ))}
         </div>
 
-        {pricing?.paragraphs[0] && (
-          <p className="text-slate-400 text-xs mt-5">{pricing.paragraphs[0]}</p>
-        )}
+        {pricing?.body[0] && <p className="text-slate-400 text-xs mt-5">{pricing.body[0].text}</p>}
       </div>
     </section>
   );

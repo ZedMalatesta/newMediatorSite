@@ -458,7 +458,22 @@ function menu(html: string): NavItem[] {
 // ---------------------------------------------------------------------------
 
 type Image = { src: string; width: number; height: number; alt: string };
-type Card = { title: string; body: TextNode[]; image: Image | null };
+type Card = { title: string; body: TextNode[]; image: Image | null; href?: string };
+
+/**
+ * Where a live link leads on this site: a path for a page that exists here,
+ * the URL unchanged for another site, nothing for a live page with no
+ * counterpart - a card is better unlinked than linked to a 404.
+ */
+function localHref(raw: string): string | undefined {
+  const href = decode(raw).trim();
+  if (!href || href.startsWith("#")) return undefined;
+  const own = /^(?:https?:\/\/(?:www\.)?mediatorok\.by)?\/?([^/?#:]*)\/?(?:[?#].*)?$/.exec(href);
+  if (!own) return /^https?:/.test(href) ? href : undefined;
+  const slug = ALIASES[own[1]] ?? own[1];
+  if (!slug) return "/";
+  return fs.existsSync(path.join(ROOT, "app", slug, "page.tsx")) ? `/${slug}` : undefined;
+}
 type BlockLink = { label: string; href: string };
 
 /** A block's buttons. Links into the live site become paths on this one. */
@@ -549,6 +564,11 @@ async function main() {
       for (const t of isAccordion ? [] : tokens(visible)) {
         const own = t.card !== "" && t.card !== "section";
         if (own && !cardsById.has(t.card)) cardsById.set(t.card, { title: "", body: [], image: null });
+        if (own && t.kind === "title") {
+          // A card that leads somewhere says so on its title.
+          const link = /<a\b[^>]*href="([^"]+)"/.exec(t.html)?.[1];
+          if (link) cardsById.get(t.card)!.href ??= localHref(link);
+        }
         const card = own ? cardsById.get(t.card)! : null;
         if (t.kind === "image") {
           if (!card || card.image) continue;
@@ -697,6 +717,8 @@ function writeBlocks(blocks: Record<string, Block[]>, covers: Record<string, str
     "  title: string;",
     "  body: TextNode[];",
     "  image: BlockImage | null;",
+    "  /** Where the card leads: a path on this site, or another site's URL. */",
+    "  href?: string;",
     "};",
     "",
     "export type BlockLink = {",

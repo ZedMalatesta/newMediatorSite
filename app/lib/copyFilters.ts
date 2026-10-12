@@ -32,6 +32,9 @@ export function isTildaArtefact(text: string): boolean {
 const LIVE_TYPOS: [RegExp, string][] = [
   [/местоположениев г\./g, "местоположение в г."],
   [/Заполнить заяку/g, "Заполнить заявку"],
+  [/Косультация/g, "Консультация"],
+  [/Тажке Вас/g, "Также Вас"],
+  [/усовершенствоват свои/g, "усовершенствовать свои"],
 ];
 
 export function fixTypos(text: string): string {

@@ -1,14 +1,3 @@
-export type PriceRow = {
-  service: string;
-  price: string;
-};
-
-export const prices: PriceRow[] = [
-  { service: "Индивидуальная консультация, очно", price: "от 100 бел.руб." },
-  { service: "Индивидуальная консультация, онлайн", price: "от 80 бел.руб." },
-  { service: "Парная консультация", price: "от 160 бел.руб." },
-];
-
 export type Specialist = {
   name: string;
   initials: string;

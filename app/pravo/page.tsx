@@ -29,8 +29,8 @@ export default function PravoPage() {
             <h1 className="text-3xl md:text-5xl font-bold leading-tight">Правовые акты</h1>
           </div>
         </section>
-        <PravoList />
         <PageBlocks page="pravo" />
+        <PravoList />
       </main>
       <Footer />
     </div>
