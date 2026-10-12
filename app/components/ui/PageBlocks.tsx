@@ -378,13 +378,20 @@ function Block({ block }: { block: PageBlock }) {
 
 export default function PageBlocks({
   page,
+  people = true,
   className = "",
 }: {
   /** Page key in the generated block manifest (usually the route segment). */
   page: string;
+  /**
+   * Set false on a page that presents its people with its own component. The
+   * live site's people cards open each CV in a popup; a page that already has
+   * cards and a CV dialog would otherwise show the same people twice.
+   */
+  people?: boolean;
   className?: string;
 }) {
-  const blocks = getPageBlocks(page);
+  const blocks = getPageBlocks(page).filter((b) => people || !b.popupCards);
   if (blocks.length === 0) return null;
 
   return (

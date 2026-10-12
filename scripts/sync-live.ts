@@ -61,6 +61,12 @@ for (const [role, types] of Object.entries(roles)) for (const t of types) ROLE[t
 const FALLBACK_ROLE = "card-grid";
 const ACCORDION_TYPES = new Set(["585", "668"]);
 const MAP_TYPES = new Set(["555"]);
+/**
+ * People cards whose full CV opens in a popup on the live site. The popup
+ * markup sits in the same record as the cards, so reading the record whole
+ * turned eight CVs into one 80-paragraph block under the first person's name.
+ */
+const POPUP_CARD_TYPES = new Set(["778"]);
 
 const IMG_RE =
   /https:\/\/static\.tildacdn\.[a-z]+\/[A-Za-z0-9._/-]+\.(?:jpg|jpeg|JPG|JPEG|png|PNG|webp|WEBP|svg|gif|GIF)/g;
@@ -363,7 +369,7 @@ type Image = { src: string; width: number; height: number; alt: string };
 type Block = {
   role: string; heading: string; subheadings: string[]; paragraphs: string[]; listItems: string[];
   slider: boolean; cycle: boolean; arrows: boolean; dots: boolean; zoomable: boolean;
-  images: Image[]; videos: Video[]; accordion: AccordionItem[]; map: boolean;
+  images: Image[]; videos: Video[]; accordion: AccordionItem[]; map: boolean; popupCards: boolean;
 };
 
 async function main() {
@@ -403,9 +409,13 @@ async function main() {
       if (chrome.has(rec.id)) continue;
 
       const isAccordion = ACCORDION_TYPES.has(rec.type);
-      const titles = dedupe(grab(rec.frag, TITLE));
-      const descrs = dedupe(grab(rec.frag, DESCR));
-      const items = dedupe([...rec.frag.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)].map((m) => lines(m[1]).join(" ")));
+      // What a popup holds is not on the page until someone opens it.
+      const popupCards = POPUP_CARD_TYPES.has(rec.type);
+      const popupAt = popupCards ? rec.frag.search(/<div[^>]*class="[^"]*\bt-popup\b/) : -1;
+      const visible = popupAt >= 0 ? rec.frag.slice(0, popupAt) : rec.frag;
+      const titles = dedupe(grab(visible, TITLE));
+      const descrs = dedupe(grab(visible, DESCR));
+      const items = dedupe([...visible.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)].map((m) => lines(m[1]).join(" ")));
       const acc = isAccordion ? accordion(rec.frag, rec.type) : [];
 
       const alts = new Map<string, string>();
@@ -439,6 +449,7 @@ async function main() {
         videos: videos(rec.raw),
         accordion: acc,
         map: MAP_TYPES.has(rec.type),
+        popupCards,
       };
       const hasContent =
         block.heading || block.paragraphs.length || block.listItems.length || images.length ||
@@ -539,6 +550,8 @@ function writeBlocks(blocks: Record<string, Block[]>, covers: Record<string, str
     "  accordion: AccordionItem[];",
     "  /** The live block is a map of the office location. */",
     "  map: boolean;",
+    "  /** People cards whose details open in a popup on the live site. */",
+    "  popupCards: boolean;",
     "};",
     "",
     "export const pageBlocks: Record<string, PageBlock[]> = {",
@@ -557,6 +570,7 @@ function writeBlocks(blocks: Record<string, Block[]>, covers: Record<string, str
       L.push(`      videos: ${j(b.videos)},`);
       L.push(`      accordion: ${j(b.accordion)},`);
       L.push(`      map: ${b.map},`);
+      L.push(`      popupCards: ${b.popupCards},`);
       L.push("    },");
     }
     L.push("  ],");

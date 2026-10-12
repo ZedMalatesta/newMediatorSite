@@ -30,7 +30,7 @@ export default function CorporateMediatorokPage() {
         <CorporatePrograms />
         <CorporateTrainers />
         <CorporateSignup />
-        <PageBlocks page="corporatemediatorok" />
+        <PageBlocks page="corporatemediatorok" people={false} />
       </main>
       <Footer />
     </div>
