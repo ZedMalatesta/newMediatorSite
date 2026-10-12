@@ -4,9 +4,6 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 
 import MediationHero from "./_components/MediationHero";
-import MediationServices from "./_components/MediationServices";
-import FamilyServices from "./_components/FamilyServices";
-import PricingSection from "./_components/PricingSection";
 import MediationContactForm from "./_components/MediationContactForm";
 import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
@@ -26,11 +23,8 @@ export default function MediationPage() {
       <Navbar />
       <main>
         <MediationHero />
-        <MediationServices />
-        <FamilyServices />
-        <PricingSection />
-        <MediationContactForm />
         <PageBlocks page="mediation" />
+        <MediationContactForm />
       </main>
       <Footer />
     </div>

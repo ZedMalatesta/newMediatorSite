@@ -169,7 +169,7 @@ function toItem(card: BlockCard, keepImage: boolean): Item {
 
 const cols = (n: number, wide = false) =>
   wide || n === 1
-    ? "grid-cols-1 md:grid-cols-2"
+    ? "grid-cols-1 md:grid-cols-2" + (n % 3 === 0 ? " xl:grid-cols-3" : "")
     : n === 2 || n === 4
       ? "grid-cols-1 sm:grid-cols-2" + (n === 4 ? " lg:grid-cols-4" : "")
       : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
@@ -219,8 +219,16 @@ function Card({ item, icons }: { item: Item; icons: boolean }) {
   return (
     <li className="bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
       {photo && (
-        <div className="bg-slate-50 p-4 pb-0">
-          <Figure image={photo} alt={item.title} className="rounded-xl shadow-none" />
+        // One frame per row so the cards line up; the picture is fitted inside
+        // it, never cut to it.
+        <div className={`relative bg-slate-50 ${photo.width > photo.height * 1.1 ? "aspect-3/2" : "aspect-square"}`}>
+          <Image
+            src={photo.src}
+            alt={photo.alt || item.title}
+            fill
+            className="object-contain p-3"
+            sizes="(max-width: 640px) 100vw, 400px"
+          />
         </div>
       )}
       <div className="p-6 flex-1">
