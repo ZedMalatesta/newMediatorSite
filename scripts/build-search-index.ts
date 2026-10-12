@@ -46,6 +46,8 @@ const entries = routes
       b.heading,
       ...cleanCopy(b.paragraphs),
       ...cleanCopy(b.listItems),
+      // Accordion answers are content too, even though they start collapsed.
+      ...b.accordion.flatMap((item) => [item.title, ...item.body]),
     ]);
     const text = cleanCopy(words).join(" ").slice(0, MAX_TEXT);
     return { slug, title: title || slug, description, text };
