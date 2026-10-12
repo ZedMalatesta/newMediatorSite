@@ -41,6 +41,10 @@ jobs:
       # only once deployed - neither the build nor lint can see it. Fail here.
       - run: python3 scripts/check-links.py /newMediatorSite
 
+      # A live section shown twice or not at all, a picture missing or cut to
+      # a box: the pages still build and every link still works. Fail here.
+      - run: pnpm run audit:pages
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

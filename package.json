@@ -8,7 +8,8 @@
     "start": "npx serve@latest out -l 3000",
     "lint": "eslint",
     "build:search": "tsx scripts/build-search-index.ts",
-    "sync:live": "tsx scripts/sync-live.ts"
+    "sync:live": "tsx scripts/sync-live.ts",
+    "audit:pages": "tsx scripts/audit-pages.ts"
   },
   "dependencies": {
     "next": "16.2.9",

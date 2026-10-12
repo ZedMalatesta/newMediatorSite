@@ -1,5 +1,5 @@
 import { cleanCopy } from "./copyFilters";
-import { getPageBlocks, type PageBlock } from "./pageBlocks";
+import { getPageBlocks, type BlockImage, type PageBlock } from "./pageBlocks";
 
 /**
  * Lets a hand-built section take its wording and pictures from the synced live
@@ -19,4 +19,18 @@ export function listInOrder(block: PageBlock | undefined): string[] {
   if (!block) return [];
   const all = cleanCopy([...block.paragraphs, ...block.listItems]);
   return all.filter((item, i) => all.lastIndexOf(item) === i);
+}
+
+/** Up to this size an image is an icon; above it, a photograph or illustration. */
+const ICON_MAX = 260;
+
+/**
+ * Small pictures are icons - and so are the square 512px PNG pictograms the
+ * live site uses in places, which are icons saved large.
+ */
+export function isIcon(i: BlockImage): boolean {
+  return (
+    Math.max(i.width, i.height) <= ICON_MAX ||
+    (/\.(?:png|svg)$/i.test(i.src) && i.width === i.height && i.width <= 512)
+  );
 }

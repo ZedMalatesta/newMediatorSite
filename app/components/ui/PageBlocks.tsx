@@ -7,6 +7,7 @@ import {
   type PageBlock,
   type TextNode,
 } from "@lib/pageBlocks";
+import { isIcon } from "@lib/blockQuery";
 import { fixTypos, isTildaArtefact } from "@lib/copyFilters";
 import ImageSlider from "./ImageSlider";
 import ZoomableGrid from "./ZoomableGrid";
@@ -31,18 +32,8 @@ import SmartLink from "./SmartLink";
  *    to a common tile, and those open full-size on click.
  */
 
-/** Up to this size an image is an icon; above it, a photograph or illustration. */
-const ICON_MAX = 260;
 /** A "heading" longer than this is a sentence someone styled large. */
 const HEADING_MAX = 110;
-
-/**
- * Small pictures are icons - and so are the square 512px PNG pictograms the
- * live site uses in places, which are icons saved large.
- */
-const isIcon = (i: BlockImage) =>
-  Math.max(i.width, i.height) <= ICON_MAX ||
-  (/\.(?:png|svg)$/i.test(i.src) && i.width === i.height && i.width <= 512);
 
 function clean(nodes: TextNode[]): TextNode[] {
   return nodes

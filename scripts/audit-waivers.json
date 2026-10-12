@@ -1,0 +1,32 @@
+{
+  "aboutus": {
+    "Наша история": "AboutHistory tells the history in edited wording around the mission quote, as the owner asked",
+    "Оксана Шульга": "AboutTeam presents the three team members with shortened biographies; the full CVs are on /team and /trainers",
+    "Александра Габриянчик": "AboutTeam presents the three team members with shortened biographies; the full CVs are on /team and /trainers",
+    "Елена Рагулина": "AboutTeam presents the three team members with shortened biographies; the full CVs are on /team and /trainers"
+  },
+  "fordialogue": {
+    "Как эксперт": "FordialogueCta shows the two invitations as cards, each split into who it addresses and what it asks",
+    "Наши контакты": "FordialogueCta names the contacts without the personal phone number and e-mail, which need the person's consent"
+  },
+  "home": {
+    "Актуальные программы обучения": "The home page lists the same programmes from the catalogue data, with dates taken from the live pages",
+    "@pictures": "The home page is designed by hand with its own picture set: service and dispute icons, the corrected expert portraits from /images/experts, review screenshots"
+  },
+  "obuchenie": {
+    "Программа подготовки медиаторов": "ProgramTabs lists this programme in the catalogue, with favourites and the cart",
+    "Актуальные программы обучения": "ProgramTabs and ExtraCourses list the same nine programmes in the catalogue, with favourites and the cart"
+  },
+  "team": {
+    "Наши психологи": "The two points are the bullet line of the page hero"
+  },
+  "trainers": {
+    "Наши преподаватели": "The points are the bullet line of the page hero"
+  },
+  "trening2024": {
+    "Подробнее про Тренинг": "The three links are the training cards at the top of the page"
+  },
+  "psycologicalcounseling": {
+    "02-image.jpg": "The file is an illustration in the middle of a tall blank canvas; CounselingAbout trims only the blank margins"
+  }
+}
