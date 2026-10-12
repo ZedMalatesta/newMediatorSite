@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FacebookIcon, InstagramIcon, TelegramIcon } from "@ui/SocialIcons";
+import FooterForms from "./FooterForms";
 
 export default function Footer() {
   return (
     <footer id="footer" className="bg-slate-900 text-slate-400 border-t border-slate-800">
+      <FooterForms />
       <div className="max-w-6xl mx-auto px-4 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Brand */}
         <div>

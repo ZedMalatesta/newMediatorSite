@@ -68,3 +68,10 @@ h6 {
   font-family: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui,
     sans-serif;
 }
+
+/* The footer's generic lead form is the fallback for pages with no form of
+   their own. Where the page already offers one, a second directly beneath it
+   is noise - so it steps aside. Every page is <main> followed by <footer>. */
+main:has(form) + footer [data-footer-lead] {
+  display: none;
+}
