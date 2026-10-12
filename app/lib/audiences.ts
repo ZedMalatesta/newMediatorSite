@@ -44,6 +44,7 @@ export const audiences: Audience[] = [
     tagline: "Повышение квалификации, супервизия и профессиональное сообщество.",
     items: [
       "newtechnologies",
+      "conflictconsulting",
       "supervision",
       "intervision",
       "narrativemediation",
@@ -67,6 +68,7 @@ export const audiences: Audience[] = [
     tagline: "Помощь семье, детям и родителям — консультирование и медиация.",
     items: [
       "family",
+      "teenschool",
       "familyconsulting",
       "semeynayamediation",
       "childrenindivorce",
