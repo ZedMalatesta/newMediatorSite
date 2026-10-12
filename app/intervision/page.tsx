@@ -4,7 +4,6 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 
 import IntervisionHero from "./_components/IntervisionHero";
-import IntervisionContent from "./_components/IntervisionContent";
 import IntervisionSignup from "./_components/IntervisionSignup";
 import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
@@ -24,9 +23,8 @@ export default function IntervisionPage() {
       <Navbar />
       <main>
         <IntervisionHero />
-        <IntervisionContent />
-        <IntervisionSignup />
         <PageBlocks page="intervision" />
+        <IntervisionSignup />
       </main>
       <Footer />
     </div>

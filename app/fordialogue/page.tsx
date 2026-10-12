@@ -4,7 +4,6 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 
 import FordialogueHero from "./_components/FordialogueHero";
-import FordialogueDirections from "./_components/FordialogueDirections";
 import FordialogueCta from "./_components/FordialogueCta";
 import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
@@ -24,9 +23,9 @@ export default function FordialoguePage() {
       <Navbar />
       <main>
         <FordialogueHero />
-        <FordialogueDirections />
+        {/* The two closing blocks - the invitations and the contacts - are FordialogueCta. */}
+        <PageBlocks page="fordialogue" omit={["Как эксперт", "Наши контакты"]} />
         <FordialogueCta />
-        <PageBlocks page="fordialogue" />
       </main>
       <Footer />
     </div>

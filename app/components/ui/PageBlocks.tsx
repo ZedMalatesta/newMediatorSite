@@ -461,7 +461,9 @@ function toSections(blocks: PageBlock[]): Section[] {
 }
 
 const startsWith = (b: PageBlock, keys: string[]) =>
-  keys.some((k) => b.heading.startsWith(k) || b.body[0]?.text.startsWith(k) || b.cards[0]?.title.startsWith(k));
+  keys.some((k) =>
+    [b.heading, b.body[0]?.text, b.cards[0]?.title, b.cards[0]?.body[0]?.text].some((line) => line?.startsWith(k)),
+  );
 
 export default function PageBlocks({
   page,
