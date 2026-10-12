@@ -42,3 +42,6 @@ specs
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# live-site sync cache (scripts/sync-live.ts)
+/.cache/
