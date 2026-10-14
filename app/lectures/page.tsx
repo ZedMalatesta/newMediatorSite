@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Лекции-дискуссии | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/lectures") },
+  openGraph: { url: absoluteUrl("/lectures") },
+  title: "Лекции-дискуссии",
   description:
     "Открытый форум о современной психологии, конфликтологии и антропологии — помогаем участникам лучше понимать себя и мир вокруг.",
 };

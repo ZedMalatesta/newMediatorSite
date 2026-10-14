@@ -282,3 +282,9 @@ export const participationFormats = [
 ];
 
 export const contactMethods = ["По телефону", "По электронной почте", "В вайбере", "В телеграмме"];
+
+/**
+ * Event dates drive the page's lifecycle state (spec §16). Registration CTAs and
+ * price tiers are derived from these, never hand-toggled.
+ */
+export const eventDates = { start: "2026-07-10", end: "2026-07-12" } as const;

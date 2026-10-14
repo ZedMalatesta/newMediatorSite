@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Воспитание как взаимное развитие | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/programforparents") },
+  openGraph: { url: absoluteUrl("/programforparents") },
+  title: "Воспитание как взаимное развитие",
   description:
     "Онлайн-марафон для родителей: 12 встреч о дисциплине, агрессии, похвале, детских страхах и навыках коммуникации.",
 };

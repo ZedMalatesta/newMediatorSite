@@ -3,9 +3,12 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { SectionHeader } from "@ui/SectionHeader/SectionHeader";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Документы для проведения медиации | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/mediationdocuments") },
+  openGraph: { url: absoluteUrl("/mediationdocuments") },
+  title: "Документы для проведения медиации",
   description:
     "Какие документы оформляются на разных этапах процедуры медиации в Республике Беларусь: соглашение о применении медиации, медиативное соглашение и другие.",
 };

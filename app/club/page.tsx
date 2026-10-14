@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Переговоры на шпильках | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/club") },
+  openGraph: { url: absoluteUrl("/club") },
+  title: "Переговоры на шпильках",
   description:
     "Женский профессиональный клуб переговоров: стратегии переговоров, лидерство, публичные выступления, деловой стиль и нетворкинг.",
 };

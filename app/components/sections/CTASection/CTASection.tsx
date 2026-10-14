@@ -30,7 +30,7 @@ export default function CTASection() {
               ))}
             </div>
             <a
-              href="#"
+              href="https://t.me/MediatorOK"
               className="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
             >
               Подписаться в телеграм →

@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { SectionHeader } from "@ui/SectionHeader/SectionHeader";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Вебинары Центра логотерапии | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/logowebinars") },
+  openGraph: { url: absoluteUrl("/logowebinars") },
+  title: "Вебинары Центра логотерапии",
   description:
     "Бесплатные образовательные вебинары на основе подхода Виктора Франкла: стремление к смыслу — главная мотивационная сила человека.",
 };

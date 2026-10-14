@@ -6,9 +6,12 @@ import Footer from "@layout/Footer";
 import ContactsInfo from "./_components/ContactsInfo";
 import ContactsForm from "./_components/ContactsForm";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Контакты | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/contacts") },
+  openGraph: { url: absoluteUrl("/contacts") },
+  title: "Контакты",
   description:
     "Контакты УПУ «МедиаторОк Проф»: г. Минск, ул. Короля 9, кабинет 126. Телефон, email и соцсети.",
 };

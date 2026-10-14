@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Обучение медиации — программа подготовки медиаторов | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/obucheniemediator") },
+  openGraph: { url: absoluteUrl("/obucheniemediator") },
+  title: "Обучение медиации — программа подготовки медиаторов",
   description:
     "Программа подготовки медиаторов, утверждённая Министерством юстиции Республики Беларусь. 12 дней, 170 часов. Очно в Минске или дистанционно.",
 };

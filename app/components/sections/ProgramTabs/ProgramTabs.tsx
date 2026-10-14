@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { programs } from "@/app/lib/data";
+import { useTabKeyboard } from "@/app/hooks/useTabKeyboard";
 
 type Tab = "all" | "in-person" | "online";
 
@@ -13,6 +14,7 @@ const tabs: { label: string; value: Tab }[] = [
 
 export default function ProgramTabs() {
   const [active, setActive] = useState<Tab>("all");
+  const { setRef, onKeyDown } = useTabKeyboard(tabs.length, (i) => setActive(tabs[i].value));
 
   const filtered = programs.filter((p) => {
     if (active === "all") return true;
@@ -37,10 +39,21 @@ export default function ProgramTabs() {
             </p>
           </div>
 
-          <div className="flex gap-1 bg-slate-100 border border-slate-200 p-1 rounded-xl w-fit flex-shrink-0">
-            {tabs.map((tab) => (
+          <div
+            role="tablist"
+            aria-label="Категории программ"
+            className="flex gap-1 bg-slate-100 border border-slate-200 p-1 rounded-xl w-fit flex-shrink-0"
+          >
+            {tabs.map((tab, i) => (
               <button
                 key={tab.value}
+                ref={setRef(i)}
+                role="tab"
+                id={`programs-tab-${tab.value}`}
+                aria-selected={active === tab.value}
+                aria-controls="programs-panel"
+                tabIndex={active === tab.value ? 0 : -1}
+                onKeyDown={onKeyDown(i)}
                 onClick={() => setActive(tab.value)}
                 className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
                   active === tab.value
@@ -54,7 +67,12 @@ export default function ProgramTabs() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div
+          id="programs-panel"
+          role="tabpanel"
+          aria-labelledby={`programs-tab-${active}`}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+        >
           {filtered.map((program, idx) => (
             <div
               key={idx}
@@ -109,7 +127,7 @@ export default function ProgramTabs() {
         )}
 
         <div className="mt-10 text-center">
-          <a href="#" className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm">
+          <a href="/obuchenie" className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm">
             Ещё больше наших программ здесь →
           </a>
         </div>

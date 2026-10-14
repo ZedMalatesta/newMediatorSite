@@ -3,9 +3,12 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Спасибо за заявку | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/thankyou") },
+  openGraph: { url: absoluteUrl("/thankyou") },
+  title: "Спасибо за заявку",
   description: "Заявка успешно отправлена.",
 };
 

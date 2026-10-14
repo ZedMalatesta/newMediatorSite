@@ -86,7 +86,7 @@ export default function IntensiveSignup() {
             <label className="flex items-start gap-2.5 text-slate-400 text-xs">
               <input type="checkbox" required className="accent-accent-500 w-4 h-4 mt-0.5" />
               Согласен с условиями{" "}
-              <a href="#" className="text-accent-400 hover:underline">
+              <a href="/politicaobrabotkidannyh" className="text-accent-400 hover:underline">
                 политики обработки персональных данных
               </a>
             </label>

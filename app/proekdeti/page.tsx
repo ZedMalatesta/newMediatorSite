@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Проект «Взрослым отвечают дети» | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/proekdeti") },
+  openGraph: { url: absoluteUrl("/proekdeti") },
+  title: "Проект «Взрослым отвечают дети»",
   description:
     "Диалоговая площадка для обмена опытом между детьми и взрослыми: дети как источник гибкого и глубокого понимания мира.",
 };

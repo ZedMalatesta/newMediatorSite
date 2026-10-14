@@ -10,9 +10,12 @@ import CourseOutcomes from "./_components/CourseOutcomes";
 import CourseInstructor from "./_components/CourseInstructor";
 import CourseSignup from "./_components/CourseSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Супружеская и парная терапия | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/coupletherapy") },
+  openGraph: { url: absoluteUrl("/coupletherapy") },
+  title: "Супружеская и парная терапия",
   description:
     "Курс «Семейный психолог. Уровень — психолог-практик». 240 часов, 6 семинаров онлайн. Начало 1–2 августа 2026 г. Ведёт Шульга Оксана, кандидат психологических наук.",
 };

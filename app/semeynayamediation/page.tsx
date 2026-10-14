@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Семейная медиация как технология разрешения семейных кризисов | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/semeynayamediation") },
+  openGraph: { url: absoluteUrl("/semeynayamediation") },
+  title: "Семейная медиация как технология разрешения семейных кризисов",
   description:
     "Полный курс: этапы развода, техники психологической поддержки и стратегии совместного родительства. 48–64 часа, по вторникам, старт 1 июня.",
 };

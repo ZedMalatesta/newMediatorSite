@@ -70,14 +70,6 @@ export default function TestimonialsSection() {
           ))}
         </div>
 
-        <div className="mt-8 text-center">
-          <a
-            href="#"
-            className="text-zinc-500 font-semibold hover:text-accent-600 transition-colors text-sm"
-          >
-            Ещё больше отзывов здесь →
-          </a>
-        </div>
       </div>
 
       {/* Lightbox */}

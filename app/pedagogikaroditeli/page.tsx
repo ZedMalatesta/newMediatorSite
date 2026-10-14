@@ -5,9 +5,12 @@ import Footer from "@layout/Footer";
 import { EventHero } from "@sections/EventHero/EventHero";
 import { EventSignup } from "@sections/EventSignup/EventSignup";
 import PageBlocks from "@ui/PageBlocks";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Педагогика для родителей | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/pedagogikaroditeli") },
+  openGraph: { url: absoluteUrl("/pedagogikaroditeli") },
+  title: "Педагогика для родителей",
   description:
     "Онлайн терапевтическая и обучающая группа для родителей: эффективная коммуникация, работа со сложным поведением ребёнка, СДВГ, экранная зависимость.",
 };

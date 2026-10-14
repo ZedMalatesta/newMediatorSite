@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FacebookIcon, InstagramIcon, TelegramIcon } from "@ui/SocialIcons";
 
 export default function Footer() {
@@ -7,7 +8,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Brand */}
         <div>
-          <a href="/" className="inline-block mb-4">
+          <Link href="/" className="inline-block mb-4">
             <Image
               src="/images/logos/logo.png"
               alt="МедиаторОк Проф"
@@ -15,7 +16,7 @@ export default function Footer() {
               height={44}
               className="object-contain brightness-0 invert opacity-80"
             />
-          </a>
+          </Link>
           <p className="text-sm leading-relaxed mb-5">
             Учебно-практическое учреждение. Помогаем людям менять себя и мир
             вокруг, создавать новые ценности и поддерживать культуру ненасилия.
@@ -61,16 +62,18 @@ export default function Footer() {
           <h4 className="text-white font-semibold mb-4">Услуги</h4>
           <ul className="space-y-2 text-sm">
             {[
-              "Обучение",
-              "Проведение процедуры медиации",
-              "Корпоративное обучение",
-              "Психологическое консультирование",
-              "Добрачное консультирование",
-              "Конфликт-менеджмент",
-              "«Развод супругов»",
+              { label: "Обучение", href: "/obuchenie" },
+              { label: "Проведение процедуры медиации", href: "/mediation" },
+              { label: "Корпоративное обучение", href: "/corporatemediatorok" },
+              { label: "Психологическое консультирование", href: "/psycologicalcounseling" },
+              { label: "Добрачное консультирование", href: "/premaritalcounseling" },
+              { label: "Конфликт-менеджмент", href: "/confictmanagment" },
+              { label: "«Развод супругов»", href: "/divorceservice" },
             ].map((item) => (
-              <li key={item}>
-                <a href="#" className="hover:text-accent-400 transition-colors">{item}</a>
+              <li key={item.label}>
+                <Link href={item.href} className="hover:text-accent-400 transition-colors">
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -122,8 +125,8 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-600">
           <span>© УПУ «МедиаторОк Проф»</span>
           <div className="flex gap-4">
-            <a href="/dogovoroferty" className="hover:text-slate-400 transition-colors">Договор оферты</a>
-            <a href="/politicaobrabotkidannyh" className="hover:text-slate-400 transition-colors">Политика обработки персональных данных</a>
+            <Link href="/dogovoroferty" className="hover:text-slate-400 transition-colors">Договор оферты</Link>
+            <Link href="/politicaobrabotkidannyh" className="hover:text-slate-400 transition-colors">Политика обработки персональных данных</Link>
           </div>
         </div>
       </div>

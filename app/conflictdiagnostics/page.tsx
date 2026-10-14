@@ -3,9 +3,12 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import { SectionHeader } from "@ui/SectionHeader/SectionHeader";
+import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
-  title: "Диагностика конфликтов | МедиаторОк Проф",
+  alternates: { canonical: absoluteUrl("/conflictdiagnostics") },
+  openGraph: { url: absoluteUrl("/conflictdiagnostics") },
+  title: "Диагностика конфликтов",
   description:
     "Как определить тип конфликта и его готовность к медиации: стадии развития конфликта, признаки и критерии медиабельности спора.",
 };
