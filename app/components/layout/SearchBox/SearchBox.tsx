@@ -36,7 +36,8 @@ export default function SearchBox({ className = "" }: { className?: string }) {
       e.preventDefault();
       setOpen(true);
       const delta = e.key === "ArrowDown" ? 1 : -1;
-      setActive((i) => (i + delta + results.length) % results.length);
+      // From no highlight, Down starts at the first suggestion and Up at the last.
+      setActive((i) => (i < 0 ? (delta > 0 ? 0 : results.length - 1) : (i + delta + results.length) % results.length));
     }
     if (e.key === "Enter" && active >= 0) {
       e.preventDefault();
