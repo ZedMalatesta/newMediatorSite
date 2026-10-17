@@ -42,3 +42,6 @@ specs
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# personal Claude Code settings; shared ones go in .claude/settings.json
+.claude/settings.local.json
