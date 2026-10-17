@@ -31,6 +31,10 @@ jobs:
 
       - run: pnpm run lint
 
+      # Unit and component tests; fails below 90% coverage on any measure
+      # (thresholds in vitest.config.mts).
+      - run: pnpm run test:coverage
+
       # Pages serves this project under /newMediatorSite/, so the export needs a
       # matching base path. Local builds leave BASE_PATH unset and stay at root.
       - run: pnpm run build
