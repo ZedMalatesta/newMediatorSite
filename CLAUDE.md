@@ -3,6 +3,7 @@
 Next.js static rebuild of https://mediatorok.by, deployed to GitHub Pages from `main`.
 
 Matt Pocock's agent skills are installed in `.claude/skills/` (`scripts/install-pocock-skills.sh`).
+How to use them on this project: `docs/pocock-skills-guide.md`.
 
 ## Agent skills
 
