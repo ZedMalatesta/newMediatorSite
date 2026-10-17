@@ -1,16 +1,33 @@
-# Using Matt Pocock's skills on this project
+# Agent skills specification
 
-Matt Pocock's [agent skills](https://github.com/mattpocock/skills) are installed
-in `.claude/skills/`. A skill is a set of instructions Claude Code loads when it
-is needed: you type `/grill-with-docs` and Claude follows that skill's method
-instead of improvising. They come from a working engineer's habits: agree on
-what to build before building it, work in small tested steps, review against
-the spec, and keep the codebase easy to change.
+How work on this project is done with Matt Pocock's agent skills, and the rules
+it keeps.
 
-This guide covers the first run, the everyday flow, which skill fits which
-situation, and how to keep the set up to date.
+The skills ([mattpocock/skills](https://github.com/mattpocock/skills), MIT) are
+installed in `.claude/skills/`. A skill is a set of instructions Claude Code
+loads when it is needed: you type `/grill-with-docs` and Claude follows that
+skill's method instead of improvising. They come from a working engineer's
+habits: agree on what to build before building it, work in small tested steps,
+review against the spec, and keep the codebase easy to change.
 
-## 1. Before the first use
+The rules come first. Sections 2 to 7 are the guide: setup, the everyday flow,
+which skill fits which situation, and keeping the set up to date.
+
+## 1. The rules
+
+| # | Rule | Skill | Why |
+|---|------|-------|-----|
+| S1 | **Agree on the change before building it.** Anything bigger than a one-line fix starts with an interview that settles every open question. | `/grill-with-docs` (`/grill-me` when there is no code involved) | Building on a misunderstanding is the most expensive mistake there is, and the one an agent makes most readily. |
+| S2 | **Work that needs more than one session is written down as a spec and split into tickets** before any code. | `/to-spec`, then `/to-tickets` | Each ticket can then be built in a fresh session from what it says, without the original conversation. |
+| S3 | **Code is written test-first, at seams agreed with you.** Until the repo has a test runner, the checks are `npm run lint` and `npm run build`, and the PR says so. | `/tdd`, `/implement` | Without a check that runs, nobody knows whether the change works. |
+| S4 | **Every branch is reviewed against its spec and the repo's standards before its PR.** | `/pocock-code-review` | Code can follow every standard and still build the wrong thing, or the reverse. |
+| S5 | **A pull request shows what changed, the evidence that it works, and how risky it is to merge.** | `/pr` | The reviewer decides from the description. |
+| S6 | **The project's terms and hard-to-reverse decisions are written down and committed**: terms in `GLOSSARY.md`, decisions in `docs/adr/`. | `/grill-with-docs`, `/domain-modeling` | Each session starts from the project's own vocabulary instead of rediscovering it. |
+| S7 | **Nothing confidential goes into GitHub Issues.** The repository is public: specs and tickets are readable by anyone. No client data, personal contacts or prices under negotiation. | `/to-spec`, `/to-tickets`, `/wayfinder` | Specs and tickets are published as soon as they are created, and an individual's phone number or e-mail is published only with their consent. |
+| S8 | **The skills are not edited in place.** Project rules go in `CLAUDE.md`, tracker and label settings in `docs/agents/`, and a new skills version arrives through the installer as one reviewed commit. | `scripts/install-pocock-skills.sh` | The installer overwrites the skill folders; a local edit would be lost on the next update. |
+| S9 | **The interview, the spec and the tickets happen in one session; each ticket is built in a fresh one.** `/retro` runs before the session is cleared. | `/implement`, `/retro` | The spec builds on the interview's reasoning, and a ticket must stand on its own. |
+
+## 2. Before the first use
 
 Nothing to install: the skills are part of the repository, so Claude Code picks
 them up in any session opened in this folder. Type `/` in Claude Code and they
@@ -30,9 +47,9 @@ To change any of these, edit the file in `docs/agents/` directly. Run
 > **The repository is public.** `/to-spec`, `/to-tickets` and `/wayfinder`
 > publish what you discussed as GitHub issues that anyone can read. Keep client
 > data, prices under negotiation and personal contacts out of those
-> conversations, or switch the tracker to local files (section 6).
+> conversations, or switch the tracker to local files (section 7).
 
-## 2. Two kinds of skill
+## 3. Two kinds of skill
 
 - **You call them.** `/grill-with-docs`, `/to-spec`, `/to-tickets`,
   `/implement`, `/implement-spec`, `/triage`, `/wayfinder`,
@@ -47,7 +64,7 @@ To change any of these, edit the file in `docs/agents/` directly. Run
 Not sure which to use? Type **`/ask-matt`** and describe your situation. It
 routes you to the right skill.
 
-## 3. The everyday flow: from an idea to a merged change
+## 4. The everyday flow: from an idea to a merged change
 
 Take a real task on this site: *"Registration forms should actually deliver
 the enquiry somewhere."*
@@ -90,7 +107,7 @@ evidence that it works, and how risky it is to merge.
 changes to the environment, not the code (a check to add, a rule for
 `CLAUDE.md`, a missing pointer), so the next build goes better.
 
-## 4. Which skill for which situation
+## 5. Which skill for which situation
 
 | Situation on this project | Type |
 |---------------------------|------|
@@ -111,7 +128,7 @@ changes to the environment, not the code (a check to add, a rule for
 | Continue the work in another folder, or hand it to a colleague | `/handoff` |
 | Learn a concept properly, over several sessions | `/teach` |
 
-## 5. Things to know on this project
+## 6. Things to know on this project
 
 - **There is no test runner yet.** `/tdd`, `/implement` and `/implement-spec`
   write tests first, and this repo has none set up. The first time, Claude will
@@ -136,7 +153,7 @@ changes to the environment, not the code (a check to add, a rule for
   losing the thread, `/compact` at the end of a phase rather than in the
   middle.
 
-## 6. Keeping the skills up to date
+## 7. Keeping the skills up to date
 
 The skills are pinned to one upstream commit, recorded in
 `.claude/skills/pocock-skills.json`.
