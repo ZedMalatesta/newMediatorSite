@@ -4,6 +4,8 @@ import PravoPage from "@/app/pravo/page";
 import LiteraturePage from "@/app/literature/page";
 import ObucheniePage from "@/app/obuchenie/page";
 import ThankYouPage from "@/app/thankyou/page";
+import { experts } from "@lib/data";
+import { pageBlocks } from "@lib/pageBlocks";
 
 /** What a visitor of mediatorok.by can do, they can do here: found missing by comparing the two sites. */
 describe("parity with the live site", () => {
@@ -53,5 +55,13 @@ describe("parity with the live site", () => {
   it("finishes a registration in the bot that sends the lesson link", () => {
     render(<ThankYouPage />);
     expect(screen.getByRole("link", { name: "Перейти в Telegram" })).toHaveAttribute("href", "https://t.me/mediator_ok_bot");
+  });
+
+  it("presents the home page's experts as the live home page does", () => {
+    const live = pageBlocks.home.find((b) => b.heading === "Наши эксперты")!.cards;
+    expect(experts.map((e) => e.name)).toEqual(live.map((c) => c.title));
+    // The descriptions match too, apart from ё.
+    const plain = (t: string) => t.replace(/ё/g, "е");
+    expect(experts.map((e) => plain(e.credentials))).toEqual(live.map((c) => plain(c.body.map((n) => n.text).join(" "))));
   });
 });

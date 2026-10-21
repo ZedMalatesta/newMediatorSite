@@ -346,16 +346,18 @@ export const experts = [
     name: "Арсен Джанашиа",
     role: "Старший преподаватель",
     credentials:
-      "Старший преподаватель кафедры психологии и коррекционной работы МГУ им. Кулешова, медиатор",
+      "Старший преподаватель кафедры психологии и коррекционной работы Могилевского государственного университета им. Кулешова, медиатор",
     initials: "АД",
     photoSrc: "/images/experts/dzhanashia.jpg",
   },
   {
-    name: "Александра Габриянчик",
+    // Formerly Габриянчик - the live home and trainers pages use her
+    // current surname; /aboutus and /corporatemediatorok still the old one.
+    name: "Александра Вартанова",
     role: "Юрист · Медиатор",
     credentials:
       "Старший преподаватель кафедры гражданского права и процесса ГрГУ им. Янки Купалы, юрист, медиатор, тренер медиаторов",
-    initials: "АГ",
+    initials: "АВ",
     photoSrc: "/images/experts/gabryanchik.jpg",
   },
   {
