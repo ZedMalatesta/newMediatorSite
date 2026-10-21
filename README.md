@@ -35,6 +35,7 @@ pnpm build:search        # regenerate the search index
 
 ## Deploy
 
-Every push to `main`, and a nightly schedule, runs
-[.github/workflows/deploy.yml](.github/workflows/deploy.yml): lint, tests with
-coverage, build, link check and page audit. Any failure stops the deploy.
+[.github/workflows/deploy.yml](.github/workflows/deploy.yml) runs lint, tests
+with coverage, build, link check and page audit on every pull request, every
+push to `main` and every night. Only `main` and the nightly run deploy, and any
+failure stops the deploy.
