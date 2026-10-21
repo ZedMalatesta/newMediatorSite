@@ -40,6 +40,16 @@ jobs:
       # (thresholds in vitest.config.mts).
       - run: pnpm run test:coverage
 
+      # The build re-encodes only pictures that changed since the cached run
+      # (scripts/optimize-images.ts); a cold run encodes all of them.
+      - uses: actions/cache@v4
+        with:
+          path: |
+            public/optimized
+            .cache/optimized-images.json
+          key: images-${{ hashFiles('public/images/**', 'app/lib/imageVariants.ts', 'scripts/optimize-images.ts') }}
+          restore-keys: images-
+
       # Pages serves this project under /newMediatorSite/, so the export needs a
       # matching base path. Local builds leave BASE_PATH unset and stay at root.
       - run: pnpm run build

@@ -6,6 +6,7 @@
 Catches three things: internal links whose target was not exported, internal
 links and images missing the deployment base path (they resolve at the domain
 root and 404 when the site is served from a sub-path), and href="#" dead ends.
+Images include every srcset candidate, so a missing resized variant fails too.
 """
 import os, re, sys
 
@@ -33,7 +34,11 @@ for page in pages:
         targets.add(path)
         if not exported(path):
             broken.setdefault(path, page)
-    for src in set(re.findall(r'<img[^>]*\ssrc="([^"]+)"', html)):
+    # src is only the fallback; the browser loads one of the srcset entries,
+    # so each of those must exist too.
+    srcsets = re.findall(r'<img[^>]*\ssrcset="([^"]+)"', html, re.I)
+    candidates = [c.strip().split(" ")[0] for ss in srcsets for c in ss.split(",")]
+    for src in set(re.findall(r'<img[^>]*\ssrc="([^"]+)"', html)) | set(candidates):
         if src.startswith(("http", "data:")):
             continue
         images.add(src)
