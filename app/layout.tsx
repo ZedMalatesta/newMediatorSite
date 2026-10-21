@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
-import { site, siteUrl, absoluteUrl } from "@lib/site";
+import { site, siteUrl, absoluteUrl, isLiveSite } from "@lib/site";
 import JsonLd from "@/app/components/seo/JsonLd";
 import { organizationJsonLd } from "@lib/structuredData";
 
@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: site.description,
+  // The staging copy duplicates mediatorok.by; it stays out of every index
+  // until the site is built for its own domain (launch specification, L1).
+  ...(!isLiveSite && { robots: { index: false, follow: false } }),
   alternates: {
     canonical: absoluteUrl("/"),
   },
