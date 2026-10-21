@@ -74,6 +74,7 @@ const starts = {
   familyMediation: liveDate("semeynayamediation") ?? TBA,
   mediatorRemote: liveDate("obucheniemediator", /дистанц/i) ?? TBA,
   mediatorMinsk: liveDate("obucheniemediator", /Минск/i) ?? TBA,
+  practicalConflictology: liveDate("practicalconflictology") ?? TBA,
 };
 
 export const promos = [
@@ -197,6 +198,8 @@ export type Program = {
   formatLabel: string;
   duration: string;
   certificate: string;
+  /** The programme's own page, which its card leads to as on the live catalogue. */
+  href: string;
 };
 
 export const programs: Program[] = [
@@ -207,6 +210,7 @@ export const programs: Program[] = [
     formatLabel: "Онлайн",
     duration: "Авторская программа Оксаны Шульги",
     certificate: "Свидетельство об окончании",
+    href: "/semeynayamediation",
   },
   {
     title: "Обучение медиации — дистанционный курс",
@@ -215,6 +219,7 @@ export const programs: Program[] = [
     formatLabel: "Онлайн",
     duration: "Профессиональная переподготовка",
     certificate: "Справка государственного образца",
+    href: "/obucheniemediator",
   },
   {
     title: "Обучение медиации — очно, Минск",
@@ -223,6 +228,7 @@ export const programs: Program[] = [
     formatLabel: "Очно",
     duration: "Профессиональная переподготовка",
     certificate: "Справка государственного образца",
+    href: "/obucheniemediator",
   },
   {
     title: "Школа юного медиатора «Территория взаимопонимания»",
@@ -231,6 +237,7 @@ export const programs: Program[] = [
     formatLabel: "Очно · Интенсив",
     duration: "10 дней · Возраст 13–17 лет",
     certificate: "Сертификат участника",
+    href: "/school",
   },
   {
     title: "Летний интенсив — «Медиатор как личность и как профессионал»",
@@ -239,14 +246,16 @@ export const programs: Program[] = [
     formatLabel: "Очно · Выездной",
     duration: "3 дня · Интенсивный курс",
     certificate: "Свидетельство об окончании",
+    href: "/summerschool2025",
   },
   {
-    title: "Программа повышения квалификации по конфликтологии и переговорам",
-    startDate: "Сентябрь 2026",
-    format: "both",
-    formatLabel: "Онлайн и очно",
-    duration: "Расширенная программа",
-    certificate: "Справка государственного образца",
+    title: "Практическая конфликтология: навыки для жизни, работы и любви",
+    startDate: starts.practicalConflictology,
+    format: "online",
+    formatLabel: "Онлайн",
+    duration: "6 лекций в записи и 2 онлайн-встречи",
+    certificate: "Сертификат об обучении государственного образца",
+    href: "/practicalconflictology",
   },
 ];
 

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SectionHeader } from "@ui/SectionHeader/SectionHeader";
 import { extraCourses } from "./extra-courses-data";
 
@@ -9,10 +10,14 @@ export default function ExtraCourses() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {extraCourses.map((c) => (
-            <div key={c.title} className="bg-white rounded-2xl border border-slate-100 p-6">
+            <Link
+              key={c.title}
+              href={c.href}
+              className="block bg-white rounded-2xl border border-slate-100 p-6 hover:border-accent-300 hover:shadow-sm transition"
+            >
               <p className="font-bold text-slate-900 text-sm mb-2">{c.title}</p>
               <p className="text-slate-500 text-sm leading-relaxed">{c.description}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

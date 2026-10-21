@@ -2,6 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import PravoPage from "@/app/pravo/page";
 import LiteraturePage from "@/app/literature/page";
+import ObucheniePage from "@/app/obuchenie/page";
 
 /** What a visitor of mediatorok.by can do, they can do here: found missing by comparing the two sites. */
 describe("parity with the live site", () => {
@@ -21,5 +22,30 @@ describe("parity with the live site", () => {
       .filter((a) => a.getAttribute("href")?.startsWith("https://disk.yandex.ru/"));
     expect(downloads).toHaveLength(8);
     expect(downloads[0].parentElement).toHaveClass("flex-col");
+  });
+
+  it("leads from every catalogue card to its course page", () => {
+    render(<ObucheniePage />);
+    const main = within(screen.getByRole("main"));
+    // The programme tabs: every "Подробнее" goes somewhere.
+    const more = main.getAllByRole("link", { name: "Подробнее" }).map((a) => a.getAttribute("href"));
+    expect(more).toEqual([
+      "/semeynayamediation",
+      "/obucheniemediator",
+      "/obucheniemediator",
+      "/school",
+      "/summerschool2025",
+      "/practicalconflictology",
+    ]);
+    // The further courses are links themselves.
+    for (const [name, href] of [
+      [/Точка роста/, "/tochkarosta"],
+      [/Психологическое консультирование/, "/consultation"],
+      [/Английский для психологов/, "/englishforpsychology"],
+      [/Английский для медиации/, "/englishformediation"],
+      [/Новые технологии современной медиации/, "/newtechnologies"],
+    ] as const) {
+      expect(main.getAllByRole("link", { name }).some((a) => a.getAttribute("href") === href)).toBe(true);
+    }
   });
 });
