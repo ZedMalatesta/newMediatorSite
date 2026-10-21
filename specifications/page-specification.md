@@ -304,6 +304,7 @@ page it looks for the block's own sentences and pictures in that page's
 | `DUPLICATED` | They are there more often than on the live page. | R2 |
 | `NO PICTURE` | The section is there; a picture it has on the live page is not. | R4, R5 |
 | `CROPPED` | An illustration is drawn with `object-cover`. | R3 |
+| `NO LINK` | A button or linked card of the section leads nowhere on the page. Sign-up buttons are not expected (each page has its own form). | R1 |
 
 `npm run audit:pages -- out <page>` lists every block of one page with its
 result.
@@ -327,8 +328,8 @@ Anything else a page leaves out on purpose is named in
 ```
 
 A key is the start of the block's heading; a key that is part of a picture's
-path waives that picture; `@pictures` waives the picture checks for the whole
-page. A waiver with an empty reason is ignored. The current waivers:
+path or a link's address waives that picture or link; `@pictures` and `@links`
+waive those checks for the whole page. A waiver with an empty reason is ignored. The current waivers:
 
 | Page | Waived | Reason |
 |------|--------|--------|

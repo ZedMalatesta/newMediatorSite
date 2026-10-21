@@ -6,14 +6,15 @@
  *   npm run audit:pages -- <src> <page> report one page in full
  *
  * For each block of the live page (app/lib/pageBlocks.ts) it looks for the
- * block's own sentences in the page's <main> and reports the two ways a page
- * goes wrong:
+ * block's own sentences, pictures and links in the page's <main> and reports
+ * the ways a page goes wrong:
  *
  *   MISSING     a live section the page does not show at all
  *   DUPLICATED  a live section the page shows twice - once in a hand-built
  *               component and again through the imported blocks
  *   NO PICTURE  a section is there but a picture the live page gives it is not
  *   CROPPED     an illustration is drawn cut to a box instead of whole
+ *   NO LINK     a button or linked card of the live section leads nowhere here
  *
  * Exits non-zero when any is found, so it can gate a deploy.
  */
@@ -89,6 +90,24 @@ function sentences(b: PageBlock): string[] {
 }
 
 const count = (hay: string, needle: string) => hay.split(needle).length - 1;
+
+/**
+ * Links a page is not expected to carry: sign-up buttons, which every page
+ * replaces with its own form (the same rule as PageBlocks), and Tilda's
+ * "/error" placeholders, which lead nowhere on the live site either.
+ */
+const NOT_CARRIED = /^#|forms\.gle|docs\.google\.com\/forms|tilda\.|^\/error$/;
+
+/** Every href on the page's <main>. */
+const hrefsOf = (main: string) => [...main.matchAll(/<a\b[^>]*\shref="([^"]+)"/g)].map((m) => decode(m[1]));
+
+/** Whether the page links where the live link does, under whatever base path the build has. */
+function carries(hrefs: string[], href: string): boolean {
+  // The live site writes some internal links without the leading slash.
+  const target = /^(\/|[a-z]+:)/.test(href) ? href : `/${href}`;
+  const prefixed = (h: string) => target.startsWith("/") && h.endsWith(target) && /^\/[^/]+$/.test(h.slice(0, -target.length));
+  return hrefs.some((h) => h === target || prefixed(h));
+}
 const label = (b: PageBlock, i: number) =>
   `[${i}] «${(b.heading || b.body[0]?.text || b.cards[0]?.title || b.cards[0]?.body[0]?.text || b.role).slice(0, 60)}»`;
 
@@ -97,6 +116,7 @@ async function run() {
   let missing = 0;
   let duplicated = 0;
   let pictures = 0;
+  let links = 0;
   let checked = 0;
 
   for (const page of pages) {
@@ -167,17 +187,32 @@ async function run() {
         out.push(`  ok          ${label(b, i)}  (${keys.length - absent}/${keys.length}${waiver ? ", waived: " + waiver[1] : ""})`);
       }
     });
+    // Where each section leads: its buttons and linked cards. A section can be
+    // on the page with every sentence and still have lost where it led.
+    const hrefs = hrefsOf(main);
+    pageBlocks[page].forEach((b, i) => {
+      if (b.popupCards) return;
+      const waiver = Object.entries(WAIVED[page] ?? {}).find(([k, why]) => why && (k === "@links" || label(b, i).includes(k)));
+      if (waiver) return;
+      const wanted = [...b.links.map((l) => l.href), ...b.cards.flatMap((c) => (c.href ? [c.href] : []))];
+      for (const href of new Set(wanted)) {
+        if (NOT_CARRIED.test(href) || carries(hrefs, href)) continue;
+        if (Object.entries(WAIVED[page] ?? {}).some(([k, why]) => why && href.includes(k))) continue;
+        links++;
+        out.push(`  NO LINK     ${label(b, i)}  ${href}`);
+      }
+    });
     if (out.length) console.log(`${page}\n${out.join("\n")}`);
   }
 
   console.log(
-    `\n${checked} pages checked · ${missing} sections missing · ${duplicated} sections duplicated · ${pictures} pictures missing or cropped`,
+    `\n${checked} pages checked · ${missing} sections missing · ${duplicated} sections duplicated · ${pictures} pictures missing or cropped · ${links} links missing`,
   );
   if (checked === 0) {
     console.error(`nothing to check in ${source} - build first, or pass the site's URL`);
     process.exit(2);
   }
-  process.exit(missing + duplicated + pictures > 0 ? 1 : 0);
+  process.exit(missing + duplicated + pictures + links > 0 ? 1 : 0);
 }
 
 run();
