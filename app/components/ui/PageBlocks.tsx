@@ -380,11 +380,15 @@ function Accordion({ block }: { block: PageBlock }) {
  */
 const SIGNUP_LINK = /^#|forms\.gle|docs\.google\.com\/forms|tilda\./;
 
+/** A download list (/pravo, /literature) reads as a list, one document per line. */
+const DOWNLOAD = /^Скачать/;
+
 function Buttons({ links }: { links: BlockLink[] }) {
   const shown = links.filter((l) => !SIGNUP_LINK.test(l.href));
   if (shown.length === 0) return null;
+  const downloads = shown.every((l) => DOWNLOAD.test(l.label));
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className={downloads ? "flex flex-col items-start gap-3" : "flex flex-wrap gap-3"}>
       {shown.map((l) => (
         <SmartLink
           key={l.label + l.href}

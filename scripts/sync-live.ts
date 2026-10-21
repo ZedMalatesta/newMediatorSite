@@ -487,9 +487,13 @@ function localHref(raw: string): string | undefined {
 type BlockLink = { label: string; href: string };
 
 /** A block's buttons. Links into the live site become paths on this one. */
+/**
+ * A block's buttons: Tilda's own (`t-btn`), and the rows of a download list
+ * (record type 1059), which /pravo and /literature use for their documents.
+ */
 function buttons(frag: string): BlockLink[] {
   const out: BlockLink[] = [];
-  for (const m of frag.matchAll(/<a\b[^>]*class="[^"]*\bt-btn\b[^"]*"[^>]*>([\s\S]*?)<\/a>/g)) {
+  for (const m of frag.matchAll(/<a\b[^>]*class="[^"]*\b(?:t-btn|t1059__link)\b[^"]*"[^>]*>([\s\S]*?)<\/a>/g)) {
     const label = text(m[1].replace(/<svg[\s\S]*?<\/svg>/g, ""));
     const raw = decode(/href="([^"]*)"/.exec(m[0])?.[1] ?? "");
     const href = raw.replace(/^https?:\/\/(?:www\.)?mediatorok\.by(?=\/|$)/, "") || "/";
@@ -530,6 +534,7 @@ async function main() {
     const out: Block[] = [];
     const used = new Set<string>();
     const pageForms: LiveForm[] = [];
+    let lastType = "";
 
     for (const rec of parsed[slug]) {
       const hasForm = /<form\b/.test(rec.frag);
@@ -645,7 +650,20 @@ async function main() {
       const hasContent =
         block.heading || block.body.length || block.cards.length || block.links.length || images.length ||
         block.videos.length || acc.length || block.map;
-      if (hasContent) out.push(block);
+      // A download list is one record per row. The rows are one list, under
+      // the heading the page puts above them, not a section each.
+      const prev = out[out.length - 1];
+      const headingOnly = prev && !prev.body.length && !prev.cards.length && !prev.links.length && !prev.images.length;
+      if (rec.type === "1059" && prev && (lastType === "1059" || headingOnly)) {
+        prev.links.push(...block.links);
+        prev.paragraphs.push(...block.paragraphs);
+        lastType = rec.type;
+        continue;
+      }
+      if (hasContent) {
+        out.push(block);
+        lastType = rec.type;
+      }
     }
 
     // A page's cover is the background of the cover block it opens with. Only
