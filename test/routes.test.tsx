@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import AliasPage, { generateMetadata as aliasMetadata, generateStaticParams as aliasParams } from "@/app/[alias]/page";
@@ -7,6 +7,7 @@ import AudiencePage, {
   generateStaticParams as audienceParams,
 } from "@/app/audience/[slug]/page";
 import RootLayout, { metadata } from "@/app/layout";
+import NotFound, { metadata as notFoundMetadata } from "@/app/not-found";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
 import { aliases } from "@lib/aliases";
@@ -69,6 +70,17 @@ describe("on the site's own domain", () => {
     const { metadata: liveMetadata } = await import("@/app/layout");
     expect(liveRobots().sitemap).toBe("https://mediatorok.by/sitemap.xml");
     expect(liveMetadata.robots).toBeUndefined();
+  });
+});
+
+describe("the 404 page", () => {
+  it("says the page is missing, in Russian, and offers ways on", () => {
+    render(<NotFound />);
+    expect(notFoundMetadata.title).toBe("Страница не найдена");
+    expect(screen.getByRole("heading", { level: 1, name: "Страница не найдена" })).toBeInTheDocument();
+    for (const [name, href] of [["На главную", "/"], ["Обучение", "/obuchenie"], ["Поиск по сайту", "/search"], ["Контакты", "/contacts"]]) {
+      expect(within(screen.getByRole("main")).getByRole("link", { name })).toHaveAttribute("href", href);
+    }
   });
 });
 
