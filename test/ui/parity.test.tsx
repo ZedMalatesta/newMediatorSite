@@ -4,6 +4,8 @@ import PravoPage from "@/app/pravo/page";
 import LiteraturePage from "@/app/literature/page";
 import ObucheniePage from "@/app/obuchenie/page";
 import ThankYouPage from "@/app/thankyou/page";
+import ConflictManagementPage from "@/app/confictmanagment/page";
+import TestimonialsSection from "@/app/components/sections/TestimonialsSection";
 import { experts } from "@lib/data";
 import { pageBlocks } from "@lib/pageBlocks";
 
@@ -63,5 +65,17 @@ describe("parity with the live site", () => {
     // The descriptions match too, apart from ё.
     const plain = (t: string) => t.replace(/ё/g, "е");
     expect(experts.map((e) => plain(e.credentials))).toEqual(live.map((c) => plain(c.body.map((n) => n.text).join(" "))));
+  });
+
+  it("points to the channel with more reviews", () => {
+    render(<TestimonialsSection videos={[]} />);
+    expect(screen.getByRole("link", { name: "Еще больше отзывов здесь" })).toHaveAttribute("href", "https://t.me/otzyvymediator");
+  });
+
+  it("leads from a single linked item to its page, as the youth school card on /confictmanagment does", () => {
+    render(<ConflictManagementPage />);
+    expect(
+      within(screen.getByRole("main")).getByRole("link", { name: "Школа юного медиатора «Территория взаимопонимания»" }),
+    ).toHaveAttribute("href", "/school");
   });
 });
