@@ -19,7 +19,7 @@ which skill fits which situation, and keeping the set up to date.
 |---|------|-------|-----|
 | S1 | **Agree on the change before building it.** Anything bigger than a one-line fix starts with an interview that settles every open question. | `/grill-with-docs` (`/grill-me` when there is no code involved) | Building on a misunderstanding is the most expensive mistake there is, and the one an agent makes most readily. |
 | S2 | **Work that needs more than one session is written down as a spec and split into tickets** before any code. | `/to-spec`, then `/to-tickets` | Each ticket can then be built in a fresh session from what it says, without the original conversation. |
-| S3 | **Code is written test-first, at seams agreed with you.** Until the repo has a test runner, the checks are `npm run lint` and `npm run build`, and the PR says so. | `/tdd`, `/implement` | Without a check that runs, nobody knows whether the change works. |
+| S3 | **Code is written test-first, at seams agreed with you.** The checks are the ones every PR runs: `npm run lint`, `npm run test:coverage` (90% gate), the build, the link check and `npm run audit:pages`. | `/tdd`, `/implement` | Without a check that runs, nobody knows whether the change works. |
 | S4 | **Every branch is reviewed against its spec and the repo's standards before its PR.** | `/pocock-code-review` | Code can follow every standard and still build the wrong thing, or the reverse. |
 | S5 | **A pull request shows what changed, the evidence that it works, and how risky it is to merge.** | `/pr` | The reviewer decides from the description. |
 | S6 | **The project's terms and hard-to-reverse decisions are written down and committed**: terms in `GLOSSARY.md`, decisions in `docs/adr/`. | `/grill-with-docs`, `/domain-modeling` | Each session starts from the project's own vocabulary instead of rediscovering it. |
@@ -130,11 +130,10 @@ changes to the environment, not the code (a check to add, a rule for
 
 ## 6. Things to know on this project
 
-- **There is no test runner yet.** `/tdd`, `/implement` and `/implement-spec`
-  write tests first, and this repo has none set up. The first time, Claude will
-  need one; agree to adding [Vitest](https://vitest.dev) (it fits Next.js and
-  TypeScript), or tell it to use `npm run lint` and `npm run build` as the
-  checks for that change.
+- **Tests run on Vitest.** `/tdd`, `/implement` and `/implement-spec` write
+  tests first, into `test/` (`npm test`; `npm run test:coverage` for the 90%
+  gate). Every pull request runs them, with lint, the build, the link check
+  and the page audit, and shows the result on the PR.
 - **Agreeing the seams.** Before writing a test, `/tdd` asks which public
   interfaces (seams) to test, and writes none at a seam you haven't confirmed.
   That question is the point: answer it.
