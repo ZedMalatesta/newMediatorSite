@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
-import { absoluteUrl } from "@lib/site";
+import { absoluteUrl, site } from "@lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/thankyou") },
@@ -29,7 +29,7 @@ export default function ThankYouPage() {
               Остался последний шаг: завершите регистрацию в Telegram, чтобы получить ссылку на занятие.
             </p>
             <a
-              href="https://t.me/MediatorOK"
+              href={site.telegramBot}
               className="inline-block mt-6 bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
             >
               Перейти в Telegram

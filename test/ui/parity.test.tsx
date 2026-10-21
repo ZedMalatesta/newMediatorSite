@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import PravoPage from "@/app/pravo/page";
 import LiteraturePage from "@/app/literature/page";
 import ObucheniePage from "@/app/obuchenie/page";
+import ThankYouPage from "@/app/thankyou/page";
 
 /** What a visitor of mediatorok.by can do, they can do here: found missing by comparing the two sites. */
 describe("parity with the live site", () => {
@@ -47,5 +48,10 @@ describe("parity with the live site", () => {
     ] as const) {
       expect(main.getAllByRole("link", { name }).some((a) => a.getAttribute("href") === href)).toBe(true);
     }
+  });
+
+  it("finishes a registration in the bot that sends the lesson link", () => {
+    render(<ThankYouPage />);
+    expect(screen.getByRole("link", { name: "Перейти в Telegram" })).toHaveAttribute("href", "https://t.me/mediator_ok_bot");
   });
 });
