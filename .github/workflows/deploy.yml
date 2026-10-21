@@ -3,6 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Event status (upcoming / open / past) is worked out from dates at build
+  # time, so a finished event stays "open" until the next build. Rebuild every
+  # night, 03:00 Minsk. GitHub pauses schedules after 60 days without commits.
+  schedule:
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 permissions:
