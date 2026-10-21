@@ -5,6 +5,7 @@ import LiteraturePage from "@/app/literature/page";
 import ObucheniePage from "@/app/obuchenie/page";
 import ThankYouPage from "@/app/thankyou/page";
 import ConflictManagementPage from "@/app/confictmanagment/page";
+import AboutPrograms from "@/app/aboutus/_components/AboutPrograms";
 import TestimonialsSection from "@/app/components/sections/TestimonialsSection";
 import { experts } from "@lib/data";
 import { pageBlocks } from "@lib/pageBlocks";
@@ -77,5 +78,10 @@ describe("parity with the live site", () => {
     expect(
       within(screen.getByRole("main")).getByRole("link", { name: "Школа юного медиатора «Территория взаимопонимания»" }),
     ).toHaveAttribute("href", "/school");
+  });
+
+  it("leads from the programmes on /aboutus to the catalogue", () => {
+    render(<AboutPrograms />);
+    expect(screen.getByRole("link", { name: /Подробнее об обучении/ })).toHaveAttribute("href", "/obuchenie");
   });
 });
