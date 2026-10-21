@@ -1,5 +1,5 @@
-# sharp is only needed for next/image optimisation at runtime; this site is a
-# static export with a custom loader, so its build script is not required.
+# sharp makes the WebP image variants at build time (scripts/optimize-images.ts).
+# It ships prebuilt platform binaries, so its build script is not required.
 # unrs-resolver (eslint) ships prebuilt binaries.
 # esbuild (via tsx, for the scripts/ tooling) verifies its platform binary on
 # install, so it is allowed to run.
