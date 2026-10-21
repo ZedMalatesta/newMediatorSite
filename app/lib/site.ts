@@ -53,4 +53,6 @@ export const site = {
   openingHours: [] as OpeningHours[],
   telegram: "https://t.me/MediatorOK",
   instagram: "https://www.instagram.com/mediatorok.by/",
+  /** The live site's Yandex.Metrika counter, kept so statistics carry across launch. */
+  metrikaId: 105878977,
 } as const;

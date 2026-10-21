@@ -3,6 +3,7 @@ import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { site, siteUrl, absoluteUrl, isLiveSite } from "@lib/site";
 import JsonLd from "@/app/components/seo/JsonLd";
+import Metrika from "@/app/components/seo/Metrika";
 import { organizationJsonLd } from "@lib/structuredData";
 
 // Body text. Cyrillic is required - the site is entirely in Russian.
@@ -65,6 +66,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <JsonLd data={organizationJsonLd()} />
         {children}
+        {/* Staging visits would pollute the live site's statistics. */}
+        {isLiveSite && <Metrika id={site.metrikaId} />}
       </body>
     </html>
   );
