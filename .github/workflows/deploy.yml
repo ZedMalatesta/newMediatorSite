@@ -1,6 +1,9 @@
-name: Deploy to GitHub Pages
+name: Check and deploy
 
 on:
+  # Every pull request runs the checks a deploy runs, so a problem shows on the
+  # PR instead of stopping the deploy after the merge. Only main deploys.
+  pull_request:
   push:
     branches: [main]
   # Event status (upcoming / open / past) is worked out from dates at build
@@ -12,15 +15,16 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  # A newer push replaces a run still in progress: per pull request, and for
+  # the site.
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'pages' }}
   cancel-in-progress: true
 
 jobs:
-  build:
+  checks:
+    name: Lint, test, build, links, audit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -65,12 +69,18 @@ jobs:
       - run: pnpm run audit:pages
 
       - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
         with:
           path: out
 
   deploy:
-    needs: build
+    if: github.event_name != 'pull_request'
+    needs: checks
     runs-on: ubuntu-latest
+    # Only this job can publish the site.
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
