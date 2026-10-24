@@ -48,3 +48,6 @@ next-env.d.ts
 
 # personal Claude Code settings; shared ones go in .claude/settings.json
 .claude/settings.local.json
+
+# resized image variants, made before every build (scripts/optimize-images.ts)
+/public/optimized/

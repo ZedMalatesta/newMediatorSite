@@ -21,6 +21,16 @@ describe("imageLoader", () => {
     expect(imageLoader({ src: "/newMediatorSite/images/a.jpg", width: 640 })).toBe("/newMediatorSite/images/a.jpg");
   });
 
+  it("serves the variant that covers the width in a production build", () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("NEXT_PUBLIC_BASE_PATH", "/newMediatorSite");
+    expect(imageLoader({ src: "/images/a.jpg", width: 750 })).toBe("/newMediatorSite/optimized/1080/images/a.jpg.webp");
+    expect(imageLoader({ src: "/newMediatorSite/images/a.jpg", width: 96 })).toBe("/newMediatorSite/optimized/96/images/a.jpg.webp");
+    // Vectors and remote images have no variants.
+    expect(imageLoader({ src: "/images/icon.svg", width: 96 })).toBe("/newMediatorSite/images/icon.svg");
+    expect(imageLoader({ src: "https://cdn.example/a.jpg", width: 640 })).toBe("https://cdn.example/a.jpg");
+  });
+
   it("leaves remote images and an unset base path alone", () => {
     expect(imageLoader({ src: "https://cdn.example/a.jpg", width: 640 })).toBe("https://cdn.example/a.jpg");
     expect(imageLoader({ src: "/images/a.jpg", width: 640 })).toBe("/images/a.jpg");

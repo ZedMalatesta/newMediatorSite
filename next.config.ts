@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { DEVICE_SIZES, IMAGE_SIZES } from "./app/lib/imageVariants";
 
 /**
  * GitHub Pages serves this project at https://<user>.github.io/newMediatorSite/,
@@ -21,6 +22,9 @@ const nextConfig: NextConfig = {
     // the other, and only the loader can apply the base path.
     loader: "custom",
     loaderFile: "./app/lib/imageLoader.ts",
+    // The widths srcset offers are the widths scripts/optimize-images.ts makes.
+    deviceSizes: [...DEVICE_SIZES],
+    imageSizes: [...IMAGE_SIZES],
   },
 };
 
