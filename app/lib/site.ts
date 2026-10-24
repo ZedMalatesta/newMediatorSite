@@ -8,6 +8,14 @@ export const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://zedmalatesta.github.io"
 ).replace(/\/$/, "");
 
+/**
+ * Whether this build is the site on its own domain. The GitHub Pages copy is
+ * staging: it duplicates mediatorok.by, so it is kept out of search engines and
+ * analytics (launch specification, L1 and L4). Building with NEXT_PUBLIC_SITE_URL
+ * set to the real domain is what makes it live.
+ */
+export const isLiveSite = !new URL(siteUrl).hostname.endsWith(".github.io");
+
 /** Absolute URL for a route, including any base path. */
 export function absoluteUrl(path = "/"): string {
   const clean = path.startsWith("/") ? path : `/${path}`;
@@ -45,4 +53,6 @@ export const site = {
   openingHours: [] as OpeningHours[],
   telegram: "https://t.me/MediatorOK",
   instagram: "https://www.instagram.com/mediatorok.by/",
+  /** The live site's Yandex.Metrika counter, kept so statistics carry across launch. */
+  metrikaId: 105878977,
 } as const;

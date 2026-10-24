@@ -1,12 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import AliasPage, { generateMetadata as aliasMetadata, generateStaticParams as aliasParams } from "@/app/[alias]/page";
 import AudiencePage, {
   generateMetadata as audienceMetadata,
   generateStaticParams as audienceParams,
 } from "@/app/audience/[slug]/page";
 import RootLayout, { metadata } from "@/app/layout";
+import NotFound, { metadata as notFoundMetadata } from "@/app/not-found";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
 import { aliases } from "@lib/aliases";
@@ -54,6 +55,35 @@ describe("audience pages", () => {
   });
 });
 
+describe("on the site's own domain", () => {
+  beforeEach(() => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://mediatorok.by");
+    vi.resetModules();
+  });
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.resetModules();
+  });
+
+  it("is indexable, and robots.txt points at the sitemap", async () => {
+    const { default: liveRobots } = await import("@/app/robots");
+    const { metadata: liveMetadata } = await import("@/app/layout");
+    expect(liveRobots().sitemap).toBe("https://mediatorok.by/sitemap.xml");
+    expect(liveMetadata.robots).toBeUndefined();
+  });
+});
+
+describe("the 404 page", () => {
+  it("says the page is missing, in Russian, and offers ways on", () => {
+    render(<NotFound />);
+    expect(notFoundMetadata.title).toBe("Страница не найдена");
+    expect(screen.getByRole("heading", { level: 1, name: "Страница не найдена" })).toBeInTheDocument();
+    for (const [name, href] of [["На главную", "/"], ["Обучение", "/obuchenie"], ["Поиск по сайту", "/search"], ["Контакты", "/contacts"]]) {
+      expect(within(screen.getByRole("main")).getByRole("link", { name })).toHaveAttribute("href", href);
+    }
+  });
+});
+
 describe("site-wide files", () => {
   it("wraps every page in a Russian document with the organisation's structured data", () => {
     const html = renderToStaticMarkup(<RootLayout><p>page</p></RootLayout>);
@@ -63,9 +93,10 @@ describe("site-wide files", () => {
     expect(metadata.title).toMatchObject({ template: expect.stringContaining("%s") });
   });
 
-  it("lets every crawler in and points it at the sitemap", () => {
-    expect(robots()).toMatchObject({ rules: { userAgent: "*", allow: "/" } });
-    expect(String(robots().sitemap)).toMatch(/\/sitemap\.xml$/);
+  it("keeps the staging copy out of the index without blocking crawlers", () => {
+    // Blocked crawlers would never read the noindex, so crawling stays allowed.
+    expect(robots()).toEqual({ rules: { userAgent: "*", allow: "/" } });
+    expect(metadata.robots).toEqual({ index: false, follow: false });
   });
 
   it("lists every page and audience in the sitemap, and no forwarding pages", () => {

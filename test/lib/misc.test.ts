@@ -37,10 +37,17 @@ describe("site URLs", () => {
     expect(absoluteUrl("trainers")).toBe("https://mediatorok.example/base/trainers");
   });
 
-  it("defaults to the GitHub Pages address", async () => {
+  it("defaults to the GitHub Pages address, which is staging", async () => {
     vi.stubEnv("NEXT_PUBLIC_SITE_URL", undefined as unknown as string);
-    const { absoluteUrl } = await import("@lib/site");
+    const { absoluteUrl, isLiveSite } = await import("@lib/site");
     expect(absoluteUrl("/")).toBe("https://zedmalatesta.github.io");
+    expect(isLiveSite).toBe(false);
+  });
+
+  it("is live on any other domain", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://mediatorok.by");
+    const { isLiveSite } = await import("@lib/site");
+    expect(isLiveSite).toBe(true);
   });
 });
 

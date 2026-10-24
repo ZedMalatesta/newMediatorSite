@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
-import { site, siteUrl, absoluteUrl } from "@lib/site";
+import { site, siteUrl, absoluteUrl, isLiveSite } from "@lib/site";
 import JsonLd from "@/app/components/seo/JsonLd";
+import Metrika from "@/app/components/seo/Metrika";
 import { organizationJsonLd } from "@lib/structuredData";
 
 // Body text. Cyrillic is required - the site is entirely in Russian.
@@ -27,6 +28,9 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: site.description,
+  // The staging copy duplicates mediatorok.by; it stays out of every index
+  // until the site is built for its own domain (launch specification, L1).
+  ...(!isLiveSite && { robots: { index: false, follow: false } }),
   alternates: {
     canonical: absoluteUrl("/"),
   },
@@ -62,6 +66,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <JsonLd data={organizationJsonLd()} />
         {children}
+        {/* Staging visits would pollute the live site's statistics. */}
+        {isLiveSite && <Metrika id={site.metrikaId} />}
       </body>
     </html>
   );
