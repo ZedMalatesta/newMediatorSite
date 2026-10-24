@@ -52,6 +52,10 @@ export const site = {
    */
   openingHours: [] as OpeningHours[],
   telegram: "https://t.me/MediatorOK",
+  /** The registration bot: it completes a sign-up and sends the lesson link. */
+  telegramBot: "https://t.me/mediator_ok_bot",
+  /** The channel the live site points to for more reviews. */
+  telegramReviews: "https://t.me/otzyvymediator",
   instagram: "https://www.instagram.com/mediatorok.by/",
   /** The live site's Yandex.Metrika counter, kept so statistics carry across launch. */
   metrikaId: 105878977,

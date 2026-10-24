@@ -191,8 +191,9 @@ export const trainers: Trainer[] = [
     contacts: [],
   },
   {
-    name: "Александра Габриянчик",
-    initials: "АГ",
+    // Formerly Габриянчик; the live page names her Вартанова.
+    name: "Александра Вартанова",
+    initials: "АВ",
     role: "Старший преподаватель ГрГУ · Юрист · Тренер медиаторов",
     photo: "/images/experts/gabryanchik.jpg",
     tags: [

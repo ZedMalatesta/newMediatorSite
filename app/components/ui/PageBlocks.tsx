@@ -287,14 +287,29 @@ function Cards({ block, items }: { block: PageBlock; items: Item[] }) {
     const [only] = items;
     const photo = only.image && !isIcon(only.image) ? only.image : null;
     return (
-      <div className={`max-w-3xl ${photo ? "sm:flex sm:items-start sm:gap-8" : ""}`}>
+      <div className={`max-w-3xl ${photo ? "sm:flex sm:items-start sm:gap-8" : ""} ${only.href ? "relative" : ""}`}>
         {photo && (
           <div className="sm:w-56 flex-shrink-0 mb-5 sm:mb-0">
             <Figure image={photo} alt={only.title} />
           </div>
         )}
         <div>
-          {only.title && <h3 className="font-semibold text-slate-900 text-lg leading-snug mb-2">{only.title}</h3>}
+          {only.title && (
+            <h3 className="font-semibold text-slate-900 text-lg leading-snug mb-2">
+              {only.href ? (
+                // As on the live page, the item leads to its page; the link covers the picture too.
+                <SmartLink
+                  href={only.href}
+                  {...(only.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="hover:text-accent-700 transition-colors after:absolute after:inset-0"
+                >
+                  {only.title}
+                </SmartLink>
+              ) : (
+                only.title
+              )}
+            </h3>
+          )}
           <Prose nodes={only.body} />
         </div>
       </div>
@@ -380,11 +395,15 @@ function Accordion({ block }: { block: PageBlock }) {
  */
 const SIGNUP_LINK = /^#|forms\.gle|docs\.google\.com\/forms|tilda\./;
 
+/** A download list (/pravo, /literature) reads as a list, one document per line. */
+const DOWNLOAD = /^Скачать/;
+
 function Buttons({ links }: { links: BlockLink[] }) {
   const shown = links.filter((l) => !SIGNUP_LINK.test(l.href));
   if (shown.length === 0) return null;
+  const downloads = shown.every((l) => DOWNLOAD.test(l.label));
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className={downloads ? "flex flex-col items-start gap-3" : "flex flex-wrap gap-3"}>
       {shown.map((l) => (
         <SmartLink
           key={l.label + l.href}

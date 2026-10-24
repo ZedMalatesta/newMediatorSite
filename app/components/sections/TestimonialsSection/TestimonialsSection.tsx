@@ -5,6 +5,7 @@ import Image from "next/image";
 import { testimonialImages } from "@/app/lib/data";
 import type { BlockVideo } from "@lib/pageBlocks";
 import VideoEmbed from "@ui/VideoEmbed";
+import { site } from "@lib/site";
 
 export default function TestimonialsSection({
   videos = [],
@@ -85,6 +86,15 @@ export default function TestimonialsSection({
           ))}
         </div>
 
+        {/* As on the live page: the rest of the reviews are in their Telegram channel. */}
+        <a
+          href={site.telegramReviews}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-6 bg-accent-500 text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-accent-400 transition-colors"
+        >
+          Еще больше отзывов здесь
+        </a>
       </div>
 
       {/* Lightbox */}

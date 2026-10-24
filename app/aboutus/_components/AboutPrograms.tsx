@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const professionalPrograms = [
   "Подготовка медиаторов по программе, утверждённой Минюстом РБ",
   "Семейный психолог",
@@ -67,12 +69,12 @@ export default function AboutPrograms() {
                 </li>
               ))}
             </ul>
-            <a
-              href="#programs"
+            <Link
+              href="/obuchenie"
               className="inline-block mt-6 text-accent-600 font-semibold text-sm hover:text-accent-700 transition-colors"
             >
               Подробнее об обучении →
-            </a>
+            </Link>
           </div>
         </div>
       </div>

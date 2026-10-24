@@ -114,9 +114,12 @@ export default function ProgramTabs() {
                 </li>
               </ul>
 
-              <button className="w-full bg-zinc-200 text-slate-800 py-2.5 rounded-lg font-semibold hover:bg-zinc-300 transition-colors text-sm border border-zinc-300">
+              <Link
+                href={program.href}
+                className="block w-full text-center bg-zinc-200 text-slate-800 py-2.5 rounded-lg font-semibold hover:bg-zinc-300 transition-colors text-sm border border-zinc-300"
+              >
                 Подробнее
-              </button>
+              </Link>
             </div>
           ))}
         </div>
