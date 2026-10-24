@@ -13,6 +13,7 @@
  * Outputs (generated, do not hand-edit):
  *   app/lib/pageBlocks.ts   content blocks per page
  *   app/lib/pageForms.ts    popup / inline forms per page, footer form, newsletter
+ *   scripts/live-sitemap.json  every address in the live sitemap
  *
  * Images are resolved through scripts/live-assets.json, which maps each live
  * image URL to the file already committed under public/. An unknown URL is a
@@ -510,8 +511,16 @@ type Block = {
   images: Image[]; videos: Video[]; accordion: AccordionItem[]; map: boolean; popupCards: boolean;
 };
 
+/**
+ * Every address in the live sitemap, so a test can check each one still
+ * answers here (launch specification, L3) without fetching the live site.
+ */
+const SITEMAP_JSON = path.join(ROOT, "scripts", "live-sitemap.json");
+
 async function main() {
   const pages = await loadPages();
+  const addresses = Object.keys(pages).map((slug) => (slug === "home" ? "/" : `/${slug}`)).sort();
+  fs.writeFileSync(SITEMAP_JSON, JSON.stringify(addresses, null, 2) + "\n");
   const assets = new Assets();
 
   const parsed: Record<string, Rec[]> = {};

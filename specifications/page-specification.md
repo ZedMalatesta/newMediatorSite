@@ -52,6 +52,7 @@ mediatorok.by ──▶ npm run sync:live ──▶ app/lib/pageBlocks.ts   cont
                                          app/lib/liveNav.ts      the menu
                                          app/lib/liveDates.ts    start dates announced on course pages
                                          scripts/live-assets.json  live image URL → file in public/
+                                         scripts/live-sitemap.json every live address (each must answer here)
 ```
 
 `npm run sync:live` fetches every page in the live sitemap into `.cache/live/`
