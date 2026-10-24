@@ -209,7 +209,7 @@ function Checklist({ items }: { items: Item[] }) {
   );
 }
 
-function PersonCard({ item }: { item: Item }) {
+function PersonCard({ item, titled }: { item: Item; titled: boolean }) {
   return (
     <li className="flex flex-col">
       {item.image && (
@@ -223,13 +223,25 @@ function PersonCard({ item }: { item: Item }) {
           />
         </div>
       )}
-      <h3 className="font-semibold text-slate-900 leading-snug mb-1.5">{item.title}</h3>
+      <ItemTitle titled={titled} className="font-semibold text-slate-900 leading-snug mb-1.5">{item.title}</ItemTitle>
       <Prose nodes={item.body} small />
     </li>
   );
 }
 
-function Card({ item, icons }: { item: Item; icons: boolean }) {
+/**
+ * An item's title sits one level under the section's heading - or is itself a
+ * section-level heading where the section has none, so headings never skip a
+ * level (h1 straight to h3).
+ */
+function ItemTitle({ titled, className, children }: { titled: boolean; className: string; children: React.ReactNode }) {
+  return titled ? <h3 className={className}>{children}</h3> : <h2 className={className}>{children}</h2>;
+}
+
+/** A picture's alt text, unless it only repeats the caption printed beside it. */
+const ownAlt = (alt: string, caption: string) => (alt && alt !== caption ? alt : "");
+
+function Card({ item, icons, titled }: { item: Item; icons: boolean; titled: boolean }) {
   const photo = !icons && item.image && !isIcon(item.image) && item.image.width > 0 ? item.image : null;
   const icon = item.image && !photo ? item.image : null;
   return (
@@ -244,7 +256,7 @@ function Card({ item, icons }: { item: Item; icons: boolean }) {
         <div className={`relative bg-slate-50 ${photo.width > photo.height * 1.1 ? "aspect-3/2" : "aspect-square"}`}>
           <Image
             src={photo.src}
-            alt={photo.alt || item.title}
+            alt={ownAlt(photo.alt, item.title)}
             fill
             className="object-contain p-3"
             sizes="(max-width: 640px) 100vw, 400px"
@@ -258,7 +270,7 @@ function Card({ item, icons }: { item: Item; icons: boolean }) {
           </div>
         )}
         {item.title && (
-          <h3 className="font-semibold text-slate-900 leading-snug mb-2">
+          <ItemTitle titled={titled} className="font-semibold text-slate-900 leading-snug mb-2">
             {item.href ? (
               // The link's hit area is stretched over the whole card.
               <SmartLink
@@ -271,7 +283,7 @@ function Card({ item, icons }: { item: Item; icons: boolean }) {
             ) : (
               item.title
             )}
-          </h3>
+          </ItemTitle>
         )}
         <Prose nodes={item.body} small />
       </div>
@@ -279,7 +291,7 @@ function Card({ item, icons }: { item: Item; icons: boolean }) {
   );
 }
 
-function Cards({ block, items }: { block: PageBlock; items: Item[] }) {
+function Cards({ block, items, titled }: { block: PageBlock; items: Item[]; titled: boolean }) {
   if (items.length === 0) return null;
 
   // A single item is a caption for what surrounds it, not a grid of one.
@@ -290,12 +302,12 @@ function Cards({ block, items }: { block: PageBlock; items: Item[] }) {
       <div className={`max-w-3xl ${photo ? "sm:flex sm:items-start sm:gap-8" : ""} ${only.href ? "relative" : ""}`}>
         {photo && (
           <div className="sm:w-56 flex-shrink-0 mb-5 sm:mb-0">
-            <Figure image={photo} alt={only.title} />
+            <Figure image={{ ...photo, alt: ownAlt(photo.alt, only.title) }} alt="" />
           </div>
         )}
         <div>
           {only.title && (
-            <h3 className="font-semibold text-slate-900 text-lg leading-snug mb-2">
+            <ItemTitle titled={titled} className="font-semibold text-slate-900 text-lg leading-snug mb-2">
               {only.href ? (
                 // As on the live page, the item leads to its page; the link covers the picture too.
                 <SmartLink
@@ -308,7 +320,7 @@ function Cards({ block, items }: { block: PageBlock; items: Item[] }) {
               ) : (
                 only.title
               )}
-            </h3>
+            </ItemTitle>
           )}
           <Prose nodes={only.body} />
         </div>
@@ -329,7 +341,7 @@ function Cards({ block, items }: { block: PageBlock; items: Item[] }) {
     return (
       <ul className={`grid gap-x-6 gap-y-10 ${items.length >= 4 ? "grid-cols-2 lg:grid-cols-4" : "grid-cols-1 sm:grid-cols-3"}`}>
         {items.map((item, i) => (
-          <PersonCard key={i} item={item} />
+          <PersonCard key={i} item={item} titled={titled} />
         ))}
       </ul>
     );
@@ -341,7 +353,7 @@ function Cards({ block, items }: { block: PageBlock; items: Item[] }) {
   return (
     <ul className={`grid gap-5 ${cols(items.length, long)}`}>
       {items.map((item, i) => (
-        <Card key={i} icons={icons} item={sameImage ? { ...item, image: null } : item} />
+        <Card key={i} icons={icons} titled={titled} item={sameImage ? { ...item, image: null } : item} />
       ))}
     </ul>
   );
@@ -422,7 +434,7 @@ function Buttons({ links }: { links: BlockLink[] }) {
 // one live block
 // ---------------------------------------------------------------------------
 
-function Block({ block }: { block: PageBlock }) {
+function Block({ block, titled }: { block: PageBlock; titled: boolean }) {
   // A line the block repeats as the opening of one of its cards is said once.
   const opening = new Set(block.cards.flatMap((c) => [c.title, c.body[0]?.text]));
   const body = clean(block.body).filter((n) => !opening.has(n.text));
@@ -448,7 +460,7 @@ function Block({ block }: { block: PageBlock }) {
   const text = (
     <>
       <Prose nodes={body} />
-      <Cards block={block} items={items} />
+      <Cards block={block} items={items} titled={titled} />
     </>
   );
 
@@ -469,7 +481,7 @@ function Block({ block }: { block: PageBlock }) {
               <Prose nodes={body} />
             </div>
           )}
-          <Cards block={block} items={items} />
+          <Cards block={block} items={items} titled={titled} />
           <Photos block={block} images={photos} />
         </>
       )}
@@ -603,7 +615,7 @@ export default function PageBlocks({
             )}
             <div className="space-y-10">
               {section.blocks.map((block, k) => (
-                <Block key={k} block={block} />
+                <Block key={k} block={block} titled={Boolean(section.heading)} />
               ))}
             </div>
           </div>

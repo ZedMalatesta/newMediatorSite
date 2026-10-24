@@ -19,6 +19,8 @@ export default function AccountMenu({ className = "" }: { className?: string }) 
     return (
       <Link
         href="/account"
+        // On a phone the word is hidden and only the icon shows; the name stays.
+        aria-label="Вход"
         className={`inline-flex items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-accent-600 transition-colors ${className}`}
       >
         <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -37,6 +39,8 @@ export default function AccountMenu({ className = "" }: { className?: string }) 
         href="/account"
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-accent-600 transition-colors max-w-[10rem] truncate"
         title={display}
+        // On a phone only the initial shows; the link still says whose account it is.
+        aria-label={`Личный кабинет: ${display}`}
       >
         <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-accent-100 text-accent-700 text-xs font-bold">
           {display.slice(0, 1).toUpperCase()}

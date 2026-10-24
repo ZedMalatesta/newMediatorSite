@@ -46,7 +46,7 @@ export default function Footer() {
 
         {/* About */}
         <div>
-          <h4 className="text-white font-semibold mb-4">Об учреждении</h4>
+          <h2 className="text-white font-semibold mb-4">Об учреждении</h2>
           <ul className="space-y-2 text-sm">
             {[
               { label: "О нас", href: "/aboutus" },
@@ -62,7 +62,7 @@ export default function Footer() {
 
         {/* Services */}
         <div>
-          <h4 className="text-white font-semibold mb-4">Услуги</h4>
+          <h2 className="text-white font-semibold mb-4">Услуги</h2>
           <ul className="space-y-2 text-sm">
             {[
               { label: "Обучение", href: "/obuchenie" },
@@ -85,7 +85,7 @@ export default function Footer() {
         {/* Projects + Contacts */}
         <div className="space-y-8">
           <div>
-            <h4 className="text-white font-semibold mb-4">Наши проекты</h4>
+            <h2 className="text-white font-semibold mb-4">Наши проекты</h2>
             <ul className="space-y-2 text-sm">
               {[
                 { label: "Мы/медиаторы — за диалог!", href: "/fordialogue" },
@@ -101,7 +101,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-3">Контакты</h4>
+            <h2 className="text-white font-semibold mb-3">Контакты</h2>
             <ul className="space-y-2 text-sm">
               <li>г. Минск, ул. Короля 9, каб. 126</li>
               <li>
