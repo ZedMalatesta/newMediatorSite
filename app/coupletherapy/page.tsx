@@ -4,10 +4,6 @@ import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer";
 
 import CourseHero from "./_components/CourseHero";
-import CourseDetails from "./_components/CourseDetails";
-import CourseCurriculum from "./_components/CourseCurriculum";
-import CourseOutcomes from "./_components/CourseOutcomes";
-import CourseInstructor from "./_components/CourseInstructor";
 import CourseSignup from "./_components/CourseSignup";
 import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
@@ -27,12 +23,8 @@ export default function CoupleTherapyPage() {
       <Navbar />
       <main>
         <CourseHero />
-        <CourseDetails />
-        <CourseCurriculum />
-        <CourseOutcomes />
-        <CourseInstructor />
-        <CourseSignup />
         <PageBlocks page="coupletherapy" />
+        <CourseSignup />
       </main>
       <Footer />
     </div>

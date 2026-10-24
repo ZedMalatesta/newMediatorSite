@@ -22,6 +22,7 @@ export default function PremaritalCounselingPage() {
       <Navbar />
       <main>
         <EventHero
+          page="premaritalcounseling"
           eyebrow="Услуга"
           title="Добрачное консультирование"
           subtitle="«МедиаторОк» предлагает услуги по индивидуальному и семейному добрачному консультированию молодожёнов."

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { concerns } from "./counseling-data";
+import SignupCta from "@ui/SignupCta";
 
 export default function CounselingHero() {
   return (
@@ -27,23 +27,10 @@ export default function CounselingHero() {
           Психологическое благополучие — основа гармоничной и осознанной жизни.
         </p>
 
-        <div className="flex flex-wrap gap-3 mb-8 max-w-2xl">
-          {concerns.map((c) => (
-            <span
-              key={c}
-              className="bg-white/10 border border-white/20 text-slate-200 text-sm px-4 py-2 rounded-lg"
-            >
-              {c}
-            </span>
-          ))}
-        </div>
-
-        <a
-          href="#signup"
+        <SignupCta
+          label="Оставить заявку"
           className="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
-        >
-          Оставить заявку
-        </a>
+        />
       </div>
     </section>
   );

@@ -6,6 +6,7 @@ import { EventHero } from "@sections/EventHero/EventHero";
 import { SectionHeader } from "@ui/SectionHeader/SectionHeader";
 import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
+import SmartLink from "@ui/SmartLink";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/trening2024") },
@@ -28,6 +29,7 @@ export default function Trening2024Page() {
       <Navbar />
       <main>
         <EventHero
+          page="trening2024"
           eyebrow="Январь, Минск и Гродно"
           title="Тренинги на каникулах"
           subtitle="Серия очных и онлайн тренингов: 150 BYN за один день, 250 BYN за два дня."
@@ -39,14 +41,14 @@ export default function Trening2024Page() {
             <SectionHeader label="Программа" title="Три тренинга и практические сессии" />
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
               {trainings.map((t) => (
-                <a
+                <SmartLink
                   key={t.title}
                   href={t.href}
                   className="bg-slate-50 rounded-2xl border border-slate-100 p-6 hover:border-accent-300 hover:shadow-md transition-all"
                 >
                   <p className="font-bold text-slate-900 text-sm mb-2">{t.title}</p>
                   <span className="text-accent-600 text-xs font-semibold">Подробнее →</span>
-                </a>
+                </SmartLink>
               ))}
             </div>
             <p className="text-slate-600 text-sm leading-relaxed">
@@ -56,7 +58,8 @@ export default function Trening2024Page() {
             </p>
           </div>
         </section>
-        <PageBlocks page="trening2024" />
+        {/* The live page's three "more about the training" links are the cards above. */}
+        <PageBlocks page="trening2024" omit={["Подробнее про Тренинг"]} />
       </main>
       <Footer />
     </div>

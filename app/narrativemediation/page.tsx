@@ -22,6 +22,7 @@ export default function NarrativeMediationPage() {
       <Navbar />
       <main>
         <EventHero
+          page="narrativemediation"
           eyebrow="Тренинг"
           title="Нарративная медиация"
           subtitle="Воскресенье, 11:00–18:00, 12 академических часов, онлайн по Zoom."

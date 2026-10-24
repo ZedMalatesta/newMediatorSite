@@ -22,6 +22,7 @@ export default function WebinarsMyslaPage() {
       <Navbar />
       <main>
         <EventHero
+          page="webinarsmysla"
           eyebrow="Впервые в Беларуси"
           title="Смыслоцентрированная терапия супружеских пар"
           subtitle="2 дня по 4 часа, 11:00–15:00, онлайн по Zoom."

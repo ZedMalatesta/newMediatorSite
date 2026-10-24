@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SignupCta from "@ui/SignupCta";
 
 export default function SchoolHero() {
   return (
@@ -27,12 +28,10 @@ export default function SchoolHero() {
           профессиональными примирителями в разрешении любых конфликтов.
         </p>
 
-        <a
-          href="#signup"
+        <SignupCta
+          label="Заполнить заявку"
           className="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
-        >
-          Заполнить заявку
-        </a>
+        />
       </div>
     </section>
   );

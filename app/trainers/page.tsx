@@ -3,7 +3,6 @@ import TopBar from "@/app/components/layout/TopBar";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer";
 import TrainersGrid from "./_components/TrainersGrid";
-import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
 
 export const metadata: Metadata = {
@@ -49,12 +48,11 @@ export default function TrainersPage() {
         <section className="px-4 py-14 md:py-20">
           <div className="max-w-6xl mx-auto">
             <p className="text-center text-sm text-slate-400 mb-8 font-medium">
-              ↓ Нажмите на тренера, чтобы увидеть резюме и контакты ↓
+              Нажмите на карточку, чтобы открыть резюме и контакты
             </p>
             <TrainersGrid />
           </div>
         </section>
-        <PageBlocks page="trainers" />
       </main>
       <Footer />
     </div>

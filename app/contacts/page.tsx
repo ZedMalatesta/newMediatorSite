@@ -31,8 +31,9 @@ export default function ContactsPage() {
           </div>
         </section>
         <ContactsInfo />
+        {/* ContactsInfo is the live page's six ways to reach us; the map follows it, as there. */}
+        <PageBlocks page="contacts" omit={["Вы можете связаться"]} />
         <ContactsForm />
-        <PageBlocks page="contacts" />
       </main>
       <Footer />
     </div>

@@ -22,6 +22,7 @@ export default function SocraticDialoguePage() {
       <Navbar />
       <main>
         <EventHero
+          page="socraticdialogue"
           eyebrow="Вебинар"
           title="Сократический диалог в работе медиатора"
           subtitle="ZOOM, 19:00–21:00."

@@ -21,6 +21,7 @@ export default function SpringSchoolPage() {
       <Navbar />
       <main>
         <EventHero
+          page="springschool"
           eyebrow="Прошедшее мероприятие"
           title="Весенняя школа медиаторов 2023"
           subtitle="17–19 марта 2023 г., г.п. Сопоцкин, ул. Теолинская 39 — Епархиальный Дом милосердия «Каритас»."

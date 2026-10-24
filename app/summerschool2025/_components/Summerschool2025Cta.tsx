@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Summerschool2025Cta() {
   return (
     <section className="px-4 py-16 md:py-20 bg-slate-900 text-white">
@@ -10,12 +12,12 @@ export default function Summerschool2025Cta() {
           10-й юбилейный Летний интенсив медиаторов пройдёт 10–12 июля 2026 года
           в учебном центре Национального банка, дер. Раубичи.
         </p>
-        <a
+        <Link
           href="/summerintensive2026"
           className="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
         >
           Подробнее об интенсиве 2026
-        </a>
+        </Link>
       </div>
     </section>
   );

@@ -22,6 +22,7 @@ export default function ClinicalAspectsPage() {
       <Navbar />
       <main>
         <EventHero
+          page="clinicalaspects"
           eyebrow="Лекторий"
           title="Клинические аспекты функционирования личности"
           subtitle="7 встреч, 36 часов. Пятницы, 20:00–21:00 по Zoom."

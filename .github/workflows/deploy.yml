@@ -29,11 +29,25 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - run: pnpm run lint
+
+      # Unit and component tests; fails below 90% coverage on any measure
+      # (thresholds in vitest.config.mts).
+      - run: pnpm run test:coverage
+
       # Pages serves this project under /newMediatorSite/, so the export needs a
       # matching base path. Local builds leave BASE_PATH unset and stay at root.
       - run: pnpm run build
         env:
           BASE_PATH: /newMediatorSite
+
+      # A link without the base path, or to a page that was not exported, 404s
+      # only once deployed - neither the build nor lint can see it. Fail here.
+      - run: python3 scripts/check-links.py /newMediatorSite
+
+      # A live section shown twice or not at all, a picture missing or cut to
+      # a box: the pages still build and every link still works. Fail here.
+      - run: pnpm run audit:pages
 
       - uses: actions/upload-pages-artifact@v3
         with:

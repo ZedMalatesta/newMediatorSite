@@ -22,6 +22,7 @@ export default function ConsultationCoursePage() {
       <Navbar />
       <main>
         <EventHero
+          page="consultation"
           eyebrow="Базовый курс"
           title="Психологическое консультирование и психокоррекция людей разного возраста"
           subtitle="264 часа, 6 месяцев. Пятницы, 19:00–21:00 по Zoom."

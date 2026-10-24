@@ -1,37 +1,77 @@
-import { SectionHeader } from "@ui/SectionHeader/SectionHeader";
-import { formats, prices } from "./counseling-data";
+import Image from "next/image";
+import SignupCta from "@ui/SignupCta";
+import { blockByHeading } from "@lib/blockQuery";
+import { fixTypos } from "@lib/copyFilters";
+
+const PAGE = "psycologicalcounseling";
 
 export default function CounselingFormats() {
+  const formats = blockByHeading(PAGE, "Форматы работы");
+  const pricing = blockByHeading(PAGE, "Стоимость услуг");
+  // Each format with the illustration the live page gives it.
+  const cards = formats?.cards ?? [];
+
   return (
     <section className="px-4 py-16 md:py-20 bg-white">
-      <div className="max-w-4xl mx-auto">
-        <SectionHeader label="Форматы" title="Как проходит консультирование" />
+      <div className="max-w-6xl mx-auto">
+        <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          Форматы
+        </p>
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-10">
+          {formats?.heading ?? "Форматы работы"}
+        </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-14">
-          {formats.map((f) => (
-            <div key={f.title} className="bg-slate-50 rounded-2xl border border-slate-100 p-6">
-              <p className="font-bold text-slate-900 text-sm mb-2">{f.title}</p>
-              <p className="text-slate-500 text-sm leading-relaxed">{f.description}</p>
-            </div>
-          ))}
-        </div>
-
-        <SectionHeader label="Стоимость" title="Цены на консультации" />
-        <div className="rounded-2xl border border-slate-200 overflow-hidden">
-          {prices.map((row, i) => (
+        <div className="grid gap-6 sm:grid-cols-3 mb-16">
+          {cards.map((card) => (
             <div
-              key={row.service}
-              className={`flex items-center justify-between gap-3 px-6 py-5 ${
-                i !== prices.length - 1 ? "border-b border-slate-100" : ""
-              } ${i % 2 === 0 ? "bg-white" : "bg-slate-50"}`}
+              key={card.title}
+              className="rounded-2xl border border-slate-100 bg-white overflow-hidden text-center"
             >
-              <p className="font-semibold text-slate-900 text-sm">{row.service}</p>
-              <span className="inline-block bg-accent-50 border border-accent-200 text-accent-800 font-bold text-sm px-4 py-1.5 rounded-lg whitespace-nowrap">
-                {row.price}
-              </span>
+              {card.image && (
+                <div className="relative aspect-4/3">
+                  <Image
+                    src={card.image.src}
+                    alt=""
+                    fill
+                    className="object-contain p-4"
+                    sizes="(max-width: 640px) 100vw, 360px"
+                  />
+                </div>
+              )}
+              <p className="font-bold text-slate-900 text-sm px-5 pb-6 pt-2 first-letter:uppercase">
+                {card.title}
+              </p>
             </div>
           ))}
         </div>
+
+        <p className="text-accent-600 font-semibold text-sm uppercase tracking-widest mb-3">
+          Стоимость
+        </p>
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-10">
+          {pricing?.heading ?? "Стоимость услуг"}
+        </h2>
+
+        <div className="grid gap-6 sm:grid-cols-3">
+          {/* The services and prices as the live page publishes them today. */}
+          {(pricing?.cards ?? []).map((row) => (
+            <div
+              key={row.title}
+              className="flex flex-col rounded-2xl border border-slate-200 p-6"
+            >
+              <p className="font-semibold text-slate-900 text-sm leading-snug mb-4 flex-1">
+                {fixTypos(row.title)}
+              </p>
+              <p className="text-2xl font-bold text-accent-700 mb-5">{row.body[0]?.text}</p>
+              <SignupCta
+                label="Оставить заявку"
+                className="inline-block text-center border-2 border-accent-400 text-accent-700 px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-accent-50 transition-colors"
+              />
+            </div>
+          ))}
+        </div>
+
+        {pricing?.body[0] && <p className="text-slate-400 text-xs mt-5">{pricing.body[0].text}</p>}
       </div>
     </section>
   );

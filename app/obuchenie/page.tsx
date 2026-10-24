@@ -39,7 +39,8 @@ export default function ObucheniePage() {
 
         <ProgramTabs />
         <ExtraCourses />
-        <PageBlocks page="obuchenie" />
+        {/* The catalogue above is the live page's programme lists; its webinars are not in it. */}
+        <PageBlocks page="obuchenie" only={["Обучающие вебинары"]} />
       </main>
       <Footer />
     </div>

@@ -22,6 +22,7 @@ export default function ClubPage() {
       <Navbar />
       <main>
         <EventHero
+          page="club"
           eyebrow="Женский клуб"
           title="Переговоры на шпильках"
           subtitle="Онлайн и офлайн сообщество для женщин, развивающих переговорные навыки."

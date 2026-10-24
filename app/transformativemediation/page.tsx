@@ -22,6 +22,7 @@ export default function TransformativeMediationPage() {
       <Navbar />
       <main>
         <EventHero
+          page="transformativemediation"
           eyebrow="Тренинг"
           title="Трансформативная медиация"
           subtitle="Очно в Минске или онлайн по Zoom, 11:00–18:00 (7 часов)."

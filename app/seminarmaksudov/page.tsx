@@ -22,6 +22,7 @@ export default function SeminarMaksudovPage() {
       <Navbar />
       <main>
         <EventHero
+          page="seminarmaksudov"
           eyebrow="Семинар"
           title="Богатство ролей медиатора: юрист, психолог, активист во мне"
           subtitle="Минск, очно или онлайн."

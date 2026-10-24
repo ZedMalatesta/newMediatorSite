@@ -15,6 +15,23 @@
   --color-accent-900: #5c1741;
 }
 
+/* Gold — calibrated to the logo mark's own gold (sampled ~#a8860b), for the
+   one thing on the site that conventionally reads as gold: state-issued
+   certificates and official credentials. Not a second brand accent - use
+   sparingly, alongside accent-*, not instead of it. */
+@theme {
+  --color-gold-50: #fdf8ec;
+  --color-gold-100: #faf0d4;
+  --color-gold-200: #f3dda0;
+  --color-gold-300: #e9c369;
+  --color-gold-400: #dba93f;
+  --color-gold-500: #c8912a;
+  --color-gold-600: #a8761e;
+  --color-gold-700: #87601b;
+  --color-gold-800: #6b4c1a;
+  --color-gold-900: #573f19;
+}
+
 
 :root {
   --background: #ffffff;
@@ -50,4 +67,11 @@ h5,
 h6 {
   font-family: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui,
     sans-serif;
+}
+
+/* The footer's generic lead form is the fallback for pages with no form of
+   their own. Where the page already offers one, a second directly beneath it
+   is noise - so it steps aside. Every page is <main> followed by <footer>. */
+main:has(form) + footer [data-footer-lead] {
+  display: none;
 }

@@ -24,6 +24,21 @@ export const ACCENT = {
   900: "#5c1741",
 } as const;
 
+/** Calibrated to the logo mark's own gold. For state-issued certificates and
+ * official credentials only - not a second brand accent alongside ACCENT. */
+export const GOLD = {
+  50: "#fdf8ec",
+  100: "#faf0d4",
+  200: "#f3dda0",
+  300: "#e9c369",
+  400: "#dba93f",
+  500: "#c8912a",
+  600: "#a8761e",
+  700: "#87601b",
+  800: "#6b4c1a",
+  900: "#573f19",
+} as const;
+
 export const SLATE = {
   50: "#f8fafc",
   100: "#f1f5f9",

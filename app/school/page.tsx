@@ -4,9 +4,6 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 
 import SchoolHero from "./_components/SchoolHero";
-import SchoolDetails from "./_components/SchoolDetails";
-import SchoolProgram from "./_components/SchoolProgram";
-import SchoolTrainer from "./_components/SchoolTrainer";
 import SchoolSignup from "./_components/SchoolSignup";
 import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
@@ -26,11 +23,8 @@ export default function SchoolPage() {
       <Navbar />
       <main>
         <SchoolHero />
-        <SchoolDetails />
-        <SchoolProgram />
-        <SchoolTrainer />
-        <SchoolSignup />
         <PageBlocks page="school" />
+        <SchoolSignup />
       </main>
       <Footer />
     </div>

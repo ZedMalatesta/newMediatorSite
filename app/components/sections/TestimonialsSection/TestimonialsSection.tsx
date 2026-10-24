@@ -3,8 +3,15 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { testimonialImages } from "@/app/lib/data";
+import type { BlockVideo } from "@lib/pageBlocks";
+import VideoEmbed from "@ui/VideoEmbed";
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({
+  videos = [],
+}: {
+  /** Video testimonials the live page shows alongside the written ones. */
+  videos?: BlockVideo[];
+}) {
   const [open, setOpen] = useState<number | null>(null);
 
   const close = useCallback(() => setOpen(null), []);
@@ -41,6 +48,14 @@ export default function TestimonialsSection() {
             Отзывы наших учеников
           </h2>
         </div>
+
+        {videos.length > 0 && (
+          <div className="grid gap-5 md:grid-cols-2 mb-8">
+            {videos.map((video) => (
+              <VideoEmbed key={video.id} video={video} title="Видеоотзыв ученика" />
+            ))}
+          </div>
+        )}
 
         {/* Scrollable row */}
         <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory">

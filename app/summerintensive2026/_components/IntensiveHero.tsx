@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { isPast } from "@lib/lifecycle";
 import { eventDates } from "./intensive-data";
+import SignupCta from "@ui/SignupCta";
 
 export default function IntensiveHero() {
   const eventPassed = isPast(eventDates.end);
@@ -33,12 +34,10 @@ export default function IntensiveHero() {
 
         <div className="flex flex-col sm:flex-row gap-4 items-start">
           {!eventPassed && (
-          <a
-            href="#signup"
+          <SignupCta
+            label="Зарегистрироваться"
             className="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-400 transition-colors"
-          >
-            Зарегистрироваться
-          </a>
+          />
           )}
           <div className="flex items-center gap-2 text-slate-300 text-sm bg-white/10 px-5 py-3 rounded-lg border border-white/20">
             <svg className="w-4 h-4 text-accent-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

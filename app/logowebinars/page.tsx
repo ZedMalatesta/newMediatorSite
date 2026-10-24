@@ -6,6 +6,7 @@ import { EventHero } from "@sections/EventHero/EventHero";
 import { SectionHeader } from "@ui/SectionHeader/SectionHeader";
 import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
+import SmartLink from "@ui/SmartLink";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/logowebinars") },
@@ -35,10 +36,10 @@ export default function LogoWebinarsPage() {
       <Navbar />
       <main>
         <EventHero
+          page="logowebinars"
           eyebrow="Центр логотерапии «МедиаторОк Проф»"
           title="Вебинары Центра логотерапии"
           subtitle="Стремление к смыслу — главная мотивационная сила человека (Виктор Франкл)."
-          ctaLabel=""
           imageSrc="/images/shared/asset-6.jpg"
         />
         <section className="px-4 py-16 md:py-20 bg-white">
@@ -46,7 +47,7 @@ export default function LogoWebinarsPage() {
             <SectionHeader label="Ближайшие события" title="Программы Центра логотерапии" />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {items.map((i) => (
-                <a
+                <SmartLink
                   key={i.title}
                   href={i.href}
                   className="bg-slate-50 rounded-2xl border border-slate-100 p-6 hover:border-accent-300 hover:shadow-md transition-all"
@@ -54,7 +55,7 @@ export default function LogoWebinarsPage() {
                   <p className="font-bold text-slate-900 text-sm mb-2">{i.title}</p>
                   <p className="text-slate-500 text-xs mb-3">{i.description}</p>
                   <span className="text-accent-600 text-xs font-semibold">Подробнее →</span>
-                </a>
+                </SmartLink>
               ))}
             </div>
           </div>

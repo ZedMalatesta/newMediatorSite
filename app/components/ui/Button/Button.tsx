@@ -1,4 +1,5 @@
 import { ButtonProps, ButtonVariant, ButtonSize } from "./types";
+import SmartLink from "@ui/SmartLink";
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary: "bg-accent-500 text-white hover:bg-accent-400",
@@ -28,9 +29,9 @@ export function Button({
 
   if (href) {
     return (
-      <a href={href} className={classes}>
+      <SmartLink href={href} className={classes}>
         {children}
-      </a>
+      </SmartLink>
     );
   }
 

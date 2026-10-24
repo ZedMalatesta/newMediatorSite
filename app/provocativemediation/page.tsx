@@ -22,6 +22,7 @@ export default function ProvocativeMediationPage() {
       <Navbar />
       <main>
         <EventHero
+          page="provocativemediation"
           eyebrow="Тренинг"
           title="Провокативная медиация"
           subtitle="Воскресенье, 11:00–18:00 (7 часов), онлайн."

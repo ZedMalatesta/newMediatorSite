@@ -22,6 +22,7 @@ export default function MediationInSchoolPage() {
       <Navbar />
       <main>
         <EventHero
+          page="mediationinschool"
           eyebrow="Бесплатный вебинар"
           title="Медиация в образовательной среде"
           subtitle="ZOOM, около 90 минут."

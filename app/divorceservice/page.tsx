@@ -4,8 +4,6 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 
 import DivorceHero from "./_components/DivorceHero";
-import DivorceStages from "./_components/DivorceStages";
-import DivorcePricing from "./_components/DivorcePricing";
 import DivorceSignup from "./_components/DivorceSignup";
 import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
@@ -25,10 +23,8 @@ export default function DivorceServicePage() {
       <Navbar />
       <main>
         <DivorceHero />
-        <DivorceStages />
-        <DivorcePricing />
-        <DivorceSignup />
         <PageBlocks page="divorceservice" />
+        <DivorceSignup />
       </main>
       <Footer />
     </div>

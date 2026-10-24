@@ -22,6 +22,7 @@ export default function LogotherapyPage() {
       <Navbar />
       <main>
         <EventHero
+          page="logotherapy"
           eyebrow="Программа"
           title="Логотерапия и экзистенциальный подход в психологическом консультировании"
           subtitle="128 академических часов, 3 месяца. Четверги, 19:00–22:00. Очно или онлайн."

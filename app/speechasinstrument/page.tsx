@@ -22,6 +22,7 @@ export default function SpeechAsInstrumentPage() {
       <Navbar />
       <main>
         <EventHero
+          page="speechasinstrument"
           eyebrow="Вебинар"
           title="Речь как инструмент в работе с людьми"
           subtitle="ZOOM, 1,5 часа. Дата формируется по мере набора группы."

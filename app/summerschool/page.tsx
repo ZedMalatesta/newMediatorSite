@@ -21,6 +21,7 @@ export default function SummerSchool2023Page() {
       <Navbar />
       <main>
         <EventHero
+          page="summerschool"
           eyebrow="Прошедшее мероприятие"
           title="Летняя школа медиаторов 2023"
           subtitle="4–7 августа 2023 г., г.п. Сопоцкин, Гродненская область — Епархиальный Дом милосердия «Каритас»."

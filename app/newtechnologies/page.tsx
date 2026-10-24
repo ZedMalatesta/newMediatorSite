@@ -22,6 +22,7 @@ export default function NewTechnologiesPage() {
       <Navbar />
       <main>
         <EventHero
+          page="newtechnologies"
           eyebrow="Повышение квалификации"
           title="Новые технологии современной медиации"
           subtitle="Онлайн-программа для медиаторов и специалистов по разрешению конфликтов."

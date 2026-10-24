@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { services } from "@/app/lib/data";
+import SmartLink from "@ui/SmartLink";
 
 export default function ServicesSection() {
   return (
@@ -39,12 +40,12 @@ export default function ServicesSection() {
               <p className="text-slate-500 text-sm leading-relaxed mb-4">
                 {service.description}
               </p>
-              <a
+              <SmartLink
                 href={service.href}
                 className="text-zinc-500 text-sm font-semibold hover:text-accent-600 transition-colors"
               >
                 Подробнее →
-              </a>
+              </SmartLink>
             </div>
           ))}
         </div>

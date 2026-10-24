@@ -5,6 +5,7 @@ import Footer from "@/app/components/layout/Footer";
 
 import HeroSection from "@/app/components/sections/HeroSection";
 import ServicesSection from "@/app/components/sections/ServicesSection";
+import AudienceGrid from "@/app/components/sections/AudienceGrid/AudienceGrid";
 import NewsSection from "@/app/components/sections/NewsSection";
 import ProgramTabs from "@/app/components/sections/ProgramTabs";
 import AdvantagesSection from "@/app/components/sections/AdvantagesSection";
@@ -13,6 +14,7 @@ import CTASection from "@/app/components/sections/CTASection";
 import ExpertsSection from "@/app/components/sections/ExpertsSection";
 import MediationSection from "@/app/components/sections/MediationSection";
 import TestimonialsSection from "@/app/components/sections/TestimonialsSection";
+import { homeVideos } from "@lib/homeVideos";
 
 export default function Home() {
   return (
@@ -22,6 +24,7 @@ export default function Home() {
       <PromoBanner />
       <main>
         <HeroSection />
+        <AudienceGrid />
         <ServicesSection />
         <NewsSection />
         <ProgramTabs />
@@ -30,7 +33,7 @@ export default function Home() {
         <CTASection />
         <ExpertsSection />
         <MediationSection />
-        <TestimonialsSection />
+        <TestimonialsSection videos={homeVideos().testimonials} />
       </main>
       <Footer />
     </div>

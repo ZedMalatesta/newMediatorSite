@@ -22,6 +22,7 @@ export default function FamilyConsultingPage() {
       <Navbar />
       <main>
         <EventHero
+          page="familyconsulting"
           eyebrow="Курс"
           title="Семейное консультирование детей и родителей"
           subtitle="8 встреч по Zoom, вторники 19:00–21:30."

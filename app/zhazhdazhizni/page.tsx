@@ -22,6 +22,7 @@ export default function ZhazhdaZhizniPage() {
       <Navbar />
       <main>
         <EventHero
+          page="zhazhdazhizni"
           eyebrow="Динамическая группа"
           title="Жажда жизни"
           subtitle="6 месяцев, два раза в месяц. Четверги, 19:30–22:00."

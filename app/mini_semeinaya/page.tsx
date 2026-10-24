@@ -22,6 +22,7 @@ export default function MiniSemeinayaPage() {
       <Navbar />
       <main>
         <EventHero
+          page="mini_semeinaya"
           eyebrow="Вводное занятие"
           title="Семейная медиация как технология разрешения семейных кризисов"
           subtitle="Идёт набор первого потока — регистрация продлена до 1 мая."

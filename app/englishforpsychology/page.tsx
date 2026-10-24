@@ -22,6 +22,7 @@ export default function EnglishForPsychologyPage() {
       <Navbar />
       <main>
         <EventHero
+          page="englishforpsychology"
           eyebrow="Онлайн-курс"
           title="Английский для психологов"
           subtitle="96 часов. Вторники, 11:00–12:30 (MSK)."

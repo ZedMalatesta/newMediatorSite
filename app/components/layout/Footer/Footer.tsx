@@ -1,10 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FacebookIcon, InstagramIcon, TelegramIcon } from "@ui/SocialIcons";
+import FooterForms from "./FooterForms";
+import SmartLink from "@ui/SmartLink";
 
 export default function Footer() {
   return (
     <footer id="footer" className="bg-slate-900 text-slate-400 border-t border-slate-800">
+      <FooterForms />
       <div className="max-w-6xl mx-auto px-4 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Brand */}
         <div>
@@ -51,7 +54,7 @@ export default function Footer() {
               { label: "Наши специалисты", href: "/team" },
             ].map((item) => (
               <li key={item.label}>
-                <a href={item.href} className="hover:text-accent-400 transition-colors">{item.label}</a>
+                <SmartLink href={item.href} className="hover:text-accent-400 transition-colors">{item.label}</SmartLink>
               </li>
             ))}
           </ul>
@@ -87,12 +90,12 @@ export default function Footer() {
               {[
                 { label: "Мы/медиаторы — за диалог!", href: "/fordialogue" },
                 { label: "Интервизорская группа «Pro Mediation»", href: "/intervision" },
-                { label: "Школа юного медиатора", href: "/school" },
+                { label: "Школа юного медиатора", href: "/teenschool" },
                 { label: "Летний интенсив медиаторов 2026", href: "/summerintensive2026" },
                 { label: "Лига переговорщиков «Мастерская диалога»", href: "/negotiationleague" },
               ].map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className="hover:text-accent-400 transition-colors">{item.label}</a>
+                  <SmartLink href={item.href} className="hover:text-accent-400 transition-colors">{item.label}</SmartLink>
                 </li>
               ))}
             </ul>

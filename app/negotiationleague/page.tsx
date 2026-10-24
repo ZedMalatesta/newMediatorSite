@@ -4,7 +4,6 @@ import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 
 import NegotiationHero from "./_components/NegotiationHero";
-import NegotiationFormats from "./_components/NegotiationFormats";
 import NegotiationSignup from "./_components/NegotiationSignup";
 import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
@@ -24,9 +23,8 @@ export default function NegotiationLeaguePage() {
       <Navbar />
       <main>
         <NegotiationHero />
-        <NegotiationFormats />
-        <NegotiationSignup />
         <PageBlocks page="negotiationleague" />
+        <NegotiationSignup />
       </main>
       <Footer />
     </div>

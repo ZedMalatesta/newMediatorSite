@@ -22,6 +22,7 @@ export default function MusicTherapyPage() {
       <Navbar />
       <main>
         <EventHero
+          page="musictherapy"
           eyebrow="Семинар"
           title="Музыкальная терапия в кризисной интервенции"
           subtitle="ZOOM, 2,5 часа. Дата формируется по мере набора группы."

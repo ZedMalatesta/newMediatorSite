@@ -22,6 +22,7 @@ export default function SchoolOfYoungMediatorWinterPage() {
       <Navbar />
       <main>
         <EventHero
+          page="schoolofyoungmediator"
           eyebrow="Школа юного медиатора · Зима"
           title="Зимний интенсив «Территория взаимопонимания»"
           subtitle="2–6 января, 5 занятий. Очно в Минске."

@@ -22,6 +22,7 @@ export default function TochkaRostaPage() {
       <Navbar />
       <main>
         <EventHero
+          page="tochkarosta"
           eyebrow="Финансовый курс"
           title="Точка роста"
           subtitle="Вторники и пятницы, 19:00–20:30."

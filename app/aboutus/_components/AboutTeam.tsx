@@ -50,7 +50,7 @@ const team: Member[] = [
     name: "Александра Габриянчик",
     initials: "АГ",
     role: "Директор ООО «МедиаторОк»",
-    photo: null,
+    photo: "/images/experts/gabryanchik.jpg",
     tags: [
       "Медиатор",
       "Тренер медиаторов",
@@ -77,7 +77,7 @@ const team: Member[] = [
     name: "Елена Рагулина",
     initials: "ЕР",
     role: "Бизнес-тренер · Коуч ICU",
-    photo: null,
+    photo: "/images/experts/ragulina.jpg",
     tags: [
       "Бизнес-тренер",
       "Медиатор",

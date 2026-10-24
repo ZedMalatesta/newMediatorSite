@@ -22,6 +22,7 @@ export default function PedagogikaRoditeliPage() {
       <Navbar />
       <main>
         <EventHero
+          page="pedagogikaroditeli"
           eyebrow="Группа для родителей"
           title="Педагогика для родителей"
           subtitle="10 встреч по 2 часа. Четверги, 19:00–21:00."
