@@ -8,6 +8,8 @@ import { currentPrograms } from "@lib/data";
 import ExtraCourses from "./_components/ExtraCourses";
 import PageBlocks from "@ui/PageBlocks";
 import { absoluteUrl } from "@lib/site";
+import JsonLd from "@/app/components/seo/JsonLd";
+import { courseListJsonLd } from "@lib/structuredData";
 
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/obuchenie") },
@@ -18,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default function ObucheniePage() {
+  const programs = currentPrograms();
   return (
     <div className="min-h-screen bg-white">
       <TopBar />
@@ -38,7 +41,8 @@ export default function ObucheniePage() {
           </div>
         </section>
 
-        <ProgramTabs programs={currentPrograms()} />
+        <JsonLd data={courseListJsonLd(programs)} />
+        <ProgramTabs programs={programs} />
         <ExtraCourses />
         {/* The catalogue above is the live page's programme lists; its webinars are not in it. */}
         <PageBlocks page="obuchenie" only={["Обучающие вебинары"]} />

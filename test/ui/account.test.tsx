@@ -20,6 +20,8 @@ describe("AccountMenu", () => {
     expect(screen.getByTitle("anna@example.by")).toHaveTextContent("A");
     act(() => writeProfile({ name: "Анна", email: "anna@example.by" }));
     expect(screen.getByTitle("Анна")).toBeInTheDocument();
+    // Named even where only the initial shows (phones).
+    expect(screen.getByRole("link", { name: "Личный кабинет: Анна" })).toHaveAttribute("href", "/account");
     await user.click(screen.getByRole("button", { name: "Выйти" }));
     expect(screen.getByRole("link", { name: "Вход" })).toBeInTheDocument();
   });
