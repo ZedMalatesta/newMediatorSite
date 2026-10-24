@@ -1,4 +1,5 @@
 import { liveDate } from "./liveDates";
+import { enrolmentStatus, isPast, isoDay, parseRuDate } from "./lifecycle";
 import { liveNav } from "./liveNav";
 
 export type NavLink = {
@@ -200,7 +201,34 @@ export type Program = {
   certificate: string;
   /** The programme's own page, which its card leads to as on the live catalogue. */
   href: string;
+} & (
+  /** Runs in intakes: once its start has passed it stays listed, marked as started. */
+  | { kind: "course" }
+  /** Runs once: it leaves the catalogue the day after `ends` (ISO). */
+  | { kind: "event"; ends: string }
+);
+
+/** A programme as the catalogue shows it on a given day. */
+export type CurrentProgram = Program & {
+  /** The start date has passed; the next intake is not announced yet. */
+  started: boolean;
 };
+
+/**
+ * The catalogue on `now`: events that are over are gone, and a course whose
+ * start has passed says so instead of offering a date in the past. Pages call
+ * this when they are built (nightly, by the deploy schedule), not the browser,
+ * so the built HTML and the running page agree.
+ */
+export function currentPrograms(now: Date = new Date(), list: Program[] = programs): CurrentProgram[] {
+  return list
+    .filter((p) => p.kind === "course" || !isPast(p.ends, now))
+    .map((p) => {
+      const start = p.kind === "course" ? parseRuDate(p.startDate, now) : undefined;
+      const started = start !== undefined && enrolmentStatus(isoDay(start), now) === "closed";
+      return { ...p, started };
+    });
+}
 
 export const programs: Program[] = [
   {
@@ -211,6 +239,7 @@ export const programs: Program[] = [
     duration: "Авторская программа Оксаны Шульги",
     certificate: "Свидетельство об окончании",
     href: "/semeynayamediation",
+    kind: "course",
   },
   {
     title: "Обучение медиации — дистанционный курс",
@@ -220,6 +249,7 @@ export const programs: Program[] = [
     duration: "Профессиональная переподготовка",
     certificate: "Справка государственного образца",
     href: "/obucheniemediator",
+    kind: "course",
   },
   {
     title: "Обучение медиации — очно, Минск",
@@ -229,6 +259,7 @@ export const programs: Program[] = [
     duration: "Профессиональная переподготовка",
     certificate: "Справка государственного образца",
     href: "/obucheniemediator",
+    kind: "course",
   },
   {
     title: "Школа юного медиатора «Территория взаимопонимания»",
@@ -238,6 +269,9 @@ export const programs: Program[] = [
     duration: "10 дней · Возраст 13–17 лет",
     certificate: "Сертификат участника",
     href: "/school",
+    // The live site gives only the month; the end of it is the latest it can run.
+    kind: "event",
+    ends: "2026-07-31",
   },
   {
     title: "Летний интенсив — «Медиатор как личность и как профессионал»",
@@ -247,6 +281,9 @@ export const programs: Program[] = [
     duration: "3 дня · Интенсивный курс",
     certificate: "Свидетельство об окончании",
     href: "/summerschool2025",
+    // 4–6 July 2025, as the live home page announced it.
+    kind: "event",
+    ends: "2025-07-06",
   },
   {
     title: "Практическая конфликтология: навыки для жизни, работы и любви",
@@ -256,6 +293,7 @@ export const programs: Program[] = [
     duration: "6 лекций в записи и 2 онлайн-встречи",
     certificate: "Сертификат об обучении государственного образца",
     href: "/practicalconflictology",
+    kind: "course",
   },
 ];
 

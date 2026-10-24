@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { programs } from "@/app/lib/data";
+import type { CurrentProgram } from "@/app/lib/data";
 import { useTabKeyboard } from "@/app/hooks/useTabKeyboard";
 
 type Tab = "all" | "in-person" | "online";
@@ -13,7 +13,15 @@ const tabs: { label: string; value: Tab }[] = [
   { label: "Онлайн", value: "online" },
 ];
 
-export default function ProgramTabs() {
+/** The start as a past date reads: "с 19 октября 2026" -> "19 октября 2026". */
+const bareDate = (start: string) => start.replace(/^со?\s+/i, "");
+
+/**
+ * The catalogue's programme cards. The page passes `currentPrograms()`, worked
+ * out when it is built: this component runs in the browser too, where a
+ * different "today" would make it disagree with the built HTML.
+ */
+export default function ProgramTabs({ programs }: { programs: CurrentProgram[] }) {
   const [active, setActive] = useState<Tab>("all");
   const { setRef, onKeyDown } = useTabKeyboard(tabs.length, (i) => setActive(tabs[i].value));
 
@@ -99,10 +107,17 @@ export default function ProgramTabs() {
               <ul className="space-y-2 text-sm text-slate-500 mb-6">
                 <li className="flex items-center gap-2">
                   <span className="text-accent-500">📅</span>
-                  <span>
-                    <span className="text-slate-400">Начало: </span>
-                    {program.startDate}
-                  </span>
+                  {program.started ? (
+                    <span>
+                      <span className="text-slate-400">Старт был: </span>
+                      {bareDate(program.startDate)}, уточняйте следующий поток
+                    </span>
+                  ) : (
+                    <span>
+                      <span className="text-slate-400">Начало: </span>
+                      {program.startDate}
+                    </span>
+                  )}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-accent-500">⏱</span>

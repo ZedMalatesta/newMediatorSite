@@ -3,6 +3,7 @@ import TopBar from "@layout/TopBar";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 import ProgramTabs from "@sections/ProgramTabs/ProgramTabs";
+import { currentPrograms } from "@lib/data";
 
 import ExtraCourses from "./_components/ExtraCourses";
 import PageBlocks from "@ui/PageBlocks";
@@ -37,7 +38,7 @@ export default function ObucheniePage() {
           </div>
         </section>
 
-        <ProgramTabs />
+        <ProgramTabs programs={currentPrograms()} />
         <ExtraCourses />
         {/* The catalogue above is the live page's programme lists; its webinars are not in it. */}
         <PageBlocks page="obuchenie" only={["Обучающие вебинары"]} />

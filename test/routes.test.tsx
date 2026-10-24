@@ -11,6 +11,9 @@ import NotFound, { metadata as notFoundMetadata } from "@/app/not-found";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
 import { aliases } from "@lib/aliases";
+import fs from "node:fs";
+import path from "node:path";
+import liveSitemap from "../scripts/live-sitemap.json";
 import { audiences } from "@lib/audiences";
 
 const params = <T,>(value: T) => ({ params: Promise.resolve(value) });
@@ -70,6 +73,35 @@ describe("on the site's own domain", () => {
     const { metadata: liveMetadata } = await import("@/app/layout");
     expect(liveRobots().sitemap).toBe("https://mediatorok.by/sitemap.xml");
     expect(liveMetadata.robots).toBeUndefined();
+  });
+});
+
+/**
+ * Live addresses this site deliberately does not answer, and why. Anything
+ * else in the live sitemap must open a page or a forwarding page here, or old
+ * links and search results end in a 404 after launch (launch specification, L3).
+ */
+const NOT_CARRIED: Record<string, string> = {
+  "/error": "Tilda's own error page; the 404 page does that job here",
+  "/page146373026.html": "A Tilda draft published by mistake: «Copy of Вебинары Центра логотерапии»",
+  "/page146389116.html": "A Tilda draft published by mistake: «Copy of Конфликтология: навыки для жизни»",
+};
+
+describe("every address of the live site", () => {
+  const page = (slug: string) => fs.existsSync(path.join(process.cwd(), "app", slug, "page.tsx"));
+
+  it.each(liveSitemap)("%s answers here", (address) => {
+    if (address in NOT_CARRIED) return;
+    const slug = address.slice(1);
+    expect(address === "/" || page(slug) || slug in aliases, `${address} has no page and no forwarding page`).toBe(true);
+  });
+
+  it("lists only exceptions the live sitemap still has", () => {
+    for (const address of Object.keys(NOT_CARRIED)) expect(liveSitemap).toContain(address);
+  });
+
+  it("forwards only to pages that exist", () => {
+    for (const target of Object.values(aliases)) expect(page(target.slice(1))).toBe(true);
   });
 });
 

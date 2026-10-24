@@ -1,0 +1,20 @@
+# Dependency updates as pull requests, which run the full checks before merge.
+# Minor and patch updates arrive grouped, one PR per ecosystem; a major update
+# gets its own PR, since it is the one that can break something.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        update-types: [minor, patch]
