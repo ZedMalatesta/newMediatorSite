@@ -8,6 +8,7 @@ import ServicesSection from "@/app/components/sections/ServicesSection";
 import AudienceGrid from "@/app/components/sections/AudienceGrid/AudienceGrid";
 import NewsSection from "@/app/components/sections/NewsSection";
 import ProgramTabs from "@/app/components/sections/ProgramTabs";
+import { currentPrograms } from "@lib/data";
 import AdvantagesSection from "@/app/components/sections/AdvantagesSection";
 import SummerSchoolBanner from "@/app/components/sections/SummerSchoolBanner";
 import CTASection from "@/app/components/sections/CTASection";
@@ -27,7 +28,7 @@ export default function Home() {
         <AudienceGrid />
         <ServicesSection />
         <NewsSection />
-        <ProgramTabs />
+        <ProgramTabs programs={currentPrograms()} />
         <AdvantagesSection />
         <SummerSchoolBanner />
         <CTASection />

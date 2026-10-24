@@ -166,7 +166,7 @@ describe("SearchResults", () => {
 describe("ProgramTabs", () => {
   it("filters programmes by format with clicks and the arrow keys", async () => {
     const user = userEvent.setup();
-    render(<ProgramTabs />);
+    render(<ProgramTabs programs={programs.map((p) => ({ ...p, started: false }))} />);
     const tab = (name: string) => screen.getByRole("tab", { name });
     const shown = () => screen.getByRole("tabpanel").querySelectorAll("h3").length;
     expect(shown()).toBe(programs.length);
@@ -187,6 +187,24 @@ describe("ProgramTabs", () => {
     expect(tab("Онлайн")).toHaveFocus();
     await user.keyboard("a");
     expect(tab("Онлайн")).toHaveFocus();
+  });
+});
+
+describe("ProgramTabs dates", () => {
+  const [course] = programs;
+  it("says a course has started instead of offering a past date", () => {
+    render(<ProgramTabs programs={[{ ...course, startDate: "с 19 октября 2026", started: true }]} />);
+    expect(screen.getByRole("tabpanel")).toHaveTextContent("Старт был: 19 октября 2026, уточняйте следующий поток");
+  });
+
+  it("offers the start date while it is ahead", () => {
+    render(<ProgramTabs programs={[{ ...course, startDate: "с 19 октября 2026", started: false }]} />);
+    expect(screen.getByRole("tabpanel")).toHaveTextContent("Начало: с 19 октября 2026");
+  });
+
+  it("says so when nothing is current", () => {
+    render(<ProgramTabs programs={[]} />);
+    expect(screen.getByText("Программ для данного формата не найдено.")).toBeInTheDocument();
   });
 });
 

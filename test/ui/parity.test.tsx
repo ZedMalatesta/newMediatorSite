@@ -7,7 +7,8 @@ import ThankYouPage from "@/app/thankyou/page";
 import ConflictManagementPage from "@/app/confictmanagment/page";
 import AboutPrograms from "@/app/aboutus/_components/AboutPrograms";
 import TestimonialsSection from "@/app/components/sections/TestimonialsSection";
-import { experts } from "@lib/data";
+import { experts, programs } from "@lib/data";
+import ProgramTabs from "@sections/ProgramTabs/ProgramTabs";
 import { pageBlocks } from "@lib/pageBlocks";
 
 /** What a visitor of mediatorok.by can do, they can do here: found missing by comparing the two sites. */
@@ -31,10 +32,9 @@ describe("parity with the live site", () => {
   });
 
   it("leads from every catalogue card to its course page", () => {
-    render(<ObucheniePage />);
-    const main = within(screen.getByRole("main"));
-    // The programme tabs: every "Подробнее" goes somewhere.
-    const more = main.getAllByRole("link", { name: "Подробнее" }).map((a) => a.getAttribute("href"));
+    // Every programme, whatever today's date hides.
+    render(<ProgramTabs programs={programs.map((p) => ({ ...p, started: false }))} />);
+    const more = screen.getAllByRole("link", { name: "Подробнее" }).map((a) => a.getAttribute("href"));
     expect(more).toEqual([
       "/semeynayamediation",
       "/obucheniemediator",
@@ -44,6 +44,8 @@ describe("parity with the live site", () => {
       "/practicalconflictology",
     ]);
     // The further courses are links themselves.
+    render(<ObucheniePage />);
+    const main = within(screen.getByRole("main"));
     for (const [name, href] of [
       [/Точка роста/, "/tochkarosta"],
       [/Психологическое консультирование/, "/consultation"],
